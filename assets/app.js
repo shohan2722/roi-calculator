@@ -1,66 +1,15179 @@
-"use strict";(()=>{var tv=Object.create;var wf=Object.defineProperty;var av=Object.getOwnPropertyDescriptor;var ev=Object.getOwnPropertyNames;var uv=Object.getPrototypeOf,nv=Object.prototype.hasOwnProperty;var at=(l,t)=>()=>(t||l((t={exports:{}}).exports,t),t.exports);var iv=(l,t,a,e)=>{if(t&&typeof t=="object"||typeof t=="function")for(let u of ev(t))!nv.call(l,u)&&u!==a&&wf(l,u,{get:()=>t[u],enumerable:!(e=av(t,u))||e.enumerable});return l};var ua=(l,t,a)=>(a=l!=null?tv(uv(l)):{},iv(t||!l||!l.__esModule?wf(a,"default",{value:l,enumerable:!0}):a,l));var us=at(O=>{"use strict";var ii=Symbol.for("react.transitional.element"),cv=Symbol.for("react.portal"),fv=Symbol.for("react.fragment"),sv=Symbol.for("react.strict_mode"),dv=Symbol.for("react.profiler"),ov=Symbol.for("react.consumer"),mv=Symbol.for("react.context"),vv=Symbol.for("react.forward_ref"),yv=Symbol.for("react.suspense"),hv=Symbol.for("react.memo"),If=Symbol.for("react.lazy"),gv=Symbol.for("react.activity"),Ff=Symbol.iterator;function rv(l){return l===null||typeof l!="object"?null:(l=Ff&&l[Ff]||l["@@iterator"],typeof l=="function"?l:null)}var Pf={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}},ls=Object.assign,ts={};function Oa(l,t,a){this.props=l,this.context=t,this.refs=ts,this.updater=a||Pf}Oa.prototype.isReactComponent={};Oa.prototype.setState=function(l,t){if(typeof l!="object"&&typeof l!="function"&&l!=null)throw Error("takes an object of state variables to update or a function which returns an object of state variables.");this.updater.enqueueSetState(this,l,t,"setState")};Oa.prototype.forceUpdate=function(l){this.updater.enqueueForceUpdate(this,l,"forceUpdate")};function as(){}as.prototype=Oa.prototype;function ci(l,t,a){this.props=l,this.context=t,this.refs=ts,this.updater=a||Pf}var fi=ci.prototype=new as;fi.constructor=ci;ls(fi,Oa.prototype);fi.isPureReactComponent=!0;var Wf=Array.isArray;function ni(){}var K={H:null,A:null,T:null,S:null},es=Object.prototype.hasOwnProperty;function si(l,t,a){var e=a.ref;return{$$typeof:ii,type:l,key:t,ref:e!==void 0?e:null,props:a}}function bv(l,t){return si(l.type,t,l.props)}function di(l){return typeof l=="object"&&l!==null&&l.$$typeof===ii}function pv(l){var t={"=":"=0",":":"=2"};return"$"+l.replace(/[=:]/g,function(a){return t[a]})}var $f=/\/+/g;function ui(l,t){return typeof l=="object"&&l!==null&&l.key!=null?pv(""+l.key):t.toString(36)}function Sv(l){switch(l.status){case"fulfilled":return l.value;case"rejected":throw l.reason;default:switch(typeof l.status=="string"?l.then(ni,ni):(l.status="pending",l.then(function(t){l.status==="pending"&&(l.status="fulfilled",l.value=t)},function(t){l.status==="pending"&&(l.status="rejected",l.reason=t)})),l.status){case"fulfilled":return l.value;case"rejected":throw l.reason}}throw l}function Ma(l,t,a,e,u){var n=typeof l;(n==="undefined"||n==="boolean")&&(l=null);var i=!1;if(l===null)i=!0;else switch(n){case"bigint":case"string":case"number":i=!0;break;case"object":switch(l.$$typeof){case ii:case cv:i=!0;break;case If:return i=l._init,Ma(i(l._payload),t,a,e,u)}}if(i)return u=u(l),i=e===""?"."+ui(l,0):e,Wf(u)?(a="",i!=null&&(a=i.replace($f,"$&/")+"/"),Ma(u,t,a,"",function(m){return m})):u!=null&&(di(u)&&(u=bv(u,a+(u.key==null||l&&l.key===u.key?"":(""+u.key).replace($f,"$&/")+"/")+i)),t.push(u)),1;i=0;var c=e===""?".":e+":";if(Wf(l))for(var f=0;f<l.length;f++)e=l[f],n=c+ui(e,f),i+=Ma(e,t,a,n,u);else if(f=rv(l),typeof f=="function")for(l=f.call(l),f=0;!(e=l.next()).done;)e=e.value,n=c+ui(e,f++),i+=Ma(e,t,a,n,u);else if(n==="object"){if(typeof l.then=="function")return Ma(Sv(l),t,a,e,u);throw t=String(l),Error("Objects are not valid as a React child (found: "+(t==="[object Object]"?"object with keys {"+Object.keys(l).join(", ")+"}":t)+"). If you meant to render a collection of children, use an array instead.")}return i}function zu(l,t,a){if(l==null)return l;var e=[],u=0;return Ma(l,e,"","",function(n){return t.call(a,n,u++)}),e}function zv(l){if(l._status===-1){var t=l._result;t=t(),t.then(function(a){(l._status===0||l._status===-1)&&(l._status=1,l._result=a)},function(a){(l._status===0||l._status===-1)&&(l._status=2,l._result=a)}),l._status===-1&&(l._status=0,l._result=t)}if(l._status===1)return l._result.default;throw l._result}var kf=typeof reportError=="function"?reportError:function(l){if(typeof window=="object"&&typeof window.ErrorEvent=="function"){var t=new window.ErrorEvent("error",{bubbles:!0,cancelable:!0,message:typeof l=="object"&&l!==null&&typeof l.message=="string"?String(l.message):String(l),error:l});if(!window.dispatchEvent(t))return}else if(typeof process=="object"&&typeof process.emit=="function"){process.emit("uncaughtException",l);return}console.error(l)},Av={map:zu,forEach:function(l,t,a){zu(l,function(){t.apply(this,arguments)},a)},count:function(l){var t=0;return zu(l,function(){t++}),t},toArray:function(l){return zu(l,function(t){return t})||[]},only:function(l){if(!di(l))throw Error("React.Children.only expected to receive a single React element child.");return l}};O.Activity=gv;O.Children=Av;O.Component=Oa;O.Fragment=fv;O.Profiler=dv;O.PureComponent=ci;O.StrictMode=sv;O.Suspense=yv;O.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE=K;O.__COMPILER_RUNTIME={__proto__:null,c:function(l){return K.H.useMemoCache(l)}};O.cache=function(l){return function(){return l.apply(null,arguments)}};O.cacheSignal=function(){return null};O.cloneElement=function(l,t,a){if(l==null)throw Error("The argument must be a React element, but you passed "+l+".");var e=ls({},l.props),u=l.key;if(t!=null)for(n in t.key!==void 0&&(u=""+t.key),t)!es.call(t,n)||n==="key"||n==="__self"||n==="__source"||n==="ref"&&t.ref===void 0||(e[n]=t[n]);var n=arguments.length-2;if(n===1)e.children=a;else if(1<n){for(var i=Array(n),c=0;c<n;c++)i[c]=arguments[c+2];e.children=i}return si(l.type,u,e)};O.createContext=function(l){return l={$$typeof:mv,_currentValue:l,_currentValue2:l,_threadCount:0,Provider:null,Consumer:null},l.Provider=l,l.Consumer={$$typeof:ov,_context:l},l};O.createElement=function(l,t,a){var e,u={},n=null;if(t!=null)for(e in t.key!==void 0&&(n=""+t.key),t)es.call(t,e)&&e!=="key"&&e!=="__self"&&e!=="__source"&&(u[e]=t[e]);var i=arguments.length-2;if(i===1)u.children=a;else if(1<i){for(var c=Array(i),f=0;f<i;f++)c[f]=arguments[f+2];u.children=c}if(l&&l.defaultProps)for(e in i=l.defaultProps,i)u[e]===void 0&&(u[e]=i[e]);return si(l,n,u)};O.createRef=function(){return{current:null}};O.forwardRef=function(l){return{$$typeof:vv,render:l}};O.isValidElement=di;O.lazy=function(l){return{$$typeof:If,_payload:{_status:-1,_result:l},_init:zv}};O.memo=function(l,t){return{$$typeof:hv,type:l,compare:t===void 0?null:t}};O.startTransition=function(l){var t=K.T,a={};K.T=a;try{var e=l(),u=K.S;u!==null&&u(a,e),typeof e=="object"&&e!==null&&typeof e.then=="function"&&e.then(ni,kf)}catch(n){kf(n)}finally{t!==null&&a.types!==null&&(t.types=a.types),K.T=t}};O.unstable_useCacheRefresh=function(){return K.H.useCacheRefresh()};O.use=function(l){return K.H.use(l)};O.useActionState=function(l,t,a){return K.H.useActionState(l,t,a)};O.useCallback=function(l,t){return K.H.useCallback(l,t)};O.useContext=function(l){return K.H.useContext(l)};O.useDebugValue=function(){};O.useDeferredValue=function(l,t){return K.H.useDeferredValue(l,t)};O.useEffect=function(l,t){return K.H.useEffect(l,t)};O.useEffectEvent=function(l){return K.H.useEffectEvent(l)};O.useId=function(){return K.H.useId()};O.useImperativeHandle=function(l,t,a){return K.H.useImperativeHandle(l,t,a)};O.useInsertionEffect=function(l,t){return K.H.useInsertionEffect(l,t)};O.useLayoutEffect=function(l,t){return K.H.useLayoutEffect(l,t)};O.useMemo=function(l,t){return K.H.useMemo(l,t)};O.useOptimistic=function(l,t){return K.H.useOptimistic(l,t)};O.useReducer=function(l,t,a){return K.H.useReducer(l,t,a)};O.useRef=function(l){return K.H.useRef(l)};O.useState=function(l){return K.H.useState(l)};O.useSyncExternalStore=function(l,t,a){return K.H.useSyncExternalStore(l,t,a)};O.useTransition=function(){return K.H.useTransition()};O.version="19.2.6"});var re=at((oh,ns)=>{"use strict";ns.exports=us()});var hs=at(W=>{"use strict";function yi(l,t){var a=l.length;l.push(t);l:for(;0<a;){var e=a-1>>>1,u=l[e];if(0<Au(u,t))l[e]=t,l[a]=u,a=e;else break l}}function et(l){return l.length===0?null:l[0]}function Eu(l){if(l.length===0)return null;var t=l[0],a=l.pop();if(a!==t){l[0]=a;l:for(var e=0,u=l.length,n=u>>>1;e<n;){var i=2*(e+1)-1,c=l[i],f=i+1,m=l[f];if(0>Au(c,a))f<u&&0>Au(m,c)?(l[e]=m,l[f]=a,e=f):(l[e]=c,l[i]=a,e=i);else if(f<u&&0>Au(m,a))l[e]=m,l[f]=a,e=f;else break l}}return t}function Au(l,t){var a=l.sortIndex-t.sortIndex;return a!==0?a:l.id-t.id}W.unstable_now=void 0;typeof performance=="object"&&typeof performance.now=="function"?(is=performance,W.unstable_now=function(){return is.now()}):(oi=Date,cs=oi.now(),W.unstable_now=function(){return oi.now()-cs});var is,oi,cs,dt=[],Dt=[],Tv=1,jl=null,rl=3,hi=!1,be=!1,pe=!1,gi=!1,ds=typeof setTimeout=="function"?setTimeout:null,os=typeof clearTimeout=="function"?clearTimeout:null,fs=typeof setImmediate<"u"?setImmediate:null;function Tu(l){for(var t=et(Dt);t!==null;){if(t.callback===null)Eu(Dt);else if(t.startTime<=l)Eu(Dt),t.sortIndex=t.expirationTime,yi(dt,t);else break;t=et(Dt)}}function ri(l){if(pe=!1,Tu(l),!be)if(et(dt)!==null)be=!0,_a||(_a=!0,Na());else{var t=et(Dt);t!==null&&bi(ri,t.startTime-l)}}var _a=!1,Se=-1,ms=5,vs=-1;function ys(){return gi?!0:!(W.unstable_now()-vs<ms)}function mi(){if(gi=!1,_a){var l=W.unstable_now();vs=l;var t=!0;try{l:{be=!1,pe&&(pe=!1,os(Se),Se=-1),hi=!0;var a=rl;try{t:{for(Tu(l),jl=et(dt);jl!==null&&!(jl.expirationTime>l&&ys());){var e=jl.callback;if(typeof e=="function"){jl.callback=null,rl=jl.priorityLevel;var u=e(jl.expirationTime<=l);if(l=W.unstable_now(),typeof u=="function"){jl.callback=u,Tu(l),t=!0;break t}jl===et(dt)&&Eu(dt),Tu(l)}else Eu(dt);jl=et(dt)}if(jl!==null)t=!0;else{var n=et(Dt);n!==null&&bi(ri,n.startTime-l),t=!1}}break l}finally{jl=null,rl=a,hi=!1}t=void 0}}finally{t?Na():_a=!1}}}var Na;typeof fs=="function"?Na=function(){fs(mi)}:typeof MessageChannel<"u"?(vi=new MessageChannel,ss=vi.port2,vi.port1.onmessage=mi,Na=function(){ss.postMessage(null)}):Na=function(){ds(mi,0)};var vi,ss;function bi(l,t){Se=ds(function(){l(W.unstable_now())},t)}W.unstable_IdlePriority=5;W.unstable_ImmediatePriority=1;W.unstable_LowPriority=4;W.unstable_NormalPriority=3;W.unstable_Profiling=null;W.unstable_UserBlockingPriority=2;W.unstable_cancelCallback=function(l){l.callback=null};W.unstable_forceFrameRate=function(l){0>l||125<l?console.error("forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported"):ms=0<l?Math.floor(1e3/l):5};W.unstable_getCurrentPriorityLevel=function(){return rl};W.unstable_next=function(l){switch(rl){case 1:case 2:case 3:var t=3;break;default:t=rl}var a=rl;rl=t;try{return l()}finally{rl=a}};W.unstable_requestPaint=function(){gi=!0};W.unstable_runWithPriority=function(l,t){switch(l){case 1:case 2:case 3:case 4:case 5:break;default:l=3}var a=rl;rl=l;try{return t()}finally{rl=a}};W.unstable_scheduleCallback=function(l,t,a){var e=W.unstable_now();switch(typeof a=="object"&&a!==null?(a=a.delay,a=typeof a=="number"&&0<a?e+a:e):a=e,l){case 1:var u=-1;break;case 2:u=250;break;case 5:u=1073741823;break;case 4:u=1e4;break;default:u=5e3}return u=a+u,l={id:Tv++,callback:t,priorityLevel:l,startTime:a,expirationTime:u,sortIndex:-1},a>e?(l.sortIndex=a,yi(Dt,l),et(dt)===null&&l===et(Dt)&&(pe?(os(Se),Se=-1):pe=!0,bi(ri,a-e))):(l.sortIndex=u,yi(dt,l),be||hi||(be=!0,_a||(_a=!0,Na()))),l};W.unstable_shouldYield=ys;W.unstable_wrapCallback=function(l){var t=rl;return function(){var a=rl;rl=t;try{return l.apply(this,arguments)}finally{rl=a}}}});var rs=at((vh,gs)=>{"use strict";gs.exports=hs()});var ps=at(pl=>{"use strict";var Ev=re();function bs(l){var t="https://react.dev/errors/"+l;if(1<arguments.length){t+="?args[]="+encodeURIComponent(arguments[1]);for(var a=2;a<arguments.length;a++)t+="&args[]="+encodeURIComponent(arguments[a])}return"Minified React error #"+l+"; visit "+t+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}function Ut(){}var bl={d:{f:Ut,r:function(){throw Error(bs(522))},D:Ut,C:Ut,L:Ut,m:Ut,X:Ut,S:Ut,M:Ut},p:0,findDOMNode:null},Mv=Symbol.for("react.portal");function Ov(l,t,a){var e=3<arguments.length&&arguments[3]!==void 0?arguments[3]:null;return{$$typeof:Mv,key:e==null?null:""+e,children:l,containerInfo:t,implementation:a}}var ze=Ev.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;function Mu(l,t){if(l==="font")return"";if(typeof t=="string")return t==="use-credentials"?t:""}pl.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE=bl;pl.createPortal=function(l,t){var a=2<arguments.length&&arguments[2]!==void 0?arguments[2]:null;if(!t||t.nodeType!==1&&t.nodeType!==9&&t.nodeType!==11)throw Error(bs(299));return Ov(l,t,null,a)};pl.flushSync=function(l){var t=ze.T,a=bl.p;try{if(ze.T=null,bl.p=2,l)return l()}finally{ze.T=t,bl.p=a,bl.d.f()}};pl.preconnect=function(l,t){typeof l=="string"&&(t?(t=t.crossOrigin,t=typeof t=="string"?t==="use-credentials"?t:"":void 0):t=null,bl.d.C(l,t))};pl.prefetchDNS=function(l){typeof l=="string"&&bl.d.D(l)};pl.preinit=function(l,t){if(typeof l=="string"&&t&&typeof t.as=="string"){var a=t.as,e=Mu(a,t.crossOrigin),u=typeof t.integrity=="string"?t.integrity:void 0,n=typeof t.fetchPriority=="string"?t.fetchPriority:void 0;a==="style"?bl.d.S(l,typeof t.precedence=="string"?t.precedence:void 0,{crossOrigin:e,integrity:u,fetchPriority:n}):a==="script"&&bl.d.X(l,{crossOrigin:e,integrity:u,fetchPriority:n,nonce:typeof t.nonce=="string"?t.nonce:void 0})}};pl.preinitModule=function(l,t){if(typeof l=="string")if(typeof t=="object"&&t!==null){if(t.as==null||t.as==="script"){var a=Mu(t.as,t.crossOrigin);bl.d.M(l,{crossOrigin:a,integrity:typeof t.integrity=="string"?t.integrity:void 0,nonce:typeof t.nonce=="string"?t.nonce:void 0})}}else t==null&&bl.d.M(l)};pl.preload=function(l,t){if(typeof l=="string"&&typeof t=="object"&&t!==null&&typeof t.as=="string"){var a=t.as,e=Mu(a,t.crossOrigin);bl.d.L(l,a,{crossOrigin:e,integrity:typeof t.integrity=="string"?t.integrity:void 0,nonce:typeof t.nonce=="string"?t.nonce:void 0,type:typeof t.type=="string"?t.type:void 0,fetchPriority:typeof t.fetchPriority=="string"?t.fetchPriority:void 0,referrerPolicy:typeof t.referrerPolicy=="string"?t.referrerPolicy:void 0,imageSrcSet:typeof t.imageSrcSet=="string"?t.imageSrcSet:void 0,imageSizes:typeof t.imageSizes=="string"?t.imageSizes:void 0,media:typeof t.media=="string"?t.media:void 0})}};pl.preloadModule=function(l,t){if(typeof l=="string")if(t){var a=Mu(t.as,t.crossOrigin);bl.d.m(l,{as:typeof t.as=="string"&&t.as!=="script"?t.as:void 0,crossOrigin:a,integrity:typeof t.integrity=="string"?t.integrity:void 0})}else bl.d.m(l)};pl.requestFormReset=function(l){bl.d.r(l)};pl.unstable_batchedUpdates=function(l,t){return l(t)};pl.useFormState=function(l,t,a){return ze.H.useFormState(l,t,a)};pl.useFormStatus=function(){return ze.H.useHostTransitionStatus()};pl.version="19.2.6"});var As=at((hh,zs)=>{"use strict";function Ss(){if(!(typeof __REACT_DEVTOOLS_GLOBAL_HOOK__>"u"||typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE!="function"))try{__REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(Ss)}catch(l){console.error(l)}}Ss(),zs.exports=ps()});var qm=at(kn=>{"use strict";var il=rs(),Fd=re(),Nv=As();function p(l){var t="https://react.dev/errors/"+l;if(1<arguments.length){t+="?args[]="+encodeURIComponent(arguments[1]);for(var a=2;a<arguments.length;a++)t+="&args[]="+encodeURIComponent(arguments[a])}return"Minified React error #"+l+"; visit "+t+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}function Wd(l){return!(!l||l.nodeType!==1&&l.nodeType!==9&&l.nodeType!==11)}function cu(l){var t=l,a=l;if(l.alternate)for(;t.return;)t=t.return;else{l=t;do t=l,(t.flags&4098)!==0&&(a=t.return),l=t.return;while(l)}return t.tag===3?a:null}function $d(l){if(l.tag===13){var t=l.memoizedState;if(t===null&&(l=l.alternate,l!==null&&(t=l.memoizedState)),t!==null)return t.dehydrated}return null}function kd(l){if(l.tag===31){var t=l.memoizedState;if(t===null&&(l=l.alternate,l!==null&&(t=l.memoizedState)),t!==null)return t.dehydrated}return null}function Ts(l){if(cu(l)!==l)throw Error(p(188))}function _v(l){var t=l.alternate;if(!t){if(t=cu(l),t===null)throw Error(p(188));return t!==l?null:l}for(var a=l,e=t;;){var u=a.return;if(u===null)break;var n=u.alternate;if(n===null){if(e=u.return,e!==null){a=e;continue}break}if(u.child===n.child){for(n=u.child;n;){if(n===a)return Ts(u),l;if(n===e)return Ts(u),t;n=n.sibling}throw Error(p(188))}if(a.return!==e.return)a=u,e=n;else{for(var i=!1,c=u.child;c;){if(c===a){i=!0,a=u,e=n;break}if(c===e){i=!0,e=u,a=n;break}c=c.sibling}if(!i){for(c=n.child;c;){if(c===a){i=!0,a=n,e=u;break}if(c===e){i=!0,e=n,a=u;break}c=c.sibling}if(!i)throw Error(p(189))}}if(a.alternate!==e)throw Error(p(190))}if(a.tag!==3)throw Error(p(188));return a.stateNode.current===a?l:t}function Id(l){var t=l.tag;if(t===5||t===26||t===27||t===6)return l;for(l=l.child;l!==null;){if(t=Id(l),t!==null)return t;l=l.sibling}return null}var F=Object.assign,Rv=Symbol.for("react.element"),Ou=Symbol.for("react.transitional.element"),Re=Symbol.for("react.portal"),Ba=Symbol.for("react.fragment"),Pd=Symbol.for("react.strict_mode"),Ii=Symbol.for("react.profiler"),lo=Symbol.for("react.consumer"),bt=Symbol.for("react.context"),wc=Symbol.for("react.forward_ref"),Pi=Symbol.for("react.suspense"),lc=Symbol.for("react.suspense_list"),Fc=Symbol.for("react.memo"),Ct=Symbol.for("react.lazy"),tc=Symbol.for("react.activity"),Dv=Symbol.for("react.memo_cache_sentinel"),Es=Symbol.iterator;function Ae(l){return l===null||typeof l!="object"?null:(l=Es&&l[Es]||l["@@iterator"],typeof l=="function"?l:null)}var Uv=Symbol.for("react.client.reference");function ac(l){if(l==null)return null;if(typeof l=="function")return l.$$typeof===Uv?null:l.displayName||l.name||null;if(typeof l=="string")return l;switch(l){case Ba:return"Fragment";case Ii:return"Profiler";case Pd:return"StrictMode";case Pi:return"Suspense";case lc:return"SuspenseList";case tc:return"Activity"}if(typeof l=="object")switch(l.$$typeof){case Re:return"Portal";case bt:return l.displayName||"Context";case lo:return(l._context.displayName||"Context")+".Consumer";case wc:var t=l.render;return l=l.displayName,l||(l=t.displayName||t.name||"",l=l!==""?"ForwardRef("+l+")":"ForwardRef"),l;case Fc:return t=l.displayName||null,t!==null?t:ac(l.type)||"Memo";case Ct:t=l._payload,l=l._init;try{return ac(l(t))}catch{}}return null}var De=Array.isArray,E=Fd.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE,G=Nv.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE,da={pending:!1,data:null,method:null,action:null},ec=[],qa=-1;function ft(l){return{current:l}}function dl(l){0>qa||(l.current=ec[qa],ec[qa]=null,qa--)}function L(l,t){qa++,ec[qa]=l.current,l.current=t}var ct=ft(null),we=ft(null),Zt=ft(null),nn=ft(null);function cn(l,t){switch(L(Zt,t),L(we,l),L(ct,null),t.nodeType){case 9:case 11:l=(l=t.documentElement)&&(l=l.namespaceURI)?Ud(l):0;break;default:if(l=t.tagName,t=t.namespaceURI)t=Ud(t),l=zm(t,l);else switch(l){case"svg":l=1;break;case"math":l=2;break;default:l=0}}dl(ct),L(ct,l)}function Pa(){dl(ct),dl(we),dl(Zt)}function uc(l){l.memoizedState!==null&&L(nn,l);var t=ct.current,a=zm(t,l.type);t!==a&&(L(we,l),L(ct,a))}function fn(l){we.current===l&&(dl(ct),dl(we)),nn.current===l&&(dl(nn),uu._currentValue=da)}var pi,Ms;function ia(l){if(pi===void 0)try{throw Error()}catch(a){var t=a.stack.trim().match(/\n( *(at )?)/);pi=t&&t[1]||"",Ms=-1<a.stack.indexOf(`
-    at`)?" (<anonymous>)":-1<a.stack.indexOf("@")?"@unknown:0:0":""}return`
-`+pi+l+Ms}var Si=!1;function zi(l,t){if(!l||Si)return"";Si=!0;var a=Error.prepareStackTrace;Error.prepareStackTrace=void 0;try{var e={DetermineComponentFrameRoot:function(){try{if(t){var r=function(){throw Error()};if(Object.defineProperty(r.prototype,"props",{set:function(){throw Error()}}),typeof Reflect=="object"&&Reflect.construct){try{Reflect.construct(r,[])}catch(h){var y=h}Reflect.construct(l,[],r)}else{try{r.call()}catch(h){y=h}l.call(r.prototype)}}else{try{throw Error()}catch(h){y=h}(r=l())&&typeof r.catch=="function"&&r.catch(function(){})}}catch(h){if(h&&y&&typeof h.stack=="string")return[h.stack,y.stack]}return[null,null]}};e.DetermineComponentFrameRoot.displayName="DetermineComponentFrameRoot";var u=Object.getOwnPropertyDescriptor(e.DetermineComponentFrameRoot,"name");u&&u.configurable&&Object.defineProperty(e.DetermineComponentFrameRoot,"name",{value:"DetermineComponentFrameRoot"});var n=e.DetermineComponentFrameRoot(),i=n[0],c=n[1];if(i&&c){var f=i.split(`
-`),m=c.split(`
-`);for(u=e=0;e<f.length&&!f[e].includes("DetermineComponentFrameRoot");)e++;for(;u<m.length&&!m[u].includes("DetermineComponentFrameRoot");)u++;if(e===f.length||u===m.length)for(e=f.length-1,u=m.length-1;1<=e&&0<=u&&f[e]!==m[u];)u--;for(;1<=e&&0<=u;e--,u--)if(f[e]!==m[u]){if(e!==1||u!==1)do if(e--,u--,0>u||f[e]!==m[u]){var g=`
-`+f[e].replace(" at new "," at ");return l.displayName&&g.includes("<anonymous>")&&(g=g.replace("<anonymous>",l.displayName)),g}while(1<=e&&0<=u);break}}}finally{Si=!1,Error.prepareStackTrace=a}return(a=l?l.displayName||l.name:"")?ia(a):""}function Cv(l,t){switch(l.tag){case 26:case 27:case 5:return ia(l.type);case 16:return ia("Lazy");case 13:return l.child!==t&&t!==null?ia("Suspense Fallback"):ia("Suspense");case 19:return ia("SuspenseList");case 0:case 15:return zi(l.type,!1);case 11:return zi(l.type.render,!1);case 1:return zi(l.type,!0);case 31:return ia("Activity");default:return""}}function Os(l){try{var t="",a=null;do t+=Cv(l,a),a=l,l=l.return;while(l);return t}catch(e){return`
-Error generating stack: `+e.message+`
-`+e.stack}}var nc=Object.prototype.hasOwnProperty,Wc=il.unstable_scheduleCallback,Ai=il.unstable_cancelCallback,Hv=il.unstable_shouldYield,Bv=il.unstable_requestPaint,ql=il.unstable_now,qv=il.unstable_getCurrentPriorityLevel,to=il.unstable_ImmediatePriority,ao=il.unstable_UserBlockingPriority,sn=il.unstable_NormalPriority,Yv=il.unstable_LowPriority,eo=il.unstable_IdlePriority,Gv=il.log,Xv=il.unstable_setDisableYieldValue,fu=null,Yl=null;function Xt(l){if(typeof Gv=="function"&&Xv(l),Yl&&typeof Yl.setStrictMode=="function")try{Yl.setStrictMode(fu,l)}catch{}}var Gl=Math.clz32?Math.clz32:jv,Qv=Math.log,xv=Math.LN2;function jv(l){return l>>>=0,l===0?32:31-(Qv(l)/xv|0)|0}var Nu=256,_u=262144,Ru=4194304;function ca(l){var t=l&42;if(t!==0)return t;switch(l&-l){case 1:return 1;case 2:return 2;case 4:return 4;case 8:return 8;case 16:return 16;case 32:return 32;case 64:return 64;case 128:return 128;case 256:case 512:case 1024:case 2048:case 4096:case 8192:case 16384:case 32768:case 65536:case 131072:return l&261888;case 262144:case 524288:case 1048576:case 2097152:return l&3932160;case 4194304:case 8388608:case 16777216:case 33554432:return l&62914560;case 67108864:return 67108864;case 134217728:return 134217728;case 268435456:return 268435456;case 536870912:return 536870912;case 1073741824:return 0;default:return l}}function qn(l,t,a){var e=l.pendingLanes;if(e===0)return 0;var u=0,n=l.suspendedLanes,i=l.pingedLanes;l=l.warmLanes;var c=e&134217727;return c!==0?(e=c&~n,e!==0?u=ca(e):(i&=c,i!==0?u=ca(i):a||(a=c&~l,a!==0&&(u=ca(a))))):(c=e&~n,c!==0?u=ca(c):i!==0?u=ca(i):a||(a=e&~l,a!==0&&(u=ca(a)))),u===0?0:t!==0&&t!==u&&(t&n)===0&&(n=u&-u,a=t&-t,n>=a||n===32&&(a&4194048)!==0)?t:u}function su(l,t){return(l.pendingLanes&~(l.suspendedLanes&~l.pingedLanes)&t)===0}function Vv(l,t){switch(l){case 1:case 2:case 4:case 8:case 64:return t+250;case 16:case 32:case 128:case 256:case 512:case 1024:case 2048:case 4096:case 8192:case 16384:case 32768:case 65536:case 131072:case 262144:case 524288:case 1048576:case 2097152:return t+5e3;case 4194304:case 8388608:case 16777216:case 33554432:return-1;case 67108864:case 134217728:case 268435456:case 536870912:case 1073741824:return-1;default:return-1}}function uo(){var l=Ru;return Ru<<=1,(Ru&62914560)===0&&(Ru=4194304),l}function Ti(l){for(var t=[],a=0;31>a;a++)t.push(l);return t}function du(l,t){l.pendingLanes|=t,t!==268435456&&(l.suspendedLanes=0,l.pingedLanes=0,l.warmLanes=0)}function Zv(l,t,a,e,u,n){var i=l.pendingLanes;l.pendingLanes=a,l.suspendedLanes=0,l.pingedLanes=0,l.warmLanes=0,l.expiredLanes&=a,l.entangledLanes&=a,l.errorRecoveryDisabledLanes&=a,l.shellSuspendCounter=0;var c=l.entanglements,f=l.expirationTimes,m=l.hiddenUpdates;for(a=i&~a;0<a;){var g=31-Gl(a),r=1<<g;c[g]=0,f[g]=-1;var y=m[g];if(y!==null)for(m[g]=null,g=0;g<y.length;g++){var h=y[g];h!==null&&(h.lane&=-536870913)}a&=~r}e!==0&&no(l,e,0),n!==0&&u===0&&l.tag!==0&&(l.suspendedLanes|=n&~(i&~t))}function no(l,t,a){l.pendingLanes|=t,l.suspendedLanes&=~t;var e=31-Gl(t);l.entangledLanes|=t,l.entanglements[e]=l.entanglements[e]|1073741824|a&261930}function io(l,t){var a=l.entangledLanes|=t;for(l=l.entanglements;a;){var e=31-Gl(a),u=1<<e;u&t|l[e]&t&&(l[e]|=t),a&=~u}}function co(l,t){var a=t&-t;return a=(a&42)!==0?1:$c(a),(a&(l.suspendedLanes|t))!==0?0:a}function $c(l){switch(l){case 2:l=1;break;case 8:l=4;break;case 32:l=16;break;case 256:case 512:case 1024:case 2048:case 4096:case 8192:case 16384:case 32768:case 65536:case 131072:case 262144:case 524288:case 1048576:case 2097152:case 4194304:case 8388608:case 16777216:case 33554432:l=128;break;case 268435456:l=134217728;break;default:l=0}return l}function kc(l){return l&=-l,2<l?8<l?(l&134217727)!==0?32:268435456:8:2}function fo(){var l=G.p;return l!==0?l:(l=window.event,l===void 0?32:Cm(l.type))}function Ns(l,t){var a=G.p;try{return G.p=l,t()}finally{G.p=a}}var aa=Math.random().toString(36).slice(2),ml="__reactFiber$"+aa,Nl="__reactProps$"+aa,de="__reactContainer$"+aa,ic="__reactEvents$"+aa,Lv="__reactListeners$"+aa,Kv="__reactHandles$"+aa,_s="__reactResources$"+aa,ou="__reactMarker$"+aa;function Ic(l){delete l[ml],delete l[Nl],delete l[ic],delete l[Lv],delete l[Kv]}function Ya(l){var t=l[ml];if(t)return t;for(var a=l.parentNode;a;){if(t=a[de]||a[ml]){if(a=t.alternate,t.child!==null||a!==null&&a.child!==null)for(l=Yd(l);l!==null;){if(a=l[ml])return a;l=Yd(l)}return t}l=a,a=l.parentNode}return null}function oe(l){if(l=l[ml]||l[de]){var t=l.tag;if(t===5||t===6||t===13||t===31||t===26||t===27||t===3)return l}return null}function Ue(l){var t=l.tag;if(t===5||t===26||t===27||t===6)return l.stateNode;throw Error(p(33))}function Ja(l){var t=l[_s];return t||(t=l[_s]={hoistableStyles:new Map,hoistableScripts:new Map}),t}function sl(l){l[ou]=!0}var so=new Set,oo={};function Sa(l,t){le(l,t),le(l+"Capture",t)}function le(l,t){for(oo[l]=t,l=0;l<t.length;l++)so.add(t[l])}var Jv=RegExp("^[:A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][:A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$"),Rs={},Ds={};function wv(l){return nc.call(Ds,l)?!0:nc.call(Rs,l)?!1:Jv.test(l)?Ds[l]=!0:(Rs[l]=!0,!1)}function Lu(l,t,a){if(wv(t))if(a===null)l.removeAttribute(t);else{switch(typeof a){case"undefined":case"function":case"symbol":l.removeAttribute(t);return;case"boolean":var e=t.toLowerCase().slice(0,5);if(e!=="data-"&&e!=="aria-"){l.removeAttribute(t);return}}l.setAttribute(t,""+a)}}function Du(l,t,a){if(a===null)l.removeAttribute(t);else{switch(typeof a){case"undefined":case"function":case"symbol":case"boolean":l.removeAttribute(t);return}l.setAttribute(t,""+a)}}function ot(l,t,a,e){if(e===null)l.removeAttribute(a);else{switch(typeof e){case"undefined":case"function":case"symbol":case"boolean":l.removeAttribute(a);return}l.setAttributeNS(t,a,""+e)}}function Zl(l){switch(typeof l){case"bigint":case"boolean":case"number":case"string":case"undefined":return l;case"object":return l;default:return""}}function mo(l){var t=l.type;return(l=l.nodeName)&&l.toLowerCase()==="input"&&(t==="checkbox"||t==="radio")}function Fv(l,t,a){var e=Object.getOwnPropertyDescriptor(l.constructor.prototype,t);if(!l.hasOwnProperty(t)&&typeof e<"u"&&typeof e.get=="function"&&typeof e.set=="function"){var u=e.get,n=e.set;return Object.defineProperty(l,t,{configurable:!0,get:function(){return u.call(this)},set:function(i){a=""+i,n.call(this,i)}}),Object.defineProperty(l,t,{enumerable:e.enumerable}),{getValue:function(){return a},setValue:function(i){a=""+i},stopTracking:function(){l._valueTracker=null,delete l[t]}}}}function cc(l){if(!l._valueTracker){var t=mo(l)?"checked":"value";l._valueTracker=Fv(l,t,""+l[t])}}function vo(l){if(!l)return!1;var t=l._valueTracker;if(!t)return!0;var a=t.getValue(),e="";return l&&(e=mo(l)?l.checked?"true":"false":l.value),l=e,l!==a?(t.setValue(l),!0):!1}function dn(l){if(l=l||(typeof document<"u"?document:void 0),typeof l>"u")return null;try{return l.activeElement||l.body}catch{return l.body}}var Wv=/[\n"\\]/g;function Jl(l){return l.replace(Wv,function(t){return"\\"+t.charCodeAt(0).toString(16)+" "})}function fc(l,t,a,e,u,n,i,c){l.name="",i!=null&&typeof i!="function"&&typeof i!="symbol"&&typeof i!="boolean"?l.type=i:l.removeAttribute("type"),t!=null?i==="number"?(t===0&&l.value===""||l.value!=t)&&(l.value=""+Zl(t)):l.value!==""+Zl(t)&&(l.value=""+Zl(t)):i!=="submit"&&i!=="reset"||l.removeAttribute("value"),t!=null?sc(l,i,Zl(t)):a!=null?sc(l,i,Zl(a)):e!=null&&l.removeAttribute("value"),u==null&&n!=null&&(l.defaultChecked=!!n),u!=null&&(l.checked=u&&typeof u!="function"&&typeof u!="symbol"),c!=null&&typeof c!="function"&&typeof c!="symbol"&&typeof c!="boolean"?l.name=""+Zl(c):l.removeAttribute("name")}function yo(l,t,a,e,u,n,i,c){if(n!=null&&typeof n!="function"&&typeof n!="symbol"&&typeof n!="boolean"&&(l.type=n),t!=null||a!=null){if(!(n!=="submit"&&n!=="reset"||t!=null)){cc(l);return}a=a!=null?""+Zl(a):"",t=t!=null?""+Zl(t):a,c||t===l.value||(l.value=t),l.defaultValue=t}e=e??u,e=typeof e!="function"&&typeof e!="symbol"&&!!e,l.checked=c?l.checked:!!e,l.defaultChecked=!!e,i!=null&&typeof i!="function"&&typeof i!="symbol"&&typeof i!="boolean"&&(l.name=i),cc(l)}function sc(l,t,a){t==="number"&&dn(l.ownerDocument)===l||l.defaultValue===""+a||(l.defaultValue=""+a)}function wa(l,t,a,e){if(l=l.options,t){t={};for(var u=0;u<a.length;u++)t["$"+a[u]]=!0;for(a=0;a<l.length;a++)u=t.hasOwnProperty("$"+l[a].value),l[a].selected!==u&&(l[a].selected=u),u&&e&&(l[a].defaultSelected=!0)}else{for(a=""+Zl(a),t=null,u=0;u<l.length;u++){if(l[u].value===a){l[u].selected=!0,e&&(l[u].defaultSelected=!0);return}t!==null||l[u].disabled||(t=l[u])}t!==null&&(t.selected=!0)}}function ho(l,t,a){if(t!=null&&(t=""+Zl(t),t!==l.value&&(l.value=t),a==null)){l.defaultValue!==t&&(l.defaultValue=t);return}l.defaultValue=a!=null?""+Zl(a):""}function go(l,t,a,e){if(t==null){if(e!=null){if(a!=null)throw Error(p(92));if(De(e)){if(1<e.length)throw Error(p(93));e=e[0]}a=e}a==null&&(a=""),t=a}a=Zl(t),l.defaultValue=a,e=l.textContent,e===a&&e!==""&&e!==null&&(l.value=e),cc(l)}function te(l,t){if(t){var a=l.firstChild;if(a&&a===l.lastChild&&a.nodeType===3){a.nodeValue=t;return}}l.textContent=t}var $v=new Set("animationIterationCount aspectRatio borderImageOutset borderImageSlice borderImageWidth boxFlex boxFlexGroup boxOrdinalGroup columnCount columns flex flexGrow flexPositive flexShrink flexNegative flexOrder gridArea gridRow gridRowEnd gridRowSpan gridRowStart gridColumn gridColumnEnd gridColumnSpan gridColumnStart fontWeight lineClamp lineHeight opacity order orphans scale tabSize widows zIndex zoom fillOpacity floodOpacity stopOpacity strokeDasharray strokeDashoffset strokeMiterlimit strokeOpacity strokeWidth MozAnimationIterationCount MozBoxFlex MozBoxFlexGroup MozLineClamp msAnimationIterationCount msFlex msZoom msFlexGrow msFlexNegative msFlexOrder msFlexPositive msFlexShrink msGridColumn msGridColumnSpan msGridRow msGridRowSpan WebkitAnimationIterationCount WebkitBoxFlex WebKitBoxFlexGroup WebkitBoxOrdinalGroup WebkitColumnCount WebkitColumns WebkitFlex WebkitFlexGrow WebkitFlexPositive WebkitFlexShrink WebkitLineClamp".split(" "));function Us(l,t,a){var e=t.indexOf("--")===0;a==null||typeof a=="boolean"||a===""?e?l.setProperty(t,""):t==="float"?l.cssFloat="":l[t]="":e?l.setProperty(t,a):typeof a!="number"||a===0||$v.has(t)?t==="float"?l.cssFloat=a:l[t]=(""+a).trim():l[t]=a+"px"}function ro(l,t,a){if(t!=null&&typeof t!="object")throw Error(p(62));if(l=l.style,a!=null){for(var e in a)!a.hasOwnProperty(e)||t!=null&&t.hasOwnProperty(e)||(e.indexOf("--")===0?l.setProperty(e,""):e==="float"?l.cssFloat="":l[e]="");for(var u in t)e=t[u],t.hasOwnProperty(u)&&a[u]!==e&&Us(l,u,e)}else for(var n in t)t.hasOwnProperty(n)&&Us(l,n,t[n])}function Pc(l){if(l.indexOf("-")===-1)return!1;switch(l){case"annotation-xml":case"color-profile":case"font-face":case"font-face-src":case"font-face-uri":case"font-face-format":case"font-face-name":case"missing-glyph":return!1;default:return!0}}var kv=new Map([["acceptCharset","accept-charset"],["htmlFor","for"],["httpEquiv","http-equiv"],["crossOrigin","crossorigin"],["accentHeight","accent-height"],["alignmentBaseline","alignment-baseline"],["arabicForm","arabic-form"],["baselineShift","baseline-shift"],["capHeight","cap-height"],["clipPath","clip-path"],["clipRule","clip-rule"],["colorInterpolation","color-interpolation"],["colorInterpolationFilters","color-interpolation-filters"],["colorProfile","color-profile"],["colorRendering","color-rendering"],["dominantBaseline","dominant-baseline"],["enableBackground","enable-background"],["fillOpacity","fill-opacity"],["fillRule","fill-rule"],["floodColor","flood-color"],["floodOpacity","flood-opacity"],["fontFamily","font-family"],["fontSize","font-size"],["fontSizeAdjust","font-size-adjust"],["fontStretch","font-stretch"],["fontStyle","font-style"],["fontVariant","font-variant"],["fontWeight","font-weight"],["glyphName","glyph-name"],["glyphOrientationHorizontal","glyph-orientation-horizontal"],["glyphOrientationVertical","glyph-orientation-vertical"],["horizAdvX","horiz-adv-x"],["horizOriginX","horiz-origin-x"],["imageRendering","image-rendering"],["letterSpacing","letter-spacing"],["lightingColor","lighting-color"],["markerEnd","marker-end"],["markerMid","marker-mid"],["markerStart","marker-start"],["overlinePosition","overline-position"],["overlineThickness","overline-thickness"],["paintOrder","paint-order"],["panose-1","panose-1"],["pointerEvents","pointer-events"],["renderingIntent","rendering-intent"],["shapeRendering","shape-rendering"],["stopColor","stop-color"],["stopOpacity","stop-opacity"],["strikethroughPosition","strikethrough-position"],["strikethroughThickness","strikethrough-thickness"],["strokeDasharray","stroke-dasharray"],["strokeDashoffset","stroke-dashoffset"],["strokeLinecap","stroke-linecap"],["strokeLinejoin","stroke-linejoin"],["strokeMiterlimit","stroke-miterlimit"],["strokeOpacity","stroke-opacity"],["strokeWidth","stroke-width"],["textAnchor","text-anchor"],["textDecoration","text-decoration"],["textRendering","text-rendering"],["transformOrigin","transform-origin"],["underlinePosition","underline-position"],["underlineThickness","underline-thickness"],["unicodeBidi","unicode-bidi"],["unicodeRange","unicode-range"],["unitsPerEm","units-per-em"],["vAlphabetic","v-alphabetic"],["vHanging","v-hanging"],["vIdeographic","v-ideographic"],["vMathematical","v-mathematical"],["vectorEffect","vector-effect"],["vertAdvY","vert-adv-y"],["vertOriginX","vert-origin-x"],["vertOriginY","vert-origin-y"],["wordSpacing","word-spacing"],["writingMode","writing-mode"],["xmlnsXlink","xmlns:xlink"],["xHeight","x-height"]]),Iv=/^[\u0000-\u001F ]*j[\r\n\t]*a[\r\n\t]*v[\r\n\t]*a[\r\n\t]*s[\r\n\t]*c[\r\n\t]*r[\r\n\t]*i[\r\n\t]*p[\r\n\t]*t[\r\n\t]*:/i;function Ku(l){return Iv.test(""+l)?"javascript:throw new Error('React has blocked a javascript: URL as a security precaution.')":l}function pt(){}var dc=null;function lf(l){return l=l.target||l.srcElement||window,l.correspondingUseElement&&(l=l.correspondingUseElement),l.nodeType===3?l.parentNode:l}var Ga=null,Fa=null;function Cs(l){var t=oe(l);if(t&&(l=t.stateNode)){var a=l[Nl]||null;l:switch(l=t.stateNode,t.type){case"input":if(fc(l,a.value,a.defaultValue,a.defaultValue,a.checked,a.defaultChecked,a.type,a.name),t=a.name,a.type==="radio"&&t!=null){for(a=l;a.parentNode;)a=a.parentNode;for(a=a.querySelectorAll('input[name="'+Jl(""+t)+'"][type="radio"]'),t=0;t<a.length;t++){var e=a[t];if(e!==l&&e.form===l.form){var u=e[Nl]||null;if(!u)throw Error(p(90));fc(e,u.value,u.defaultValue,u.defaultValue,u.checked,u.defaultChecked,u.type,u.name)}}for(t=0;t<a.length;t++)e=a[t],e.form===l.form&&vo(e)}break l;case"textarea":ho(l,a.value,a.defaultValue);break l;case"select":t=a.value,t!=null&&wa(l,!!a.multiple,t,!1)}}}var Ei=!1;function bo(l,t,a){if(Ei)return l(t,a);Ei=!0;try{var e=l(t);return e}finally{if(Ei=!1,(Ga!==null||Fa!==null)&&(wn(),Ga&&(t=Ga,l=Fa,Fa=Ga=null,Cs(t),l)))for(t=0;t<l.length;t++)Cs(l[t])}}function Fe(l,t){var a=l.stateNode;if(a===null)return null;var e=a[Nl]||null;if(e===null)return null;a=e[t];l:switch(t){case"onClick":case"onClickCapture":case"onDoubleClick":case"onDoubleClickCapture":case"onMouseDown":case"onMouseDownCapture":case"onMouseMove":case"onMouseMoveCapture":case"onMouseUp":case"onMouseUpCapture":case"onMouseEnter":(e=!e.disabled)||(l=l.type,e=!(l==="button"||l==="input"||l==="select"||l==="textarea")),l=!e;break l;default:l=!1}if(l)return null;if(a&&typeof a!="function")throw Error(p(231,t,typeof a));return a}var Et=!(typeof window>"u"||typeof window.document>"u"||typeof window.document.createElement>"u"),oc=!1;if(Et)try{Ra={},Object.defineProperty(Ra,"passive",{get:function(){oc=!0}}),window.addEventListener("test",Ra,Ra),window.removeEventListener("test",Ra,Ra)}catch{oc=!1}var Ra,Qt=null,tf=null,Ju=null;function po(){if(Ju)return Ju;var l,t=tf,a=t.length,e,u="value"in Qt?Qt.value:Qt.textContent,n=u.length;for(l=0;l<a&&t[l]===u[l];l++);var i=a-l;for(e=1;e<=i&&t[a-e]===u[n-e];e++);return Ju=u.slice(l,1<e?1-e:void 0)}function wu(l){var t=l.keyCode;return"charCode"in l?(l=l.charCode,l===0&&t===13&&(l=13)):l=t,l===10&&(l=13),32<=l||l===13?l:0}function Uu(){return!0}function Hs(){return!1}function _l(l){function t(a,e,u,n,i){this._reactName=a,this._targetInst=u,this.type=e,this.nativeEvent=n,this.target=i,this.currentTarget=null;for(var c in l)l.hasOwnProperty(c)&&(a=l[c],this[c]=a?a(n):n[c]);return this.isDefaultPrevented=(n.defaultPrevented!=null?n.defaultPrevented:n.returnValue===!1)?Uu:Hs,this.isPropagationStopped=Hs,this}return F(t.prototype,{preventDefault:function(){this.defaultPrevented=!0;var a=this.nativeEvent;a&&(a.preventDefault?a.preventDefault():typeof a.returnValue!="unknown"&&(a.returnValue=!1),this.isDefaultPrevented=Uu)},stopPropagation:function(){var a=this.nativeEvent;a&&(a.stopPropagation?a.stopPropagation():typeof a.cancelBubble!="unknown"&&(a.cancelBubble=!0),this.isPropagationStopped=Uu)},persist:function(){},isPersistent:Uu}),t}var za={eventPhase:0,bubbles:0,cancelable:0,timeStamp:function(l){return l.timeStamp||Date.now()},defaultPrevented:0,isTrusted:0},Yn=_l(za),mu=F({},za,{view:0,detail:0}),Pv=_l(mu),Mi,Oi,Te,Gn=F({},mu,{screenX:0,screenY:0,clientX:0,clientY:0,pageX:0,pageY:0,ctrlKey:0,shiftKey:0,altKey:0,metaKey:0,getModifierState:af,button:0,buttons:0,relatedTarget:function(l){return l.relatedTarget===void 0?l.fromElement===l.srcElement?l.toElement:l.fromElement:l.relatedTarget},movementX:function(l){return"movementX"in l?l.movementX:(l!==Te&&(Te&&l.type==="mousemove"?(Mi=l.screenX-Te.screenX,Oi=l.screenY-Te.screenY):Oi=Mi=0,Te=l),Mi)},movementY:function(l){return"movementY"in l?l.movementY:Oi}}),Bs=_l(Gn),ly=F({},Gn,{dataTransfer:0}),ty=_l(ly),ay=F({},mu,{relatedTarget:0}),Ni=_l(ay),ey=F({},za,{animationName:0,elapsedTime:0,pseudoElement:0}),uy=_l(ey),ny=F({},za,{clipboardData:function(l){return"clipboardData"in l?l.clipboardData:window.clipboardData}}),iy=_l(ny),cy=F({},za,{data:0}),qs=_l(cy),fy={Esc:"Escape",Spacebar:" ",Left:"ArrowLeft",Up:"ArrowUp",Right:"ArrowRight",Down:"ArrowDown",Del:"Delete",Win:"OS",Menu:"ContextMenu",Apps:"ContextMenu",Scroll:"ScrollLock",MozPrintableKey:"Unidentified"},sy={8:"Backspace",9:"Tab",12:"Clear",13:"Enter",16:"Shift",17:"Control",18:"Alt",19:"Pause",20:"CapsLock",27:"Escape",32:" ",33:"PageUp",34:"PageDown",35:"End",36:"Home",37:"ArrowLeft",38:"ArrowUp",39:"ArrowRight",40:"ArrowDown",45:"Insert",46:"Delete",112:"F1",113:"F2",114:"F3",115:"F4",116:"F5",117:"F6",118:"F7",119:"F8",120:"F9",121:"F10",122:"F11",123:"F12",144:"NumLock",145:"ScrollLock",224:"Meta"},dy={Alt:"altKey",Control:"ctrlKey",Meta:"metaKey",Shift:"shiftKey"};function oy(l){var t=this.nativeEvent;return t.getModifierState?t.getModifierState(l):(l=dy[l])?!!t[l]:!1}function af(){return oy}var my=F({},mu,{key:function(l){if(l.key){var t=fy[l.key]||l.key;if(t!=="Unidentified")return t}return l.type==="keypress"?(l=wu(l),l===13?"Enter":String.fromCharCode(l)):l.type==="keydown"||l.type==="keyup"?sy[l.keyCode]||"Unidentified":""},code:0,location:0,ctrlKey:0,shiftKey:0,altKey:0,metaKey:0,repeat:0,locale:0,getModifierState:af,charCode:function(l){return l.type==="keypress"?wu(l):0},keyCode:function(l){return l.type==="keydown"||l.type==="keyup"?l.keyCode:0},which:function(l){return l.type==="keypress"?wu(l):l.type==="keydown"||l.type==="keyup"?l.keyCode:0}}),vy=_l(my),yy=F({},Gn,{pointerId:0,width:0,height:0,pressure:0,tangentialPressure:0,tiltX:0,tiltY:0,twist:0,pointerType:0,isPrimary:0}),Ys=_l(yy),hy=F({},mu,{touches:0,targetTouches:0,changedTouches:0,altKey:0,metaKey:0,ctrlKey:0,shiftKey:0,getModifierState:af}),gy=_l(hy),ry=F({},za,{propertyName:0,elapsedTime:0,pseudoElement:0}),by=_l(ry),py=F({},Gn,{deltaX:function(l){return"deltaX"in l?l.deltaX:"wheelDeltaX"in l?-l.wheelDeltaX:0},deltaY:function(l){return"deltaY"in l?l.deltaY:"wheelDeltaY"in l?-l.wheelDeltaY:"wheelDelta"in l?-l.wheelDelta:0},deltaZ:0,deltaMode:0}),Sy=_l(py),zy=F({},za,{newState:0,oldState:0}),Ay=_l(zy),Ty=[9,13,27,32],ef=Et&&"CompositionEvent"in window,Be=null;Et&&"documentMode"in document&&(Be=document.documentMode);var Ey=Et&&"TextEvent"in window&&!Be,So=Et&&(!ef||Be&&8<Be&&11>=Be),Gs=" ",Xs=!1;function zo(l,t){switch(l){case"keyup":return Ty.indexOf(t.keyCode)!==-1;case"keydown":return t.keyCode!==229;case"keypress":case"mousedown":case"focusout":return!0;default:return!1}}function Ao(l){return l=l.detail,typeof l=="object"&&"data"in l?l.data:null}var Xa=!1;function My(l,t){switch(l){case"compositionend":return Ao(t);case"keypress":return t.which!==32?null:(Xs=!0,Gs);case"textInput":return l=t.data,l===Gs&&Xs?null:l;default:return null}}function Oy(l,t){if(Xa)return l==="compositionend"||!ef&&zo(l,t)?(l=po(),Ju=tf=Qt=null,Xa=!1,l):null;switch(l){case"paste":return null;case"keypress":if(!(t.ctrlKey||t.altKey||t.metaKey)||t.ctrlKey&&t.altKey){if(t.char&&1<t.char.length)return t.char;if(t.which)return String.fromCharCode(t.which)}return null;case"compositionend":return So&&t.locale!=="ko"?null:t.data;default:return null}}var Ny={color:!0,date:!0,datetime:!0,"datetime-local":!0,email:!0,month:!0,number:!0,password:!0,range:!0,search:!0,tel:!0,text:!0,time:!0,url:!0,week:!0};function Qs(l){var t=l&&l.nodeName&&l.nodeName.toLowerCase();return t==="input"?!!Ny[l.type]:t==="textarea"}function To(l,t,a,e){Ga?Fa?Fa.push(e):Fa=[e]:Ga=e,t=_n(t,"onChange"),0<t.length&&(a=new Yn("onChange","change",null,a,e),l.push({event:a,listeners:t}))}var qe=null,We=null;function _y(l){bm(l,0)}function Xn(l){var t=Ue(l);if(vo(t))return l}function xs(l,t){if(l==="change")return t}var Eo=!1;Et&&(Et?(Hu="oninput"in document,Hu||(_i=document.createElement("div"),_i.setAttribute("oninput","return;"),Hu=typeof _i.oninput=="function"),Cu=Hu):Cu=!1,Eo=Cu&&(!document.documentMode||9<document.documentMode));var Cu,Hu,_i;function js(){qe&&(qe.detachEvent("onpropertychange",Mo),We=qe=null)}function Mo(l){if(l.propertyName==="value"&&Xn(We)){var t=[];To(t,We,l,lf(l)),bo(_y,t)}}function Ry(l,t,a){l==="focusin"?(js(),qe=t,We=a,qe.attachEvent("onpropertychange",Mo)):l==="focusout"&&js()}function Dy(l){if(l==="selectionchange"||l==="keyup"||l==="keydown")return Xn(We)}function Uy(l,t){if(l==="click")return Xn(t)}function Cy(l,t){if(l==="input"||l==="change")return Xn(t)}function Hy(l,t){return l===t&&(l!==0||1/l===1/t)||l!==l&&t!==t}var Ql=typeof Object.is=="function"?Object.is:Hy;function $e(l,t){if(Ql(l,t))return!0;if(typeof l!="object"||l===null||typeof t!="object"||t===null)return!1;var a=Object.keys(l),e=Object.keys(t);if(a.length!==e.length)return!1;for(e=0;e<a.length;e++){var u=a[e];if(!nc.call(t,u)||!Ql(l[u],t[u]))return!1}return!0}function Vs(l){for(;l&&l.firstChild;)l=l.firstChild;return l}function Zs(l,t){var a=Vs(l);l=0;for(var e;a;){if(a.nodeType===3){if(e=l+a.textContent.length,l<=t&&e>=t)return{node:a,offset:t-l};l=e}l:{for(;a;){if(a.nextSibling){a=a.nextSibling;break l}a=a.parentNode}a=void 0}a=Vs(a)}}function Oo(l,t){return l&&t?l===t?!0:l&&l.nodeType===3?!1:t&&t.nodeType===3?Oo(l,t.parentNode):"contains"in l?l.contains(t):l.compareDocumentPosition?!!(l.compareDocumentPosition(t)&16):!1:!1}function No(l){l=l!=null&&l.ownerDocument!=null&&l.ownerDocument.defaultView!=null?l.ownerDocument.defaultView:window;for(var t=dn(l.document);t instanceof l.HTMLIFrameElement;){try{var a=typeof t.contentWindow.location.href=="string"}catch{a=!1}if(a)l=t.contentWindow;else break;t=dn(l.document)}return t}function uf(l){var t=l&&l.nodeName&&l.nodeName.toLowerCase();return t&&(t==="input"&&(l.type==="text"||l.type==="search"||l.type==="tel"||l.type==="url"||l.type==="password")||t==="textarea"||l.contentEditable==="true")}var By=Et&&"documentMode"in document&&11>=document.documentMode,Qa=null,mc=null,Ye=null,vc=!1;function Ls(l,t,a){var e=a.window===a?a.document:a.nodeType===9?a:a.ownerDocument;vc||Qa==null||Qa!==dn(e)||(e=Qa,"selectionStart"in e&&uf(e)?e={start:e.selectionStart,end:e.selectionEnd}:(e=(e.ownerDocument&&e.ownerDocument.defaultView||window).getSelection(),e={anchorNode:e.anchorNode,anchorOffset:e.anchorOffset,focusNode:e.focusNode,focusOffset:e.focusOffset}),Ye&&$e(Ye,e)||(Ye=e,e=_n(mc,"onSelect"),0<e.length&&(t=new Yn("onSelect","select",null,t,a),l.push({event:t,listeners:e}),t.target=Qa)))}function na(l,t){var a={};return a[l.toLowerCase()]=t.toLowerCase(),a["Webkit"+l]="webkit"+t,a["Moz"+l]="moz"+t,a}var xa={animationend:na("Animation","AnimationEnd"),animationiteration:na("Animation","AnimationIteration"),animationstart:na("Animation","AnimationStart"),transitionrun:na("Transition","TransitionRun"),transitionstart:na("Transition","TransitionStart"),transitioncancel:na("Transition","TransitionCancel"),transitionend:na("Transition","TransitionEnd")},Ri={},_o={};Et&&(_o=document.createElement("div").style,"AnimationEvent"in window||(delete xa.animationend.animation,delete xa.animationiteration.animation,delete xa.animationstart.animation),"TransitionEvent"in window||delete xa.transitionend.transition);function Aa(l){if(Ri[l])return Ri[l];if(!xa[l])return l;var t=xa[l],a;for(a in t)if(t.hasOwnProperty(a)&&a in _o)return Ri[l]=t[a];return l}var Ro=Aa("animationend"),Do=Aa("animationiteration"),Uo=Aa("animationstart"),qy=Aa("transitionrun"),Yy=Aa("transitionstart"),Gy=Aa("transitioncancel"),Co=Aa("transitionend"),Ho=new Map,yc="abort auxClick beforeToggle cancel canPlay canPlayThrough click close contextMenu copy cut drag dragEnd dragEnter dragExit dragLeave dragOver dragStart drop durationChange emptied encrypted ended error gotPointerCapture input invalid keyDown keyPress keyUp load loadedData loadedMetadata loadStart lostPointerCapture mouseDown mouseMove mouseOut mouseOver mouseUp paste pause play playing pointerCancel pointerDown pointerMove pointerOut pointerOver pointerUp progress rateChange reset resize seeked seeking stalled submit suspend timeUpdate touchCancel touchEnd touchStart volumeChange scroll toggle touchMove waiting wheel".split(" ");yc.push("scrollEnd");function lt(l,t){Ho.set(l,t),Sa(t,[l])}var on=typeof reportError=="function"?reportError:function(l){if(typeof window=="object"&&typeof window.ErrorEvent=="function"){var t=new window.ErrorEvent("error",{bubbles:!0,cancelable:!0,message:typeof l=="object"&&l!==null&&typeof l.message=="string"?String(l.message):String(l),error:l});if(!window.dispatchEvent(t))return}else if(typeof process=="object"&&typeof process.emit=="function"){process.emit("uncaughtException",l);return}console.error(l)},Vl=[],ja=0,nf=0;function Qn(){for(var l=ja,t=nf=ja=0;t<l;){var a=Vl[t];Vl[t++]=null;var e=Vl[t];Vl[t++]=null;var u=Vl[t];Vl[t++]=null;var n=Vl[t];if(Vl[t++]=null,e!==null&&u!==null){var i=e.pending;i===null?u.next=u:(u.next=i.next,i.next=u),e.pending=u}n!==0&&Bo(a,u,n)}}function xn(l,t,a,e){Vl[ja++]=l,Vl[ja++]=t,Vl[ja++]=a,Vl[ja++]=e,nf|=e,l.lanes|=e,l=l.alternate,l!==null&&(l.lanes|=e)}function cf(l,t,a,e){return xn(l,t,a,e),mn(l)}function Ta(l,t){return xn(l,null,null,t),mn(l)}function Bo(l,t,a){l.lanes|=a;var e=l.alternate;e!==null&&(e.lanes|=a);for(var u=!1,n=l.return;n!==null;)n.childLanes|=a,e=n.alternate,e!==null&&(e.childLanes|=a),n.tag===22&&(l=n.stateNode,l===null||l._visibility&1||(u=!0)),l=n,n=n.return;return l.tag===3?(n=l.stateNode,u&&t!==null&&(u=31-Gl(a),l=n.hiddenUpdates,e=l[u],e===null?l[u]=[t]:e.push(t),t.lane=a|536870912),n):null}function mn(l){if(50<Ke)throw Ke=0,qc=null,Error(p(185));for(var t=l.return;t!==null;)l=t,t=l.return;return l.tag===3?l.stateNode:null}var Va={};function Xy(l,t,a,e){this.tag=l,this.key=a,this.sibling=this.child=this.return=this.stateNode=this.type=this.elementType=null,this.index=0,this.refCleanup=this.ref=null,this.pendingProps=t,this.dependencies=this.memoizedState=this.updateQueue=this.memoizedProps=null,this.mode=e,this.subtreeFlags=this.flags=0,this.deletions=null,this.childLanes=this.lanes=0,this.alternate=null}function Hl(l,t,a,e){return new Xy(l,t,a,e)}function ff(l){return l=l.prototype,!(!l||!l.isReactComponent)}function zt(l,t){var a=l.alternate;return a===null?(a=Hl(l.tag,t,l.key,l.mode),a.elementType=l.elementType,a.type=l.type,a.stateNode=l.stateNode,a.alternate=l,l.alternate=a):(a.pendingProps=t,a.type=l.type,a.flags=0,a.subtreeFlags=0,a.deletions=null),a.flags=l.flags&65011712,a.childLanes=l.childLanes,a.lanes=l.lanes,a.child=l.child,a.memoizedProps=l.memoizedProps,a.memoizedState=l.memoizedState,a.updateQueue=l.updateQueue,t=l.dependencies,a.dependencies=t===null?null:{lanes:t.lanes,firstContext:t.firstContext},a.sibling=l.sibling,a.index=l.index,a.ref=l.ref,a.refCleanup=l.refCleanup,a}function qo(l,t){l.flags&=65011714;var a=l.alternate;return a===null?(l.childLanes=0,l.lanes=t,l.child=null,l.subtreeFlags=0,l.memoizedProps=null,l.memoizedState=null,l.updateQueue=null,l.dependencies=null,l.stateNode=null):(l.childLanes=a.childLanes,l.lanes=a.lanes,l.child=a.child,l.subtreeFlags=0,l.deletions=null,l.memoizedProps=a.memoizedProps,l.memoizedState=a.memoizedState,l.updateQueue=a.updateQueue,l.type=a.type,t=a.dependencies,l.dependencies=t===null?null:{lanes:t.lanes,firstContext:t.firstContext}),l}function Fu(l,t,a,e,u,n){var i=0;if(e=l,typeof l=="function")ff(l)&&(i=1);else if(typeof l=="string")i=j1(l,a,ct.current)?26:l==="html"||l==="head"||l==="body"?27:5;else l:switch(l){case tc:return l=Hl(31,a,t,u),l.elementType=tc,l.lanes=n,l;case Ba:return oa(a.children,u,n,t);case Pd:i=8,u|=24;break;case Ii:return l=Hl(12,a,t,u|2),l.elementType=Ii,l.lanes=n,l;case Pi:return l=Hl(13,a,t,u),l.elementType=Pi,l.lanes=n,l;case lc:return l=Hl(19,a,t,u),l.elementType=lc,l.lanes=n,l;default:if(typeof l=="object"&&l!==null)switch(l.$$typeof){case bt:i=10;break l;case lo:i=9;break l;case wc:i=11;break l;case Fc:i=14;break l;case Ct:i=16,e=null;break l}i=29,a=Error(p(130,l===null?"null":typeof l,"")),e=null}return t=Hl(i,a,t,u),t.elementType=l,t.type=e,t.lanes=n,t}function oa(l,t,a,e){return l=Hl(7,l,e,t),l.lanes=a,l}function Di(l,t,a){return l=Hl(6,l,null,t),l.lanes=a,l}function Yo(l){var t=Hl(18,null,null,0);return t.stateNode=l,t}function Ui(l,t,a){return t=Hl(4,l.children!==null?l.children:[],l.key,t),t.lanes=a,t.stateNode={containerInfo:l.containerInfo,pendingChildren:null,implementation:l.implementation},t}var Ks=new WeakMap;function wl(l,t){if(typeof l=="object"&&l!==null){var a=Ks.get(l);return a!==void 0?a:(t={value:l,source:t,stack:Os(t)},Ks.set(l,t),t)}return{value:l,source:t,stack:Os(t)}}var Za=[],La=0,vn=null,ke=0,Ll=[],Kl=0,It=null,ut=1,nt="";function gt(l,t){Za[La++]=ke,Za[La++]=vn,vn=l,ke=t}function Go(l,t,a){Ll[Kl++]=ut,Ll[Kl++]=nt,Ll[Kl++]=It,It=l;var e=ut;l=nt;var u=32-Gl(e)-1;e&=~(1<<u),a+=1;var n=32-Gl(t)+u;if(30<n){var i=u-u%5;n=(e&(1<<i)-1).toString(32),e>>=i,u-=i,ut=1<<32-Gl(t)+u|a<<u|e,nt=n+l}else ut=1<<n|a<<u|e,nt=l}function sf(l){l.return!==null&&(gt(l,1),Go(l,1,0))}function df(l){for(;l===vn;)vn=Za[--La],Za[La]=null,ke=Za[--La],Za[La]=null;for(;l===It;)It=Ll[--Kl],Ll[Kl]=null,nt=Ll[--Kl],Ll[Kl]=null,ut=Ll[--Kl],Ll[Kl]=null}function Xo(l,t){Ll[Kl++]=ut,Ll[Kl++]=nt,Ll[Kl++]=It,ut=t.id,nt=t.overflow,It=l}var vl=null,w=null,H=!1,Lt=null,Fl=!1,hc=Error(p(519));function Pt(l){var t=Error(p(418,1<arguments.length&&arguments[1]!==void 0&&arguments[1]?"text":"HTML",""));throw Ie(wl(t,l)),hc}function Js(l){var t=l.stateNode,a=l.type,e=l.memoizedProps;switch(t[ml]=l,t[Nl]=e,a){case"dialog":D("cancel",t),D("close",t);break;case"iframe":case"object":case"embed":D("load",t);break;case"video":case"audio":for(a=0;a<au.length;a++)D(au[a],t);break;case"source":D("error",t);break;case"img":case"image":case"link":D("error",t),D("load",t);break;case"details":D("toggle",t);break;case"input":D("invalid",t),yo(t,e.value,e.defaultValue,e.checked,e.defaultChecked,e.type,e.name,!0);break;case"select":D("invalid",t);break;case"textarea":D("invalid",t),go(t,e.value,e.defaultValue,e.children)}a=e.children,typeof a!="string"&&typeof a!="number"&&typeof a!="bigint"||t.textContent===""+a||e.suppressHydrationWarning===!0||Sm(t.textContent,a)?(e.popover!=null&&(D("beforetoggle",t),D("toggle",t)),e.onScroll!=null&&D("scroll",t),e.onScrollEnd!=null&&D("scrollend",t),e.onClick!=null&&(t.onclick=pt),t=!0):t=!1,t||Pt(l,!0)}function ws(l){for(vl=l.return;vl;)switch(vl.tag){case 5:case 31:case 13:Fl=!1;return;case 27:case 3:Fl=!0;return;default:vl=vl.return}}function Da(l){if(l!==vl)return!1;if(!H)return ws(l),H=!0,!1;var t=l.tag,a;if((a=t!==3&&t!==27)&&((a=t===5)&&(a=l.type,a=!(a!=="form"&&a!=="button")||xc(l.type,l.memoizedProps)),a=!a),a&&w&&Pt(l),ws(l),t===13){if(l=l.memoizedState,l=l!==null?l.dehydrated:null,!l)throw Error(p(317));w=qd(l)}else if(t===31){if(l=l.memoizedState,l=l!==null?l.dehydrated:null,!l)throw Error(p(317));w=qd(l)}else t===27?(t=w,ea(l.type)?(l=Lc,Lc=null,w=l):w=t):w=vl?$l(l.stateNode.nextSibling):null;return!0}function ha(){w=vl=null,H=!1}function Ci(){var l=Lt;return l!==null&&(Ml===null?Ml=l:Ml.push.apply(Ml,l),Lt=null),l}function Ie(l){Lt===null?Lt=[l]:Lt.push(l)}var gc=ft(null),Ea=null,St=null;function Bt(l,t,a){L(gc,t._currentValue),t._currentValue=a}function At(l){l._currentValue=gc.current,dl(gc)}function rc(l,t,a){for(;l!==null;){var e=l.alternate;if((l.childLanes&t)!==t?(l.childLanes|=t,e!==null&&(e.childLanes|=t)):e!==null&&(e.childLanes&t)!==t&&(e.childLanes|=t),l===a)break;l=l.return}}function bc(l,t,a,e){var u=l.child;for(u!==null&&(u.return=l);u!==null;){var n=u.dependencies;if(n!==null){var i=u.child;n=n.firstContext;l:for(;n!==null;){var c=n;n=u;for(var f=0;f<t.length;f++)if(c.context===t[f]){n.lanes|=a,c=n.alternate,c!==null&&(c.lanes|=a),rc(n.return,a,l),e||(i=null);break l}n=c.next}}else if(u.tag===18){if(i=u.return,i===null)throw Error(p(341));i.lanes|=a,n=i.alternate,n!==null&&(n.lanes|=a),rc(i,a,l),i=null}else i=u.child;if(i!==null)i.return=u;else for(i=u;i!==null;){if(i===l){i=null;break}if(u=i.sibling,u!==null){u.return=i.return,i=u;break}i=i.return}u=i}}function me(l,t,a,e){l=null;for(var u=t,n=!1;u!==null;){if(!n){if((u.flags&524288)!==0)n=!0;else if((u.flags&262144)!==0)break}if(u.tag===10){var i=u.alternate;if(i===null)throw Error(p(387));if(i=i.memoizedProps,i!==null){var c=u.type;Ql(u.pendingProps.value,i.value)||(l!==null?l.push(c):l=[c])}}else if(u===nn.current){if(i=u.alternate,i===null)throw Error(p(387));i.memoizedState.memoizedState!==u.memoizedState.memoizedState&&(l!==null?l.push(uu):l=[uu])}u=u.return}l!==null&&bc(t,l,a,e),t.flags|=262144}function yn(l){for(l=l.firstContext;l!==null;){if(!Ql(l.context._currentValue,l.memoizedValue))return!0;l=l.next}return!1}function ga(l){Ea=l,St=null,l=l.dependencies,l!==null&&(l.firstContext=null)}function yl(l){return Qo(Ea,l)}function Bu(l,t){return Ea===null&&ga(l),Qo(l,t)}function Qo(l,t){var a=t._currentValue;if(t={context:t,memoizedValue:a,next:null},St===null){if(l===null)throw Error(p(308));St=t,l.dependencies={lanes:0,firstContext:t},l.flags|=524288}else St=St.next=t;return a}var Qy=typeof AbortController<"u"?AbortController:function(){var l=[],t=this.signal={aborted:!1,addEventListener:function(a,e){l.push(e)}};this.abort=function(){t.aborted=!0,l.forEach(function(a){return a()})}},xy=il.unstable_scheduleCallback,jy=il.unstable_NormalPriority,el={$$typeof:bt,Consumer:null,Provider:null,_currentValue:null,_currentValue2:null,_threadCount:0};function of(){return{controller:new Qy,data:new Map,refCount:0}}function vu(l){l.refCount--,l.refCount===0&&xy(jy,function(){l.controller.abort()})}var Ge=null,pc=0,ae=0,Wa=null;function Vy(l,t){if(Ge===null){var a=Ge=[];pc=0,ae=Yf(),Wa={status:"pending",value:void 0,then:function(e){a.push(e)}}}return pc++,t.then(Fs,Fs),t}function Fs(){if(--pc===0&&Ge!==null){Wa!==null&&(Wa.status="fulfilled");var l=Ge;Ge=null,ae=0,Wa=null;for(var t=0;t<l.length;t++)(0,l[t])()}}function Zy(l,t){var a=[],e={status:"pending",value:null,reason:null,then:function(u){a.push(u)}};return l.then(function(){e.status="fulfilled",e.value=t;for(var u=0;u<a.length;u++)(0,a[u])(t)},function(u){for(e.status="rejected",e.reason=u,u=0;u<a.length;u++)(0,a[u])(void 0)}),e}var Ws=E.S;E.S=function(l,t){P0=ql(),typeof t=="object"&&t!==null&&typeof t.then=="function"&&Vy(l,t),Ws!==null&&Ws(l,t)};var ma=ft(null);function mf(){var l=ma.current;return l!==null?l:Z.pooledCache}function Wu(l,t){t===null?L(ma,ma.current):L(ma,t.pool)}function xo(){var l=mf();return l===null?null:{parent:el._currentValue,pool:l}}var ve=Error(p(460)),vf=Error(p(474)),jn=Error(p(542)),hn={then:function(){}};function $s(l){return l=l.status,l==="fulfilled"||l==="rejected"}function jo(l,t,a){switch(a=l[a],a===void 0?l.push(t):a!==t&&(t.then(pt,pt),t=a),t.status){case"fulfilled":return t.value;case"rejected":throw l=t.reason,Is(l),l;default:if(typeof t.status=="string")t.then(pt,pt);else{if(l=Z,l!==null&&100<l.shellSuspendCounter)throw Error(p(482));l=t,l.status="pending",l.then(function(e){if(t.status==="pending"){var u=t;u.status="fulfilled",u.value=e}},function(e){if(t.status==="pending"){var u=t;u.status="rejected",u.reason=e}})}switch(t.status){case"fulfilled":return t.value;case"rejected":throw l=t.reason,Is(l),l}throw va=t,ve}}function fa(l){try{var t=l._init;return t(l._payload)}catch(a){throw a!==null&&typeof a=="object"&&typeof a.then=="function"?(va=a,ve):a}}var va=null;function ks(){if(va===null)throw Error(p(459));var l=va;return va=null,l}function Is(l){if(l===ve||l===jn)throw Error(p(483))}var $a=null,Pe=0;function qu(l){var t=Pe;return Pe+=1,$a===null&&($a=[]),jo($a,l,t)}function Ee(l,t){t=t.props.ref,l.ref=t!==void 0?t:null}function Yu(l,t){throw t.$$typeof===Rv?Error(p(525)):(l=Object.prototype.toString.call(t),Error(p(31,l==="[object Object]"?"object with keys {"+Object.keys(t).join(", ")+"}":l)))}function Vo(l){function t(o,d){if(l){var v=o.deletions;v===null?(o.deletions=[d],o.flags|=16):v.push(d)}}function a(o,d){if(!l)return null;for(;d!==null;)t(o,d),d=d.sibling;return null}function e(o){for(var d=new Map;o!==null;)o.key!==null?d.set(o.key,o):d.set(o.index,o),o=o.sibling;return d}function u(o,d){return o=zt(o,d),o.index=0,o.sibling=null,o}function n(o,d,v){return o.index=v,l?(v=o.alternate,v!==null?(v=v.index,v<d?(o.flags|=67108866,d):v):(o.flags|=67108866,d)):(o.flags|=1048576,d)}function i(o){return l&&o.alternate===null&&(o.flags|=67108866),o}function c(o,d,v,b){return d===null||d.tag!==6?(d=Di(v,o.mode,b),d.return=o,d):(d=u(d,v),d.return=o,d)}function f(o,d,v,b){var A=v.type;return A===Ba?g(o,d,v.props.children,b,v.key):d!==null&&(d.elementType===A||typeof A=="object"&&A!==null&&A.$$typeof===Ct&&fa(A)===d.type)?(d=u(d,v.props),Ee(d,v),d.return=o,d):(d=Fu(v.type,v.key,v.props,null,o.mode,b),Ee(d,v),d.return=o,d)}function m(o,d,v,b){return d===null||d.tag!==4||d.stateNode.containerInfo!==v.containerInfo||d.stateNode.implementation!==v.implementation?(d=Ui(v,o.mode,b),d.return=o,d):(d=u(d,v.children||[]),d.return=o,d)}function g(o,d,v,b,A){return d===null||d.tag!==7?(d=oa(v,o.mode,b,A),d.return=o,d):(d=u(d,v),d.return=o,d)}function r(o,d,v){if(typeof d=="string"&&d!==""||typeof d=="number"||typeof d=="bigint")return d=Di(""+d,o.mode,v),d.return=o,d;if(typeof d=="object"&&d!==null){switch(d.$$typeof){case Ou:return v=Fu(d.type,d.key,d.props,null,o.mode,v),Ee(v,d),v.return=o,v;case Re:return d=Ui(d,o.mode,v),d.return=o,d;case Ct:return d=fa(d),r(o,d,v)}if(De(d)||Ae(d))return d=oa(d,o.mode,v,null),d.return=o,d;if(typeof d.then=="function")return r(o,qu(d),v);if(d.$$typeof===bt)return r(o,Bu(o,d),v);Yu(o,d)}return null}function y(o,d,v,b){var A=d!==null?d.key:null;if(typeof v=="string"&&v!==""||typeof v=="number"||typeof v=="bigint")return A!==null?null:c(o,d,""+v,b);if(typeof v=="object"&&v!==null){switch(v.$$typeof){case Ou:return v.key===A?f(o,d,v,b):null;case Re:return v.key===A?m(o,d,v,b):null;case Ct:return v=fa(v),y(o,d,v,b)}if(De(v)||Ae(v))return A!==null?null:g(o,d,v,b,null);if(typeof v.then=="function")return y(o,d,qu(v),b);if(v.$$typeof===bt)return y(o,d,Bu(o,v),b);Yu(o,v)}return null}function h(o,d,v,b,A){if(typeof b=="string"&&b!==""||typeof b=="number"||typeof b=="bigint")return o=o.get(v)||null,c(d,o,""+b,A);if(typeof b=="object"&&b!==null){switch(b.$$typeof){case Ou:return o=o.get(b.key===null?v:b.key)||null,f(d,o,b,A);case Re:return o=o.get(b.key===null?v:b.key)||null,m(d,o,b,A);case Ct:return b=fa(b),h(o,d,v,b,A)}if(De(b)||Ae(b))return o=o.get(v)||null,g(d,o,b,A,null);if(typeof b.then=="function")return h(o,d,v,qu(b),A);if(b.$$typeof===bt)return h(o,d,v,Bu(d,b),A);Yu(d,b)}return null}function S(o,d,v,b){for(var A=null,q=null,z=d,M=d=0,_=null;z!==null&&M<v.length;M++){z.index>M?(_=z,z=null):_=z.sibling;var R=y(o,z,v[M],b);if(R===null){z===null&&(z=_);break}l&&z&&R.alternate===null&&t(o,z),d=n(R,d,M),q===null?A=R:q.sibling=R,q=R,z=_}if(M===v.length)return a(o,z),H&&gt(o,M),A;if(z===null){for(;M<v.length;M++)z=r(o,v[M],b),z!==null&&(d=n(z,d,M),q===null?A=z:q.sibling=z,q=z);return H&&gt(o,M),A}for(z=e(z);M<v.length;M++)_=h(z,o,M,v[M],b),_!==null&&(l&&_.alternate!==null&&z.delete(_.key===null?M:_.key),d=n(_,d,M),q===null?A=_:q.sibling=_,q=_);return l&&z.forEach(function(tt){return t(o,tt)}),H&&gt(o,M),A}function T(o,d,v,b){if(v==null)throw Error(p(151));for(var A=null,q=null,z=d,M=d=0,_=null,R=v.next();z!==null&&!R.done;M++,R=v.next()){z.index>M?(_=z,z=null):_=z.sibling;var tt=y(o,z,R.value,b);if(tt===null){z===null&&(z=_);break}l&&z&&tt.alternate===null&&t(o,z),d=n(tt,d,M),q===null?A=tt:q.sibling=tt,q=tt,z=_}if(R.done)return a(o,z),H&&gt(o,M),A;if(z===null){for(;!R.done;M++,R=v.next())R=r(o,R.value,b),R!==null&&(d=n(R,d,M),q===null?A=R:q.sibling=R,q=R);return H&&gt(o,M),A}for(z=e(z);!R.done;M++,R=v.next())R=h(z,o,M,R.value,b),R!==null&&(l&&R.alternate!==null&&z.delete(R.key===null?M:R.key),d=n(R,d,M),q===null?A=R:q.sibling=R,q=R);return l&&z.forEach(function(ei){return t(o,ei)}),H&&gt(o,M),A}function B(o,d,v,b){if(typeof v=="object"&&v!==null&&v.type===Ba&&v.key===null&&(v=v.props.children),typeof v=="object"&&v!==null){switch(v.$$typeof){case Ou:l:{for(var A=v.key;d!==null;){if(d.key===A){if(A=v.type,A===Ba){if(d.tag===7){a(o,d.sibling),b=u(d,v.props.children),b.return=o,o=b;break l}}else if(d.elementType===A||typeof A=="object"&&A!==null&&A.$$typeof===Ct&&fa(A)===d.type){a(o,d.sibling),b=u(d,v.props),Ee(b,v),b.return=o,o=b;break l}a(o,d);break}else t(o,d);d=d.sibling}v.type===Ba?(b=oa(v.props.children,o.mode,b,v.key),b.return=o,o=b):(b=Fu(v.type,v.key,v.props,null,o.mode,b),Ee(b,v),b.return=o,o=b)}return i(o);case Re:l:{for(A=v.key;d!==null;){if(d.key===A)if(d.tag===4&&d.stateNode.containerInfo===v.containerInfo&&d.stateNode.implementation===v.implementation){a(o,d.sibling),b=u(d,v.children||[]),b.return=o,o=b;break l}else{a(o,d);break}else t(o,d);d=d.sibling}b=Ui(v,o.mode,b),b.return=o,o=b}return i(o);case Ct:return v=fa(v),B(o,d,v,b)}if(De(v))return S(o,d,v,b);if(Ae(v)){if(A=Ae(v),typeof A!="function")throw Error(p(150));return v=A.call(v),T(o,d,v,b)}if(typeof v.then=="function")return B(o,d,qu(v),b);if(v.$$typeof===bt)return B(o,d,Bu(o,v),b);Yu(o,v)}return typeof v=="string"&&v!==""||typeof v=="number"||typeof v=="bigint"?(v=""+v,d!==null&&d.tag===6?(a(o,d.sibling),b=u(d,v),b.return=o,o=b):(a(o,d),b=Di(v,o.mode,b),b.return=o,o=b),i(o)):a(o,d)}return function(o,d,v,b){try{Pe=0;var A=B(o,d,v,b);return $a=null,A}catch(z){if(z===ve||z===jn)throw z;var q=Hl(29,z,null,o.mode);return q.lanes=b,q.return=o,q}}}var ra=Vo(!0),Zo=Vo(!1),Ht=!1;function yf(l){l.updateQueue={baseState:l.memoizedState,firstBaseUpdate:null,lastBaseUpdate:null,shared:{pending:null,lanes:0,hiddenCallbacks:null},callbacks:null}}function Sc(l,t){l=l.updateQueue,t.updateQueue===l&&(t.updateQueue={baseState:l.baseState,firstBaseUpdate:l.firstBaseUpdate,lastBaseUpdate:l.lastBaseUpdate,shared:l.shared,callbacks:null})}function Kt(l){return{lane:l,tag:0,payload:null,callback:null,next:null}}function Jt(l,t,a){var e=l.updateQueue;if(e===null)return null;if(e=e.shared,(Y&2)!==0){var u=e.pending;return u===null?t.next=t:(t.next=u.next,u.next=t),e.pending=t,t=mn(l),Bo(l,null,a),t}return xn(l,e,t,a),mn(l)}function Xe(l,t,a){if(t=t.updateQueue,t!==null&&(t=t.shared,(a&4194048)!==0)){var e=t.lanes;e&=l.pendingLanes,a|=e,t.lanes=a,io(l,a)}}function Hi(l,t){var a=l.updateQueue,e=l.alternate;if(e!==null&&(e=e.updateQueue,a===e)){var u=null,n=null;if(a=a.firstBaseUpdate,a!==null){do{var i={lane:a.lane,tag:a.tag,payload:a.payload,callback:null,next:null};n===null?u=n=i:n=n.next=i,a=a.next}while(a!==null);n===null?u=n=t:n=n.next=t}else u=n=t;a={baseState:e.baseState,firstBaseUpdate:u,lastBaseUpdate:n,shared:e.shared,callbacks:e.callbacks},l.updateQueue=a;return}l=a.lastBaseUpdate,l===null?a.firstBaseUpdate=t:l.next=t,a.lastBaseUpdate=t}var zc=!1;function Qe(){if(zc){var l=Wa;if(l!==null)throw l}}function xe(l,t,a,e){zc=!1;var u=l.updateQueue;Ht=!1;var n=u.firstBaseUpdate,i=u.lastBaseUpdate,c=u.shared.pending;if(c!==null){u.shared.pending=null;var f=c,m=f.next;f.next=null,i===null?n=m:i.next=m,i=f;var g=l.alternate;g!==null&&(g=g.updateQueue,c=g.lastBaseUpdate,c!==i&&(c===null?g.firstBaseUpdate=m:c.next=m,g.lastBaseUpdate=f))}if(n!==null){var r=u.baseState;i=0,g=m=f=null,c=n;do{var y=c.lane&-536870913,h=y!==c.lane;if(h?(C&y)===y:(e&y)===y){y!==0&&y===ae&&(zc=!0),g!==null&&(g=g.next={lane:0,tag:c.tag,payload:c.payload,callback:null,next:null});l:{var S=l,T=c;y=t;var B=a;switch(T.tag){case 1:if(S=T.payload,typeof S=="function"){r=S.call(B,r,y);break l}r=S;break l;case 3:S.flags=S.flags&-65537|128;case 0:if(S=T.payload,y=typeof S=="function"?S.call(B,r,y):S,y==null)break l;r=F({},r,y);break l;case 2:Ht=!0}}y=c.callback,y!==null&&(l.flags|=64,h&&(l.flags|=8192),h=u.callbacks,h===null?u.callbacks=[y]:h.push(y))}else h={lane:y,tag:c.tag,payload:c.payload,callback:c.callback,next:null},g===null?(m=g=h,f=r):g=g.next=h,i|=y;if(c=c.next,c===null){if(c=u.shared.pending,c===null)break;h=c,c=h.next,h.next=null,u.lastBaseUpdate=h,u.shared.pending=null}}while(!0);g===null&&(f=r),u.baseState=f,u.firstBaseUpdate=m,u.lastBaseUpdate=g,n===null&&(u.shared.lanes=0),ta|=i,l.lanes=i,l.memoizedState=r}}function Lo(l,t){if(typeof l!="function")throw Error(p(191,l));l.call(t)}function Ko(l,t){var a=l.callbacks;if(a!==null)for(l.callbacks=null,l=0;l<a.length;l++)Lo(a[l],t)}var ee=ft(null),gn=ft(0);function Ps(l,t){l=_t,L(gn,l),L(ee,t),_t=l|t.baseLanes}function Ac(){L(gn,_t),L(ee,ee.current)}function hf(){_t=gn.current,dl(ee),dl(gn)}var xl=ft(null),Wl=null;function qt(l){var t=l.alternate;L(P,P.current&1),L(xl,l),Wl===null&&(t===null||ee.current!==null||t.memoizedState!==null)&&(Wl=l)}function Tc(l){L(P,P.current),L(xl,l),Wl===null&&(Wl=l)}function Jo(l){l.tag===22?(L(P,P.current),L(xl,l),Wl===null&&(Wl=l)):Yt(l)}function Yt(){L(P,P.current),L(xl,xl.current)}function Cl(l){dl(xl),Wl===l&&(Wl=null),dl(P)}var P=ft(0);function rn(l){for(var t=l;t!==null;){if(t.tag===13){var a=t.memoizedState;if(a!==null&&(a=a.dehydrated,a===null||Vc(a)||Zc(a)))return t}else if(t.tag===19&&(t.memoizedProps.revealOrder==="forwards"||t.memoizedProps.revealOrder==="backwards"||t.memoizedProps.revealOrder==="unstable_legacy-backwards"||t.memoizedProps.revealOrder==="together")){if((t.flags&128)!==0)return t}else if(t.child!==null){t.child.return=t,t=t.child;continue}if(t===l)break;for(;t.sibling===null;){if(t.return===null||t.return===l)return null;t=t.return}t.sibling.return=t.return,t=t.sibling}return null}var Mt=0,N=null,j=null,tl=null,bn=!1,ka=!1,ba=!1,pn=0,lu=0,Ia=null,Ly=0;function k(){throw Error(p(321))}function gf(l,t){if(t===null)return!1;for(var a=0;a<t.length&&a<l.length;a++)if(!Ql(l[a],t[a]))return!1;return!0}function rf(l,t,a,e,u,n){return Mt=n,N=t,t.memoizedState=null,t.updateQueue=null,t.lanes=0,E.H=l===null||l.memoizedState===null?T0:_f,ba=!1,n=a(e,u),ba=!1,ka&&(n=Fo(t,a,e,u)),wo(l),n}function wo(l){E.H=tu;var t=j!==null&&j.next!==null;if(Mt=0,tl=j=N=null,bn=!1,lu=0,Ia=null,t)throw Error(p(300));l===null||ul||(l=l.dependencies,l!==null&&yn(l)&&(ul=!0))}function Fo(l,t,a,e){N=l;var u=0;do{if(ka&&(Ia=null),lu=0,ka=!1,25<=u)throw Error(p(301));if(u+=1,tl=j=null,l.updateQueue!=null){var n=l.updateQueue;n.lastEffect=null,n.events=null,n.stores=null,n.memoCache!=null&&(n.memoCache.index=0)}E.H=E0,n=t(a,e)}while(ka);return n}function Ky(){var l=E.H,t=l.useState()[0];return t=typeof t.then=="function"?yu(t):t,l=l.useState()[0],(j!==null?j.memoizedState:null)!==l&&(N.flags|=1024),t}function bf(){var l=pn!==0;return pn=0,l}function pf(l,t,a){t.updateQueue=l.updateQueue,t.flags&=-2053,l.lanes&=~a}function Sf(l){if(bn){for(l=l.memoizedState;l!==null;){var t=l.queue;t!==null&&(t.pending=null),l=l.next}bn=!1}Mt=0,tl=j=N=null,ka=!1,lu=pn=0,Ia=null}function Sl(){var l={memoizedState:null,baseState:null,baseQueue:null,queue:null,next:null};return tl===null?N.memoizedState=tl=l:tl=tl.next=l,tl}function ll(){if(j===null){var l=N.alternate;l=l!==null?l.memoizedState:null}else l=j.next;var t=tl===null?N.memoizedState:tl.next;if(t!==null)tl=t,j=l;else{if(l===null)throw N.alternate===null?Error(p(467)):Error(p(310));j=l,l={memoizedState:j.memoizedState,baseState:j.baseState,baseQueue:j.baseQueue,queue:j.queue,next:null},tl===null?N.memoizedState=tl=l:tl=tl.next=l}return tl}function Vn(){return{lastEffect:null,events:null,stores:null,memoCache:null}}function yu(l){var t=lu;return lu+=1,Ia===null&&(Ia=[]),l=jo(Ia,l,t),t=N,(tl===null?t.memoizedState:tl.next)===null&&(t=t.alternate,E.H=t===null||t.memoizedState===null?T0:_f),l}function Zn(l){if(l!==null&&typeof l=="object"){if(typeof l.then=="function")return yu(l);if(l.$$typeof===bt)return yl(l)}throw Error(p(438,String(l)))}function zf(l){var t=null,a=N.updateQueue;if(a!==null&&(t=a.memoCache),t==null){var e=N.alternate;e!==null&&(e=e.updateQueue,e!==null&&(e=e.memoCache,e!=null&&(t={data:e.data.map(function(u){return u.slice()}),index:0})))}if(t==null&&(t={data:[],index:0}),a===null&&(a=Vn(),N.updateQueue=a),a.memoCache=t,a=t.data[t.index],a===void 0)for(a=t.data[t.index]=Array(l),e=0;e<l;e++)a[e]=Dv;return t.index++,a}function Ot(l,t){return typeof t=="function"?t(l):t}function $u(l){var t=ll();return Af(t,j,l)}function Af(l,t,a){var e=l.queue;if(e===null)throw Error(p(311));e.lastRenderedReducer=a;var u=l.baseQueue,n=e.pending;if(n!==null){if(u!==null){var i=u.next;u.next=n.next,n.next=i}t.baseQueue=u=n,e.pending=null}if(n=l.baseState,u===null)l.memoizedState=n;else{t=u.next;var c=i=null,f=null,m=t,g=!1;do{var r=m.lane&-536870913;if(r!==m.lane?(C&r)===r:(Mt&r)===r){var y=m.revertLane;if(y===0)f!==null&&(f=f.next={lane:0,revertLane:0,gesture:null,action:m.action,hasEagerState:m.hasEagerState,eagerState:m.eagerState,next:null}),r===ae&&(g=!0);else if((Mt&y)===y){m=m.next,y===ae&&(g=!0);continue}else r={lane:0,revertLane:m.revertLane,gesture:null,action:m.action,hasEagerState:m.hasEagerState,eagerState:m.eagerState,next:null},f===null?(c=f=r,i=n):f=f.next=r,N.lanes|=y,ta|=y;r=m.action,ba&&a(n,r),n=m.hasEagerState?m.eagerState:a(n,r)}else y={lane:r,revertLane:m.revertLane,gesture:m.gesture,action:m.action,hasEagerState:m.hasEagerState,eagerState:m.eagerState,next:null},f===null?(c=f=y,i=n):f=f.next=y,N.lanes|=r,ta|=r;m=m.next}while(m!==null&&m!==t);if(f===null?i=n:f.next=c,!Ql(n,l.memoizedState)&&(ul=!0,g&&(a=Wa,a!==null)))throw a;l.memoizedState=n,l.baseState=i,l.baseQueue=f,e.lastRenderedState=n}return u===null&&(e.lanes=0),[l.memoizedState,e.dispatch]}function Bi(l){var t=ll(),a=t.queue;if(a===null)throw Error(p(311));a.lastRenderedReducer=l;var e=a.dispatch,u=a.pending,n=t.memoizedState;if(u!==null){a.pending=null;var i=u=u.next;do n=l(n,i.action),i=i.next;while(i!==u);Ql(n,t.memoizedState)||(ul=!0),t.memoizedState=n,t.baseQueue===null&&(t.baseState=n),a.lastRenderedState=n}return[n,e]}function Wo(l,t,a){var e=N,u=ll(),n=H;if(n){if(a===void 0)throw Error(p(407));a=a()}else a=t();var i=!Ql((j||u).memoizedState,a);if(i&&(u.memoizedState=a,ul=!0),u=u.queue,Tf(Io.bind(null,e,u,l),[l]),u.getSnapshot!==t||i||tl!==null&&tl.memoizedState.tag&1){if(e.flags|=2048,ue(9,{destroy:void 0},ko.bind(null,e,u,a,t),null),Z===null)throw Error(p(349));n||(Mt&127)!==0||$o(e,t,a)}return a}function $o(l,t,a){l.flags|=16384,l={getSnapshot:t,value:a},t=N.updateQueue,t===null?(t=Vn(),N.updateQueue=t,t.stores=[l]):(a=t.stores,a===null?t.stores=[l]:a.push(l))}function ko(l,t,a,e){t.value=a,t.getSnapshot=e,Po(t)&&l0(l)}function Io(l,t,a){return a(function(){Po(t)&&l0(l)})}function Po(l){var t=l.getSnapshot;l=l.value;try{var a=t();return!Ql(l,a)}catch{return!0}}function l0(l){var t=Ta(l,2);t!==null&&Ol(t,l,2)}function Ec(l){var t=Sl();if(typeof l=="function"){var a=l;if(l=a(),ba){Xt(!0);try{a()}finally{Xt(!1)}}}return t.memoizedState=t.baseState=l,t.queue={pending:null,lanes:0,dispatch:null,lastRenderedReducer:Ot,lastRenderedState:l},t}function t0(l,t,a,e){return l.baseState=a,Af(l,j,typeof e=="function"?e:Ot)}function Jy(l,t,a,e,u){if(Kn(l))throw Error(p(485));if(l=t.action,l!==null){var n={payload:u,action:l,next:null,isTransition:!0,status:"pending",value:null,reason:null,listeners:[],then:function(i){n.listeners.push(i)}};E.T!==null?a(!0):n.isTransition=!1,e(n),a=t.pending,a===null?(n.next=t.pending=n,a0(t,n)):(n.next=a.next,t.pending=a.next=n)}}function a0(l,t){var a=t.action,e=t.payload,u=l.state;if(t.isTransition){var n=E.T,i={};E.T=i;try{var c=a(u,e),f=E.S;f!==null&&f(i,c),ld(l,t,c)}catch(m){Mc(l,t,m)}finally{n!==null&&i.types!==null&&(n.types=i.types),E.T=n}}else try{n=a(u,e),ld(l,t,n)}catch(m){Mc(l,t,m)}}function ld(l,t,a){a!==null&&typeof a=="object"&&typeof a.then=="function"?a.then(function(e){td(l,t,e)},function(e){return Mc(l,t,e)}):td(l,t,a)}function td(l,t,a){t.status="fulfilled",t.value=a,e0(t),l.state=a,t=l.pending,t!==null&&(a=t.next,a===t?l.pending=null:(a=a.next,t.next=a,a0(l,a)))}function Mc(l,t,a){var e=l.pending;if(l.pending=null,e!==null){e=e.next;do t.status="rejected",t.reason=a,e0(t),t=t.next;while(t!==e)}l.action=null}function e0(l){l=l.listeners;for(var t=0;t<l.length;t++)(0,l[t])()}function u0(l,t){return t}function ad(l,t){if(H){var a=Z.formState;if(a!==null){l:{var e=N;if(H){if(w){t:{for(var u=w,n=Fl;u.nodeType!==8;){if(!n){u=null;break t}if(u=$l(u.nextSibling),u===null){u=null;break t}}n=u.data,u=n==="F!"||n==="F"?u:null}if(u){w=$l(u.nextSibling),e=u.data==="F!";break l}}Pt(e)}e=!1}e&&(t=a[0])}}return a=Sl(),a.memoizedState=a.baseState=t,e={pending:null,lanes:0,dispatch:null,lastRenderedReducer:u0,lastRenderedState:t},a.queue=e,a=S0.bind(null,N,e),e.dispatch=a,e=Ec(!1),n=Nf.bind(null,N,!1,e.queue),e=Sl(),u={state:t,dispatch:null,action:l,pending:null},e.queue=u,a=Jy.bind(null,N,u,n,a),u.dispatch=a,e.memoizedState=l,[t,a,!1]}function ed(l){var t=ll();return n0(t,j,l)}function n0(l,t,a){if(t=Af(l,t,u0)[0],l=$u(Ot)[0],typeof t=="object"&&t!==null&&typeof t.then=="function")try{var e=yu(t)}catch(i){throw i===ve?jn:i}else e=t;t=ll();var u=t.queue,n=u.dispatch;return a!==t.memoizedState&&(N.flags|=2048,ue(9,{destroy:void 0},wy.bind(null,u,a),null)),[e,n,l]}function wy(l,t){l.action=t}function ud(l){var t=ll(),a=j;if(a!==null)return n0(t,a,l);ll(),t=t.memoizedState,a=ll();var e=a.queue.dispatch;return a.memoizedState=l,[t,e,!1]}function ue(l,t,a,e){return l={tag:l,create:a,deps:e,inst:t,next:null},t=N.updateQueue,t===null&&(t=Vn(),N.updateQueue=t),a=t.lastEffect,a===null?t.lastEffect=l.next=l:(e=a.next,a.next=l,l.next=e,t.lastEffect=l),l}function i0(){return ll().memoizedState}function ku(l,t,a,e){var u=Sl();N.flags|=l,u.memoizedState=ue(1|t,{destroy:void 0},a,e===void 0?null:e)}function Ln(l,t,a,e){var u=ll();e=e===void 0?null:e;var n=u.memoizedState.inst;j!==null&&e!==null&&gf(e,j.memoizedState.deps)?u.memoizedState=ue(t,n,a,e):(N.flags|=l,u.memoizedState=ue(1|t,n,a,e))}function nd(l,t){ku(8390656,8,l,t)}function Tf(l,t){Ln(2048,8,l,t)}function Fy(l){N.flags|=4;var t=N.updateQueue;if(t===null)t=Vn(),N.updateQueue=t,t.events=[l];else{var a=t.events;a===null?t.events=[l]:a.push(l)}}function c0(l){var t=ll().memoizedState;return Fy({ref:t,nextImpl:l}),function(){if((Y&2)!==0)throw Error(p(440));return t.impl.apply(void 0,arguments)}}function f0(l,t){return Ln(4,2,l,t)}function s0(l,t){return Ln(4,4,l,t)}function d0(l,t){if(typeof t=="function"){l=l();var a=t(l);return function(){typeof a=="function"?a():t(null)}}if(t!=null)return l=l(),t.current=l,function(){t.current=null}}function o0(l,t,a){a=a!=null?a.concat([l]):null,Ln(4,4,d0.bind(null,t,l),a)}function Ef(){}function m0(l,t){var a=ll();t=t===void 0?null:t;var e=a.memoizedState;return t!==null&&gf(t,e[1])?e[0]:(a.memoizedState=[l,t],l)}function v0(l,t){var a=ll();t=t===void 0?null:t;var e=a.memoizedState;if(t!==null&&gf(t,e[1]))return e[0];if(e=l(),ba){Xt(!0);try{l()}finally{Xt(!1)}}return a.memoizedState=[e,t],e}function Mf(l,t,a){return a===void 0||(Mt&1073741824)!==0&&(C&261930)===0?l.memoizedState=t:(l.memoizedState=a,l=tm(),N.lanes|=l,ta|=l,a)}function y0(l,t,a,e){return Ql(a,t)?a:ee.current!==null?(l=Mf(l,a,e),Ql(l,t)||(ul=!0),l):(Mt&42)===0||(Mt&1073741824)!==0&&(C&261930)===0?(ul=!0,l.memoizedState=a):(l=tm(),N.lanes|=l,ta|=l,t)}function h0(l,t,a,e,u){var n=G.p;G.p=n!==0&&8>n?n:8;var i=E.T,c={};E.T=c,Nf(l,!1,t,a);try{var f=u(),m=E.S;if(m!==null&&m(c,f),f!==null&&typeof f=="object"&&typeof f.then=="function"){var g=Zy(f,e);je(l,t,g,Xl(l))}else je(l,t,e,Xl(l))}catch(r){je(l,t,{then:function(){},status:"rejected",reason:r},Xl())}finally{G.p=n,i!==null&&c.types!==null&&(i.types=c.types),E.T=i}}function Wy(){}function Oc(l,t,a,e){if(l.tag!==5)throw Error(p(476));var u=g0(l).queue;h0(l,u,t,da,a===null?Wy:function(){return r0(l),a(e)})}function g0(l){var t=l.memoizedState;if(t!==null)return t;t={memoizedState:da,baseState:da,baseQueue:null,queue:{pending:null,lanes:0,dispatch:null,lastRenderedReducer:Ot,lastRenderedState:da},next:null};var a={};return t.next={memoizedState:a,baseState:a,baseQueue:null,queue:{pending:null,lanes:0,dispatch:null,lastRenderedReducer:Ot,lastRenderedState:a},next:null},l.memoizedState=t,l=l.alternate,l!==null&&(l.memoizedState=t),t}function r0(l){var t=g0(l);t.next===null&&(t=l.alternate.memoizedState),je(l,t.next.queue,{},Xl())}function Of(){return yl(uu)}function b0(){return ll().memoizedState}function p0(){return ll().memoizedState}function $y(l){for(var t=l.return;t!==null;){switch(t.tag){case 24:case 3:var a=Xl();l=Kt(a);var e=Jt(t,l,a);e!==null&&(Ol(e,t,a),Xe(e,t,a)),t={cache:of()},l.payload=t;return}t=t.return}}function ky(l,t,a){var e=Xl();a={lane:e,revertLane:0,gesture:null,action:a,hasEagerState:!1,eagerState:null,next:null},Kn(l)?z0(t,a):(a=cf(l,t,a,e),a!==null&&(Ol(a,l,e),A0(a,t,e)))}function S0(l,t,a){var e=Xl();je(l,t,a,e)}function je(l,t,a,e){var u={lane:e,revertLane:0,gesture:null,action:a,hasEagerState:!1,eagerState:null,next:null};if(Kn(l))z0(t,u);else{var n=l.alternate;if(l.lanes===0&&(n===null||n.lanes===0)&&(n=t.lastRenderedReducer,n!==null))try{var i=t.lastRenderedState,c=n(i,a);if(u.hasEagerState=!0,u.eagerState=c,Ql(c,i))return xn(l,t,u,0),Z===null&&Qn(),!1}catch{}if(a=cf(l,t,u,e),a!==null)return Ol(a,l,e),A0(a,t,e),!0}return!1}function Nf(l,t,a,e){if(e={lane:2,revertLane:Yf(),gesture:null,action:e,hasEagerState:!1,eagerState:null,next:null},Kn(l)){if(t)throw Error(p(479))}else t=cf(l,a,e,2),t!==null&&Ol(t,l,2)}function Kn(l){var t=l.alternate;return l===N||t!==null&&t===N}function z0(l,t){ka=bn=!0;var a=l.pending;a===null?t.next=t:(t.next=a.next,a.next=t),l.pending=t}function A0(l,t,a){if((a&4194048)!==0){var e=t.lanes;e&=l.pendingLanes,a|=e,t.lanes=a,io(l,a)}}var tu={readContext:yl,use:Zn,useCallback:k,useContext:k,useEffect:k,useImperativeHandle:k,useLayoutEffect:k,useInsertionEffect:k,useMemo:k,useReducer:k,useRef:k,useState:k,useDebugValue:k,useDeferredValue:k,useTransition:k,useSyncExternalStore:k,useId:k,useHostTransitionStatus:k,useFormState:k,useActionState:k,useOptimistic:k,useMemoCache:k,useCacheRefresh:k};tu.useEffectEvent=k;var T0={readContext:yl,use:Zn,useCallback:function(l,t){return Sl().memoizedState=[l,t===void 0?null:t],l},useContext:yl,useEffect:nd,useImperativeHandle:function(l,t,a){a=a!=null?a.concat([l]):null,ku(4194308,4,d0.bind(null,t,l),a)},useLayoutEffect:function(l,t){return ku(4194308,4,l,t)},useInsertionEffect:function(l,t){ku(4,2,l,t)},useMemo:function(l,t){var a=Sl();t=t===void 0?null:t;var e=l();if(ba){Xt(!0);try{l()}finally{Xt(!1)}}return a.memoizedState=[e,t],e},useReducer:function(l,t,a){var e=Sl();if(a!==void 0){var u=a(t);if(ba){Xt(!0);try{a(t)}finally{Xt(!1)}}}else u=t;return e.memoizedState=e.baseState=u,l={pending:null,lanes:0,dispatch:null,lastRenderedReducer:l,lastRenderedState:u},e.queue=l,l=l.dispatch=ky.bind(null,N,l),[e.memoizedState,l]},useRef:function(l){var t=Sl();return l={current:l},t.memoizedState=l},useState:function(l){l=Ec(l);var t=l.queue,a=S0.bind(null,N,t);return t.dispatch=a,[l.memoizedState,a]},useDebugValue:Ef,useDeferredValue:function(l,t){var a=Sl();return Mf(a,l,t)},useTransition:function(){var l=Ec(!1);return l=h0.bind(null,N,l.queue,!0,!1),Sl().memoizedState=l,[!1,l]},useSyncExternalStore:function(l,t,a){var e=N,u=Sl();if(H){if(a===void 0)throw Error(p(407));a=a()}else{if(a=t(),Z===null)throw Error(p(349));(C&127)!==0||$o(e,t,a)}u.memoizedState=a;var n={value:a,getSnapshot:t};return u.queue=n,nd(Io.bind(null,e,n,l),[l]),e.flags|=2048,ue(9,{destroy:void 0},ko.bind(null,e,n,a,t),null),a},useId:function(){var l=Sl(),t=Z.identifierPrefix;if(H){var a=nt,e=ut;a=(e&~(1<<32-Gl(e)-1)).toString(32)+a,t="_"+t+"R_"+a,a=pn++,0<a&&(t+="H"+a.toString(32)),t+="_"}else a=Ly++,t="_"+t+"r_"+a.toString(32)+"_";return l.memoizedState=t},useHostTransitionStatus:Of,useFormState:ad,useActionState:ad,useOptimistic:function(l){var t=Sl();t.memoizedState=t.baseState=l;var a={pending:null,lanes:0,dispatch:null,lastRenderedReducer:null,lastRenderedState:null};return t.queue=a,t=Nf.bind(null,N,!0,a),a.dispatch=t,[l,t]},useMemoCache:zf,useCacheRefresh:function(){return Sl().memoizedState=$y.bind(null,N)},useEffectEvent:function(l){var t=Sl(),a={impl:l};return t.memoizedState=a,function(){if((Y&2)!==0)throw Error(p(440));return a.impl.apply(void 0,arguments)}}},_f={readContext:yl,use:Zn,useCallback:m0,useContext:yl,useEffect:Tf,useImperativeHandle:o0,useInsertionEffect:f0,useLayoutEffect:s0,useMemo:v0,useReducer:$u,useRef:i0,useState:function(){return $u(Ot)},useDebugValue:Ef,useDeferredValue:function(l,t){var a=ll();return y0(a,j.memoizedState,l,t)},useTransition:function(){var l=$u(Ot)[0],t=ll().memoizedState;return[typeof l=="boolean"?l:yu(l),t]},useSyncExternalStore:Wo,useId:b0,useHostTransitionStatus:Of,useFormState:ed,useActionState:ed,useOptimistic:function(l,t){var a=ll();return t0(a,j,l,t)},useMemoCache:zf,useCacheRefresh:p0};_f.useEffectEvent=c0;var E0={readContext:yl,use:Zn,useCallback:m0,useContext:yl,useEffect:Tf,useImperativeHandle:o0,useInsertionEffect:f0,useLayoutEffect:s0,useMemo:v0,useReducer:Bi,useRef:i0,useState:function(){return Bi(Ot)},useDebugValue:Ef,useDeferredValue:function(l,t){var a=ll();return j===null?Mf(a,l,t):y0(a,j.memoizedState,l,t)},useTransition:function(){var l=Bi(Ot)[0],t=ll().memoizedState;return[typeof l=="boolean"?l:yu(l),t]},useSyncExternalStore:Wo,useId:b0,useHostTransitionStatus:Of,useFormState:ud,useActionState:ud,useOptimistic:function(l,t){var a=ll();return j!==null?t0(a,j,l,t):(a.baseState=l,[l,a.queue.dispatch])},useMemoCache:zf,useCacheRefresh:p0};E0.useEffectEvent=c0;function qi(l,t,a,e){t=l.memoizedState,a=a(e,t),a=a==null?t:F({},t,a),l.memoizedState=a,l.lanes===0&&(l.updateQueue.baseState=a)}var Nc={enqueueSetState:function(l,t,a){l=l._reactInternals;var e=Xl(),u=Kt(e);u.payload=t,a!=null&&(u.callback=a),t=Jt(l,u,e),t!==null&&(Ol(t,l,e),Xe(t,l,e))},enqueueReplaceState:function(l,t,a){l=l._reactInternals;var e=Xl(),u=Kt(e);u.tag=1,u.payload=t,a!=null&&(u.callback=a),t=Jt(l,u,e),t!==null&&(Ol(t,l,e),Xe(t,l,e))},enqueueForceUpdate:function(l,t){l=l._reactInternals;var a=Xl(),e=Kt(a);e.tag=2,t!=null&&(e.callback=t),t=Jt(l,e,a),t!==null&&(Ol(t,l,a),Xe(t,l,a))}};function id(l,t,a,e,u,n,i){return l=l.stateNode,typeof l.shouldComponentUpdate=="function"?l.shouldComponentUpdate(e,n,i):t.prototype&&t.prototype.isPureReactComponent?!$e(a,e)||!$e(u,n):!0}function cd(l,t,a,e){l=t.state,typeof t.componentWillReceiveProps=="function"&&t.componentWillReceiveProps(a,e),typeof t.UNSAFE_componentWillReceiveProps=="function"&&t.UNSAFE_componentWillReceiveProps(a,e),t.state!==l&&Nc.enqueueReplaceState(t,t.state,null)}function pa(l,t){var a=t;if("ref"in t){a={};for(var e in t)e!=="ref"&&(a[e]=t[e])}if(l=l.defaultProps){a===t&&(a=F({},a));for(var u in l)a[u]===void 0&&(a[u]=l[u])}return a}function M0(l){on(l)}function O0(l){console.error(l)}function N0(l){on(l)}function Sn(l,t){try{var a=l.onUncaughtError;a(t.value,{componentStack:t.stack})}catch(e){setTimeout(function(){throw e})}}function fd(l,t,a){try{var e=l.onCaughtError;e(a.value,{componentStack:a.stack,errorBoundary:t.tag===1?t.stateNode:null})}catch(u){setTimeout(function(){throw u})}}function _c(l,t,a){return a=Kt(a),a.tag=3,a.payload={element:null},a.callback=function(){Sn(l,t)},a}function _0(l){return l=Kt(l),l.tag=3,l}function R0(l,t,a,e){var u=a.type.getDerivedStateFromError;if(typeof u=="function"){var n=e.value;l.payload=function(){return u(n)},l.callback=function(){fd(t,a,e)}}var i=a.stateNode;i!==null&&typeof i.componentDidCatch=="function"&&(l.callback=function(){fd(t,a,e),typeof u!="function"&&(wt===null?wt=new Set([this]):wt.add(this));var c=e.stack;this.componentDidCatch(e.value,{componentStack:c!==null?c:""})})}function Iy(l,t,a,e,u){if(a.flags|=32768,e!==null&&typeof e=="object"&&typeof e.then=="function"){if(t=a.alternate,t!==null&&me(t,a,u,!0),a=xl.current,a!==null){switch(a.tag){case 31:case 13:return Wl===null?Mn():a.alternate===null&&I===0&&(I=3),a.flags&=-257,a.flags|=65536,a.lanes=u,e===hn?a.flags|=16384:(t=a.updateQueue,t===null?a.updateQueue=new Set([e]):t.add(e),Ji(l,e,u)),!1;case 22:return a.flags|=65536,e===hn?a.flags|=16384:(t=a.updateQueue,t===null?(t={transitions:null,markerInstances:null,retryQueue:new Set([e])},a.updateQueue=t):(a=t.retryQueue,a===null?t.retryQueue=new Set([e]):a.add(e)),Ji(l,e,u)),!1}throw Error(p(435,a.tag))}return Ji(l,e,u),Mn(),!1}if(H)return t=xl.current,t!==null?((t.flags&65536)===0&&(t.flags|=256),t.flags|=65536,t.lanes=u,e!==hc&&(l=Error(p(422),{cause:e}),Ie(wl(l,a)))):(e!==hc&&(t=Error(p(423),{cause:e}),Ie(wl(t,a))),l=l.current.alternate,l.flags|=65536,u&=-u,l.lanes|=u,e=wl(e,a),u=_c(l.stateNode,e,u),Hi(l,u),I!==4&&(I=2)),!1;var n=Error(p(520),{cause:e});if(n=wl(n,a),Le===null?Le=[n]:Le.push(n),I!==4&&(I=2),t===null)return!0;e=wl(e,a),a=t;do{switch(a.tag){case 3:return a.flags|=65536,l=u&-u,a.lanes|=l,l=_c(a.stateNode,e,l),Hi(a,l),!1;case 1:if(t=a.type,n=a.stateNode,(a.flags&128)===0&&(typeof t.getDerivedStateFromError=="function"||n!==null&&typeof n.componentDidCatch=="function"&&(wt===null||!wt.has(n))))return a.flags|=65536,u&=-u,a.lanes|=u,u=_0(u),R0(u,l,a,e),Hi(a,u),!1}a=a.return}while(a!==null);return!1}var Rf=Error(p(461)),ul=!1;function ol(l,t,a,e){t.child=l===null?Zo(t,null,a,e):ra(t,l.child,a,e)}function sd(l,t,a,e,u){a=a.render;var n=t.ref;if("ref"in e){var i={};for(var c in e)c!=="ref"&&(i[c]=e[c])}else i=e;return ga(t),e=rf(l,t,a,i,n,u),c=bf(),l!==null&&!ul?(pf(l,t,u),Nt(l,t,u)):(H&&c&&sf(t),t.flags|=1,ol(l,t,e,u),t.child)}function dd(l,t,a,e,u){if(l===null){var n=a.type;return typeof n=="function"&&!ff(n)&&n.defaultProps===void 0&&a.compare===null?(t.tag=15,t.type=n,D0(l,t,n,e,u)):(l=Fu(a.type,null,e,t,t.mode,u),l.ref=t.ref,l.return=t,t.child=l)}if(n=l.child,!Df(l,u)){var i=n.memoizedProps;if(a=a.compare,a=a!==null?a:$e,a(i,e)&&l.ref===t.ref)return Nt(l,t,u)}return t.flags|=1,l=zt(n,e),l.ref=t.ref,l.return=t,t.child=l}function D0(l,t,a,e,u){if(l!==null){var n=l.memoizedProps;if($e(n,e)&&l.ref===t.ref)if(ul=!1,t.pendingProps=e=n,Df(l,u))(l.flags&131072)!==0&&(ul=!0);else return t.lanes=l.lanes,Nt(l,t,u)}return Rc(l,t,a,e,u)}function U0(l,t,a,e){var u=e.children,n=l!==null?l.memoizedState:null;if(l===null&&t.stateNode===null&&(t.stateNode={_visibility:1,_pendingMarkers:null,_retryCache:null,_transitions:null}),e.mode==="hidden"){if((t.flags&128)!==0){if(n=n!==null?n.baseLanes|a:a,l!==null){for(e=t.child=l.child,u=0;e!==null;)u=u|e.lanes|e.childLanes,e=e.sibling;e=u&~n}else e=0,t.child=null;return od(l,t,n,a,e)}if((a&536870912)!==0)t.memoizedState={baseLanes:0,cachePool:null},l!==null&&Wu(t,n!==null?n.cachePool:null),n!==null?Ps(t,n):Ac(),Jo(t);else return e=t.lanes=536870912,od(l,t,n!==null?n.baseLanes|a:a,a,e)}else n!==null?(Wu(t,n.cachePool),Ps(t,n),Yt(t),t.memoizedState=null):(l!==null&&Wu(t,null),Ac(),Yt(t));return ol(l,t,u,a),t.child}function Ce(l,t){return l!==null&&l.tag===22||t.stateNode!==null||(t.stateNode={_visibility:1,_pendingMarkers:null,_retryCache:null,_transitions:null}),t.sibling}function od(l,t,a,e,u){var n=mf();return n=n===null?null:{parent:el._currentValue,pool:n},t.memoizedState={baseLanes:a,cachePool:n},l!==null&&Wu(t,null),Ac(),Jo(t),l!==null&&me(l,t,e,!0),t.childLanes=u,null}function Iu(l,t){return t=zn({mode:t.mode,children:t.children},l.mode),t.ref=l.ref,l.child=t,t.return=l,t}function md(l,t,a){return ra(t,l.child,null,a),l=Iu(t,t.pendingProps),l.flags|=2,Cl(t),t.memoizedState=null,l}function Py(l,t,a){var e=t.pendingProps,u=(t.flags&128)!==0;if(t.flags&=-129,l===null){if(H){if(e.mode==="hidden")return l=Iu(t,e),t.lanes=536870912,Ce(null,l);if(Tc(t),(l=w)?(l=Tm(l,Fl),l=l!==null&&l.data==="&"?l:null,l!==null&&(t.memoizedState={dehydrated:l,treeContext:It!==null?{id:ut,overflow:nt}:null,retryLane:536870912,hydrationErrors:null},a=Yo(l),a.return=t,t.child=a,vl=t,w=null)):l=null,l===null)throw Pt(t);return t.lanes=536870912,null}return Iu(t,e)}var n=l.memoizedState;if(n!==null){var i=n.dehydrated;if(Tc(t),u)if(t.flags&256)t.flags&=-257,t=md(l,t,a);else if(t.memoizedState!==null)t.child=l.child,t.flags|=128,t=null;else throw Error(p(558));else if(ul||me(l,t,a,!1),u=(a&l.childLanes)!==0,ul||u){if(e=Z,e!==null&&(i=co(e,a),i!==0&&i!==n.retryLane))throw n.retryLane=i,Ta(l,i),Ol(e,l,i),Rf;Mn(),t=md(l,t,a)}else l=n.treeContext,w=$l(i.nextSibling),vl=t,H=!0,Lt=null,Fl=!1,l!==null&&Xo(t,l),t=Iu(t,e),t.flags|=4096;return t}return l=zt(l.child,{mode:e.mode,children:e.children}),l.ref=t.ref,t.child=l,l.return=t,l}function Pu(l,t){var a=t.ref;if(a===null)l!==null&&l.ref!==null&&(t.flags|=4194816);else{if(typeof a!="function"&&typeof a!="object")throw Error(p(284));(l===null||l.ref!==a)&&(t.flags|=4194816)}}function Rc(l,t,a,e,u){return ga(t),a=rf(l,t,a,e,void 0,u),e=bf(),l!==null&&!ul?(pf(l,t,u),Nt(l,t,u)):(H&&e&&sf(t),t.flags|=1,ol(l,t,a,u),t.child)}function vd(l,t,a,e,u,n){return ga(t),t.updateQueue=null,a=Fo(t,e,a,u),wo(l),e=bf(),l!==null&&!ul?(pf(l,t,n),Nt(l,t,n)):(H&&e&&sf(t),t.flags|=1,ol(l,t,a,n),t.child)}function yd(l,t,a,e,u){if(ga(t),t.stateNode===null){var n=Va,i=a.contextType;typeof i=="object"&&i!==null&&(n=yl(i)),n=new a(e,n),t.memoizedState=n.state!==null&&n.state!==void 0?n.state:null,n.updater=Nc,t.stateNode=n,n._reactInternals=t,n=t.stateNode,n.props=e,n.state=t.memoizedState,n.refs={},yf(t),i=a.contextType,n.context=typeof i=="object"&&i!==null?yl(i):Va,n.state=t.memoizedState,i=a.getDerivedStateFromProps,typeof i=="function"&&(qi(t,a,i,e),n.state=t.memoizedState),typeof a.getDerivedStateFromProps=="function"||typeof n.getSnapshotBeforeUpdate=="function"||typeof n.UNSAFE_componentWillMount!="function"&&typeof n.componentWillMount!="function"||(i=n.state,typeof n.componentWillMount=="function"&&n.componentWillMount(),typeof n.UNSAFE_componentWillMount=="function"&&n.UNSAFE_componentWillMount(),i!==n.state&&Nc.enqueueReplaceState(n,n.state,null),xe(t,e,n,u),Qe(),n.state=t.memoizedState),typeof n.componentDidMount=="function"&&(t.flags|=4194308),e=!0}else if(l===null){n=t.stateNode;var c=t.memoizedProps,f=pa(a,c);n.props=f;var m=n.context,g=a.contextType;i=Va,typeof g=="object"&&g!==null&&(i=yl(g));var r=a.getDerivedStateFromProps;g=typeof r=="function"||typeof n.getSnapshotBeforeUpdate=="function",c=t.pendingProps!==c,g||typeof n.UNSAFE_componentWillReceiveProps!="function"&&typeof n.componentWillReceiveProps!="function"||(c||m!==i)&&cd(t,n,e,i),Ht=!1;var y=t.memoizedState;n.state=y,xe(t,e,n,u),Qe(),m=t.memoizedState,c||y!==m||Ht?(typeof r=="function"&&(qi(t,a,r,e),m=t.memoizedState),(f=Ht||id(t,a,f,e,y,m,i))?(g||typeof n.UNSAFE_componentWillMount!="function"&&typeof n.componentWillMount!="function"||(typeof n.componentWillMount=="function"&&n.componentWillMount(),typeof n.UNSAFE_componentWillMount=="function"&&n.UNSAFE_componentWillMount()),typeof n.componentDidMount=="function"&&(t.flags|=4194308)):(typeof n.componentDidMount=="function"&&(t.flags|=4194308),t.memoizedProps=e,t.memoizedState=m),n.props=e,n.state=m,n.context=i,e=f):(typeof n.componentDidMount=="function"&&(t.flags|=4194308),e=!1)}else{n=t.stateNode,Sc(l,t),i=t.memoizedProps,g=pa(a,i),n.props=g,r=t.pendingProps,y=n.context,m=a.contextType,f=Va,typeof m=="object"&&m!==null&&(f=yl(m)),c=a.getDerivedStateFromProps,(m=typeof c=="function"||typeof n.getSnapshotBeforeUpdate=="function")||typeof n.UNSAFE_componentWillReceiveProps!="function"&&typeof n.componentWillReceiveProps!="function"||(i!==r||y!==f)&&cd(t,n,e,f),Ht=!1,y=t.memoizedState,n.state=y,xe(t,e,n,u),Qe();var h=t.memoizedState;i!==r||y!==h||Ht||l!==null&&l.dependencies!==null&&yn(l.dependencies)?(typeof c=="function"&&(qi(t,a,c,e),h=t.memoizedState),(g=Ht||id(t,a,g,e,y,h,f)||l!==null&&l.dependencies!==null&&yn(l.dependencies))?(m||typeof n.UNSAFE_componentWillUpdate!="function"&&typeof n.componentWillUpdate!="function"||(typeof n.componentWillUpdate=="function"&&n.componentWillUpdate(e,h,f),typeof n.UNSAFE_componentWillUpdate=="function"&&n.UNSAFE_componentWillUpdate(e,h,f)),typeof n.componentDidUpdate=="function"&&(t.flags|=4),typeof n.getSnapshotBeforeUpdate=="function"&&(t.flags|=1024)):(typeof n.componentDidUpdate!="function"||i===l.memoizedProps&&y===l.memoizedState||(t.flags|=4),typeof n.getSnapshotBeforeUpdate!="function"||i===l.memoizedProps&&y===l.memoizedState||(t.flags|=1024),t.memoizedProps=e,t.memoizedState=h),n.props=e,n.state=h,n.context=f,e=g):(typeof n.componentDidUpdate!="function"||i===l.memoizedProps&&y===l.memoizedState||(t.flags|=4),typeof n.getSnapshotBeforeUpdate!="function"||i===l.memoizedProps&&y===l.memoizedState||(t.flags|=1024),e=!1)}return n=e,Pu(l,t),e=(t.flags&128)!==0,n||e?(n=t.stateNode,a=e&&typeof a.getDerivedStateFromError!="function"?null:n.render(),t.flags|=1,l!==null&&e?(t.child=ra(t,l.child,null,u),t.child=ra(t,null,a,u)):ol(l,t,a,u),t.memoizedState=n.state,l=t.child):l=Nt(l,t,u),l}function hd(l,t,a,e){return ha(),t.flags|=256,ol(l,t,a,e),t.child}var Yi={dehydrated:null,treeContext:null,retryLane:0,hydrationErrors:null};function Gi(l){return{baseLanes:l,cachePool:xo()}}function Xi(l,t,a){return l=l!==null?l.childLanes&~a:0,t&&(l|=Bl),l}function C0(l,t,a){var e=t.pendingProps,u=!1,n=(t.flags&128)!==0,i;if((i=n)||(i=l!==null&&l.memoizedState===null?!1:(P.current&2)!==0),i&&(u=!0,t.flags&=-129),i=(t.flags&32)!==0,t.flags&=-33,l===null){if(H){if(u?qt(t):Yt(t),(l=w)?(l=Tm(l,Fl),l=l!==null&&l.data!=="&"?l:null,l!==null&&(t.memoizedState={dehydrated:l,treeContext:It!==null?{id:ut,overflow:nt}:null,retryLane:536870912,hydrationErrors:null},a=Yo(l),a.return=t,t.child=a,vl=t,w=null)):l=null,l===null)throw Pt(t);return Zc(l)?t.lanes=32:t.lanes=536870912,null}var c=e.children;return e=e.fallback,u?(Yt(t),u=t.mode,c=zn({mode:"hidden",children:c},u),e=oa(e,u,a,null),c.return=t,e.return=t,c.sibling=e,t.child=c,e=t.child,e.memoizedState=Gi(a),e.childLanes=Xi(l,i,a),t.memoizedState=Yi,Ce(null,e)):(qt(t),Dc(t,c))}var f=l.memoizedState;if(f!==null&&(c=f.dehydrated,c!==null)){if(n)t.flags&256?(qt(t),t.flags&=-257,t=Qi(l,t,a)):t.memoizedState!==null?(Yt(t),t.child=l.child,t.flags|=128,t=null):(Yt(t),c=e.fallback,u=t.mode,e=zn({mode:"visible",children:e.children},u),c=oa(c,u,a,null),c.flags|=2,e.return=t,c.return=t,e.sibling=c,t.child=e,ra(t,l.child,null,a),e=t.child,e.memoizedState=Gi(a),e.childLanes=Xi(l,i,a),t.memoizedState=Yi,t=Ce(null,e));else if(qt(t),Zc(c)){if(i=c.nextSibling&&c.nextSibling.dataset,i)var m=i.dgst;i=m,e=Error(p(419)),e.stack="",e.digest=i,Ie({value:e,source:null,stack:null}),t=Qi(l,t,a)}else if(ul||me(l,t,a,!1),i=(a&l.childLanes)!==0,ul||i){if(i=Z,i!==null&&(e=co(i,a),e!==0&&e!==f.retryLane))throw f.retryLane=e,Ta(l,e),Ol(i,l,e),Rf;Vc(c)||Mn(),t=Qi(l,t,a)}else Vc(c)?(t.flags|=192,t.child=l.child,t=null):(l=f.treeContext,w=$l(c.nextSibling),vl=t,H=!0,Lt=null,Fl=!1,l!==null&&Xo(t,l),t=Dc(t,e.children),t.flags|=4096);return t}return u?(Yt(t),c=e.fallback,u=t.mode,f=l.child,m=f.sibling,e=zt(f,{mode:"hidden",children:e.children}),e.subtreeFlags=f.subtreeFlags&65011712,m!==null?c=zt(m,c):(c=oa(c,u,a,null),c.flags|=2),c.return=t,e.return=t,e.sibling=c,t.child=e,Ce(null,e),e=t.child,c=l.child.memoizedState,c===null?c=Gi(a):(u=c.cachePool,u!==null?(f=el._currentValue,u=u.parent!==f?{parent:f,pool:f}:u):u=xo(),c={baseLanes:c.baseLanes|a,cachePool:u}),e.memoizedState=c,e.childLanes=Xi(l,i,a),t.memoizedState=Yi,Ce(l.child,e)):(qt(t),a=l.child,l=a.sibling,a=zt(a,{mode:"visible",children:e.children}),a.return=t,a.sibling=null,l!==null&&(i=t.deletions,i===null?(t.deletions=[l],t.flags|=16):i.push(l)),t.child=a,t.memoizedState=null,a)}function Dc(l,t){return t=zn({mode:"visible",children:t},l.mode),t.return=l,l.child=t}function zn(l,t){return l=Hl(22,l,null,t),l.lanes=0,l}function Qi(l,t,a){return ra(t,l.child,null,a),l=Dc(t,t.pendingProps.children),l.flags|=2,t.memoizedState=null,l}function gd(l,t,a){l.lanes|=t;var e=l.alternate;e!==null&&(e.lanes|=t),rc(l.return,t,a)}function xi(l,t,a,e,u,n){var i=l.memoizedState;i===null?l.memoizedState={isBackwards:t,rendering:null,renderingStartTime:0,last:e,tail:a,tailMode:u,treeForkCount:n}:(i.isBackwards=t,i.rendering=null,i.renderingStartTime=0,i.last=e,i.tail=a,i.tailMode=u,i.treeForkCount=n)}function H0(l,t,a){var e=t.pendingProps,u=e.revealOrder,n=e.tail;e=e.children;var i=P.current,c=(i&2)!==0;if(c?(i=i&1|2,t.flags|=128):i&=1,L(P,i),ol(l,t,e,a),e=H?ke:0,!c&&l!==null&&(l.flags&128)!==0)l:for(l=t.child;l!==null;){if(l.tag===13)l.memoizedState!==null&&gd(l,a,t);else if(l.tag===19)gd(l,a,t);else if(l.child!==null){l.child.return=l,l=l.child;continue}if(l===t)break l;for(;l.sibling===null;){if(l.return===null||l.return===t)break l;l=l.return}l.sibling.return=l.return,l=l.sibling}switch(u){case"forwards":for(a=t.child,u=null;a!==null;)l=a.alternate,l!==null&&rn(l)===null&&(u=a),a=a.sibling;a=u,a===null?(u=t.child,t.child=null):(u=a.sibling,a.sibling=null),xi(t,!1,u,a,n,e);break;case"backwards":case"unstable_legacy-backwards":for(a=null,u=t.child,t.child=null;u!==null;){if(l=u.alternate,l!==null&&rn(l)===null){t.child=u;break}l=u.sibling,u.sibling=a,a=u,u=l}xi(t,!0,a,null,n,e);break;case"together":xi(t,!1,null,null,void 0,e);break;default:t.memoizedState=null}return t.child}function Nt(l,t,a){if(l!==null&&(t.dependencies=l.dependencies),ta|=t.lanes,(a&t.childLanes)===0)if(l!==null){if(me(l,t,a,!1),(a&t.childLanes)===0)return null}else return null;if(l!==null&&t.child!==l.child)throw Error(p(153));if(t.child!==null){for(l=t.child,a=zt(l,l.pendingProps),t.child=a,a.return=t;l.sibling!==null;)l=l.sibling,a=a.sibling=zt(l,l.pendingProps),a.return=t;a.sibling=null}return t.child}function Df(l,t){return(l.lanes&t)!==0?!0:(l=l.dependencies,!!(l!==null&&yn(l)))}function l1(l,t,a){switch(t.tag){case 3:cn(t,t.stateNode.containerInfo),Bt(t,el,l.memoizedState.cache),ha();break;case 27:case 5:uc(t);break;case 4:cn(t,t.stateNode.containerInfo);break;case 10:Bt(t,t.type,t.memoizedProps.value);break;case 31:if(t.memoizedState!==null)return t.flags|=128,Tc(t),null;break;case 13:var e=t.memoizedState;if(e!==null)return e.dehydrated!==null?(qt(t),t.flags|=128,null):(a&t.child.childLanes)!==0?C0(l,t,a):(qt(t),l=Nt(l,t,a),l!==null?l.sibling:null);qt(t);break;case 19:var u=(l.flags&128)!==0;if(e=(a&t.childLanes)!==0,e||(me(l,t,a,!1),e=(a&t.childLanes)!==0),u){if(e)return H0(l,t,a);t.flags|=128}if(u=t.memoizedState,u!==null&&(u.rendering=null,u.tail=null,u.lastEffect=null),L(P,P.current),e)break;return null;case 22:return t.lanes=0,U0(l,t,a,t.pendingProps);case 24:Bt(t,el,l.memoizedState.cache)}return Nt(l,t,a)}function B0(l,t,a){if(l!==null)if(l.memoizedProps!==t.pendingProps)ul=!0;else{if(!Df(l,a)&&(t.flags&128)===0)return ul=!1,l1(l,t,a);ul=(l.flags&131072)!==0}else ul=!1,H&&(t.flags&1048576)!==0&&Go(t,ke,t.index);switch(t.lanes=0,t.tag){case 16:l:{var e=t.pendingProps;if(l=fa(t.elementType),t.type=l,typeof l=="function")ff(l)?(e=pa(l,e),t.tag=1,t=yd(null,t,l,e,a)):(t.tag=0,t=Rc(null,t,l,e,a));else{if(l!=null){var u=l.$$typeof;if(u===wc){t.tag=11,t=sd(null,t,l,e,a);break l}else if(u===Fc){t.tag=14,t=dd(null,t,l,e,a);break l}}throw t=ac(l)||l,Error(p(306,t,""))}}return t;case 0:return Rc(l,t,t.type,t.pendingProps,a);case 1:return e=t.type,u=pa(e,t.pendingProps),yd(l,t,e,u,a);case 3:l:{if(cn(t,t.stateNode.containerInfo),l===null)throw Error(p(387));e=t.pendingProps;var n=t.memoizedState;u=n.element,Sc(l,t),xe(t,e,null,a);var i=t.memoizedState;if(e=i.cache,Bt(t,el,e),e!==n.cache&&bc(t,[el],a,!0),Qe(),e=i.element,n.isDehydrated)if(n={element:e,isDehydrated:!1,cache:i.cache},t.updateQueue.baseState=n,t.memoizedState=n,t.flags&256){t=hd(l,t,e,a);break l}else if(e!==u){u=wl(Error(p(424)),t),Ie(u),t=hd(l,t,e,a);break l}else for(l=t.stateNode.containerInfo,l.nodeType===9?l=l.body:l=l.nodeName==="HTML"?l.ownerDocument.body:l,w=$l(l.firstChild),vl=t,H=!0,Lt=null,Fl=!0,a=Zo(t,null,e,a),t.child=a;a;)a.flags=a.flags&-3|4096,a=a.sibling;else{if(ha(),e===u){t=Nt(l,t,a);break l}ol(l,t,e,a)}t=t.child}return t;case 26:return Pu(l,t),l===null?(a=Xd(t.type,null,t.pendingProps,null))?t.memoizedState=a:H||(a=t.type,l=t.pendingProps,e=Rn(Zt.current).createElement(a),e[ml]=t,e[Nl]=l,hl(e,a,l),sl(e),t.stateNode=e):t.memoizedState=Xd(t.type,l.memoizedProps,t.pendingProps,l.memoizedState),null;case 27:return uc(t),l===null&&H&&(e=t.stateNode=Em(t.type,t.pendingProps,Zt.current),vl=t,Fl=!0,u=w,ea(t.type)?(Lc=u,w=$l(e.firstChild)):w=u),ol(l,t,t.pendingProps.children,a),Pu(l,t),l===null&&(t.flags|=4194304),t.child;case 5:return l===null&&H&&((u=e=w)&&(e=_1(e,t.type,t.pendingProps,Fl),e!==null?(t.stateNode=e,vl=t,w=$l(e.firstChild),Fl=!1,u=!0):u=!1),u||Pt(t)),uc(t),u=t.type,n=t.pendingProps,i=l!==null?l.memoizedProps:null,e=n.children,xc(u,n)?e=null:i!==null&&xc(u,i)&&(t.flags|=32),t.memoizedState!==null&&(u=rf(l,t,Ky,null,null,a),uu._currentValue=u),Pu(l,t),ol(l,t,e,a),t.child;case 6:return l===null&&H&&((l=a=w)&&(a=R1(a,t.pendingProps,Fl),a!==null?(t.stateNode=a,vl=t,w=null,l=!0):l=!1),l||Pt(t)),null;case 13:return C0(l,t,a);case 4:return cn(t,t.stateNode.containerInfo),e=t.pendingProps,l===null?t.child=ra(t,null,e,a):ol(l,t,e,a),t.child;case 11:return sd(l,t,t.type,t.pendingProps,a);case 7:return ol(l,t,t.pendingProps,a),t.child;case 8:return ol(l,t,t.pendingProps.children,a),t.child;case 12:return ol(l,t,t.pendingProps.children,a),t.child;case 10:return e=t.pendingProps,Bt(t,t.type,e.value),ol(l,t,e.children,a),t.child;case 9:return u=t.type._context,e=t.pendingProps.children,ga(t),u=yl(u),e=e(u),t.flags|=1,ol(l,t,e,a),t.child;case 14:return dd(l,t,t.type,t.pendingProps,a);case 15:return D0(l,t,t.type,t.pendingProps,a);case 19:return H0(l,t,a);case 31:return Py(l,t,a);case 22:return U0(l,t,a,t.pendingProps);case 24:return ga(t),e=yl(el),l===null?(u=mf(),u===null&&(u=Z,n=of(),u.pooledCache=n,n.refCount++,n!==null&&(u.pooledCacheLanes|=a),u=n),t.memoizedState={parent:e,cache:u},yf(t),Bt(t,el,u)):((l.lanes&a)!==0&&(Sc(l,t),xe(t,null,null,a),Qe()),u=l.memoizedState,n=t.memoizedState,u.parent!==e?(u={parent:e,cache:e},t.memoizedState=u,t.lanes===0&&(t.memoizedState=t.updateQueue.baseState=u),Bt(t,el,e)):(e=n.cache,Bt(t,el,e),e!==u.cache&&bc(t,[el],a,!0))),ol(l,t,t.pendingProps.children,a),t.child;case 29:throw t.pendingProps}throw Error(p(156,t.tag))}function mt(l){l.flags|=4}function ji(l,t,a,e,u){if((t=(l.mode&32)!==0)&&(t=!1),t){if(l.flags|=16777216,(u&335544128)===u)if(l.stateNode.complete)l.flags|=8192;else if(um())l.flags|=8192;else throw va=hn,vf}else l.flags&=-16777217}function rd(l,t){if(t.type!=="stylesheet"||(t.state.loading&4)!==0)l.flags&=-16777217;else if(l.flags|=16777216,!Nm(t))if(um())l.flags|=8192;else throw va=hn,vf}function Gu(l,t){t!==null&&(l.flags|=4),l.flags&16384&&(t=l.tag!==22?uo():536870912,l.lanes|=t,ne|=t)}function Me(l,t){if(!H)switch(l.tailMode){case"hidden":t=l.tail;for(var a=null;t!==null;)t.alternate!==null&&(a=t),t=t.sibling;a===null?l.tail=null:a.sibling=null;break;case"collapsed":a=l.tail;for(var e=null;a!==null;)a.alternate!==null&&(e=a),a=a.sibling;e===null?t||l.tail===null?l.tail=null:l.tail.sibling=null:e.sibling=null}}function J(l){var t=l.alternate!==null&&l.alternate.child===l.child,a=0,e=0;if(t)for(var u=l.child;u!==null;)a|=u.lanes|u.childLanes,e|=u.subtreeFlags&65011712,e|=u.flags&65011712,u.return=l,u=u.sibling;else for(u=l.child;u!==null;)a|=u.lanes|u.childLanes,e|=u.subtreeFlags,e|=u.flags,u.return=l,u=u.sibling;return l.subtreeFlags|=e,l.childLanes=a,t}function t1(l,t,a){var e=t.pendingProps;switch(df(t),t.tag){case 16:case 15:case 0:case 11:case 7:case 8:case 12:case 9:case 14:return J(t),null;case 1:return J(t),null;case 3:return a=t.stateNode,e=null,l!==null&&(e=l.memoizedState.cache),t.memoizedState.cache!==e&&(t.flags|=2048),At(el),Pa(),a.pendingContext&&(a.context=a.pendingContext,a.pendingContext=null),(l===null||l.child===null)&&(Da(t)?mt(t):l===null||l.memoizedState.isDehydrated&&(t.flags&256)===0||(t.flags|=1024,Ci())),J(t),null;case 26:var u=t.type,n=t.memoizedState;return l===null?(mt(t),n!==null?(J(t),rd(t,n)):(J(t),ji(t,u,null,e,a))):n?n!==l.memoizedState?(mt(t),J(t),rd(t,n)):(J(t),t.flags&=-16777217):(l=l.memoizedProps,l!==e&&mt(t),J(t),ji(t,u,l,e,a)),null;case 27:if(fn(t),a=Zt.current,u=t.type,l!==null&&t.stateNode!=null)l.memoizedProps!==e&&mt(t);else{if(!e){if(t.stateNode===null)throw Error(p(166));return J(t),null}l=ct.current,Da(t)?Js(t,l):(l=Em(u,e,a),t.stateNode=l,mt(t))}return J(t),null;case 5:if(fn(t),u=t.type,l!==null&&t.stateNode!=null)l.memoizedProps!==e&&mt(t);else{if(!e){if(t.stateNode===null)throw Error(p(166));return J(t),null}if(n=ct.current,Da(t))Js(t,n);else{var i=Rn(Zt.current);switch(n){case 1:n=i.createElementNS("http://www.w3.org/2000/svg",u);break;case 2:n=i.createElementNS("http://www.w3.org/1998/Math/MathML",u);break;default:switch(u){case"svg":n=i.createElementNS("http://www.w3.org/2000/svg",u);break;case"math":n=i.createElementNS("http://www.w3.org/1998/Math/MathML",u);break;case"script":n=i.createElement("div"),n.innerHTML="<script><\/script>",n=n.removeChild(n.firstChild);break;case"select":n=typeof e.is=="string"?i.createElement("select",{is:e.is}):i.createElement("select"),e.multiple?n.multiple=!0:e.size&&(n.size=e.size);break;default:n=typeof e.is=="string"?i.createElement(u,{is:e.is}):i.createElement(u)}}n[ml]=t,n[Nl]=e;l:for(i=t.child;i!==null;){if(i.tag===5||i.tag===6)n.appendChild(i.stateNode);else if(i.tag!==4&&i.tag!==27&&i.child!==null){i.child.return=i,i=i.child;continue}if(i===t)break l;for(;i.sibling===null;){if(i.return===null||i.return===t)break l;i=i.return}i.sibling.return=i.return,i=i.sibling}t.stateNode=n;l:switch(hl(n,u,e),u){case"button":case"input":case"select":case"textarea":e=!!e.autoFocus;break l;case"img":e=!0;break l;default:e=!1}e&&mt(t)}}return J(t),ji(t,t.type,l===null?null:l.memoizedProps,t.pendingProps,a),null;case 6:if(l&&t.stateNode!=null)l.memoizedProps!==e&&mt(t);else{if(typeof e!="string"&&t.stateNode===null)throw Error(p(166));if(l=Zt.current,Da(t)){if(l=t.stateNode,a=t.memoizedProps,e=null,u=vl,u!==null)switch(u.tag){case 27:case 5:e=u.memoizedProps}l[ml]=t,l=!!(l.nodeValue===a||e!==null&&e.suppressHydrationWarning===!0||Sm(l.nodeValue,a)),l||Pt(t,!0)}else l=Rn(l).createTextNode(e),l[ml]=t,t.stateNode=l}return J(t),null;case 31:if(a=t.memoizedState,l===null||l.memoizedState!==null){if(e=Da(t),a!==null){if(l===null){if(!e)throw Error(p(318));if(l=t.memoizedState,l=l!==null?l.dehydrated:null,!l)throw Error(p(557));l[ml]=t}else ha(),(t.flags&128)===0&&(t.memoizedState=null),t.flags|=4;J(t),l=!1}else a=Ci(),l!==null&&l.memoizedState!==null&&(l.memoizedState.hydrationErrors=a),l=!0;if(!l)return t.flags&256?(Cl(t),t):(Cl(t),null);if((t.flags&128)!==0)throw Error(p(558))}return J(t),null;case 13:if(e=t.memoizedState,l===null||l.memoizedState!==null&&l.memoizedState.dehydrated!==null){if(u=Da(t),e!==null&&e.dehydrated!==null){if(l===null){if(!u)throw Error(p(318));if(u=t.memoizedState,u=u!==null?u.dehydrated:null,!u)throw Error(p(317));u[ml]=t}else ha(),(t.flags&128)===0&&(t.memoizedState=null),t.flags|=4;J(t),u=!1}else u=Ci(),l!==null&&l.memoizedState!==null&&(l.memoizedState.hydrationErrors=u),u=!0;if(!u)return t.flags&256?(Cl(t),t):(Cl(t),null)}return Cl(t),(t.flags&128)!==0?(t.lanes=a,t):(a=e!==null,l=l!==null&&l.memoizedState!==null,a&&(e=t.child,u=null,e.alternate!==null&&e.alternate.memoizedState!==null&&e.alternate.memoizedState.cachePool!==null&&(u=e.alternate.memoizedState.cachePool.pool),n=null,e.memoizedState!==null&&e.memoizedState.cachePool!==null&&(n=e.memoizedState.cachePool.pool),n!==u&&(e.flags|=2048)),a!==l&&a&&(t.child.flags|=8192),Gu(t,t.updateQueue),J(t),null);case 4:return Pa(),l===null&&Gf(t.stateNode.containerInfo),J(t),null;case 10:return At(t.type),J(t),null;case 19:if(dl(P),e=t.memoizedState,e===null)return J(t),null;if(u=(t.flags&128)!==0,n=e.rendering,n===null)if(u)Me(e,!1);else{if(I!==0||l!==null&&(l.flags&128)!==0)for(l=t.child;l!==null;){if(n=rn(l),n!==null){for(t.flags|=128,Me(e,!1),l=n.updateQueue,t.updateQueue=l,Gu(t,l),t.subtreeFlags=0,l=a,a=t.child;a!==null;)qo(a,l),a=a.sibling;return L(P,P.current&1|2),H&&gt(t,e.treeForkCount),t.child}l=l.sibling}e.tail!==null&&ql()>Tn&&(t.flags|=128,u=!0,Me(e,!1),t.lanes=4194304)}else{if(!u)if(l=rn(n),l!==null){if(t.flags|=128,u=!0,l=l.updateQueue,t.updateQueue=l,Gu(t,l),Me(e,!0),e.tail===null&&e.tailMode==="hidden"&&!n.alternate&&!H)return J(t),null}else 2*ql()-e.renderingStartTime>Tn&&a!==536870912&&(t.flags|=128,u=!0,Me(e,!1),t.lanes=4194304);e.isBackwards?(n.sibling=t.child,t.child=n):(l=e.last,l!==null?l.sibling=n:t.child=n,e.last=n)}return e.tail!==null?(l=e.tail,e.rendering=l,e.tail=l.sibling,e.renderingStartTime=ql(),l.sibling=null,a=P.current,L(P,u?a&1|2:a&1),H&&gt(t,e.treeForkCount),l):(J(t),null);case 22:case 23:return Cl(t),hf(),e=t.memoizedState!==null,l!==null?l.memoizedState!==null!==e&&(t.flags|=8192):e&&(t.flags|=8192),e?(a&536870912)!==0&&(t.flags&128)===0&&(J(t),t.subtreeFlags&6&&(t.flags|=8192)):J(t),a=t.updateQueue,a!==null&&Gu(t,a.retryQueue),a=null,l!==null&&l.memoizedState!==null&&l.memoizedState.cachePool!==null&&(a=l.memoizedState.cachePool.pool),e=null,t.memoizedState!==null&&t.memoizedState.cachePool!==null&&(e=t.memoizedState.cachePool.pool),e!==a&&(t.flags|=2048),l!==null&&dl(ma),null;case 24:return a=null,l!==null&&(a=l.memoizedState.cache),t.memoizedState.cache!==a&&(t.flags|=2048),At(el),J(t),null;case 25:return null;case 30:return null}throw Error(p(156,t.tag))}function a1(l,t){switch(df(t),t.tag){case 1:return l=t.flags,l&65536?(t.flags=l&-65537|128,t):null;case 3:return At(el),Pa(),l=t.flags,(l&65536)!==0&&(l&128)===0?(t.flags=l&-65537|128,t):null;case 26:case 27:case 5:return fn(t),null;case 31:if(t.memoizedState!==null){if(Cl(t),t.alternate===null)throw Error(p(340));ha()}return l=t.flags,l&65536?(t.flags=l&-65537|128,t):null;case 13:if(Cl(t),l=t.memoizedState,l!==null&&l.dehydrated!==null){if(t.alternate===null)throw Error(p(340));ha()}return l=t.flags,l&65536?(t.flags=l&-65537|128,t):null;case 19:return dl(P),null;case 4:return Pa(),null;case 10:return At(t.type),null;case 22:case 23:return Cl(t),hf(),l!==null&&dl(ma),l=t.flags,l&65536?(t.flags=l&-65537|128,t):null;case 24:return At(el),null;case 25:return null;default:return null}}function q0(l,t){switch(df(t),t.tag){case 3:At(el),Pa();break;case 26:case 27:case 5:fn(t);break;case 4:Pa();break;case 31:t.memoizedState!==null&&Cl(t);break;case 13:Cl(t);break;case 19:dl(P);break;case 10:At(t.type);break;case 22:case 23:Cl(t),hf(),l!==null&&dl(ma);break;case 24:At(el)}}function hu(l,t){try{var a=t.updateQueue,e=a!==null?a.lastEffect:null;if(e!==null){var u=e.next;a=u;do{if((a.tag&l)===l){e=void 0;var n=a.create,i=a.inst;e=n(),i.destroy=e}a=a.next}while(a!==u)}}catch(c){Q(t,t.return,c)}}function la(l,t,a){try{var e=t.updateQueue,u=e!==null?e.lastEffect:null;if(u!==null){var n=u.next;e=n;do{if((e.tag&l)===l){var i=e.inst,c=i.destroy;if(c!==void 0){i.destroy=void 0,u=t;var f=a,m=c;try{m()}catch(g){Q(u,f,g)}}}e=e.next}while(e!==n)}}catch(g){Q(t,t.return,g)}}function Y0(l){var t=l.updateQueue;if(t!==null){var a=l.stateNode;try{Ko(t,a)}catch(e){Q(l,l.return,e)}}}function G0(l,t,a){a.props=pa(l.type,l.memoizedProps),a.state=l.memoizedState;try{a.componentWillUnmount()}catch(e){Q(l,t,e)}}function Ve(l,t){try{var a=l.ref;if(a!==null){switch(l.tag){case 26:case 27:case 5:var e=l.stateNode;break;case 30:e=l.stateNode;break;default:e=l.stateNode}typeof a=="function"?l.refCleanup=a(e):a.current=e}}catch(u){Q(l,t,u)}}function it(l,t){var a=l.ref,e=l.refCleanup;if(a!==null)if(typeof e=="function")try{e()}catch(u){Q(l,t,u)}finally{l.refCleanup=null,l=l.alternate,l!=null&&(l.refCleanup=null)}else if(typeof a=="function")try{a(null)}catch(u){Q(l,t,u)}else a.current=null}function X0(l){var t=l.type,a=l.memoizedProps,e=l.stateNode;try{l:switch(t){case"button":case"input":case"select":case"textarea":a.autoFocus&&e.focus();break l;case"img":a.src?e.src=a.src:a.srcSet&&(e.srcset=a.srcSet)}}catch(u){Q(l,l.return,u)}}function Vi(l,t,a){try{var e=l.stateNode;A1(e,l.type,a,t),e[Nl]=t}catch(u){Q(l,l.return,u)}}function Q0(l){return l.tag===5||l.tag===3||l.tag===26||l.tag===27&&ea(l.type)||l.tag===4}function Zi(l){l:for(;;){for(;l.sibling===null;){if(l.return===null||Q0(l.return))return null;l=l.return}for(l.sibling.return=l.return,l=l.sibling;l.tag!==5&&l.tag!==6&&l.tag!==18;){if(l.tag===27&&ea(l.type)||l.flags&2||l.child===null||l.tag===4)continue l;l.child.return=l,l=l.child}if(!(l.flags&2))return l.stateNode}}function Uc(l,t,a){var e=l.tag;if(e===5||e===6)l=l.stateNode,t?(a.nodeType===9?a.body:a.nodeName==="HTML"?a.ownerDocument.body:a).insertBefore(l,t):(t=a.nodeType===9?a.body:a.nodeName==="HTML"?a.ownerDocument.body:a,t.appendChild(l),a=a._reactRootContainer,a!=null||t.onclick!==null||(t.onclick=pt));else if(e!==4&&(e===27&&ea(l.type)&&(a=l.stateNode,t=null),l=l.child,l!==null))for(Uc(l,t,a),l=l.sibling;l!==null;)Uc(l,t,a),l=l.sibling}function An(l,t,a){var e=l.tag;if(e===5||e===6)l=l.stateNode,t?a.insertBefore(l,t):a.appendChild(l);else if(e!==4&&(e===27&&ea(l.type)&&(a=l.stateNode),l=l.child,l!==null))for(An(l,t,a),l=l.sibling;l!==null;)An(l,t,a),l=l.sibling}function x0(l){var t=l.stateNode,a=l.memoizedProps;try{for(var e=l.type,u=t.attributes;u.length;)t.removeAttributeNode(u[0]);hl(t,e,a),t[ml]=l,t[Nl]=a}catch(n){Q(l,l.return,n)}}var rt=!1,al=!1,Li=!1,bd=typeof WeakSet=="function"?WeakSet:Set,fl=null;function e1(l,t){if(l=l.containerInfo,Xc=Hn,l=No(l),uf(l)){if("selectionStart"in l)var a={start:l.selectionStart,end:l.selectionEnd};else l:{a=(a=l.ownerDocument)&&a.defaultView||window;var e=a.getSelection&&a.getSelection();if(e&&e.rangeCount!==0){a=e.anchorNode;var u=e.anchorOffset,n=e.focusNode;e=e.focusOffset;try{a.nodeType,n.nodeType}catch{a=null;break l}var i=0,c=-1,f=-1,m=0,g=0,r=l,y=null;t:for(;;){for(var h;r!==a||u!==0&&r.nodeType!==3||(c=i+u),r!==n||e!==0&&r.nodeType!==3||(f=i+e),r.nodeType===3&&(i+=r.nodeValue.length),(h=r.firstChild)!==null;)y=r,r=h;for(;;){if(r===l)break t;if(y===a&&++m===u&&(c=i),y===n&&++g===e&&(f=i),(h=r.nextSibling)!==null)break;r=y,y=r.parentNode}r=h}a=c===-1||f===-1?null:{start:c,end:f}}else a=null}a=a||{start:0,end:0}}else a=null;for(Qc={focusedElem:l,selectionRange:a},Hn=!1,fl=t;fl!==null;)if(t=fl,l=t.child,(t.subtreeFlags&1028)!==0&&l!==null)l.return=t,fl=l;else for(;fl!==null;){switch(t=fl,n=t.alternate,l=t.flags,t.tag){case 0:if((l&4)!==0&&(l=t.updateQueue,l=l!==null?l.events:null,l!==null))for(a=0;a<l.length;a++)u=l[a],u.ref.impl=u.nextImpl;break;case 11:case 15:break;case 1:if((l&1024)!==0&&n!==null){l=void 0,a=t,u=n.memoizedProps,n=n.memoizedState,e=a.stateNode;try{var S=pa(a.type,u);l=e.getSnapshotBeforeUpdate(S,n),e.__reactInternalSnapshotBeforeUpdate=l}catch(T){Q(a,a.return,T)}}break;case 3:if((l&1024)!==0){if(l=t.stateNode.containerInfo,a=l.nodeType,a===9)jc(l);else if(a===1)switch(l.nodeName){case"HEAD":case"HTML":case"BODY":jc(l);break;default:l.textContent=""}}break;case 5:case 26:case 27:case 6:case 4:case 17:break;default:if((l&1024)!==0)throw Error(p(163))}if(l=t.sibling,l!==null){l.return=t.return,fl=l;break}fl=t.return}}function j0(l,t,a){var e=a.flags;switch(a.tag){case 0:case 11:case 15:yt(l,a),e&4&&hu(5,a);break;case 1:if(yt(l,a),e&4)if(l=a.stateNode,t===null)try{l.componentDidMount()}catch(i){Q(a,a.return,i)}else{var u=pa(a.type,t.memoizedProps);t=t.memoizedState;try{l.componentDidUpdate(u,t,l.__reactInternalSnapshotBeforeUpdate)}catch(i){Q(a,a.return,i)}}e&64&&Y0(a),e&512&&Ve(a,a.return);break;case 3:if(yt(l,a),e&64&&(l=a.updateQueue,l!==null)){if(t=null,a.child!==null)switch(a.child.tag){case 27:case 5:t=a.child.stateNode;break;case 1:t=a.child.stateNode}try{Ko(l,t)}catch(i){Q(a,a.return,i)}}break;case 27:t===null&&e&4&&x0(a);case 26:case 5:yt(l,a),t===null&&e&4&&X0(a),e&512&&Ve(a,a.return);break;case 12:yt(l,a);break;case 31:yt(l,a),e&4&&L0(l,a);break;case 13:yt(l,a),e&4&&K0(l,a),e&64&&(l=a.memoizedState,l!==null&&(l=l.dehydrated,l!==null&&(a=m1.bind(null,a),D1(l,a))));break;case 22:if(e=a.memoizedState!==null||rt,!e){t=t!==null&&t.memoizedState!==null||al,u=rt;var n=al;rt=e,(al=t)&&!n?ht(l,a,(a.subtreeFlags&8772)!==0):yt(l,a),rt=u,al=n}break;case 30:break;default:yt(l,a)}}function V0(l){var t=l.alternate;t!==null&&(l.alternate=null,V0(t)),l.child=null,l.deletions=null,l.sibling=null,l.tag===5&&(t=l.stateNode,t!==null&&Ic(t)),l.stateNode=null,l.return=null,l.dependencies=null,l.memoizedProps=null,l.memoizedState=null,l.pendingProps=null,l.stateNode=null,l.updateQueue=null}var $=null,El=!1;function vt(l,t,a){for(a=a.child;a!==null;)Z0(l,t,a),a=a.sibling}function Z0(l,t,a){if(Yl&&typeof Yl.onCommitFiberUnmount=="function")try{Yl.onCommitFiberUnmount(fu,a)}catch{}switch(a.tag){case 26:al||it(a,t),vt(l,t,a),a.memoizedState?a.memoizedState.count--:a.stateNode&&(a=a.stateNode,a.parentNode.removeChild(a));break;case 27:al||it(a,t);var e=$,u=El;ea(a.type)&&($=a.stateNode,El=!1),vt(l,t,a),Je(a.stateNode),$=e,El=u;break;case 5:al||it(a,t);case 6:if(e=$,u=El,$=null,vt(l,t,a),$=e,El=u,$!==null)if(El)try{($.nodeType===9?$.body:$.nodeName==="HTML"?$.ownerDocument.body:$).removeChild(a.stateNode)}catch(n){Q(a,t,n)}else try{$.removeChild(a.stateNode)}catch(n){Q(a,t,n)}break;case 18:$!==null&&(El?(l=$,Hd(l.nodeType===9?l.body:l.nodeName==="HTML"?l.ownerDocument.body:l,a.stateNode),se(l)):Hd($,a.stateNode));break;case 4:e=$,u=El,$=a.stateNode.containerInfo,El=!0,vt(l,t,a),$=e,El=u;break;case 0:case 11:case 14:case 15:la(2,a,t),al||la(4,a,t),vt(l,t,a);break;case 1:al||(it(a,t),e=a.stateNode,typeof e.componentWillUnmount=="function"&&G0(a,t,e)),vt(l,t,a);break;case 21:vt(l,t,a);break;case 22:al=(e=al)||a.memoizedState!==null,vt(l,t,a),al=e;break;default:vt(l,t,a)}}function L0(l,t){if(t.memoizedState===null&&(l=t.alternate,l!==null&&(l=l.memoizedState,l!==null))){l=l.dehydrated;try{se(l)}catch(a){Q(t,t.return,a)}}}function K0(l,t){if(t.memoizedState===null&&(l=t.alternate,l!==null&&(l=l.memoizedState,l!==null&&(l=l.dehydrated,l!==null))))try{se(l)}catch(a){Q(t,t.return,a)}}function u1(l){switch(l.tag){case 31:case 13:case 19:var t=l.stateNode;return t===null&&(t=l.stateNode=new bd),t;case 22:return l=l.stateNode,t=l._retryCache,t===null&&(t=l._retryCache=new bd),t;default:throw Error(p(435,l.tag))}}function Xu(l,t){var a=u1(l);t.forEach(function(e){if(!a.has(e)){a.add(e);var u=v1.bind(null,l,e);e.then(u,u)}})}function Al(l,t){var a=t.deletions;if(a!==null)for(var e=0;e<a.length;e++){var u=a[e],n=l,i=t,c=i;l:for(;c!==null;){switch(c.tag){case 27:if(ea(c.type)){$=c.stateNode,El=!1;break l}break;case 5:$=c.stateNode,El=!1;break l;case 3:case 4:$=c.stateNode.containerInfo,El=!0;break l}c=c.return}if($===null)throw Error(p(160));Z0(n,i,u),$=null,El=!1,n=u.alternate,n!==null&&(n.return=null),u.return=null}if(t.subtreeFlags&13886)for(t=t.child;t!==null;)J0(t,l),t=t.sibling}var Pl=null;function J0(l,t){var a=l.alternate,e=l.flags;switch(l.tag){case 0:case 11:case 14:case 15:Al(t,l),Tl(l),e&4&&(la(3,l,l.return),hu(3,l),la(5,l,l.return));break;case 1:Al(t,l),Tl(l),e&512&&(al||a===null||it(a,a.return)),e&64&&rt&&(l=l.updateQueue,l!==null&&(e=l.callbacks,e!==null&&(a=l.shared.hiddenCallbacks,l.shared.hiddenCallbacks=a===null?e:a.concat(e))));break;case 26:var u=Pl;if(Al(t,l),Tl(l),e&512&&(al||a===null||it(a,a.return)),e&4){var n=a!==null?a.memoizedState:null;if(e=l.memoizedState,a===null)if(e===null)if(l.stateNode===null){l:{e=l.type,a=l.memoizedProps,u=u.ownerDocument||u;t:switch(e){case"title":n=u.getElementsByTagName("title")[0],(!n||n[ou]||n[ml]||n.namespaceURI==="http://www.w3.org/2000/svg"||n.hasAttribute("itemprop"))&&(n=u.createElement(e),u.head.insertBefore(n,u.querySelector("head > title"))),hl(n,e,a),n[ml]=l,sl(n),e=n;break l;case"link":var i=xd("link","href",u).get(e+(a.href||""));if(i){for(var c=0;c<i.length;c++)if(n=i[c],n.getAttribute("href")===(a.href==null||a.href===""?null:a.href)&&n.getAttribute("rel")===(a.rel==null?null:a.rel)&&n.getAttribute("title")===(a.title==null?null:a.title)&&n.getAttribute("crossorigin")===(a.crossOrigin==null?null:a.crossOrigin)){i.splice(c,1);break t}}n=u.createElement(e),hl(n,e,a),u.head.appendChild(n);break;case"meta":if(i=xd("meta","content",u).get(e+(a.content||""))){for(c=0;c<i.length;c++)if(n=i[c],n.getAttribute("content")===(a.content==null?null:""+a.content)&&n.getAttribute("name")===(a.name==null?null:a.name)&&n.getAttribute("property")===(a.property==null?null:a.property)&&n.getAttribute("http-equiv")===(a.httpEquiv==null?null:a.httpEquiv)&&n.getAttribute("charset")===(a.charSet==null?null:a.charSet)){i.splice(c,1);break t}}n=u.createElement(e),hl(n,e,a),u.head.appendChild(n);break;default:throw Error(p(468,e))}n[ml]=l,sl(n),e=n}l.stateNode=e}else jd(u,l.type,l.stateNode);else l.stateNode=Qd(u,e,l.memoizedProps);else n!==e?(n===null?a.stateNode!==null&&(a=a.stateNode,a.parentNode.removeChild(a)):n.count--,e===null?jd(u,l.type,l.stateNode):Qd(u,e,l.memoizedProps)):e===null&&l.stateNode!==null&&Vi(l,l.memoizedProps,a.memoizedProps)}break;case 27:Al(t,l),Tl(l),e&512&&(al||a===null||it(a,a.return)),a!==null&&e&4&&Vi(l,l.memoizedProps,a.memoizedProps);break;case 5:if(Al(t,l),Tl(l),e&512&&(al||a===null||it(a,a.return)),l.flags&32){u=l.stateNode;try{te(u,"")}catch(S){Q(l,l.return,S)}}e&4&&l.stateNode!=null&&(u=l.memoizedProps,Vi(l,u,a!==null?a.memoizedProps:u)),e&1024&&(Li=!0);break;case 6:if(Al(t,l),Tl(l),e&4){if(l.stateNode===null)throw Error(p(162));e=l.memoizedProps,a=l.stateNode;try{a.nodeValue=e}catch(S){Q(l,l.return,S)}}break;case 3:if(an=null,u=Pl,Pl=Dn(t.containerInfo),Al(t,l),Pl=u,Tl(l),e&4&&a!==null&&a.memoizedState.isDehydrated)try{se(t.containerInfo)}catch(S){Q(l,l.return,S)}Li&&(Li=!1,w0(l));break;case 4:e=Pl,Pl=Dn(l.stateNode.containerInfo),Al(t,l),Tl(l),Pl=e;break;case 12:Al(t,l),Tl(l);break;case 31:Al(t,l),Tl(l),e&4&&(e=l.updateQueue,e!==null&&(l.updateQueue=null,Xu(l,e)));break;case 13:Al(t,l),Tl(l),l.child.flags&8192&&l.memoizedState!==null!=(a!==null&&a.memoizedState!==null)&&(Jn=ql()),e&4&&(e=l.updateQueue,e!==null&&(l.updateQueue=null,Xu(l,e)));break;case 22:u=l.memoizedState!==null;var f=a!==null&&a.memoizedState!==null,m=rt,g=al;if(rt=m||u,al=g||f,Al(t,l),al=g,rt=m,Tl(l),e&8192)l:for(t=l.stateNode,t._visibility=u?t._visibility&-2:t._visibility|1,u&&(a===null||f||rt||al||sa(l)),a=null,t=l;;){if(t.tag===5||t.tag===26){if(a===null){f=a=t;try{if(n=f.stateNode,u)i=n.style,typeof i.setProperty=="function"?i.setProperty("display","none","important"):i.display="none";else{c=f.stateNode;var r=f.memoizedProps.style,y=r!=null&&r.hasOwnProperty("display")?r.display:null;c.style.display=y==null||typeof y=="boolean"?"":(""+y).trim()}}catch(S){Q(f,f.return,S)}}}else if(t.tag===6){if(a===null){f=t;try{f.stateNode.nodeValue=u?"":f.memoizedProps}catch(S){Q(f,f.return,S)}}}else if(t.tag===18){if(a===null){f=t;try{var h=f.stateNode;u?Bd(h,!0):Bd(f.stateNode,!1)}catch(S){Q(f,f.return,S)}}}else if((t.tag!==22&&t.tag!==23||t.memoizedState===null||t===l)&&t.child!==null){t.child.return=t,t=t.child;continue}if(t===l)break l;for(;t.sibling===null;){if(t.return===null||t.return===l)break l;a===t&&(a=null),t=t.return}a===t&&(a=null),t.sibling.return=t.return,t=t.sibling}e&4&&(e=l.updateQueue,e!==null&&(a=e.retryQueue,a!==null&&(e.retryQueue=null,Xu(l,a))));break;case 19:Al(t,l),Tl(l),e&4&&(e=l.updateQueue,e!==null&&(l.updateQueue=null,Xu(l,e)));break;case 30:break;case 21:break;default:Al(t,l),Tl(l)}}function Tl(l){var t=l.flags;if(t&2){try{for(var a,e=l.return;e!==null;){if(Q0(e)){a=e;break}e=e.return}if(a==null)throw Error(p(160));switch(a.tag){case 27:var u=a.stateNode,n=Zi(l);An(l,n,u);break;case 5:var i=a.stateNode;a.flags&32&&(te(i,""),a.flags&=-33);var c=Zi(l);An(l,c,i);break;case 3:case 4:var f=a.stateNode.containerInfo,m=Zi(l);Uc(l,m,f);break;default:throw Error(p(161))}}catch(g){Q(l,l.return,g)}l.flags&=-3}t&4096&&(l.flags&=-4097)}function w0(l){if(l.subtreeFlags&1024)for(l=l.child;l!==null;){var t=l;w0(t),t.tag===5&&t.flags&1024&&t.stateNode.reset(),l=l.sibling}}function yt(l,t){if(t.subtreeFlags&8772)for(t=t.child;t!==null;)j0(l,t.alternate,t),t=t.sibling}function sa(l){for(l=l.child;l!==null;){var t=l;switch(t.tag){case 0:case 11:case 14:case 15:la(4,t,t.return),sa(t);break;case 1:it(t,t.return);var a=t.stateNode;typeof a.componentWillUnmount=="function"&&G0(t,t.return,a),sa(t);break;case 27:Je(t.stateNode);case 26:case 5:it(t,t.return),sa(t);break;case 22:t.memoizedState===null&&sa(t);break;case 30:sa(t);break;default:sa(t)}l=l.sibling}}function ht(l,t,a){for(a=a&&(t.subtreeFlags&8772)!==0,t=t.child;t!==null;){var e=t.alternate,u=l,n=t,i=n.flags;switch(n.tag){case 0:case 11:case 15:ht(u,n,a),hu(4,n);break;case 1:if(ht(u,n,a),e=n,u=e.stateNode,typeof u.componentDidMount=="function")try{u.componentDidMount()}catch(m){Q(e,e.return,m)}if(e=n,u=e.updateQueue,u!==null){var c=e.stateNode;try{var f=u.shared.hiddenCallbacks;if(f!==null)for(u.shared.hiddenCallbacks=null,u=0;u<f.length;u++)Lo(f[u],c)}catch(m){Q(e,e.return,m)}}a&&i&64&&Y0(n),Ve(n,n.return);break;case 27:x0(n);case 26:case 5:ht(u,n,a),a&&e===null&&i&4&&X0(n),Ve(n,n.return);break;case 12:ht(u,n,a);break;case 31:ht(u,n,a),a&&i&4&&L0(u,n);break;case 13:ht(u,n,a),a&&i&4&&K0(u,n);break;case 22:n.memoizedState===null&&ht(u,n,a),Ve(n,n.return);break;case 30:break;default:ht(u,n,a)}t=t.sibling}}function Uf(l,t){var a=null;l!==null&&l.memoizedState!==null&&l.memoizedState.cachePool!==null&&(a=l.memoizedState.cachePool.pool),l=null,t.memoizedState!==null&&t.memoizedState.cachePool!==null&&(l=t.memoizedState.cachePool.pool),l!==a&&(l!=null&&l.refCount++,a!=null&&vu(a))}function Cf(l,t){l=null,t.alternate!==null&&(l=t.alternate.memoizedState.cache),t=t.memoizedState.cache,t!==l&&(t.refCount++,l!=null&&vu(l))}function Il(l,t,a,e){if(t.subtreeFlags&10256)for(t=t.child;t!==null;)F0(l,t,a,e),t=t.sibling}function F0(l,t,a,e){var u=t.flags;switch(t.tag){case 0:case 11:case 15:Il(l,t,a,e),u&2048&&hu(9,t);break;case 1:Il(l,t,a,e);break;case 3:Il(l,t,a,e),u&2048&&(l=null,t.alternate!==null&&(l=t.alternate.memoizedState.cache),t=t.memoizedState.cache,t!==l&&(t.refCount++,l!=null&&vu(l)));break;case 12:if(u&2048){Il(l,t,a,e),l=t.stateNode;try{var n=t.memoizedProps,i=n.id,c=n.onPostCommit;typeof c=="function"&&c(i,t.alternate===null?"mount":"update",l.passiveEffectDuration,-0)}catch(f){Q(t,t.return,f)}}else Il(l,t,a,e);break;case 31:Il(l,t,a,e);break;case 13:Il(l,t,a,e);break;case 23:break;case 22:n=t.stateNode,i=t.alternate,t.memoizedState!==null?n._visibility&2?Il(l,t,a,e):Ze(l,t):n._visibility&2?Il(l,t,a,e):(n._visibility|=2,Ca(l,t,a,e,(t.subtreeFlags&10256)!==0||!1)),u&2048&&Uf(i,t);break;case 24:Il(l,t,a,e),u&2048&&Cf(t.alternate,t);break;default:Il(l,t,a,e)}}function Ca(l,t,a,e,u){for(u=u&&((t.subtreeFlags&10256)!==0||!1),t=t.child;t!==null;){var n=l,i=t,c=a,f=e,m=i.flags;switch(i.tag){case 0:case 11:case 15:Ca(n,i,c,f,u),hu(8,i);break;case 23:break;case 22:var g=i.stateNode;i.memoizedState!==null?g._visibility&2?Ca(n,i,c,f,u):Ze(n,i):(g._visibility|=2,Ca(n,i,c,f,u)),u&&m&2048&&Uf(i.alternate,i);break;case 24:Ca(n,i,c,f,u),u&&m&2048&&Cf(i.alternate,i);break;default:Ca(n,i,c,f,u)}t=t.sibling}}function Ze(l,t){if(t.subtreeFlags&10256)for(t=t.child;t!==null;){var a=l,e=t,u=e.flags;switch(e.tag){case 22:Ze(a,e),u&2048&&Uf(e.alternate,e);break;case 24:Ze(a,e),u&2048&&Cf(e.alternate,e);break;default:Ze(a,e)}t=t.sibling}}var He=8192;function Ua(l,t,a){if(l.subtreeFlags&He)for(l=l.child;l!==null;)W0(l,t,a),l=l.sibling}function W0(l,t,a){switch(l.tag){case 26:Ua(l,t,a),l.flags&He&&l.memoizedState!==null&&V1(a,Pl,l.memoizedState,l.memoizedProps);break;case 5:Ua(l,t,a);break;case 3:case 4:var e=Pl;Pl=Dn(l.stateNode.containerInfo),Ua(l,t,a),Pl=e;break;case 22:l.memoizedState===null&&(e=l.alternate,e!==null&&e.memoizedState!==null?(e=He,He=16777216,Ua(l,t,a),He=e):Ua(l,t,a));break;default:Ua(l,t,a)}}function $0(l){var t=l.alternate;if(t!==null&&(l=t.child,l!==null)){t.child=null;do t=l.sibling,l.sibling=null,l=t;while(l!==null)}}function Oe(l){var t=l.deletions;if((l.flags&16)!==0){if(t!==null)for(var a=0;a<t.length;a++){var e=t[a];fl=e,I0(e,l)}$0(l)}if(l.subtreeFlags&10256)for(l=l.child;l!==null;)k0(l),l=l.sibling}function k0(l){switch(l.tag){case 0:case 11:case 15:Oe(l),l.flags&2048&&la(9,l,l.return);break;case 3:Oe(l);break;case 12:Oe(l);break;case 22:var t=l.stateNode;l.memoizedState!==null&&t._visibility&2&&(l.return===null||l.return.tag!==13)?(t._visibility&=-3,ln(l)):Oe(l);break;default:Oe(l)}}function ln(l){var t=l.deletions;if((l.flags&16)!==0){if(t!==null)for(var a=0;a<t.length;a++){var e=t[a];fl=e,I0(e,l)}$0(l)}for(l=l.child;l!==null;){switch(t=l,t.tag){case 0:case 11:case 15:la(8,t,t.return),ln(t);break;case 22:a=t.stateNode,a._visibility&2&&(a._visibility&=-3,ln(t));break;default:ln(t)}l=l.sibling}}function I0(l,t){for(;fl!==null;){var a=fl;switch(a.tag){case 0:case 11:case 15:la(8,a,t);break;case 23:case 22:if(a.memoizedState!==null&&a.memoizedState.cachePool!==null){var e=a.memoizedState.cachePool.pool;e!=null&&e.refCount++}break;case 24:vu(a.memoizedState.cache)}if(e=a.child,e!==null)e.return=a,fl=e;else l:for(a=l;fl!==null;){e=fl;var u=e.sibling,n=e.return;if(V0(e),e===a){fl=null;break l}if(u!==null){u.return=n,fl=u;break l}fl=n}}}var n1={getCacheForType:function(l){var t=yl(el),a=t.data.get(l);return a===void 0&&(a=l(),t.data.set(l,a)),a},cacheSignal:function(){return yl(el).controller.signal}},i1=typeof WeakMap=="function"?WeakMap:Map,Y=0,Z=null,U=null,C=0,X=0,Ul=null,xt=!1,ye=!1,Hf=!1,_t=0,I=0,ta=0,ya=0,Bf=0,Bl=0,ne=0,Le=null,Ml=null,Cc=!1,Jn=0,P0=0,Tn=1/0,En=null,wt=null,nl=0,Ft=null,ie=null,Tt=0,Hc=0,Bc=null,lm=null,Ke=0,qc=null;function Xl(){return(Y&2)!==0&&C!==0?C&-C:E.T!==null?Yf():fo()}function tm(){if(Bl===0)if((C&536870912)===0||H){var l=_u;_u<<=1,(_u&3932160)===0&&(_u=262144),Bl=l}else Bl=536870912;return l=xl.current,l!==null&&(l.flags|=32),Bl}function Ol(l,t,a){(l===Z&&(X===2||X===9)||l.cancelPendingCommit!==null)&&(ce(l,0),jt(l,C,Bl,!1)),du(l,a),((Y&2)===0||l!==Z)&&(l===Z&&((Y&2)===0&&(ya|=a),I===4&&jt(l,C,Bl,!1)),st(l))}function am(l,t,a){if((Y&6)!==0)throw Error(p(327));var e=!a&&(t&127)===0&&(t&l.expiredLanes)===0||su(l,t),u=e?s1(l,t):Ki(l,t,!0),n=e;do{if(u===0){ye&&!e&&jt(l,t,0,!1);break}else{if(a=l.current.alternate,n&&!c1(a)){u=Ki(l,t,!1),n=!1;continue}if(u===2){if(n=t,l.errorRecoveryDisabledLanes&n)var i=0;else i=l.pendingLanes&-536870913,i=i!==0?i:i&536870912?536870912:0;if(i!==0){t=i;l:{var c=l;u=Le;var f=c.current.memoizedState.isDehydrated;if(f&&(ce(c,i).flags|=256),i=Ki(c,i,!1),i!==2){if(Hf&&!f){c.errorRecoveryDisabledLanes|=n,ya|=n,u=4;break l}n=Ml,Ml=u,n!==null&&(Ml===null?Ml=n:Ml.push.apply(Ml,n))}u=i}if(n=!1,u!==2)continue}}if(u===1){ce(l,0),jt(l,t,0,!0);break}l:{switch(e=l,n=u,n){case 0:case 1:throw Error(p(345));case 4:if((t&4194048)!==t)break;case 6:jt(e,t,Bl,!xt);break l;case 2:Ml=null;break;case 3:case 5:break;default:throw Error(p(329))}if((t&62914560)===t&&(u=Jn+300-ql(),10<u)){if(jt(e,t,Bl,!xt),qn(e,0,!0)!==0)break l;Tt=t,e.timeoutHandle=Am(pd.bind(null,e,a,Ml,En,Cc,t,Bl,ya,ne,xt,n,"Throttled",-0,0),u);break l}pd(e,a,Ml,En,Cc,t,Bl,ya,ne,xt,n,null,-0,0)}}break}while(!0);st(l)}function pd(l,t,a,e,u,n,i,c,f,m,g,r,y,h){if(l.timeoutHandle=-1,r=t.subtreeFlags,r&8192||(r&16785408)===16785408){r={stylesheets:null,count:0,imgCount:0,imgBytes:0,suspenseyImages:[],waitingForImages:!0,waitingForViewTransition:!1,unsuspend:pt},W0(t,n,r);var S=(n&62914560)===n?Jn-ql():(n&4194048)===n?P0-ql():0;if(S=Z1(r,S),S!==null){Tt=n,l.cancelPendingCommit=S(zd.bind(null,l,t,n,a,e,u,i,c,f,g,r,null,y,h)),jt(l,n,i,!m);return}}zd(l,t,n,a,e,u,i,c,f)}function c1(l){for(var t=l;;){var a=t.tag;if((a===0||a===11||a===15)&&t.flags&16384&&(a=t.updateQueue,a!==null&&(a=a.stores,a!==null)))for(var e=0;e<a.length;e++){var u=a[e],n=u.getSnapshot;u=u.value;try{if(!Ql(n(),u))return!1}catch{return!1}}if(a=t.child,t.subtreeFlags&16384&&a!==null)a.return=t,t=a;else{if(t===l)break;for(;t.sibling===null;){if(t.return===null||t.return===l)return!0;t=t.return}t.sibling.return=t.return,t=t.sibling}}return!0}function jt(l,t,a,e){t&=~Bf,t&=~ya,l.suspendedLanes|=t,l.pingedLanes&=~t,e&&(l.warmLanes|=t),e=l.expirationTimes;for(var u=t;0<u;){var n=31-Gl(u),i=1<<n;e[n]=-1,u&=~i}a!==0&&no(l,a,t)}function wn(){return(Y&6)===0?(gu(0,!1),!1):!0}function qf(){if(U!==null){if(X===0)var l=U.return;else l=U,St=Ea=null,Sf(l),$a=null,Pe=0,l=U;for(;l!==null;)q0(l.alternate,l),l=l.return;U=null}}function ce(l,t){var a=l.timeoutHandle;a!==-1&&(l.timeoutHandle=-1,M1(a)),a=l.cancelPendingCommit,a!==null&&(l.cancelPendingCommit=null,a()),Tt=0,qf(),Z=l,U=a=zt(l.current,null),C=t,X=0,Ul=null,xt=!1,ye=su(l,t),Hf=!1,ne=Bl=Bf=ya=ta=I=0,Ml=Le=null,Cc=!1,(t&8)!==0&&(t|=t&32);var e=l.entangledLanes;if(e!==0)for(l=l.entanglements,e&=t;0<e;){var u=31-Gl(e),n=1<<u;t|=l[u],e&=~n}return _t=t,Qn(),a}function em(l,t){N=null,E.H=tu,t===ve||t===jn?(t=ks(),X=3):t===vf?(t=ks(),X=4):X=t===Rf?8:t!==null&&typeof t=="object"&&typeof t.then=="function"?6:1,Ul=t,U===null&&(I=1,Sn(l,wl(t,l.current)))}function um(){var l=xl.current;return l===null?!0:(C&4194048)===C?Wl===null:(C&62914560)===C||(C&536870912)!==0?l===Wl:!1}function nm(){var l=E.H;return E.H=tu,l===null?tu:l}function im(){var l=E.A;return E.A=n1,l}function Mn(){I=4,xt||(C&4194048)!==C&&xl.current!==null||(ye=!0),(ta&134217727)===0&&(ya&134217727)===0||Z===null||jt(Z,C,Bl,!1)}function Ki(l,t,a){var e=Y;Y|=2;var u=nm(),n=im();(Z!==l||C!==t)&&(En=null,ce(l,t)),t=!1;var i=I;l:do try{if(X!==0&&U!==null){var c=U,f=Ul;switch(X){case 8:qf(),i=6;break l;case 3:case 2:case 9:case 6:xl.current===null&&(t=!0);var m=X;if(X=0,Ul=null,Ka(l,c,f,m),a&&ye){i=0;break l}break;default:m=X,X=0,Ul=null,Ka(l,c,f,m)}}f1(),i=I;break}catch(g){em(l,g)}while(!0);return t&&l.shellSuspendCounter++,St=Ea=null,Y=e,E.H=u,E.A=n,U===null&&(Z=null,C=0,Qn()),i}function f1(){for(;U!==null;)cm(U)}function s1(l,t){var a=Y;Y|=2;var e=nm(),u=im();Z!==l||C!==t?(En=null,Tn=ql()+500,ce(l,t)):ye=su(l,t);l:do try{if(X!==0&&U!==null){t=U;var n=Ul;t:switch(X){case 1:X=0,Ul=null,Ka(l,t,n,1);break;case 2:case 9:if($s(n)){X=0,Ul=null,Sd(t);break}t=function(){X!==2&&X!==9||Z!==l||(X=7),st(l)},n.then(t,t);break l;case 3:X=7;break l;case 4:X=5;break l;case 7:$s(n)?(X=0,Ul=null,Sd(t)):(X=0,Ul=null,Ka(l,t,n,7));break;case 5:var i=null;switch(U.tag){case 26:i=U.memoizedState;case 5:case 27:var c=U;if(i?Nm(i):c.stateNode.complete){X=0,Ul=null;var f=c.sibling;if(f!==null)U=f;else{var m=c.return;m!==null?(U=m,Fn(m)):U=null}break t}}X=0,Ul=null,Ka(l,t,n,5);break;case 6:X=0,Ul=null,Ka(l,t,n,6);break;case 8:qf(),I=6;break l;default:throw Error(p(462))}}d1();break}catch(g){em(l,g)}while(!0);return St=Ea=null,E.H=e,E.A=u,Y=a,U!==null?0:(Z=null,C=0,Qn(),I)}function d1(){for(;U!==null&&!Hv();)cm(U)}function cm(l){var t=B0(l.alternate,l,_t);l.memoizedProps=l.pendingProps,t===null?Fn(l):U=t}function Sd(l){var t=l,a=t.alternate;switch(t.tag){case 15:case 0:t=vd(a,t,t.pendingProps,t.type,void 0,C);break;case 11:t=vd(a,t,t.pendingProps,t.type.render,t.ref,C);break;case 5:Sf(t);default:q0(a,t),t=U=qo(t,_t),t=B0(a,t,_t)}l.memoizedProps=l.pendingProps,t===null?Fn(l):U=t}function Ka(l,t,a,e){St=Ea=null,Sf(t),$a=null,Pe=0;var u=t.return;try{if(Iy(l,u,t,a,C)){I=1,Sn(l,wl(a,l.current)),U=null;return}}catch(n){if(u!==null)throw U=u,n;I=1,Sn(l,wl(a,l.current)),U=null;return}t.flags&32768?(H||e===1?l=!0:ye||(C&536870912)!==0?l=!1:(xt=l=!0,(e===2||e===9||e===3||e===6)&&(e=xl.current,e!==null&&e.tag===13&&(e.flags|=16384))),fm(t,l)):Fn(t)}function Fn(l){var t=l;do{if((t.flags&32768)!==0){fm(t,xt);return}l=t.return;var a=t1(t.alternate,t,_t);if(a!==null){U=a;return}if(t=t.sibling,t!==null){U=t;return}U=t=l}while(t!==null);I===0&&(I=5)}function fm(l,t){do{var a=a1(l.alternate,l);if(a!==null){a.flags&=32767,U=a;return}if(a=l.return,a!==null&&(a.flags|=32768,a.subtreeFlags=0,a.deletions=null),!t&&(l=l.sibling,l!==null)){U=l;return}U=l=a}while(l!==null);I=6,U=null}function zd(l,t,a,e,u,n,i,c,f){l.cancelPendingCommit=null;do Wn();while(nl!==0);if((Y&6)!==0)throw Error(p(327));if(t!==null){if(t===l.current)throw Error(p(177));if(n=t.lanes|t.childLanes,n|=nf,Zv(l,a,n,i,c,f),l===Z&&(U=Z=null,C=0),ie=t,Ft=l,Tt=a,Hc=n,Bc=u,lm=e,(t.subtreeFlags&10256)!==0||(t.flags&10256)!==0?(l.callbackNode=null,l.callbackPriority=0,y1(sn,function(){return vm(),null})):(l.callbackNode=null,l.callbackPriority=0),e=(t.flags&13878)!==0,(t.subtreeFlags&13878)!==0||e){e=E.T,E.T=null,u=G.p,G.p=2,i=Y,Y|=4;try{e1(l,t,a)}finally{Y=i,G.p=u,E.T=e}}nl=1,sm(),dm(),om()}}function sm(){if(nl===1){nl=0;var l=Ft,t=ie,a=(t.flags&13878)!==0;if((t.subtreeFlags&13878)!==0||a){a=E.T,E.T=null;var e=G.p;G.p=2;var u=Y;Y|=4;try{J0(t,l);var n=Qc,i=No(l.containerInfo),c=n.focusedElem,f=n.selectionRange;if(i!==c&&c&&c.ownerDocument&&Oo(c.ownerDocument.documentElement,c)){if(f!==null&&uf(c)){var m=f.start,g=f.end;if(g===void 0&&(g=m),"selectionStart"in c)c.selectionStart=m,c.selectionEnd=Math.min(g,c.value.length);else{var r=c.ownerDocument||document,y=r&&r.defaultView||window;if(y.getSelection){var h=y.getSelection(),S=c.textContent.length,T=Math.min(f.start,S),B=f.end===void 0?T:Math.min(f.end,S);!h.extend&&T>B&&(i=B,B=T,T=i);var o=Zs(c,T),d=Zs(c,B);if(o&&d&&(h.rangeCount!==1||h.anchorNode!==o.node||h.anchorOffset!==o.offset||h.focusNode!==d.node||h.focusOffset!==d.offset)){var v=r.createRange();v.setStart(o.node,o.offset),h.removeAllRanges(),T>B?(h.addRange(v),h.extend(d.node,d.offset)):(v.setEnd(d.node,d.offset),h.addRange(v))}}}}for(r=[],h=c;h=h.parentNode;)h.nodeType===1&&r.push({element:h,left:h.scrollLeft,top:h.scrollTop});for(typeof c.focus=="function"&&c.focus(),c=0;c<r.length;c++){var b=r[c];b.element.scrollLeft=b.left,b.element.scrollTop=b.top}}Hn=!!Xc,Qc=Xc=null}finally{Y=u,G.p=e,E.T=a}}l.current=t,nl=2}}function dm(){if(nl===2){nl=0;var l=Ft,t=ie,a=(t.flags&8772)!==0;if((t.subtreeFlags&8772)!==0||a){a=E.T,E.T=null;var e=G.p;G.p=2;var u=Y;Y|=4;try{j0(l,t.alternate,t)}finally{Y=u,G.p=e,E.T=a}}nl=3}}function om(){if(nl===4||nl===3){nl=0,Bv();var l=Ft,t=ie,a=Tt,e=lm;(t.subtreeFlags&10256)!==0||(t.flags&10256)!==0?nl=5:(nl=0,ie=Ft=null,mm(l,l.pendingLanes));var u=l.pendingLanes;if(u===0&&(wt=null),kc(a),t=t.stateNode,Yl&&typeof Yl.onCommitFiberRoot=="function")try{Yl.onCommitFiberRoot(fu,t,void 0,(t.current.flags&128)===128)}catch{}if(e!==null){t=E.T,u=G.p,G.p=2,E.T=null;try{for(var n=l.onRecoverableError,i=0;i<e.length;i++){var c=e[i];n(c.value,{componentStack:c.stack})}}finally{E.T=t,G.p=u}}(Tt&3)!==0&&Wn(),st(l),u=l.pendingLanes,(a&261930)!==0&&(u&42)!==0?l===qc?Ke++:(Ke=0,qc=l):Ke=0,gu(0,!1)}}function mm(l,t){(l.pooledCacheLanes&=t)===0&&(t=l.pooledCache,t!=null&&(l.pooledCache=null,vu(t)))}function Wn(){return sm(),dm(),om(),vm()}function vm(){if(nl!==5)return!1;var l=Ft,t=Hc;Hc=0;var a=kc(Tt),e=E.T,u=G.p;try{G.p=32>a?32:a,E.T=null,a=Bc,Bc=null;var n=Ft,i=Tt;if(nl=0,ie=Ft=null,Tt=0,(Y&6)!==0)throw Error(p(331));var c=Y;if(Y|=4,k0(n.current),F0(n,n.current,i,a),Y=c,gu(0,!1),Yl&&typeof Yl.onPostCommitFiberRoot=="function")try{Yl.onPostCommitFiberRoot(fu,n)}catch{}return!0}finally{G.p=u,E.T=e,mm(l,t)}}function Ad(l,t,a){t=wl(a,t),t=_c(l.stateNode,t,2),l=Jt(l,t,2),l!==null&&(du(l,2),st(l))}function Q(l,t,a){if(l.tag===3)Ad(l,l,a);else for(;t!==null;){if(t.tag===3){Ad(t,l,a);break}else if(t.tag===1){var e=t.stateNode;if(typeof t.type.getDerivedStateFromError=="function"||typeof e.componentDidCatch=="function"&&(wt===null||!wt.has(e))){l=wl(a,l),a=_0(2),e=Jt(t,a,2),e!==null&&(R0(a,e,t,l),du(e,2),st(e));break}}t=t.return}}function Ji(l,t,a){var e=l.pingCache;if(e===null){e=l.pingCache=new i1;var u=new Set;e.set(t,u)}else u=e.get(t),u===void 0&&(u=new Set,e.set(t,u));u.has(a)||(Hf=!0,u.add(a),l=o1.bind(null,l,t,a),t.then(l,l))}function o1(l,t,a){var e=l.pingCache;e!==null&&e.delete(t),l.pingedLanes|=l.suspendedLanes&a,l.warmLanes&=~a,Z===l&&(C&a)===a&&(I===4||I===3&&(C&62914560)===C&&300>ql()-Jn?(Y&2)===0&&ce(l,0):Bf|=a,ne===C&&(ne=0)),st(l)}function ym(l,t){t===0&&(t=uo()),l=Ta(l,t),l!==null&&(du(l,t),st(l))}function m1(l){var t=l.memoizedState,a=0;t!==null&&(a=t.retryLane),ym(l,a)}function v1(l,t){var a=0;switch(l.tag){case 31:case 13:var e=l.stateNode,u=l.memoizedState;u!==null&&(a=u.retryLane);break;case 19:e=l.stateNode;break;case 22:e=l.stateNode._retryCache;break;default:throw Error(p(314))}e!==null&&e.delete(t),ym(l,a)}function y1(l,t){return Wc(l,t)}var On=null,Ha=null,Yc=!1,Nn=!1,wi=!1,Vt=0;function st(l){l!==Ha&&l.next===null&&(Ha===null?On=Ha=l:Ha=Ha.next=l),Nn=!0,Yc||(Yc=!0,g1())}function gu(l,t){if(!wi&&Nn){wi=!0;do for(var a=!1,e=On;e!==null;){if(!t)if(l!==0){var u=e.pendingLanes;if(u===0)var n=0;else{var i=e.suspendedLanes,c=e.pingedLanes;n=(1<<31-Gl(42|l)+1)-1,n&=u&~(i&~c),n=n&201326741?n&201326741|1:n?n|2:0}n!==0&&(a=!0,Td(e,n))}else n=C,n=qn(e,e===Z?n:0,e.cancelPendingCommit!==null||e.timeoutHandle!==-1),(n&3)===0||su(e,n)||(a=!0,Td(e,n));e=e.next}while(a);wi=!1}}function h1(){hm()}function hm(){Nn=Yc=!1;var l=0;Vt!==0&&E1()&&(l=Vt);for(var t=ql(),a=null,e=On;e!==null;){var u=e.next,n=gm(e,t);n===0?(e.next=null,a===null?On=u:a.next=u,u===null&&(Ha=a)):(a=e,(l!==0||(n&3)!==0)&&(Nn=!0)),e=u}nl!==0&&nl!==5||gu(l,!1),Vt!==0&&(Vt=0)}function gm(l,t){for(var a=l.suspendedLanes,e=l.pingedLanes,u=l.expirationTimes,n=l.pendingLanes&-62914561;0<n;){var i=31-Gl(n),c=1<<i,f=u[i];f===-1?((c&a)===0||(c&e)!==0)&&(u[i]=Vv(c,t)):f<=t&&(l.expiredLanes|=c),n&=~c}if(t=Z,a=C,a=qn(l,l===t?a:0,l.cancelPendingCommit!==null||l.timeoutHandle!==-1),e=l.callbackNode,a===0||l===t&&(X===2||X===9)||l.cancelPendingCommit!==null)return e!==null&&e!==null&&Ai(e),l.callbackNode=null,l.callbackPriority=0;if((a&3)===0||su(l,a)){if(t=a&-a,t===l.callbackPriority)return t;switch(e!==null&&Ai(e),kc(a)){case 2:case 8:a=ao;break;case 32:a=sn;break;case 268435456:a=eo;break;default:a=sn}return e=rm.bind(null,l),a=Wc(a,e),l.callbackPriority=t,l.callbackNode=a,t}return e!==null&&e!==null&&Ai(e),l.callbackPriority=2,l.callbackNode=null,2}function rm(l,t){if(nl!==0&&nl!==5)return l.callbackNode=null,l.callbackPriority=0,null;var a=l.callbackNode;if(Wn()&&l.callbackNode!==a)return null;var e=C;return e=qn(l,l===Z?e:0,l.cancelPendingCommit!==null||l.timeoutHandle!==-1),e===0?null:(am(l,e,t),gm(l,ql()),l.callbackNode!=null&&l.callbackNode===a?rm.bind(null,l):null)}function Td(l,t){if(Wn())return null;am(l,t,!0)}function g1(){O1(function(){(Y&6)!==0?Wc(to,h1):hm()})}function Yf(){if(Vt===0){var l=ae;l===0&&(l=Nu,Nu<<=1,(Nu&261888)===0&&(Nu=256)),Vt=l}return Vt}function Ed(l){return l==null||typeof l=="symbol"||typeof l=="boolean"?null:typeof l=="function"?l:Ku(""+l)}function Md(l,t){var a=t.ownerDocument.createElement("input");return a.name=t.name,a.value=t.value,l.id&&a.setAttribute("form",l.id),t.parentNode.insertBefore(a,t),l=new FormData(l),a.parentNode.removeChild(a),l}function r1(l,t,a,e,u){if(t==="submit"&&a&&a.stateNode===u){var n=Ed((u[Nl]||null).action),i=e.submitter;i&&(t=(t=i[Nl]||null)?Ed(t.formAction):i.getAttribute("formAction"),t!==null&&(n=t,i=null));var c=new Yn("action","action",null,e,u);l.push({event:c,listeners:[{instance:null,listener:function(){if(e.defaultPrevented){if(Vt!==0){var f=i?Md(u,i):new FormData(u);Oc(a,{pending:!0,data:f,method:u.method,action:n},null,f)}}else typeof n=="function"&&(c.preventDefault(),f=i?Md(u,i):new FormData(u),Oc(a,{pending:!0,data:f,method:u.method,action:n},n,f))},currentTarget:u}]})}}for(Qu=0;Qu<yc.length;Qu++)xu=yc[Qu],Od=xu.toLowerCase(),Nd=xu[0].toUpperCase()+xu.slice(1),lt(Od,"on"+Nd);var xu,Od,Nd,Qu;lt(Ro,"onAnimationEnd");lt(Do,"onAnimationIteration");lt(Uo,"onAnimationStart");lt("dblclick","onDoubleClick");lt("focusin","onFocus");lt("focusout","onBlur");lt(qy,"onTransitionRun");lt(Yy,"onTransitionStart");lt(Gy,"onTransitionCancel");lt(Co,"onTransitionEnd");le("onMouseEnter",["mouseout","mouseover"]);le("onMouseLeave",["mouseout","mouseover"]);le("onPointerEnter",["pointerout","pointerover"]);le("onPointerLeave",["pointerout","pointerover"]);Sa("onChange","change click focusin focusout input keydown keyup selectionchange".split(" "));Sa("onSelect","focusout contextmenu dragend focusin keydown keyup mousedown mouseup selectionchange".split(" "));Sa("onBeforeInput",["compositionend","keypress","textInput","paste"]);Sa("onCompositionEnd","compositionend focusout keydown keypress keyup mousedown".split(" "));Sa("onCompositionStart","compositionstart focusout keydown keypress keyup mousedown".split(" "));Sa("onCompositionUpdate","compositionupdate focusout keydown keypress keyup mousedown".split(" "));var au="abort canplay canplaythrough durationchange emptied encrypted ended error loadeddata loadedmetadata loadstart pause play playing progress ratechange resize seeked seeking stalled suspend timeupdate volumechange waiting".split(" "),b1=new Set("beforetoggle cancel close invalid load scroll scrollend toggle".split(" ").concat(au));function bm(l,t){t=(t&4)!==0;for(var a=0;a<l.length;a++){var e=l[a],u=e.event;e=e.listeners;l:{var n=void 0;if(t)for(var i=e.length-1;0<=i;i--){var c=e[i],f=c.instance,m=c.currentTarget;if(c=c.listener,f!==n&&u.isPropagationStopped())break l;n=c,u.currentTarget=m;try{n(u)}catch(g){on(g)}u.currentTarget=null,n=f}else for(i=0;i<e.length;i++){if(c=e[i],f=c.instance,m=c.currentTarget,c=c.listener,f!==n&&u.isPropagationStopped())break l;n=c,u.currentTarget=m;try{n(u)}catch(g){on(g)}u.currentTarget=null,n=f}}}}function D(l,t){var a=t[ic];a===void 0&&(a=t[ic]=new Set);var e=l+"__bubble";a.has(e)||(pm(t,l,2,!1),a.add(e))}function Fi(l,t,a){var e=0;t&&(e|=4),pm(a,l,e,t)}var ju="_reactListening"+Math.random().toString(36).slice(2);function Gf(l){if(!l[ju]){l[ju]=!0,so.forEach(function(a){a!=="selectionchange"&&(b1.has(a)||Fi(a,!1,l),Fi(a,!0,l))});var t=l.nodeType===9?l:l.ownerDocument;t===null||t[ju]||(t[ju]=!0,Fi("selectionchange",!1,t))}}function pm(l,t,a,e){switch(Cm(t)){case 2:var u=J1;break;case 8:u=w1;break;default:u=jf}a=u.bind(null,t,a,l),u=void 0,!oc||t!=="touchstart"&&t!=="touchmove"&&t!=="wheel"||(u=!0),e?u!==void 0?l.addEventListener(t,a,{capture:!0,passive:u}):l.addEventListener(t,a,!0):u!==void 0?l.addEventListener(t,a,{passive:u}):l.addEventListener(t,a,!1)}function Wi(l,t,a,e,u){var n=e;if((t&1)===0&&(t&2)===0&&e!==null)l:for(;;){if(e===null)return;var i=e.tag;if(i===3||i===4){var c=e.stateNode.containerInfo;if(c===u)break;if(i===4)for(i=e.return;i!==null;){var f=i.tag;if((f===3||f===4)&&i.stateNode.containerInfo===u)return;i=i.return}for(;c!==null;){if(i=Ya(c),i===null)return;if(f=i.tag,f===5||f===6||f===26||f===27){e=n=i;continue l}c=c.parentNode}}e=e.return}bo(function(){var m=n,g=lf(a),r=[];l:{var y=Ho.get(l);if(y!==void 0){var h=Yn,S=l;switch(l){case"keypress":if(wu(a)===0)break l;case"keydown":case"keyup":h=vy;break;case"focusin":S="focus",h=Ni;break;case"focusout":S="blur",h=Ni;break;case"beforeblur":case"afterblur":h=Ni;break;case"click":if(a.button===2)break l;case"auxclick":case"dblclick":case"mousedown":case"mousemove":case"mouseup":case"mouseout":case"mouseover":case"contextmenu":h=Bs;break;case"drag":case"dragend":case"dragenter":case"dragexit":case"dragleave":case"dragover":case"dragstart":case"drop":h=ty;break;case"touchcancel":case"touchend":case"touchmove":case"touchstart":h=gy;break;case Ro:case Do:case Uo:h=uy;break;case Co:h=by;break;case"scroll":case"scrollend":h=Pv;break;case"wheel":h=Sy;break;case"copy":case"cut":case"paste":h=iy;break;case"gotpointercapture":case"lostpointercapture":case"pointercancel":case"pointerdown":case"pointermove":case"pointerout":case"pointerover":case"pointerup":h=Ys;break;case"toggle":case"beforetoggle":h=Ay}var T=(t&4)!==0,B=!T&&(l==="scroll"||l==="scrollend"),o=T?y!==null?y+"Capture":null:y;T=[];for(var d=m,v;d!==null;){var b=d;if(v=b.stateNode,b=b.tag,b!==5&&b!==26&&b!==27||v===null||o===null||(b=Fe(d,o),b!=null&&T.push(eu(d,b,v))),B)break;d=d.return}0<T.length&&(y=new h(y,S,null,a,g),r.push({event:y,listeners:T}))}}if((t&7)===0){l:{if(y=l==="mouseover"||l==="pointerover",h=l==="mouseout"||l==="pointerout",y&&a!==dc&&(S=a.relatedTarget||a.fromElement)&&(Ya(S)||S[de]))break l;if((h||y)&&(y=g.window===g?g:(y=g.ownerDocument)?y.defaultView||y.parentWindow:window,h?(S=a.relatedTarget||a.toElement,h=m,S=S?Ya(S):null,S!==null&&(B=cu(S),T=S.tag,S!==B||T!==5&&T!==27&&T!==6)&&(S=null)):(h=null,S=m),h!==S)){if(T=Bs,b="onMouseLeave",o="onMouseEnter",d="mouse",(l==="pointerout"||l==="pointerover")&&(T=Ys,b="onPointerLeave",o="onPointerEnter",d="pointer"),B=h==null?y:Ue(h),v=S==null?y:Ue(S),y=new T(b,d+"leave",h,a,g),y.target=B,y.relatedTarget=v,b=null,Ya(g)===m&&(T=new T(o,d+"enter",S,a,g),T.target=v,T.relatedTarget=B,b=T),B=b,h&&S)t:{for(T=p1,o=h,d=S,v=0,b=o;b;b=T(b))v++;b=0;for(var A=d;A;A=T(A))b++;for(;0<v-b;)o=T(o),v--;for(;0<b-v;)d=T(d),b--;for(;v--;){if(o===d||d!==null&&o===d.alternate){T=o;break t}o=T(o),d=T(d)}T=null}else T=null;h!==null&&_d(r,y,h,T,!1),S!==null&&B!==null&&_d(r,B,S,T,!0)}}l:{if(y=m?Ue(m):window,h=y.nodeName&&y.nodeName.toLowerCase(),h==="select"||h==="input"&&y.type==="file")var q=xs;else if(Qs(y))if(Eo)q=Cy;else{q=Dy;var z=Ry}else h=y.nodeName,!h||h.toLowerCase()!=="input"||y.type!=="checkbox"&&y.type!=="radio"?m&&Pc(m.elementType)&&(q=xs):q=Uy;if(q&&(q=q(l,m))){To(r,q,a,g);break l}z&&z(l,y,m),l==="focusout"&&m&&y.type==="number"&&m.memoizedProps.value!=null&&sc(y,"number",y.value)}switch(z=m?Ue(m):window,l){case"focusin":(Qs(z)||z.contentEditable==="true")&&(Qa=z,mc=m,Ye=null);break;case"focusout":Ye=mc=Qa=null;break;case"mousedown":vc=!0;break;case"contextmenu":case"mouseup":case"dragend":vc=!1,Ls(r,a,g);break;case"selectionchange":if(By)break;case"keydown":case"keyup":Ls(r,a,g)}var M;if(ef)l:{switch(l){case"compositionstart":var _="onCompositionStart";break l;case"compositionend":_="onCompositionEnd";break l;case"compositionupdate":_="onCompositionUpdate";break l}_=void 0}else Xa?zo(l,a)&&(_="onCompositionEnd"):l==="keydown"&&a.keyCode===229&&(_="onCompositionStart");_&&(So&&a.locale!=="ko"&&(Xa||_!=="onCompositionStart"?_==="onCompositionEnd"&&Xa&&(M=po()):(Qt=g,tf="value"in Qt?Qt.value:Qt.textContent,Xa=!0)),z=_n(m,_),0<z.length&&(_=new qs(_,l,null,a,g),r.push({event:_,listeners:z}),M?_.data=M:(M=Ao(a),M!==null&&(_.data=M)))),(M=Ey?My(l,a):Oy(l,a))&&(_=_n(m,"onBeforeInput"),0<_.length&&(z=new qs("onBeforeInput","beforeinput",null,a,g),r.push({event:z,listeners:_}),z.data=M)),r1(r,l,m,a,g)}bm(r,t)})}function eu(l,t,a){return{instance:l,listener:t,currentTarget:a}}function _n(l,t){for(var a=t+"Capture",e=[];l!==null;){var u=l,n=u.stateNode;if(u=u.tag,u!==5&&u!==26&&u!==27||n===null||(u=Fe(l,a),u!=null&&e.unshift(eu(l,u,n)),u=Fe(l,t),u!=null&&e.push(eu(l,u,n))),l.tag===3)return e;l=l.return}return[]}function p1(l){if(l===null)return null;do l=l.return;while(l&&l.tag!==5&&l.tag!==27);return l||null}function _d(l,t,a,e,u){for(var n=t._reactName,i=[];a!==null&&a!==e;){var c=a,f=c.alternate,m=c.stateNode;if(c=c.tag,f!==null&&f===e)break;c!==5&&c!==26&&c!==27||m===null||(f=m,u?(m=Fe(a,n),m!=null&&i.unshift(eu(a,m,f))):u||(m=Fe(a,n),m!=null&&i.push(eu(a,m,f)))),a=a.return}i.length!==0&&l.push({event:t,listeners:i})}var S1=/\r\n?/g,z1=/\u0000|\uFFFD/g;function Rd(l){return(typeof l=="string"?l:""+l).replace(S1,`
-`).replace(z1,"")}function Sm(l,t){return t=Rd(t),Rd(l)===t}function x(l,t,a,e,u,n){switch(a){case"children":typeof e=="string"?t==="body"||t==="textarea"&&e===""||te(l,e):(typeof e=="number"||typeof e=="bigint")&&t!=="body"&&te(l,""+e);break;case"className":Du(l,"class",e);break;case"tabIndex":Du(l,"tabindex",e);break;case"dir":case"role":case"viewBox":case"width":case"height":Du(l,a,e);break;case"style":ro(l,e,n);break;case"data":if(t!=="object"){Du(l,"data",e);break}case"src":case"href":if(e===""&&(t!=="a"||a!=="href")){l.removeAttribute(a);break}if(e==null||typeof e=="function"||typeof e=="symbol"||typeof e=="boolean"){l.removeAttribute(a);break}e=Ku(""+e),l.setAttribute(a,e);break;case"action":case"formAction":if(typeof e=="function"){l.setAttribute(a,"javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')");break}else typeof n=="function"&&(a==="formAction"?(t!=="input"&&x(l,t,"name",u.name,u,null),x(l,t,"formEncType",u.formEncType,u,null),x(l,t,"formMethod",u.formMethod,u,null),x(l,t,"formTarget",u.formTarget,u,null)):(x(l,t,"encType",u.encType,u,null),x(l,t,"method",u.method,u,null),x(l,t,"target",u.target,u,null)));if(e==null||typeof e=="symbol"||typeof e=="boolean"){l.removeAttribute(a);break}e=Ku(""+e),l.setAttribute(a,e);break;case"onClick":e!=null&&(l.onclick=pt);break;case"onScroll":e!=null&&D("scroll",l);break;case"onScrollEnd":e!=null&&D("scrollend",l);break;case"dangerouslySetInnerHTML":if(e!=null){if(typeof e!="object"||!("__html"in e))throw Error(p(61));if(a=e.__html,a!=null){if(u.children!=null)throw Error(p(60));l.innerHTML=a}}break;case"multiple":l.multiple=e&&typeof e!="function"&&typeof e!="symbol";break;case"muted":l.muted=e&&typeof e!="function"&&typeof e!="symbol";break;case"suppressContentEditableWarning":case"suppressHydrationWarning":case"defaultValue":case"defaultChecked":case"innerHTML":case"ref":break;case"autoFocus":break;case"xlinkHref":if(e==null||typeof e=="function"||typeof e=="boolean"||typeof e=="symbol"){l.removeAttribute("xlink:href");break}a=Ku(""+e),l.setAttributeNS("http://www.w3.org/1999/xlink","xlink:href",a);break;case"contentEditable":case"spellCheck":case"draggable":case"value":case"autoReverse":case"externalResourcesRequired":case"focusable":case"preserveAlpha":e!=null&&typeof e!="function"&&typeof e!="symbol"?l.setAttribute(a,""+e):l.removeAttribute(a);break;case"inert":case"allowFullScreen":case"async":case"autoPlay":case"controls":case"default":case"defer":case"disabled":case"disablePictureInPicture":case"disableRemotePlayback":case"formNoValidate":case"hidden":case"loop":case"noModule":case"noValidate":case"open":case"playsInline":case"readOnly":case"required":case"reversed":case"scoped":case"seamless":case"itemScope":e&&typeof e!="function"&&typeof e!="symbol"?l.setAttribute(a,""):l.removeAttribute(a);break;case"capture":case"download":e===!0?l.setAttribute(a,""):e!==!1&&e!=null&&typeof e!="function"&&typeof e!="symbol"?l.setAttribute(a,e):l.removeAttribute(a);break;case"cols":case"rows":case"size":case"span":e!=null&&typeof e!="function"&&typeof e!="symbol"&&!isNaN(e)&&1<=e?l.setAttribute(a,e):l.removeAttribute(a);break;case"rowSpan":case"start":e==null||typeof e=="function"||typeof e=="symbol"||isNaN(e)?l.removeAttribute(a):l.setAttribute(a,e);break;case"popover":D("beforetoggle",l),D("toggle",l),Lu(l,"popover",e);break;case"xlinkActuate":ot(l,"http://www.w3.org/1999/xlink","xlink:actuate",e);break;case"xlinkArcrole":ot(l,"http://www.w3.org/1999/xlink","xlink:arcrole",e);break;case"xlinkRole":ot(l,"http://www.w3.org/1999/xlink","xlink:role",e);break;case"xlinkShow":ot(l,"http://www.w3.org/1999/xlink","xlink:show",e);break;case"xlinkTitle":ot(l,"http://www.w3.org/1999/xlink","xlink:title",e);break;case"xlinkType":ot(l,"http://www.w3.org/1999/xlink","xlink:type",e);break;case"xmlBase":ot(l,"http://www.w3.org/XML/1998/namespace","xml:base",e);break;case"xmlLang":ot(l,"http://www.w3.org/XML/1998/namespace","xml:lang",e);break;case"xmlSpace":ot(l,"http://www.w3.org/XML/1998/namespace","xml:space",e);break;case"is":Lu(l,"is",e);break;case"innerText":case"textContent":break;default:(!(2<a.length)||a[0]!=="o"&&a[0]!=="O"||a[1]!=="n"&&a[1]!=="N")&&(a=kv.get(a)||a,Lu(l,a,e))}}function Gc(l,t,a,e,u,n){switch(a){case"style":ro(l,e,n);break;case"dangerouslySetInnerHTML":if(e!=null){if(typeof e!="object"||!("__html"in e))throw Error(p(61));if(a=e.__html,a!=null){if(u.children!=null)throw Error(p(60));l.innerHTML=a}}break;case"children":typeof e=="string"?te(l,e):(typeof e=="number"||typeof e=="bigint")&&te(l,""+e);break;case"onScroll":e!=null&&D("scroll",l);break;case"onScrollEnd":e!=null&&D("scrollend",l);break;case"onClick":e!=null&&(l.onclick=pt);break;case"suppressContentEditableWarning":case"suppressHydrationWarning":case"innerHTML":case"ref":break;case"innerText":case"textContent":break;default:if(!oo.hasOwnProperty(a))l:{if(a[0]==="o"&&a[1]==="n"&&(u=a.endsWith("Capture"),t=a.slice(2,u?a.length-7:void 0),n=l[Nl]||null,n=n!=null?n[a]:null,typeof n=="function"&&l.removeEventListener(t,n,u),typeof e=="function")){typeof n!="function"&&n!==null&&(a in l?l[a]=null:l.hasAttribute(a)&&l.removeAttribute(a)),l.addEventListener(t,e,u);break l}a in l?l[a]=e:e===!0?l.setAttribute(a,""):Lu(l,a,e)}}}function hl(l,t,a){switch(t){case"div":case"span":case"svg":case"path":case"a":case"g":case"p":case"li":break;case"img":D("error",l),D("load",l);var e=!1,u=!1,n;for(n in a)if(a.hasOwnProperty(n)){var i=a[n];if(i!=null)switch(n){case"src":e=!0;break;case"srcSet":u=!0;break;case"children":case"dangerouslySetInnerHTML":throw Error(p(137,t));default:x(l,t,n,i,a,null)}}u&&x(l,t,"srcSet",a.srcSet,a,null),e&&x(l,t,"src",a.src,a,null);return;case"input":D("invalid",l);var c=n=i=u=null,f=null,m=null;for(e in a)if(a.hasOwnProperty(e)){var g=a[e];if(g!=null)switch(e){case"name":u=g;break;case"type":i=g;break;case"checked":f=g;break;case"defaultChecked":m=g;break;case"value":n=g;break;case"defaultValue":c=g;break;case"children":case"dangerouslySetInnerHTML":if(g!=null)throw Error(p(137,t));break;default:x(l,t,e,g,a,null)}}yo(l,n,c,f,m,i,u,!1);return;case"select":D("invalid",l),e=i=n=null;for(u in a)if(a.hasOwnProperty(u)&&(c=a[u],c!=null))switch(u){case"value":n=c;break;case"defaultValue":i=c;break;case"multiple":e=c;default:x(l,t,u,c,a,null)}t=n,a=i,l.multiple=!!e,t!=null?wa(l,!!e,t,!1):a!=null&&wa(l,!!e,a,!0);return;case"textarea":D("invalid",l),n=u=e=null;for(i in a)if(a.hasOwnProperty(i)&&(c=a[i],c!=null))switch(i){case"value":e=c;break;case"defaultValue":u=c;break;case"children":n=c;break;case"dangerouslySetInnerHTML":if(c!=null)throw Error(p(91));break;default:x(l,t,i,c,a,null)}go(l,e,u,n);return;case"option":for(f in a)a.hasOwnProperty(f)&&(e=a[f],e!=null)&&(f==="selected"?l.selected=e&&typeof e!="function"&&typeof e!="symbol":x(l,t,f,e,a,null));return;case"dialog":D("beforetoggle",l),D("toggle",l),D("cancel",l),D("close",l);break;case"iframe":case"object":D("load",l);break;case"video":case"audio":for(e=0;e<au.length;e++)D(au[e],l);break;case"image":D("error",l),D("load",l);break;case"details":D("toggle",l);break;case"embed":case"source":case"link":D("error",l),D("load",l);case"area":case"base":case"br":case"col":case"hr":case"keygen":case"meta":case"param":case"track":case"wbr":case"menuitem":for(m in a)if(a.hasOwnProperty(m)&&(e=a[m],e!=null))switch(m){case"children":case"dangerouslySetInnerHTML":throw Error(p(137,t));default:x(l,t,m,e,a,null)}return;default:if(Pc(t)){for(g in a)a.hasOwnProperty(g)&&(e=a[g],e!==void 0&&Gc(l,t,g,e,a,void 0));return}}for(c in a)a.hasOwnProperty(c)&&(e=a[c],e!=null&&x(l,t,c,e,a,null))}function A1(l,t,a,e){switch(t){case"div":case"span":case"svg":case"path":case"a":case"g":case"p":case"li":break;case"input":var u=null,n=null,i=null,c=null,f=null,m=null,g=null;for(h in a){var r=a[h];if(a.hasOwnProperty(h)&&r!=null)switch(h){case"checked":break;case"value":break;case"defaultValue":f=r;default:e.hasOwnProperty(h)||x(l,t,h,null,e,r)}}for(var y in e){var h=e[y];if(r=a[y],e.hasOwnProperty(y)&&(h!=null||r!=null))switch(y){case"type":n=h;break;case"name":u=h;break;case"checked":m=h;break;case"defaultChecked":g=h;break;case"value":i=h;break;case"defaultValue":c=h;break;case"children":case"dangerouslySetInnerHTML":if(h!=null)throw Error(p(137,t));break;default:h!==r&&x(l,t,y,h,e,r)}}fc(l,i,c,f,m,g,n,u);return;case"select":h=i=c=y=null;for(n in a)if(f=a[n],a.hasOwnProperty(n)&&f!=null)switch(n){case"value":break;case"multiple":h=f;default:e.hasOwnProperty(n)||x(l,t,n,null,e,f)}for(u in e)if(n=e[u],f=a[u],e.hasOwnProperty(u)&&(n!=null||f!=null))switch(u){case"value":y=n;break;case"defaultValue":c=n;break;case"multiple":i=n;default:n!==f&&x(l,t,u,n,e,f)}t=c,a=i,e=h,y!=null?wa(l,!!a,y,!1):!!e!=!!a&&(t!=null?wa(l,!!a,t,!0):wa(l,!!a,a?[]:"",!1));return;case"textarea":h=y=null;for(c in a)if(u=a[c],a.hasOwnProperty(c)&&u!=null&&!e.hasOwnProperty(c))switch(c){case"value":break;case"children":break;default:x(l,t,c,null,e,u)}for(i in e)if(u=e[i],n=a[i],e.hasOwnProperty(i)&&(u!=null||n!=null))switch(i){case"value":y=u;break;case"defaultValue":h=u;break;case"children":break;case"dangerouslySetInnerHTML":if(u!=null)throw Error(p(91));break;default:u!==n&&x(l,t,i,u,e,n)}ho(l,y,h);return;case"option":for(var S in a)y=a[S],a.hasOwnProperty(S)&&y!=null&&!e.hasOwnProperty(S)&&(S==="selected"?l.selected=!1:x(l,t,S,null,e,y));for(f in e)y=e[f],h=a[f],e.hasOwnProperty(f)&&y!==h&&(y!=null||h!=null)&&(f==="selected"?l.selected=y&&typeof y!="function"&&typeof y!="symbol":x(l,t,f,y,e,h));return;case"img":case"link":case"area":case"base":case"br":case"col":case"embed":case"hr":case"keygen":case"meta":case"param":case"source":case"track":case"wbr":case"menuitem":for(var T in a)y=a[T],a.hasOwnProperty(T)&&y!=null&&!e.hasOwnProperty(T)&&x(l,t,T,null,e,y);for(m in e)if(y=e[m],h=a[m],e.hasOwnProperty(m)&&y!==h&&(y!=null||h!=null))switch(m){case"children":case"dangerouslySetInnerHTML":if(y!=null)throw Error(p(137,t));break;default:x(l,t,m,y,e,h)}return;default:if(Pc(t)){for(var B in a)y=a[B],a.hasOwnProperty(B)&&y!==void 0&&!e.hasOwnProperty(B)&&Gc(l,t,B,void 0,e,y);for(g in e)y=e[g],h=a[g],!e.hasOwnProperty(g)||y===h||y===void 0&&h===void 0||Gc(l,t,g,y,e,h);return}}for(var o in a)y=a[o],a.hasOwnProperty(o)&&y!=null&&!e.hasOwnProperty(o)&&x(l,t,o,null,e,y);for(r in e)y=e[r],h=a[r],!e.hasOwnProperty(r)||y===h||y==null&&h==null||x(l,t,r,y,e,h)}function Dd(l){switch(l){case"css":case"script":case"font":case"img":case"image":case"input":case"link":return!0;default:return!1}}function T1(){if(typeof performance.getEntriesByType=="function"){for(var l=0,t=0,a=performance.getEntriesByType("resource"),e=0;e<a.length;e++){var u=a[e],n=u.transferSize,i=u.initiatorType,c=u.duration;if(n&&c&&Dd(i)){for(i=0,c=u.responseEnd,e+=1;e<a.length;e++){var f=a[e],m=f.startTime;if(m>c)break;var g=f.transferSize,r=f.initiatorType;g&&Dd(r)&&(f=f.responseEnd,i+=g*(f<c?1:(c-m)/(f-m)))}if(--e,t+=8*(n+i)/(u.duration/1e3),l++,10<l)break}}if(0<l)return t/l/1e6}return navigator.connection&&(l=navigator.connection.downlink,typeof l=="number")?l:5}var Xc=null,Qc=null;function Rn(l){return l.nodeType===9?l:l.ownerDocument}function Ud(l){switch(l){case"http://www.w3.org/2000/svg":return 1;case"http://www.w3.org/1998/Math/MathML":return 2;default:return 0}}function zm(l,t){if(l===0)switch(t){case"svg":return 1;case"math":return 2;default:return 0}return l===1&&t==="foreignObject"?0:l}function xc(l,t){return l==="textarea"||l==="noscript"||typeof t.children=="string"||typeof t.children=="number"||typeof t.children=="bigint"||typeof t.dangerouslySetInnerHTML=="object"&&t.dangerouslySetInnerHTML!==null&&t.dangerouslySetInnerHTML.__html!=null}var $i=null;function E1(){var l=window.event;return l&&l.type==="popstate"?l===$i?!1:($i=l,!0):($i=null,!1)}var Am=typeof setTimeout=="function"?setTimeout:void 0,M1=typeof clearTimeout=="function"?clearTimeout:void 0,Cd=typeof Promise=="function"?Promise:void 0,O1=typeof queueMicrotask=="function"?queueMicrotask:typeof Cd<"u"?function(l){return Cd.resolve(null).then(l).catch(N1)}:Am;function N1(l){setTimeout(function(){throw l})}function ea(l){return l==="head"}function Hd(l,t){var a=t,e=0;do{var u=a.nextSibling;if(l.removeChild(a),u&&u.nodeType===8)if(a=u.data,a==="/$"||a==="/&"){if(e===0){l.removeChild(u),se(t);return}e--}else if(a==="$"||a==="$?"||a==="$~"||a==="$!"||a==="&")e++;else if(a==="html")Je(l.ownerDocument.documentElement);else if(a==="head"){a=l.ownerDocument.head,Je(a);for(var n=a.firstChild;n;){var i=n.nextSibling,c=n.nodeName;n[ou]||c==="SCRIPT"||c==="STYLE"||c==="LINK"&&n.rel.toLowerCase()==="stylesheet"||a.removeChild(n),n=i}}else a==="body"&&Je(l.ownerDocument.body);a=u}while(a);se(t)}function Bd(l,t){var a=l;l=0;do{var e=a.nextSibling;if(a.nodeType===1?t?(a._stashedDisplay=a.style.display,a.style.display="none"):(a.style.display=a._stashedDisplay||"",a.getAttribute("style")===""&&a.removeAttribute("style")):a.nodeType===3&&(t?(a._stashedText=a.nodeValue,a.nodeValue=""):a.nodeValue=a._stashedText||""),e&&e.nodeType===8)if(a=e.data,a==="/$"){if(l===0)break;l--}else a!=="$"&&a!=="$?"&&a!=="$~"&&a!=="$!"||l++;a=e}while(a)}function jc(l){var t=l.firstChild;for(t&&t.nodeType===10&&(t=t.nextSibling);t;){var a=t;switch(t=t.nextSibling,a.nodeName){case"HTML":case"HEAD":case"BODY":jc(a),Ic(a);continue;case"SCRIPT":case"STYLE":continue;case"LINK":if(a.rel.toLowerCase()==="stylesheet")continue}l.removeChild(a)}}function _1(l,t,a,e){for(;l.nodeType===1;){var u=a;if(l.nodeName.toLowerCase()!==t.toLowerCase()){if(!e&&(l.nodeName!=="INPUT"||l.type!=="hidden"))break}else if(e){if(!l[ou])switch(t){case"meta":if(!l.hasAttribute("itemprop"))break;return l;case"link":if(n=l.getAttribute("rel"),n==="stylesheet"&&l.hasAttribute("data-precedence"))break;if(n!==u.rel||l.getAttribute("href")!==(u.href==null||u.href===""?null:u.href)||l.getAttribute("crossorigin")!==(u.crossOrigin==null?null:u.crossOrigin)||l.getAttribute("title")!==(u.title==null?null:u.title))break;return l;case"style":if(l.hasAttribute("data-precedence"))break;return l;case"script":if(n=l.getAttribute("src"),(n!==(u.src==null?null:u.src)||l.getAttribute("type")!==(u.type==null?null:u.type)||l.getAttribute("crossorigin")!==(u.crossOrigin==null?null:u.crossOrigin))&&n&&l.hasAttribute("async")&&!l.hasAttribute("itemprop"))break;return l;default:return l}}else if(t==="input"&&l.type==="hidden"){var n=u.name==null?null:""+u.name;if(u.type==="hidden"&&l.getAttribute("name")===n)return l}else return l;if(l=$l(l.nextSibling),l===null)break}return null}function R1(l,t,a){if(t==="")return null;for(;l.nodeType!==3;)if((l.nodeType!==1||l.nodeName!=="INPUT"||l.type!=="hidden")&&!a||(l=$l(l.nextSibling),l===null))return null;return l}function Tm(l,t){for(;l.nodeType!==8;)if((l.nodeType!==1||l.nodeName!=="INPUT"||l.type!=="hidden")&&!t||(l=$l(l.nextSibling),l===null))return null;return l}function Vc(l){return l.data==="$?"||l.data==="$~"}function Zc(l){return l.data==="$!"||l.data==="$?"&&l.ownerDocument.readyState!=="loading"}function D1(l,t){var a=l.ownerDocument;if(l.data==="$~")l._reactRetry=t;else if(l.data!=="$?"||a.readyState!=="loading")t();else{var e=function(){t(),a.removeEventListener("DOMContentLoaded",e)};a.addEventListener("DOMContentLoaded",e),l._reactRetry=e}}function $l(l){for(;l!=null;l=l.nextSibling){var t=l.nodeType;if(t===1||t===3)break;if(t===8){if(t=l.data,t==="$"||t==="$!"||t==="$?"||t==="$~"||t==="&"||t==="F!"||t==="F")break;if(t==="/$"||t==="/&")return null}}return l}var Lc=null;function qd(l){l=l.nextSibling;for(var t=0;l;){if(l.nodeType===8){var a=l.data;if(a==="/$"||a==="/&"){if(t===0)return $l(l.nextSibling);t--}else a!=="$"&&a!=="$!"&&a!=="$?"&&a!=="$~"&&a!=="&"||t++}l=l.nextSibling}return null}function Yd(l){l=l.previousSibling;for(var t=0;l;){if(l.nodeType===8){var a=l.data;if(a==="$"||a==="$!"||a==="$?"||a==="$~"||a==="&"){if(t===0)return l;t--}else a!=="/$"&&a!=="/&"||t++}l=l.previousSibling}return null}function Em(l,t,a){switch(t=Rn(a),l){case"html":if(l=t.documentElement,!l)throw Error(p(452));return l;case"head":if(l=t.head,!l)throw Error(p(453));return l;case"body":if(l=t.body,!l)throw Error(p(454));return l;default:throw Error(p(451))}}function Je(l){for(var t=l.attributes;t.length;)l.removeAttributeNode(t[0]);Ic(l)}var kl=new Map,Gd=new Set;function Dn(l){return typeof l.getRootNode=="function"?l.getRootNode():l.nodeType===9?l:l.ownerDocument}var Rt=G.d;G.d={f:U1,r:C1,D:H1,C:B1,L:q1,m:Y1,X:X1,S:G1,M:Q1};function U1(){var l=Rt.f(),t=wn();return l||t}function C1(l){var t=oe(l);t!==null&&t.tag===5&&t.type==="form"?r0(t):Rt.r(l)}var he=typeof document>"u"?null:document;function Mm(l,t,a){var e=he;if(e&&typeof t=="string"&&t){var u=Jl(t);u='link[rel="'+l+'"][href="'+u+'"]',typeof a=="string"&&(u+='[crossorigin="'+a+'"]'),Gd.has(u)||(Gd.add(u),l={rel:l,crossOrigin:a,href:t},e.querySelector(u)===null&&(t=e.createElement("link"),hl(t,"link",l),sl(t),e.head.appendChild(t)))}}function H1(l){Rt.D(l),Mm("dns-prefetch",l,null)}function B1(l,t){Rt.C(l,t),Mm("preconnect",l,t)}function q1(l,t,a){Rt.L(l,t,a);var e=he;if(e&&l&&t){var u='link[rel="preload"][as="'+Jl(t)+'"]';t==="image"&&a&&a.imageSrcSet?(u+='[imagesrcset="'+Jl(a.imageSrcSet)+'"]',typeof a.imageSizes=="string"&&(u+='[imagesizes="'+Jl(a.imageSizes)+'"]')):u+='[href="'+Jl(l)+'"]';var n=u;switch(t){case"style":n=fe(l);break;case"script":n=ge(l)}kl.has(n)||(l=F({rel:"preload",href:t==="image"&&a&&a.imageSrcSet?void 0:l,as:t},a),kl.set(n,l),e.querySelector(u)!==null||t==="style"&&e.querySelector(ru(n))||t==="script"&&e.querySelector(bu(n))||(t=e.createElement("link"),hl(t,"link",l),sl(t),e.head.appendChild(t)))}}function Y1(l,t){Rt.m(l,t);var a=he;if(a&&l){var e=t&&typeof t.as=="string"?t.as:"script",u='link[rel="modulepreload"][as="'+Jl(e)+'"][href="'+Jl(l)+'"]',n=u;switch(e){case"audioworklet":case"paintworklet":case"serviceworker":case"sharedworker":case"worker":case"script":n=ge(l)}if(!kl.has(n)&&(l=F({rel:"modulepreload",href:l},t),kl.set(n,l),a.querySelector(u)===null)){switch(e){case"audioworklet":case"paintworklet":case"serviceworker":case"sharedworker":case"worker":case"script":if(a.querySelector(bu(n)))return}e=a.createElement("link"),hl(e,"link",l),sl(e),a.head.appendChild(e)}}}function G1(l,t,a){Rt.S(l,t,a);var e=he;if(e&&l){var u=Ja(e).hoistableStyles,n=fe(l);t=t||"default";var i=u.get(n);if(!i){var c={loading:0,preload:null};if(i=e.querySelector(ru(n)))c.loading=5;else{l=F({rel:"stylesheet",href:l,"data-precedence":t},a),(a=kl.get(n))&&Xf(l,a);var f=i=e.createElement("link");sl(f),hl(f,"link",l),f._p=new Promise(function(m,g){f.onload=m,f.onerror=g}),f.addEventListener("load",function(){c.loading|=1}),f.addEventListener("error",function(){c.loading|=2}),c.loading|=4,tn(i,t,e)}i={type:"stylesheet",instance:i,count:1,state:c},u.set(n,i)}}}function X1(l,t){Rt.X(l,t);var a=he;if(a&&l){var e=Ja(a).hoistableScripts,u=ge(l),n=e.get(u);n||(n=a.querySelector(bu(u)),n||(l=F({src:l,async:!0},t),(t=kl.get(u))&&Qf(l,t),n=a.createElement("script"),sl(n),hl(n,"link",l),a.head.appendChild(n)),n={type:"script",instance:n,count:1,state:null},e.set(u,n))}}function Q1(l,t){Rt.M(l,t);var a=he;if(a&&l){var e=Ja(a).hoistableScripts,u=ge(l),n=e.get(u);n||(n=a.querySelector(bu(u)),n||(l=F({src:l,async:!0,type:"module"},t),(t=kl.get(u))&&Qf(l,t),n=a.createElement("script"),sl(n),hl(n,"link",l),a.head.appendChild(n)),n={type:"script",instance:n,count:1,state:null},e.set(u,n))}}function Xd(l,t,a,e){var u=(u=Zt.current)?Dn(u):null;if(!u)throw Error(p(446));switch(l){case"meta":case"title":return null;case"style":return typeof a.precedence=="string"&&typeof a.href=="string"?(t=fe(a.href),a=Ja(u).hoistableStyles,e=a.get(t),e||(e={type:"style",instance:null,count:0,state:null},a.set(t,e)),e):{type:"void",instance:null,count:0,state:null};case"link":if(a.rel==="stylesheet"&&typeof a.href=="string"&&typeof a.precedence=="string"){l=fe(a.href);var n=Ja(u).hoistableStyles,i=n.get(l);if(i||(u=u.ownerDocument||u,i={type:"stylesheet",instance:null,count:0,state:{loading:0,preload:null}},n.set(l,i),(n=u.querySelector(ru(l)))&&!n._p&&(i.instance=n,i.state.loading=5),kl.has(l)||(a={rel:"preload",as:"style",href:a.href,crossOrigin:a.crossOrigin,integrity:a.integrity,media:a.media,hrefLang:a.hrefLang,referrerPolicy:a.referrerPolicy},kl.set(l,a),n||x1(u,l,a,i.state))),t&&e===null)throw Error(p(528,""));return i}if(t&&e!==null)throw Error(p(529,""));return null;case"script":return t=a.async,a=a.src,typeof a=="string"&&t&&typeof t!="function"&&typeof t!="symbol"?(t=ge(a),a=Ja(u).hoistableScripts,e=a.get(t),e||(e={type:"script",instance:null,count:0,state:null},a.set(t,e)),e):{type:"void",instance:null,count:0,state:null};default:throw Error(p(444,l))}}function fe(l){return'href="'+Jl(l)+'"'}function ru(l){return'link[rel="stylesheet"]['+l+"]"}function Om(l){return F({},l,{"data-precedence":l.precedence,precedence:null})}function x1(l,t,a,e){l.querySelector('link[rel="preload"][as="style"]['+t+"]")?e.loading=1:(t=l.createElement("link"),e.preload=t,t.addEventListener("load",function(){return e.loading|=1}),t.addEventListener("error",function(){return e.loading|=2}),hl(t,"link",a),sl(t),l.head.appendChild(t))}function ge(l){return'[src="'+Jl(l)+'"]'}function bu(l){return"script[async]"+l}function Qd(l,t,a){if(t.count++,t.instance===null)switch(t.type){case"style":var e=l.querySelector('style[data-href~="'+Jl(a.href)+'"]');if(e)return t.instance=e,sl(e),e;var u=F({},a,{"data-href":a.href,"data-precedence":a.precedence,href:null,precedence:null});return e=(l.ownerDocument||l).createElement("style"),sl(e),hl(e,"style",u),tn(e,a.precedence,l),t.instance=e;case"stylesheet":u=fe(a.href);var n=l.querySelector(ru(u));if(n)return t.state.loading|=4,t.instance=n,sl(n),n;e=Om(a),(u=kl.get(u))&&Xf(e,u),n=(l.ownerDocument||l).createElement("link"),sl(n);var i=n;return i._p=new Promise(function(c,f){i.onload=c,i.onerror=f}),hl(n,"link",e),t.state.loading|=4,tn(n,a.precedence,l),t.instance=n;case"script":return n=ge(a.src),(u=l.querySelector(bu(n)))?(t.instance=u,sl(u),u):(e=a,(u=kl.get(n))&&(e=F({},a),Qf(e,u)),l=l.ownerDocument||l,u=l.createElement("script"),sl(u),hl(u,"link",e),l.head.appendChild(u),t.instance=u);case"void":return null;default:throw Error(p(443,t.type))}else t.type==="stylesheet"&&(t.state.loading&4)===0&&(e=t.instance,t.state.loading|=4,tn(e,a.precedence,l));return t.instance}function tn(l,t,a){for(var e=a.querySelectorAll('link[rel="stylesheet"][data-precedence],style[data-precedence]'),u=e.length?e[e.length-1]:null,n=u,i=0;i<e.length;i++){var c=e[i];if(c.dataset.precedence===t)n=c;else if(n!==u)break}n?n.parentNode.insertBefore(l,n.nextSibling):(t=a.nodeType===9?a.head:a,t.insertBefore(l,t.firstChild))}function Xf(l,t){l.crossOrigin==null&&(l.crossOrigin=t.crossOrigin),l.referrerPolicy==null&&(l.referrerPolicy=t.referrerPolicy),l.title==null&&(l.title=t.title)}function Qf(l,t){l.crossOrigin==null&&(l.crossOrigin=t.crossOrigin),l.referrerPolicy==null&&(l.referrerPolicy=t.referrerPolicy),l.integrity==null&&(l.integrity=t.integrity)}var an=null;function xd(l,t,a){if(an===null){var e=new Map,u=an=new Map;u.set(a,e)}else u=an,e=u.get(a),e||(e=new Map,u.set(a,e));if(e.has(l))return e;for(e.set(l,null),a=a.getElementsByTagName(l),u=0;u<a.length;u++){var n=a[u];if(!(n[ou]||n[ml]||l==="link"&&n.getAttribute("rel")==="stylesheet")&&n.namespaceURI!=="http://www.w3.org/2000/svg"){var i=n.getAttribute(t)||"";i=l+i;var c=e.get(i);c?c.push(n):e.set(i,[n])}}return e}function jd(l,t,a){l=l.ownerDocument||l,l.head.insertBefore(a,t==="title"?l.querySelector("head > title"):null)}function j1(l,t,a){if(a===1||t.itemProp!=null)return!1;switch(l){case"meta":case"title":return!0;case"style":if(typeof t.precedence!="string"||typeof t.href!="string"||t.href==="")break;return!0;case"link":if(typeof t.rel!="string"||typeof t.href!="string"||t.href===""||t.onLoad||t.onError)break;return t.rel==="stylesheet"?(l=t.disabled,typeof t.precedence=="string"&&l==null):!0;case"script":if(t.async&&typeof t.async!="function"&&typeof t.async!="symbol"&&!t.onLoad&&!t.onError&&t.src&&typeof t.src=="string")return!0}return!1}function Nm(l){return!(l.type==="stylesheet"&&(l.state.loading&3)===0)}function V1(l,t,a,e){if(a.type==="stylesheet"&&(typeof e.media!="string"||matchMedia(e.media).matches!==!1)&&(a.state.loading&4)===0){if(a.instance===null){var u=fe(e.href),n=t.querySelector(ru(u));if(n){t=n._p,t!==null&&typeof t=="object"&&typeof t.then=="function"&&(l.count++,l=Un.bind(l),t.then(l,l)),a.state.loading|=4,a.instance=n,sl(n);return}n=t.ownerDocument||t,e=Om(e),(u=kl.get(u))&&Xf(e,u),n=n.createElement("link"),sl(n);var i=n;i._p=new Promise(function(c,f){i.onload=c,i.onerror=f}),hl(n,"link",e),a.instance=n}l.stylesheets===null&&(l.stylesheets=new Map),l.stylesheets.set(a,t),(t=a.state.preload)&&(a.state.loading&3)===0&&(l.count++,a=Un.bind(l),t.addEventListener("load",a),t.addEventListener("error",a))}}var ki=0;function Z1(l,t){return l.stylesheets&&l.count===0&&en(l,l.stylesheets),0<l.count||0<l.imgCount?function(a){var e=setTimeout(function(){if(l.stylesheets&&en(l,l.stylesheets),l.unsuspend){var n=l.unsuspend;l.unsuspend=null,n()}},6e4+t);0<l.imgBytes&&ki===0&&(ki=62500*T1());var u=setTimeout(function(){if(l.waitingForImages=!1,l.count===0&&(l.stylesheets&&en(l,l.stylesheets),l.unsuspend)){var n=l.unsuspend;l.unsuspend=null,n()}},(l.imgBytes>ki?50:800)+t);return l.unsuspend=a,function(){l.unsuspend=null,clearTimeout(e),clearTimeout(u)}}:null}function Un(){if(this.count--,this.count===0&&(this.imgCount===0||!this.waitingForImages)){if(this.stylesheets)en(this,this.stylesheets);else if(this.unsuspend){var l=this.unsuspend;this.unsuspend=null,l()}}}var Cn=null;function en(l,t){l.stylesheets=null,l.unsuspend!==null&&(l.count++,Cn=new Map,t.forEach(L1,l),Cn=null,Un.call(l))}function L1(l,t){if(!(t.state.loading&4)){var a=Cn.get(l);if(a)var e=a.get(null);else{a=new Map,Cn.set(l,a);for(var u=l.querySelectorAll("link[data-precedence],style[data-precedence]"),n=0;n<u.length;n++){var i=u[n];(i.nodeName==="LINK"||i.getAttribute("media")!=="not all")&&(a.set(i.dataset.precedence,i),e=i)}e&&a.set(null,e)}u=t.instance,i=u.getAttribute("data-precedence"),n=a.get(i)||e,n===e&&a.set(null,u),a.set(i,u),this.count++,e=Un.bind(this),u.addEventListener("load",e),u.addEventListener("error",e),n?n.parentNode.insertBefore(u,n.nextSibling):(l=l.nodeType===9?l.head:l,l.insertBefore(u,l.firstChild)),t.state.loading|=4}}var uu={$$typeof:bt,Provider:null,Consumer:null,_currentValue:da,_currentValue2:da,_threadCount:0};function K1(l,t,a,e,u,n,i,c,f){this.tag=1,this.containerInfo=l,this.pingCache=this.current=this.pendingChildren=null,this.timeoutHandle=-1,this.callbackNode=this.next=this.pendingContext=this.context=this.cancelPendingCommit=null,this.callbackPriority=0,this.expirationTimes=Ti(-1),this.entangledLanes=this.shellSuspendCounter=this.errorRecoveryDisabledLanes=this.expiredLanes=this.warmLanes=this.pingedLanes=this.suspendedLanes=this.pendingLanes=0,this.entanglements=Ti(0),this.hiddenUpdates=Ti(null),this.identifierPrefix=e,this.onUncaughtError=u,this.onCaughtError=n,this.onRecoverableError=i,this.pooledCache=null,this.pooledCacheLanes=0,this.formState=f,this.incompleteTransitions=new Map}function _m(l,t,a,e,u,n,i,c,f,m,g,r){return l=new K1(l,t,a,i,f,m,g,r,c),t=1,n===!0&&(t|=24),n=Hl(3,null,null,t),l.current=n,n.stateNode=l,t=of(),t.refCount++,l.pooledCache=t,t.refCount++,n.memoizedState={element:e,isDehydrated:a,cache:t},yf(n),l}function Rm(l){return l?(l=Va,l):Va}function Dm(l,t,a,e,u,n){u=Rm(u),e.context===null?e.context=u:e.pendingContext=u,e=Kt(t),e.payload={element:a},n=n===void 0?null:n,n!==null&&(e.callback=n),a=Jt(l,e,t),a!==null&&(Ol(a,l,t),Xe(a,l,t))}function Vd(l,t){if(l=l.memoizedState,l!==null&&l.dehydrated!==null){var a=l.retryLane;l.retryLane=a!==0&&a<t?a:t}}function xf(l,t){Vd(l,t),(l=l.alternate)&&Vd(l,t)}function Um(l){if(l.tag===13||l.tag===31){var t=Ta(l,67108864);t!==null&&Ol(t,l,67108864),xf(l,67108864)}}function Zd(l){if(l.tag===13||l.tag===31){var t=Xl();t=$c(t);var a=Ta(l,t);a!==null&&Ol(a,l,t),xf(l,t)}}var Hn=!0;function J1(l,t,a,e){var u=E.T;E.T=null;var n=G.p;try{G.p=2,jf(l,t,a,e)}finally{G.p=n,E.T=u}}function w1(l,t,a,e){var u=E.T;E.T=null;var n=G.p;try{G.p=8,jf(l,t,a,e)}finally{G.p=n,E.T=u}}function jf(l,t,a,e){if(Hn){var u=Kc(e);if(u===null)Wi(l,t,e,Bn,a),Ld(l,e);else if(W1(u,l,t,a,e))e.stopPropagation();else if(Ld(l,e),t&4&&-1<F1.indexOf(l)){for(;u!==null;){var n=oe(u);if(n!==null)switch(n.tag){case 3:if(n=n.stateNode,n.current.memoizedState.isDehydrated){var i=ca(n.pendingLanes);if(i!==0){var c=n;for(c.pendingLanes|=2,c.entangledLanes|=2;i;){var f=1<<31-Gl(i);c.entanglements[1]|=f,i&=~f}st(n),(Y&6)===0&&(Tn=ql()+500,gu(0,!1))}}break;case 31:case 13:c=Ta(n,2),c!==null&&Ol(c,n,2),wn(),xf(n,2)}if(n=Kc(e),n===null&&Wi(l,t,e,Bn,a),n===u)break;u=n}u!==null&&e.stopPropagation()}else Wi(l,t,e,null,a)}}function Kc(l){return l=lf(l),Vf(l)}var Bn=null;function Vf(l){if(Bn=null,l=Ya(l),l!==null){var t=cu(l);if(t===null)l=null;else{var a=t.tag;if(a===13){if(l=$d(t),l!==null)return l;l=null}else if(a===31){if(l=kd(t),l!==null)return l;l=null}else if(a===3){if(t.stateNode.current.memoizedState.isDehydrated)return t.tag===3?t.stateNode.containerInfo:null;l=null}else t!==l&&(l=null)}}return Bn=l,null}function Cm(l){switch(l){case"beforetoggle":case"cancel":case"click":case"close":case"contextmenu":case"copy":case"cut":case"auxclick":case"dblclick":case"dragend":case"dragstart":case"drop":case"focusin":case"focusout":case"input":case"invalid":case"keydown":case"keypress":case"keyup":case"mousedown":case"mouseup":case"paste":case"pause":case"play":case"pointercancel":case"pointerdown":case"pointerup":case"ratechange":case"reset":case"resize":case"seeked":case"submit":case"toggle":case"touchcancel":case"touchend":case"touchstart":case"volumechange":case"change":case"selectionchange":case"textInput":case"compositionstart":case"compositionend":case"compositionupdate":case"beforeblur":case"afterblur":case"beforeinput":case"blur":case"fullscreenchange":case"focus":case"hashchange":case"popstate":case"select":case"selectstart":return 2;case"drag":case"dragenter":case"dragexit":case"dragleave":case"dragover":case"mousemove":case"mouseout":case"mouseover":case"pointermove":case"pointerout":case"pointerover":case"scroll":case"touchmove":case"wheel":case"mouseenter":case"mouseleave":case"pointerenter":case"pointerleave":return 8;case"message":switch(qv()){case to:return 2;case ao:return 8;case sn:case Yv:return 32;case eo:return 268435456;default:return 32}default:return 32}}var Jc=!1,Wt=null,$t=null,kt=null,nu=new Map,iu=new Map,Gt=[],F1="mousedown mouseup touchcancel touchend touchstart auxclick dblclick pointercancel pointerdown pointerup dragend dragstart drop compositionend compositionstart keydown keypress keyup input textInput copy cut paste click change contextmenu reset".split(" ");function Ld(l,t){switch(l){case"focusin":case"focusout":Wt=null;break;case"dragenter":case"dragleave":$t=null;break;case"mouseover":case"mouseout":kt=null;break;case"pointerover":case"pointerout":nu.delete(t.pointerId);break;case"gotpointercapture":case"lostpointercapture":iu.delete(t.pointerId)}}function Ne(l,t,a,e,u,n){return l===null||l.nativeEvent!==n?(l={blockedOn:t,domEventName:a,eventSystemFlags:e,nativeEvent:n,targetContainers:[u]},t!==null&&(t=oe(t),t!==null&&Um(t)),l):(l.eventSystemFlags|=e,t=l.targetContainers,u!==null&&t.indexOf(u)===-1&&t.push(u),l)}function W1(l,t,a,e,u){switch(t){case"focusin":return Wt=Ne(Wt,l,t,a,e,u),!0;case"dragenter":return $t=Ne($t,l,t,a,e,u),!0;case"mouseover":return kt=Ne(kt,l,t,a,e,u),!0;case"pointerover":var n=u.pointerId;return nu.set(n,Ne(nu.get(n)||null,l,t,a,e,u)),!0;case"gotpointercapture":return n=u.pointerId,iu.set(n,Ne(iu.get(n)||null,l,t,a,e,u)),!0}return!1}function Hm(l){var t=Ya(l.target);if(t!==null){var a=cu(t);if(a!==null){if(t=a.tag,t===13){if(t=$d(a),t!==null){l.blockedOn=t,Ns(l.priority,function(){Zd(a)});return}}else if(t===31){if(t=kd(a),t!==null){l.blockedOn=t,Ns(l.priority,function(){Zd(a)});return}}else if(t===3&&a.stateNode.current.memoizedState.isDehydrated){l.blockedOn=a.tag===3?a.stateNode.containerInfo:null;return}}}l.blockedOn=null}function un(l){if(l.blockedOn!==null)return!1;for(var t=l.targetContainers;0<t.length;){var a=Kc(l.nativeEvent);if(a===null){a=l.nativeEvent;var e=new a.constructor(a.type,a);dc=e,a.target.dispatchEvent(e),dc=null}else return t=oe(a),t!==null&&Um(t),l.blockedOn=a,!1;t.shift()}return!0}function Kd(l,t,a){un(l)&&a.delete(t)}function $1(){Jc=!1,Wt!==null&&un(Wt)&&(Wt=null),$t!==null&&un($t)&&($t=null),kt!==null&&un(kt)&&(kt=null),nu.forEach(Kd),iu.forEach(Kd)}function Vu(l,t){l.blockedOn===t&&(l.blockedOn=null,Jc||(Jc=!0,il.unstable_scheduleCallback(il.unstable_NormalPriority,$1)))}var Zu=null;function Jd(l){Zu!==l&&(Zu=l,il.unstable_scheduleCallback(il.unstable_NormalPriority,function(){Zu===l&&(Zu=null);for(var t=0;t<l.length;t+=3){var a=l[t],e=l[t+1],u=l[t+2];if(typeof e!="function"){if(Vf(e||a)===null)continue;break}var n=oe(a);n!==null&&(l.splice(t,3),t-=3,Oc(n,{pending:!0,data:u,method:a.method,action:e},e,u))}}))}function se(l){function t(f){return Vu(f,l)}Wt!==null&&Vu(Wt,l),$t!==null&&Vu($t,l),kt!==null&&Vu(kt,l),nu.forEach(t),iu.forEach(t);for(var a=0;a<Gt.length;a++){var e=Gt[a];e.blockedOn===l&&(e.blockedOn=null)}for(;0<Gt.length&&(a=Gt[0],a.blockedOn===null);)Hm(a),a.blockedOn===null&&Gt.shift();if(a=(l.ownerDocument||l).$$reactFormReplay,a!=null)for(e=0;e<a.length;e+=3){var u=a[e],n=a[e+1],i=u[Nl]||null;if(typeof n=="function")i||Jd(a);else if(i){var c=null;if(n&&n.hasAttribute("formAction")){if(u=n,i=n[Nl]||null)c=i.formAction;else if(Vf(u)!==null)continue}else c=i.action;typeof c=="function"?a[e+1]=c:(a.splice(e,3),e-=3),Jd(a)}}}function Bm(){function l(n){n.canIntercept&&n.info==="react-transition"&&n.intercept({handler:function(){return new Promise(function(i){return u=i})},focusReset:"manual",scroll:"manual"})}function t(){u!==null&&(u(),u=null),e||setTimeout(a,20)}function a(){if(!e&&!navigation.transition){var n=navigation.currentEntry;n&&n.url!=null&&navigation.navigate(n.url,{state:n.getState(),info:"react-transition",history:"replace"})}}if(typeof navigation=="object"){var e=!1,u=null;return navigation.addEventListener("navigate",l),navigation.addEventListener("navigatesuccess",t),navigation.addEventListener("navigateerror",t),setTimeout(a,100),function(){e=!0,navigation.removeEventListener("navigate",l),navigation.removeEventListener("navigatesuccess",t),navigation.removeEventListener("navigateerror",t),u!==null&&(u(),u=null)}}}function Zf(l){this._internalRoot=l}$n.prototype.render=Zf.prototype.render=function(l){var t=this._internalRoot;if(t===null)throw Error(p(409));var a=t.current,e=Xl();Dm(a,e,l,t,null,null)};$n.prototype.unmount=Zf.prototype.unmount=function(){var l=this._internalRoot;if(l!==null){this._internalRoot=null;var t=l.containerInfo;Dm(l.current,2,null,l,null,null),wn(),t[de]=null}};function $n(l){this._internalRoot=l}$n.prototype.unstable_scheduleHydration=function(l){if(l){var t=fo();l={blockedOn:null,target:l,priority:t};for(var a=0;a<Gt.length&&t!==0&&t<Gt[a].priority;a++);Gt.splice(a,0,l),a===0&&Hm(l)}};var wd=Fd.version;if(wd!=="19.2.6")throw Error(p(527,wd,"19.2.6"));G.findDOMNode=function(l){var t=l._reactInternals;if(t===void 0)throw typeof l.render=="function"?Error(p(188)):(l=Object.keys(l).join(","),Error(p(268,l)));return l=_v(t),l=l!==null?Id(l):null,l=l===null?null:l.stateNode,l};var k1={bundleType:0,version:"19.2.6",rendererPackageName:"react-dom",currentDispatcherRef:E,reconcilerVersion:"19.2.6"};if(typeof __REACT_DEVTOOLS_GLOBAL_HOOK__<"u"&&(_e=__REACT_DEVTOOLS_GLOBAL_HOOK__,!_e.isDisabled&&_e.supportsFiber))try{fu=_e.inject(k1),Yl=_e}catch{}var _e;kn.createRoot=function(l,t){if(!Wd(l))throw Error(p(299));var a=!1,e="",u=M0,n=O0,i=N0;return t!=null&&(t.unstable_strictMode===!0&&(a=!0),t.identifierPrefix!==void 0&&(e=t.identifierPrefix),t.onUncaughtError!==void 0&&(u=t.onUncaughtError),t.onCaughtError!==void 0&&(n=t.onCaughtError),t.onRecoverableError!==void 0&&(i=t.onRecoverableError)),t=_m(l,1,!1,null,null,a,e,null,u,n,i,Bm),l[de]=t.current,Gf(l),new Zf(t)};kn.hydrateRoot=function(l,t,a){if(!Wd(l))throw Error(p(299));var e=!1,u="",n=M0,i=O0,c=N0,f=null;return a!=null&&(a.unstable_strictMode===!0&&(e=!0),a.identifierPrefix!==void 0&&(u=a.identifierPrefix),a.onUncaughtError!==void 0&&(n=a.onUncaughtError),a.onCaughtError!==void 0&&(i=a.onCaughtError),a.onRecoverableError!==void 0&&(c=a.onRecoverableError),a.formState!==void 0&&(f=a.formState)),t=_m(l,1,!0,t,a??null,e,u,f,n,i,c,Bm),t.context=Rm(null),a=t.current,e=Xl(),e=$c(e),u=Kt(e),u.callback=null,Jt(a,u,e),a=e,t.current.lanes=a,du(t,a),st(t),l[de]=t.current,Gf(l),new $n(t)};kn.version="19.2.6"});var Xm=at((rh,Gm)=>{"use strict";function Ym(){if(!(typeof __REACT_DEVTOOLS_GLOBAL_HOOK__>"u"||typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE!="function"))try{__REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(Ym)}catch(l){console.error(l)}}Ym(),Gm.exports=qm()});var Km=at(ai=>{"use strict";var I1=Symbol.for("react.transitional.element"),P1=Symbol.for("react.fragment");function Lm(l,t,a){var e=null;if(a!==void 0&&(e=""+a),t.key!==void 0&&(e=""+t.key),"key"in t){a={};for(var u in t)u!=="key"&&(a[u]=t[u])}else a=t;return t=a.ref,{$$typeof:I1,type:l,key:e,ref:t!==void 0?t:null,props:a}}ai.Fragment=P1;ai.jsx=Lm;ai.jsxs=Lm});var pu=at((zh,Jm)=>{"use strict";Jm.exports=Km()});var km=ua(re(),1),Im=ua(Xm(),1);var gl=ua(re(),1);var In=(l,t)=>t>0?l/t:null;function li(l,t){let a=typeof l=="number"?l:Number(l);return!Number.isFinite(a)||a<0?0:Math.min(a,t)}function Qm(l){return li(l,100)}function ti(l){return Math.min(Math.max(l,0),100)/100}function Pn(l,t){if(t.costPerLead<=0)return null;let a=Math.max(0,Math.floor(l/t.costPerLead)),e=Math.max(0,Math.floor(a*t.bookingRate)),u=Math.max(0,Math.floor(e*t.showRate)),n=Math.max(0,Math.floor(u*t.closeRate));return{leads:a,booked:e,attended:u,patients:n}}function xm(l,t){let{costPerLead:a,bookingRate:e,showRate:u,closeRate:n}=t;if(a<=0||e<=0||u<=0||n<=0)return null;let i=Math.max(0,Math.floor(l));if(i===0)return{adBudget:0,funnel:{leads:0,booked:0,attended:0,patients:0}};let c=Math.ceil(i/n),f=Math.ceil(c/u),g=Math.ceil(f/e)*a,r=Pn(g,t),y=0;for(;r!==null&&r.patients<i&&y<1e4;)g+=a,r=Pn(g,t),y+=1;return r===null?null:{adBudget:g,funnel:r}}function jm(l){let t=l.firstVisit+l.annualRevenue*l.yearsRetained;if(l.patients===null)return{patients:null,patientLtv:t,firstVisitRevenue:null,recurringRevenue:null,totalPotentialRevenue:null,agencyFees:null,setupFee:l.setupFee,adBudget:l.adBudget,allInInvestment:null,revenueReturn:null,returnAfterMarketing:null,allInCostPerPatient:null};let a=Math.max(0,Math.floor(l.patients)),e=a*l.firstVisit,u=a*l.annualRevenue*l.yearsRetained,n=e+u,i=a*l.agencyFeePerPatient,c=l.adBudget+i+l.setupFee,f=In(n,c),m=n-c,g=In(c,a);return{patients:a,patientLtv:t,firstVisitRevenue:e,recurringRevenue:u,totalPotentialRevenue:n,agencyFees:i,setupFee:l.setupFee,adBudget:l.adBudget,allInInvestment:c,revenueReturn:f,returnAfterMarketing:m,allInCostPerPatient:g}}function Vm(l){let t=Math.max(0,Math.floor(l.patients)),a=t*l.patientLtv,e=l.agencyFeesPaid+l.adSpend;return{patients:t,totalPotentialRevenue:a,allInInvestment:e,allInCostPerPatient:In(e,t),revenueReturn:In(a,e)}}var Zm="https://launch.multilevel.agency/shohan-growth-call",zl={targetPatients:"90",adBudget:"10000",firstVisit:"527",annualRevenue:"1400",yearsRetained:"3",setupFee:"0",agencyFee:"250",funnel:{costPerLead:"20",bookingRate:"30",showRate:"90",closeRate:"67"},comparison:{agencyFeesPaid:"0",adSpend:"0",patients:"0"}},cl={patients:1e4,money:1e7,years:50};var s=ua(pu(),1),lh=new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",maximumFractionDigits:0}),th=new Intl.NumberFormat("en-US",{maximumFractionDigits:0}),V=l=>l===null?"\u2014":lh.format(Math.round(l)),Kf=l=>l===null?"\u2014":`${l.toFixed(1)}\xD7`,wm=l=>l===null?"\u2014":l.toFixed(2),Su=l=>l===null?"\u2014":th.format(Math.floor(l));function Rl(l,t){return li(l===""?0:l,t)}function Lf(l){return Qm(l===""?0:l)}function Dl({label:l,value:t,onChange:a,helper:e,prefix:u,suffix:n,step:i=1,maximum:c=cl.money,integer:f=!1}){let m=(0,gl.useId)(),g=`${m}-helper`,r=h=>{if(h===""){a("");return}let S=Number(h);!Number.isFinite(S)||S<0||a(S>c?String(c):h)};return(0,s.jsxs)("div",{className:"field",children:[(0,s.jsx)("label",{htmlFor:m,children:l}),(0,s.jsxs)("div",{className:"input-shell",children:[u?(0,s.jsx)("span",{className:"input-affix input-prefix","aria-hidden":"true",children:u}):null,(0,s.jsx)("input",{id:m,type:"number",inputMode:f?"numeric":"decimal",min:"0",max:c,step:i,value:t,onChange:h=>r(h.target.value),onBlur:()=>{if(t==="")return;let h=li(t,c);a(String(f?Math.floor(h):h))},onKeyDown:h=>{["e","E","+","-"].includes(h.key)&&h.preventDefault()},"aria-describedby":e?g:void 0}),n?(0,s.jsx)("span",{className:"input-affix input-suffix","aria-hidden":"true",children:n}):null]}),e?(0,s.jsx)("div",{className:"field-helper",id:g,children:e}):null]})}function ah({mode:l,onChange:t}){return(0,s.jsxs)("div",{className:"mode-switch",role:"group","aria-label":"Calculator starting point",children:[(0,s.jsx)("button",{type:"button",className:l==="target"?"active":"","aria-pressed":l==="target",onClick:()=>t("target"),children:"Start with my patient goal"}),(0,s.jsx)("button",{type:"button",className:l==="budget"?"active":"","aria-pressed":l==="budget",onClick:()=>t("budget"),children:"Start with my ad budget"})]})}function Fm({label:l,value:t,note:a}){return(0,s.jsxs)("div",{className:"patient-estimate","aria-live":"polite",children:[(0,s.jsx)("span",{children:l}),(0,s.jsx)("strong",{children:t}),(0,s.jsx)("small",{children:a})]})}function eh({mode:l,targetPatients:t,setTargetPatients:a,adBudget:e,setAdBudget:u,targetOutcome:n,patients:i,values:c,onChangeFirstVisit:f,onChangeAnnualRevenue:m,onChangeYearsRetained:g,patientLtv:r}){let y=Rl(c.firstVisit,cl.money),h=Rl(c.annualRevenue,cl.money),S=Rl(c.yearsRetained,cl.years);return(0,s.jsxs)("div",{className:"input-section",children:[(0,s.jsx)("h3",{className:"input-section-title",children:"Clinic data"}),(0,s.jsxs)("div",{className:"fields-grid mode-panel",children:[l==="target"?(0,s.jsx)(Dl,{label:"Paying-patient target",value:t,onChange:a,integer:!0,maximum:cl.patients,helper:"The number of people who purchase treatment\u2014not leads or booked appointments."}):(0,s.jsx)(Dl,{label:"90-day ad budget",value:e,onChange:u,prefix:"$",step:100,helper:"An editable planning budget\u2014not a promised cost or required spend."}),l==="target"?(0,s.jsx)(Fm,{label:"Required 90-day ad budget",value:V(n?n.adBudget:null),note:"Back-calculated from your patient target and campaign data below."}):(0,s.jsx)(Fm,{label:"Estimated paying patients",value:Su(i),note:"Calculated from your ad budget and campaign data below."})]},l),(0,s.jsxs)("div",{className:"fields-grid",children:[(0,s.jsx)(Dl,{label:"Average first visit",value:c.firstVisit,onChange:f,prefix:"$",step:25,helper:"What a new patient spends on their first visit. The med spa industry average is about $527 per visit."}),(0,s.jsx)(Dl,{label:"Revenue per patient per year after that",value:c.annualRevenue,onChange:m,prefix:"$",step:100,helper:"What an active patient spends per year on repeat visits or treatments after the first visit."}),(0,s.jsx)(Dl,{label:"Years a patient stays with you",value:c.yearsRetained,onChange:g,step:.5,maximum:cl.years,helper:"How long a typical patient keeps coming back."}),(0,s.jsxs)("div",{className:"ltv-readout","aria-live":"polite",children:[(0,s.jsx)("span",{children:"Value per patient (lifetime)"}),(0,s.jsx)("strong",{children:V(r)}),(0,s.jsxs)("small",{children:[V(y)," + ",V(h),"/yr \xD7"," ",S," yrs = ",V(r)]})]})]})]})}function uh({funnel:l}){let t=[["Leads",l?.leads??null],["Booked",l?.booked??null],["Attended",l?.attended??null],["Paying patients",l?.patients??null]];return(0,s.jsx)("div",{className:"funnel-track",children:t.map(([a,e],u)=>(0,s.jsxs)("div",{className:"funnel-stage",children:[(0,s.jsx)("span",{children:a}),(0,s.jsx)("strong",{children:Su(e)}),u<t.length-1?(0,s.jsx)("span",{className:"funnel-arrow","aria-hidden":"true",children:"\u2192"}):null]},a))})}function nh({funnelValues:l,onChangeFunnel:t,funnel:a}){return(0,s.jsxs)("div",{className:"input-section",children:[(0,s.jsx)("h3",{className:"input-section-title",children:"Marketing data"}),(0,s.jsxs)("div",{className:"input-subsection",children:[(0,s.jsx)("span",{className:"input-subsection-label",children:"Campaign inputs"}),(0,s.jsxs)("div",{className:"fields-grid",children:[(0,s.jsx)(Dl,{label:"Cost per lead",value:l.costPerLead,onChange:e=>t("costPerLead",e),prefix:"$",helper:"What you expect to spend to generate one qualified inquiry."}),(0,s.jsx)(Dl,{label:"Booking rate",value:l.bookingRate,onChange:e=>t("bookingRate",e),suffix:"%",maximum:100,helper:"The percentage of leads who schedule an appointment."}),(0,s.jsx)(Dl,{label:"Show rate",value:l.showRate,onChange:e=>t("showRate",e),suffix:"%",maximum:100,helper:"The percentage of booked patients who attend."}),(0,s.jsx)(Dl,{label:"Close rate",value:l.closeRate,onChange:e=>t("closeRate",e),suffix:"%",maximum:100,helper:"The percentage of attended consultations who become paying patients."})]})]}),(0,s.jsxs)("div",{className:"input-subsection",children:[(0,s.jsx)("span",{className:"input-subsection-label",children:"Campaign data"}),(0,s.jsx)("p",{className:"input-subsection-note",children:"Leads \u2192 Booked \u2192 Attended \u2192 Paying patients, calculated from your campaign inputs above."}),(0,s.jsx)(uh,{funnel:a})]})]})}function ih({values:l,onChangeSetupFee:t,onChangeAgencyFee:a}){return(0,s.jsxs)("div",{className:"input-section",children:[(0,s.jsx)("h3",{className:"input-section-title",children:"Pricing"}),(0,s.jsxs)("div",{className:"fields-grid",children:[(0,s.jsx)(Dl,{label:"One-time setup fee (if applicable)",value:l.setupFee,onChange:t,prefix:"$",step:250,helper:"May be $0. Depending on the clinic and upfront work, a one-time setup fee may apply."}),(0,s.jsx)(Dl,{label:"Agency fee per paying patient",value:l.agencyFee,onChange:a,prefix:"$",step:50,helper:"Charged only when a patient purchases."})]})]})}function ch({result:l,funnel:t,firstVisit:a,annualRevenue:e,yearsRetained:u,agencyFee:n}){let i=l.revenueReturn===null?"Add an investment to calculate revenue generated per $1.":`Based on these assumptions, every $1 of all-in marketing investment could generate $${wm(l.revenueReturn)} in patient revenue.`,c=Su(l.patients);return(0,s.jsxs)("section",{className:"results-card","aria-labelledby":"results-title","aria-live":"polite",children:[(0,s.jsxs)("div",{className:"section-heading results-heading",children:[(0,s.jsxs)("div",{children:[(0,s.jsx)("span",{className:"section-kicker",children:"Live projection"}),(0,s.jsx)("h2",{id:"results-title",children:"Your modeled opportunity"})]}),(0,s.jsxs)("div",{className:"patient-chip",children:[(0,s.jsx)("span",{children:"Paying patients"}),(0,s.jsx)("strong",{children:c})]})]}),(0,s.jsxs)("div",{className:"primary-results",children:[(0,s.jsxs)("div",{className:"metric-card",children:[(0,s.jsx)("span",{children:"Potential patient revenue"}),(0,s.jsx)("strong",{children:V(l.totalPotentialRevenue)}),(0,s.jsx)("small",{children:"over the lifetime of these patients"})]}),(0,s.jsxs)("div",{className:"metric-card",children:[(0,s.jsx)("span",{children:"All-in marketing investment"}),(0,s.jsx)("strong",{children:V(l.allInInvestment)}),(0,s.jsx)("small",{children:"ad budget + agency fees + any setup fee"})]}),(0,s.jsxs)("div",{className:"metric-card featured",children:[(0,s.jsx)("span",{children:"Revenue Return"}),(0,s.jsx)("strong",{children:Kf(l.revenueReturn)}),(0,s.jsx)("small",{children:l.revenueReturn===null?"Every $1 invested could generate \u2014 in patient revenue.":`Every $1 invested could generate $${wm(l.revenueReturn)} in patient revenue.`})]}),(0,s.jsxs)("div",{className:`metric-card${(l.returnAfterMarketing??0)<0?" negative":""}`,children:[(0,s.jsx)("span",{children:"Potential revenue remaining after marketing"}),(0,s.jsx)("strong",{children:V(l.returnAfterMarketing)}),(0,s.jsx)("small",{children:"This is not profit; treatment and operating costs are not modeled."})]})]}),(0,s.jsx)("p",{className:"result-narrative",children:i}),(l.returnAfterMarketing??0)<0?(0,s.jsx)("p",{className:"negative-note",children:"At these assumptions, projected patient revenue does not cover the modeled ad spend, agency fees, and any setup fee."}):null,(0,s.jsxs)("div",{className:"supporting-breakdown",children:[(0,s.jsx)("h3",{children:"Revenue breakdown"}),(0,s.jsxs)("dl",{children:[(0,s.jsxs)("div",{children:[(0,s.jsx)("dt",{children:"Paying patients"}),(0,s.jsx)("dd",{children:c})]}),(0,s.jsxs)("div",{children:[(0,s.jsx)("dt",{children:"Value per patient (lifetime)"}),(0,s.jsxs)("dd",{children:[V(l.patientLtv),(0,s.jsxs)("span",{className:"calc-note",children:["(",V(a)," + ",V(e)," \xD7 ",u,")"]})]})]}),(0,s.jsxs)("div",{children:[(0,s.jsx)("dt",{children:"First-visit revenue"}),(0,s.jsxs)("dd",{children:[V(l.firstVisitRevenue),(0,s.jsxs)("span",{className:"calc-note",children:["(",c," \xD7 ",V(a),")"]})]})]}),(0,s.jsxs)("div",{children:[(0,s.jsx)("dt",{children:"Recurring revenue"}),(0,s.jsxs)("dd",{children:[V(l.recurringRevenue),(0,s.jsxs)("span",{className:"calc-note",children:["(",c," \xD7 ",V(e)," \xD7 ",u,")"]})]})]}),(0,s.jsxs)("div",{className:"breakdown-total",children:[(0,s.jsx)("dt",{children:"Total potential patient revenue"}),(0,s.jsx)("dd",{children:V(l.totalPotentialRevenue)})]})]})]}),(0,s.jsxs)("div",{className:"supporting-breakdown",children:[(0,s.jsx)("h3",{children:"Investment breakdown"}),(0,s.jsxs)("dl",{children:[(0,s.jsxs)("div",{children:[(0,s.jsx)("dt",{children:"Ad budget (90 days)"}),(0,s.jsx)("dd",{children:V(l.adBudget)})]}),(0,s.jsxs)("div",{children:[(0,s.jsx)("dt",{children:"Agency fees"}),(0,s.jsxs)("dd",{children:[V(l.agencyFees),(0,s.jsxs)("span",{className:"calc-note",children:["(",c," \xD7 ",V(n),")"]})]})]}),(0,s.jsxs)("div",{children:[(0,s.jsx)("dt",{children:"Setup fee"}),(0,s.jsx)("dd",{children:V(l.setupFee)})]}),(0,s.jsxs)("div",{className:"breakdown-total",children:[(0,s.jsx)("dt",{children:"All-in investment"}),(0,s.jsx)("dd",{children:V(l.allInInvestment)})]}),(0,s.jsxs)("div",{children:[(0,s.jsx)("dt",{children:"All-in cost per patient"}),(0,s.jsx)("dd",{children:V(l.allInCostPerPatient)})]})]})]}),(0,s.jsxs)("div",{className:"protection-statement",children:[(0,s.jsx)("span",{"aria-hidden":"true",children:"\u2713"}),(0,s.jsxs)("p",{children:[(0,s.jsx)("strong",{children:"Performance protection:"})," You pay for real paying patients\u2014not leads or appointments. Any unfulfilled patient commitment is handled according to your service agreement."]})]})]})}function Wm({title:l,badge:t,rows:a}){return(0,s.jsxs)("div",{className:"comparison-card",children:[(0,s.jsx)("div",{className:"comparison-card-title",children:(0,s.jsxs)("div",{children:[(0,s.jsx)("span",{children:t}),(0,s.jsx)("h3",{children:l})]})}),(0,s.jsx)("dl",{children:a.map(([e,u])=>(0,s.jsxs)("div",{children:[(0,s.jsx)("dt",{children:e}),(0,s.jsx)("dd",{children:u})]},e))})]})}function fh({activeResult:l,patientLtv:t}){let[a,e]=(0,gl.useState)(zl.comparison.agencyFeesPaid),[u,n]=(0,gl.useState)(zl.comparison.adSpend),[i,c]=(0,gl.useState)(zl.comparison.patients),f=Rl(a,cl.money),m=Rl(u,cl.money),g=Rl(i,cl.patients),r=f>0||m>0||g>0,y=Vm({agencyFeesPaid:f,adSpend:m,patients:g,patientLtv:t});return(0,s.jsxs)("details",{className:"disclosure-card comparison-section",children:[(0,s.jsxs)("summary",{children:[(0,s.jsxs)("span",{children:[(0,s.jsx)("small",{children:"Optional scenario"}),"Compare with a current or previous agency"]}),(0,s.jsx)("span",{className:"summary-action",children:"Open comparison"})]}),(0,s.jsxs)("div",{className:"disclosure-content",children:[(0,s.jsxs)("div",{className:"comparison-note",children:[(0,s.jsx)("strong",{children:"Illustrative comparison only:"})," Agency pricing and performance vary widely. Enter your current or previous agency\u2019s actual 90-day agency fees, ad spend, and paying-patient results to see a comparison."]}),(0,s.jsxs)("div",{className:"comparison-inputs",children:[(0,s.jsx)(Dl,{label:"Agency fees paid in the last 90 days",value:a,onChange:e,prefix:"$",step:100,helper:"Total agency fees paid over the same 90-day comparison period."}),(0,s.jsx)(Dl,{label:"Advertising spend in the last 90 days",value:u,onChange:n,prefix:"$",step:100,helper:"Ad spend from the same 90-day comparison period."}),(0,s.jsx)(Dl,{label:"Paying patients acquired in the last 90 days",value:i,onChange:c,integer:!0,maximum:cl.patients,helper:"The number of people who purchased treatment in that period."})]}),r?(0,s.jsxs)("div",{className:"comparison-grid",children:[(0,s.jsx)(Wm,{title:"Traditional Agency",badge:"Your entered scenario",rows:[["Paying patients",Su(y.patients)],["All-in investment",V(y.allInInvestment)],["All-in cost per paying patient",V(y.allInCostPerPatient)],["Potential patient revenue",V(y.totalPotentialRevenue)],["Revenue Return",Kf(y.revenueReturn)]]}),(0,s.jsx)(Wm,{title:"Multilevel Agency",badge:"Active calculator scenario",rows:[["Paying patients",Su(l.patients)],["All-in investment",V(l.allInInvestment)],["All-in cost per paying patient",V(l.allInCostPerPatient)],["Potential patient revenue",V(l.totalPotentialRevenue)],["Revenue Return",Kf(l.revenueReturn)]]})]}):(0,s.jsx)("p",{className:"comparison-placeholder",children:"Enter your agency fees, ad spend, or paying-patient count above to see a comparison."})]})]})}function $m(){let[l,t]=(0,gl.useState)("target"),[a,e]=(0,gl.useState)(zl.targetPatients),[u,n]=(0,gl.useState)(zl.adBudget),[i,c]=(0,gl.useState)(zl.firstVisit),[f,m]=(0,gl.useState)(zl.annualRevenue),[g,r]=(0,gl.useState)(zl.yearsRetained),[y,h]=(0,gl.useState)(zl.setupFee),[S,T]=(0,gl.useState)(zl.agencyFee),[B,o]=(0,gl.useState)({costPerLead:zl.funnel.costPerLead,bookingRate:zl.funnel.bookingRate,showRate:zl.funnel.showRate,closeRate:zl.funnel.closeRate}),d=(tt,ei)=>o(lv=>({...lv,[tt]:ei})),v={firstVisit:Rl(i,cl.money),annualRevenue:Rl(f,cl.money),yearsRetained:Rl(g,cl.years),adBudget:Rl(u,cl.money),agencyFee:Rl(S,cl.money),setupFee:Rl(y,cl.money)},b={costPerLead:Rl(B.costPerLead,cl.money),bookingRate:ti(Lf(B.bookingRate)),showRate:ti(Lf(B.showRate)),closeRate:ti(Lf(B.closeRate))},A=l==="target"?xm(Rl(a,cl.patients),b):null,q=l==="budget"?Pn(v.adBudget,b):null,z=l==="target"?A?.funnel??null:q,M=z?z.patients:null,_=l==="target"?A?.adBudget??0:v.adBudget,R=(0,gl.useMemo)(()=>jm({patients:M,adBudget:_,firstVisit:v.firstVisit,annualRevenue:v.annualRevenue,yearsRetained:v.yearsRetained,agencyFeePerPatient:v.agencyFee,setupFee:v.setupFee}),[M,_,v.firstVisit,v.annualRevenue,v.yearsRetained,v.agencyFee,v.setupFee]);return(0,s.jsxs)("main",{children:[(0,s.jsxs)("div",{className:"hero-shell",children:[(0,s.jsxs)("header",{className:"brand-header",children:[(0,s.jsxs)("a",{className:"brand-lockup",href:"#top","aria-label":"Multilevel Agency home",children:[(0,s.jsx)("span",{className:"brand-mark","aria-hidden":"true",children:"M"}),(0,s.jsx)("span",{children:"MULTILEVEL AGENCY"})]}),(0,s.jsx)("span",{className:"header-note",children:"90 new paying patients in 90 days"})]}),(0,s.jsxs)("section",{className:"hero",id:"top",children:[(0,s.jsxs)("div",{className:"hero-copy",children:[(0,s.jsx)("span",{className:"eyebrow",children:"PATIENT REVENUE CALCULATOR"}),(0,s.jsxs)("h1",{children:["What Could ",(0,s.jsx)("em",{children:"90 New Paying Patients"})," Be Worth to Your Clinic?"]}),(0,s.jsx)("p",{children:"Estimate your 90-day investment, the revenue those patients could generate over their lifetime, and your revenue return\u2014using your clinic\u2019s own numbers."}),(0,s.jsxs)("div",{className:"trust-line",children:[(0,s.jsx)("span",{"aria-hidden":"true",children:"\u2713"}),"Built around paying patients\u2014not leads, appointments, or vanity metrics."]}),(0,s.jsx)("p",{className:"audience-line",children:"Designed for medical spas, aesthetic clinics, plastic-surgery practices, regenerative-medicine clinics, hormone and wellness clinics, IV and NAD+ therapy clinics, hyperbaric clinics, and aesthetic dental practices."})]}),(0,s.jsxs)("div",{className:"hero-visual","aria-hidden":"true",children:[(0,s.jsx)("div",{className:"orbital orbital-one"}),(0,s.jsx)("div",{className:"orbital orbital-two"}),(0,s.jsxs)("div",{className:"hero-stat",children:[(0,s.jsx)("span",{children:"Your assumptions."}),(0,s.jsx)("strong",{children:"Visible math."}),(0,s.jsx)("small",{children:"No hard-coded outcome."})]})]})]})]}),(0,s.jsxs)("div",{className:"page-shell",children:[(0,s.jsxs)("section",{className:"calculator-section","aria-labelledby":"calculator-title",children:[(0,s.jsxs)("div",{className:"section-intro",children:[(0,s.jsx)("span",{className:"section-kicker",children:"Build your scenario"}),(0,s.jsx)("h2",{id:"calculator-title",children:"Start with the number that makes sense for you."})]}),(0,s.jsx)(ah,{mode:l,onChange:t}),(0,s.jsxs)("div",{className:"workspace",children:[(0,s.jsxs)("section",{className:"inputs-card","aria-labelledby":"inputs-title",children:[(0,s.jsxs)("div",{className:"section-heading",children:[(0,s.jsxs)("div",{children:[(0,s.jsx)("span",{className:"section-kicker",children:"Editable assumptions"}),(0,s.jsx)("h2",{id:"inputs-title",children:"Your clinic economics"})]}),(0,s.jsxs)("span",{className:"live-pill",children:[(0,s.jsx)("i",{})," Live"]})]}),(0,s.jsxs)("div",{className:"illustrative-note",children:[(0,s.jsx)("strong",{children:"Illustrative starting point:"})," We\u2019ve prefilled a recurring-treatment scenario using U.S. medical-aesthetics and wellness benchmarks. Every value is editable. Replace the starting numbers with your clinic\u2019s actual patient economics for a more relevant estimate."]}),(0,s.jsx)(eh,{mode:l,targetPatients:a,setTargetPatients:e,adBudget:u,setAdBudget:n,targetOutcome:A,patients:M,values:{firstVisit:i,annualRevenue:f,yearsRetained:g},onChangeFirstVisit:c,onChangeAnnualRevenue:m,onChangeYearsRetained:r,patientLtv:R.patientLtv}),(0,s.jsx)(nh,{funnelValues:B,onChangeFunnel:d,funnel:z}),(0,s.jsx)(ih,{values:{setupFee:y,agencyFee:S},onChangeSetupFee:h,onChangeAgencyFee:T})]}),(0,s.jsx)(ch,{result:R,funnel:z,firstVisit:v.firstVisit,annualRevenue:v.annualRevenue,yearsRetained:v.yearsRetained,agencyFee:v.agencyFee})]})]}),(0,s.jsx)(fh,{activeResult:R,patientLtv:R.patientLtv}),(0,s.jsxs)("section",{className:"cta-section",children:[(0,s.jsx)("span",{className:"section-kicker",children:"Turn the model into a plan"}),(0,s.jsx)("h2",{children:"Want to pressure-test these numbers for your clinic?"}),(0,s.jsx)("p",{children:"Book a strategy call to model your treatment mix, patient value, capacity, and 90-day acquisition plan."}),(0,s.jsxs)("a",{className:"cta-button",href:Zm,children:["Build My 90-Day Patient Plan ",(0,s.jsx)("span",{"aria-hidden":"true",children:"\u2192"})]})]}),(0,s.jsxs)("aside",{className:"disclaimer",children:[(0,s.jsxs)("p",{children:[(0,s.jsx)("strong",{children:"Illustrative estimate, not a guarantee."})," Results depend on your market, offer, ad performance, follow-up, show rate, close rate, capacity, pricing, and retention. The model assumes cost per lead stays constant as budget changes; in practice it may rise as campaigns scale."]}),(0,s.jsx)("p",{children:"A $0 setup fee is the default because it may be waived or customized. It is not a promise that every clinic will have no setup fee."})]}),(0,s.jsxs)("footer",{children:[(0,s.jsx)("span",{children:"MULTILEVEL AGENCY"}),(0,s.jsx)("span",{children:"Patient acquisition measured by paying patients."})]})]})]})}var Jf=ua(pu(),1),Pm=document.getElementById("root");if(!Pm)throw new Error("Website root element was not found.");(0,Im.createRoot)(Pm).render((0,Jf.jsx)(km.default.StrictMode,{children:(0,Jf.jsx)($m,{})}));})();
-/*! Bundled license information:
-
-react/cjs/react.production.js:
-  (**
-   * @license React
-   * react.production.js
-   *
-   * Copyright (c) Meta Platforms, Inc. and affiliates.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   *)
-
-scheduler/cjs/scheduler.production.js:
-  (**
-   * @license React
-   * scheduler.production.js
-   *
-   * Copyright (c) Meta Platforms, Inc. and affiliates.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   *)
-
-react-dom/cjs/react-dom.production.js:
-  (**
-   * @license React
-   * react-dom.production.js
-   *
-   * Copyright (c) Meta Platforms, Inc. and affiliates.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   *)
-
-react-dom/cjs/react-dom-client.production.js:
-  (**
-   * @license React
-   * react-dom-client.production.js
-   *
-   * Copyright (c) Meta Platforms, Inc. and affiliates.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   *)
-
-react/cjs/react-jsx-runtime.production.js:
-  (**
-   * @license React
-   * react-jsx-runtime.production.js
-   *
-   * Copyright (c) Meta Platforms, Inc. and affiliates.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   *)
+globalThis.__VINEXT_LAZY_CHUNKS__ = ["assets/CalculatorPage-aHlq9PeK.js","assets/layout-segment-context-nRdcF5zX.js"];
+import * as __viteRscAsyncHooks from "node:async_hooks";
+import { AsyncLocalStorage as AsyncLocalStorage$1 } from "node:async_hooks";
+import assetsManifest from "./__vite_rsc_assets_manifest.js";
+import "node:fs";
+import "node:path";
+//#region \0rolldown/runtime.js
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
+var __exportAll = (all, no_symbols) => {
+	let target = {};
+	for (var name in all) __defProp(target, name, {
+		get: all[name],
+		enumerable: true
+	});
+	if (!no_symbols) __defProp(target, Symbol.toStringTag, { value: "Module" });
+	return target;
+};
+var __copyProps = (to, from, except, desc) => {
+	if (from && typeof from === "object" || typeof from === "function") for (var keys = __getOwnPropNames(from), i = 0, n = keys.length, key; i < n; i++) {
+		key = keys[i];
+		if (!__hasOwnProp.call(to, key) && key !== except) __defProp(to, key, {
+			get: ((k) => from[k]).bind(null, key),
+			enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
+		});
+	}
+	return to;
+};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", {
+	value: mod,
+	enumerable: true
+}) : target, mod));
+//#endregion
+//#region node_modules/vinext/dist/server/http-error-responses.js
+/**
+* Build a 400 Bad Request plain-text response.
+*
+* Used for malformed percent-encoding, invalid HTTP methods (where Next.js
+* returns 400), and other request-shape validation failures.
 */
+function badRequestResponse(init) {
+	return new Response("Bad Request", {
+		status: 400,
+		headers: init?.headers
+	});
+}
+/**
+* Build a 403 Forbidden plain-text response.
+*
+* Used by CSRF origin validation and dev-server origin checks.
+*/
+function forbiddenResponse() {
+	return new Response("Forbidden", {
+		status: 403,
+		headers: { "Content-Type": "text/plain" }
+	});
+}
+/**
+* Build a 404 Not Found plain-text response.
+*
+* The `headers` option lets call sites merge middleware response headers into
+* the 404, matching the pattern used by `app-rsc-handler` after a route match
+* fails but middleware has already contributed headers.
+*/
+function notFoundResponse(init) {
+	return new Response("Not Found", {
+		status: 404,
+		headers: init?.headers
+	});
+}
+/**
+* Build a 405 Method Not Allowed plain-text response with the `Allow` header set.
+*
+* `allowedMethods` is rendered as the comma-separated `Allow` header value.
+* Existing headers (e.g. middleware response headers) can be merged via `init.headers`;
+* the `Allow` header takes precedence and overwrites any colliding entry.
+*/
+function methodNotAllowedResponse(allowedMethods, init) {
+	const headers = new Headers(init?.headers);
+	headers.set("Allow", allowedMethods);
+	return new Response("Method Not Allowed", {
+		status: 405,
+		headers
+	});
+}
+/**
+* Build a 413 Payload Too Large plain-text response.
+*
+* Used by server action body-size enforcement.
+*/
+function payloadTooLargeResponse() {
+	return new Response("Payload Too Large", { status: 413 });
+}
+/**
+* Build a 500 Internal Server Error plain-text response.
+*
+* The `message` argument lets dev-mode handlers surface failure details while
+* production paths fall back to the canonical body. Pass `undefined` (or omit)
+* to use the canonical "Internal Server Error" body.
+*/
+function internalServerErrorResponse(message, init) {
+	return new Response(message ?? "Internal Server Error", {
+		status: 500,
+		headers: init?.headers
+	});
+}
+//#endregion
+//#region node_modules/vinext/dist/server/image-optimization.js
+/**
+* Next.js default device sizes and image sizes.
+* These are the allowed widths for image optimization when no custom
+* config is provided. Matches Next.js defaults exactly.
+*/
+var DEFAULT_DEVICE_SIZES = [
+	640,
+	750,
+	828,
+	1080,
+	1200,
+	1920,
+	2048,
+	3840
+];
+var DEFAULT_IMAGE_SIZES = [
+	16,
+	32,
+	48,
+	64,
+	96,
+	128,
+	256,
+	384
+];
+/**
+* Absolute maximum image width. Even if custom deviceSizes/imageSizes are
+* configured, widths above this are always rejected. This prevents resource
+* exhaustion from absurdly large resize requests.
+*/
+var ABSOLUTE_MAX_WIDTH = 3840;
+/**
+* Parse and validate image optimization query parameters.
+* Returns null if the request is malformed.
+*
+* When `allowedWidths` is provided, the width must be 0 (no resize) or
+* exactly match one of the allowed values. This matches Next.js behavior
+* where only configured deviceSizes and imageSizes are accepted.
+*
+* When `allowedWidths` is not provided, any width from 0 to ABSOLUTE_MAX_WIDTH
+* is accepted (backwards-compatible fallback).
+*/
+function parseImageParams(url, allowedWidths) {
+	const imageUrl = url.searchParams.get("url");
+	if (!imageUrl) return null;
+	const w = parseInt(url.searchParams.get("w") || "0", 10);
+	const q = parseInt(url.searchParams.get("q") || "75", 10);
+	if (Number.isNaN(w) || w < 0) return null;
+	if (w > ABSOLUTE_MAX_WIDTH) return null;
+	if (allowedWidths && w !== 0 && !allowedWidths.includes(w)) return null;
+	if (Number.isNaN(q) || q < 1 || q > 100) return null;
+	const normalizedUrl = imageUrl.replaceAll("\\", "/");
+	if (!normalizedUrl.startsWith("/") || normalizedUrl.startsWith("//")) return null;
+	try {
+		const base = "https://localhost";
+		if (new URL(normalizedUrl, base).origin !== base) return null;
+	} catch {
+		return null;
+	}
+	return {
+		imageUrl: normalizedUrl,
+		width: w,
+		quality: q
+	};
+}
+/**
+* Negotiate the best output format based on the Accept header.
+* Returns an IANA media type.
+*/
+function negotiateImageFormat(acceptHeader) {
+	if (!acceptHeader) return "image/jpeg";
+	if (acceptHeader.includes("image/avif")) return "image/avif";
+	if (acceptHeader.includes("image/webp")) return "image/webp";
+	return "image/jpeg";
+}
+/**
+* Standard Cache-Control header for optimized images.
+* Optimized images are immutable because the URL encodes the transform params.
+*/
+var IMAGE_CACHE_CONTROL = "public, max-age=31536000, immutable";
+/**
+* Allowlist of Content-Types that are safe to serve from the image endpoint.
+* SVG is intentionally excluded — it can contain embedded JavaScript and is
+* essentially an XML document, not a safe raster image format.
+*/
+var SAFE_IMAGE_CONTENT_TYPES = new Set([
+	"image/jpeg",
+	"image/png",
+	"image/gif",
+	"image/webp",
+	"image/avif",
+	"image/x-icon",
+	"image/vnd.microsoft.icon",
+	"image/bmp",
+	"image/tiff"
+]);
+/**
+* Check if a Content-Type header value is a safe image type.
+* Returns false for SVG (unless dangerouslyAllowSVG is true), HTML, or any non-image type.
+*/
+function isSafeImageContentType(contentType, dangerouslyAllowSVG = false) {
+	if (!contentType) return false;
+	const mediaType = contentType.split(";")[0].trim().toLowerCase();
+	if (SAFE_IMAGE_CONTENT_TYPES.has(mediaType)) return true;
+	if (dangerouslyAllowSVG && mediaType === "image/svg+xml") return true;
+	return false;
+}
+/**
+* Apply security headers to an image optimization response.
+* These headers are set on every response from the image endpoint,
+* regardless of whether the image was transformed or served as-is.
+* When an ImageConfig is provided, uses its values for CSP and Content-Disposition.
+*/
+function setImageSecurityHeaders(headers, config) {
+	headers.set("Content-Security-Policy", config?.contentSecurityPolicy ?? "script-src 'none'; frame-src 'none'; sandbox;");
+	headers.set("X-Content-Type-Options", "nosniff");
+	headers.set("Content-Disposition", config?.contentDispositionType === "attachment" ? "attachment" : "inline");
+}
+function createPassthroughImageResponse(source, config) {
+	const headers = new Headers(source.headers);
+	headers.set("Cache-Control", IMAGE_CACHE_CONTROL);
+	headers.set("Vary", "Accept");
+	setImageSecurityHeaders(headers, config);
+	return new Response(source.body, {
+		status: 200,
+		headers
+	});
+}
+/**
+* Handle image optimization requests.
+*
+* Parses and validates the request, fetches the source image via the provided
+* handlers, optionally transforms it, and returns the response with appropriate
+* cache headers.
+*/
+async function handleImageOptimization(request, handlers, allowedWidths, imageConfig) {
+	const params = parseImageParams(new URL(request.url), allowedWidths);
+	if (!params) return badRequestResponse();
+	const { imageUrl, width, quality } = params;
+	const source = await handlers.fetchAsset(imageUrl, request);
+	if (!source.ok || !source.body) return new Response("Image not found", { status: 404 });
+	const format = negotiateImageFormat(request.headers.get("Accept"));
+	const sourceContentType = source.headers.get("Content-Type");
+	if (!isSafeImageContentType(sourceContentType, imageConfig?.dangerouslyAllowSVG)) return new Response("The requested resource is not an allowed image type", { status: 400 });
+	if (sourceContentType?.split(";")[0].trim().toLowerCase() === "image/svg+xml") return createPassthroughImageResponse(source, imageConfig);
+	if (handlers.transformImage) try {
+		const transformed = await handlers.transformImage(source.body, {
+			width,
+			format,
+			quality
+		});
+		const headers = new Headers(transformed.headers);
+		headers.set("Cache-Control", IMAGE_CACHE_CONTROL);
+		headers.set("Vary", "Accept");
+		setImageSecurityHeaders(headers, imageConfig);
+		if (!isSafeImageContentType(headers.get("Content-Type"), imageConfig?.dangerouslyAllowSVG)) headers.set("Content-Type", format);
+		return new Response(transformed.body, {
+			status: 200,
+			headers
+		});
+	} catch (e) {
+		console.error("[vinext] Image optimization error:", e);
+	}
+	try {
+		return createPassthroughImageResponse(source, imageConfig);
+	} catch (e) {
+		console.error("[vinext] Image fallback error, refetching source image:", e);
+		const refetchedSource = await handlers.fetchAsset(imageUrl, request);
+		if (!refetchedSource.ok || !refetchedSource.body) return new Response("Image not found", { status: 404 });
+		if (!isSafeImageContentType(refetchedSource.headers.get("Content-Type"), imageConfig?.dangerouslyAllowSVG)) return new Response("The requested resource is not an allowed image type", { status: 400 });
+		return createPassthroughImageResponse(refetchedSource, imageConfig);
+	}
+}
+//#endregion
+//#region node_modules/vinext/dist/shims/internal/als-registry.js
+/**
+* Shared helper for registering AsyncLocalStorage instances on `globalThis`
+* via `Symbol.for(...)` so that they survive multiple module instances.
+*
+* Why this helper exists
+* ----------------------
+* Vite's multi-environment setup (RSC / SSR / client) and HMR can load a
+* single source module under several different specifiers, producing more
+* than one module instance at runtime. If each instance kept its own
+* module-local `new AsyncLocalStorage()`, request-scoped state would silently
+* fork across instances — `headers()` in one environment wouldn't see what
+* `connection()` registered in another, concurrent requests would stomp each
+* other, etc.
+*
+* The fix every shim was applying inline:
+*
+*   const _ALS_KEY = Symbol.for("vinext.foo.als");
+*   const _g = globalThis as unknown as Record<PropertyKey, unknown>;
+*   const _als = (_g[_ALS_KEY] ??=
+*     new AsyncLocalStorage<T>()) as AsyncLocalStorage<T>;
+*
+* This helper packages that pattern.
+*
+* Cross-bundle singleton property — preserved
+* -------------------------------------------
+* - `Symbol.for(key)` consults the global symbol registry and returns the
+*   same symbol regardless of which module instance calls it.
+* - `globalThis[sym]` is a single slot shared by every module instance.
+* - `??=` only assigns when the slot is empty, so the first caller wins and
+*   every subsequent caller (in any module instance) reads the same ALS.
+*
+* The helper module itself never holds the ALS by reference — it always
+* round-trips through `globalThis`. So even if this helper file is itself
+* loaded under multiple module instances, every copy still hands back the
+* one true ALS for a given key.
+*/
+var _g$8 = globalThis;
+/**
+* Get (or lazily create) the AsyncLocalStorage registered on `globalThis`
+* under `Symbol.for(key)`. Multiple callers — including callers in different
+* module instances — that pass the same `key` receive the same ALS instance.
+*
+* @param key - String key fed to `Symbol.for(...)`. By convention vinext
+*   shims use a dotted namespace such as `"vinext.cache.als"`.
+*/
+function getOrCreateAls(key) {
+	const sym = Symbol.for(key);
+	return _g$8[sym] ??= new AsyncLocalStorage$1();
+}
+//#endregion
+//#region node_modules/vinext/dist/shims/unified-request-context.js
+var _REQUEST_CONTEXT_ALS_KEY = Symbol.for("vinext.requestContext.als");
+var _g$7 = globalThis;
+var _als$4 = getOrCreateAls("vinext.unifiedRequestContext.als");
+function _getInheritedExecutionContext() {
+	const unifiedStore = _als$4.getStore();
+	if (unifiedStore) return unifiedStore.executionContext;
+	return _g$7[_REQUEST_CONTEXT_ALS_KEY]?.getStore() ?? null;
+}
+/**
+* Create a fresh `UnifiedRequestContext` with defaults for all fields.
+* Pass partial overrides for the fields you need to pre-populate.
+*/
+function createRequestContext(opts) {
+	return {
+		headersContext: null,
+		actionRevalidationKind: 0,
+		dynamicUsageDetected: false,
+		invalidDynamicUsageError: null,
+		pendingSetCookies: [],
+		draftModeCookieHeader: null,
+		phase: "render",
+		i18nContext: null,
+		serverContext: null,
+		serverInsertedHTMLCallbacks: [],
+		requestScopedCacheLife: null,
+		unstableCacheRevalidation: "foreground",
+		_privateCache: null,
+		currentRequestTags: [],
+		currentFetchSoftTags: [],
+		currentFetchCacheMode: null,
+		isFetchDedupeActive: false,
+		currentFetchDedupeEntries: /* @__PURE__ */ new Map(),
+		executionContext: _getInheritedExecutionContext(),
+		requestCache: /* @__PURE__ */ new WeakMap(),
+		ssrContext: null,
+		ssrHeadChildren: [],
+		rootParams: null,
+		...opts
+	};
+}
+function runWithRequestContext(ctx, fn) {
+	return _als$4.run(ctx, fn);
+}
+function runWithUnifiedStateMutation(mutate, fn) {
+	const parentCtx = _als$4.getStore();
+	if (!parentCtx) return fn();
+	const childCtx = { ...parentCtx };
+	mutate(childCtx);
+	return _als$4.run(childCtx, fn);
+}
+/**
+* Get the current unified request context.
+* Returns the ALS store when inside a `runWithRequestContext()` scope,
+* or a fresh detached context otherwise. Unlike the legacy per-shim fallback
+* singletons, this detached value is ephemeral — mutations do not persist
+* across calls. This is intentional to prevent state leakage outside request
+* scopes.
+*
+* Only direct callers observe this detached fallback. Shim `_getState()`
+* helpers should continue to gate on `isInsideUnifiedScope()` and fall back
+* to their standalone ALS/fallback singletons outside the unified scope.
+* If called inside a standalone `runWithExecutionContext()` scope, the
+* detached context still reflects that inherited `executionContext`.
+*/
+function getRequestContext() {
+	return _als$4.getStore() ?? createRequestContext();
+}
+/**
+* Check whether the current execution is inside a `runWithRequestContext()` scope.
+* Shim modules use this to decide whether to read from the unified store
+* or fall back to their own standalone ALS.
+*/
+function isInsideUnifiedScope() {
+	return _als$4.getStore() != null;
+}
+//#endregion
+//#region node_modules/vinext/dist/shims/request-context.js
+/**
+* Request ExecutionContext — AsyncLocalStorage-backed accessor.
+*
+* Makes the Cloudflare Workers `ExecutionContext` (which provides
+* `waitUntil`) available to any code on the call stack during a request
+* without requiring it to be threaded through every function signature.
+*
+* Usage:
+*
+*   // In the worker entry, wrap the handler:
+*   import { runWithExecutionContext } from "vinext/shims/request-context";
+*   export default {
+*     fetch(request, env, ctx) {
+*       return runWithExecutionContext(ctx, () => handler.fetch(request, env, ctx));
+*     }
+*   };
+*
+*   // Anywhere downstream:
+*   import { getRequestExecutionContext } from "vinext/shims/request-context";
+*   const ctx = getRequestExecutionContext(); // null on Node.js dev
+*   ctx?.waitUntil(somePromise);
+*/
+var _als$3 = getOrCreateAls("vinext.requestContext.als");
+function runWithExecutionContext(ctx, fn) {
+	if (isInsideUnifiedScope()) return runWithUnifiedStateMutation((uCtx) => {
+		uCtx.executionContext = ctx;
+	}, fn);
+	return _als$3.run(ctx, fn);
+}
+/**
+* Get the `ExecutionContext` for the current request, or `null` when called
+* outside a `runWithExecutionContext()` scope (e.g. on Node.js dev server).
+*
+* Use `ctx?.waitUntil(promise)` to schedule background work that must
+* complete before the Worker isolate is torn down.
+*/
+function getRequestExecutionContext() {
+	if (isInsideUnifiedScope()) return getRequestContext().executionContext;
+	return _als$3.getStore() ?? null;
+}
+//#endregion
+//#region node_modules/vinext/dist/utils/base-path.js
+/**
+* Shared basePath helpers.
+*
+* Next.js only treats a pathname as being under basePath when it is an exact
+* match ("/app") or starts with the basePath followed by a path separator
+* ("/app/..."). Prefix-only matches like "/application" must be left intact.
+*/
+/**
+* Check whether a pathname is inside the configured basePath.
+*/
+function hasBasePath(pathname, basePath) {
+	if (!basePath) return false;
+	return pathname === basePath || pathname.startsWith(basePath + "/");
+}
+/**
+* Strip the basePath prefix from a pathname when it matches on a segment
+* boundary. Returns the original pathname when it is outside the basePath.
+*/
+function stripBasePath(pathname, basePath) {
+	if (!hasBasePath(pathname, basePath)) return pathname;
+	return pathname.slice(basePath.length) || "/";
+}
+/**
+* Remove trailing slashes from a pathname while preserving the root "/".
+* Collapses any number of trailing slashes ("/a//" → "/a"). Used by the
+* trailing-slash redirect path and route pattern normalization.
+*/
+function removeTrailingSlash(pathname) {
+	if (pathname === "/") return "/";
+	let end = pathname.length;
+	while (end > 0 && pathname.charCodeAt(end - 1) === 47) end--;
+	return end === 0 ? "/" : pathname.slice(0, end);
+}
+//#endregion
+//#region node_modules/vinext/dist/server/headers.js
+/**
+* Internal HTTP header name constants used throughout vinext.
+*
+* Centralizes all custom header names so they are defined once and referenced
+* everywhere via imports. Keeping them in one module prevents typos, makes
+* rename-refactors trivial, and lets grep find every consumer instantly.
+*
+* Standard HTTP headers (Content-Type, Cache-Control, etc.) are intentionally
+* omitted — only vinext-internal and Next.js-protocol headers belong here.
+*/
+/** ISR / page cache state indicator: "HIT" | "MISS" | "STALE" | "STATIC". */
+var VINEXT_CACHE_HEADER = "X-Vinext-Cache";
+/** Static file signal — value is URL-encoded pathname. */
+var VINEXT_STATIC_FILE_HEADER = "x-vinext-static-file";
+/** Serialized middleware context (JSON) forwarded from dev server to RSC entry. */
+var VINEXT_MW_CTX_HEADER = "x-vinext-mw-ctx";
+/** Timing metrics: `handlerStart,compileMs,renderMs`. */
+var VINEXT_TIMING_HEADER = "x-vinext-timing";
+/** Build-time prerender authentication secret. */
+var VINEXT_PRERENDER_SECRET_HEADER = "x-vinext-prerender-secret";
+/** URL-encoded JSON route params carried on RSC responses. */
+var VINEXT_PARAMS_HEADER = "X-Vinext-Params";
+/** Deduplicated, sorted list of mounted layout slots for cache keying. */
+var VINEXT_MOUNTED_SLOTS_HEADER = "X-Vinext-Mounted-Slots";
+/** Route interception context for parallel/intercepting routes. */
+var VINEXT_INTERCEPTION_CONTEXT_HEADER = "X-Vinext-Interception-Context";
+/** RSC render mode (e.g. "navigation", "prefetch"). */
+var VINEXT_RSC_RENDER_MODE_HEADER = "X-Vinext-Rsc-Render-Mode";
+/** Next.js action-not-found indicator (value "1"). */
+var NEXTJS_ACTION_NOT_FOUND_HEADER = "x-nextjs-action-not-found";
+/** Indicates revalidation occurred — value is JSON kind (1 = path/tag, 2 = dynamic-only). */
+var ACTION_REVALIDATED_HEADER = "x-action-revalidated";
+/** Redirect URL from a Server Action. */
+var ACTION_REDIRECT_HEADER = "x-action-redirect";
+/** Redirect type from a Server Action ("push" | "replace"). */
+var ACTION_REDIRECT_TYPE_HEADER = "x-action-redirect-type";
+/** HTTP status for a Server Action redirect (e.g. "308"). */
+var ACTION_REDIRECT_STATUS_HEADER = "x-action-redirect-status";
+/** Prefix for forwarded request headers (e.g. `x-middleware-request-cookie`). */
+var MIDDLEWARE_REQUEST_HEADER_PREFIX = "x-middleware-request-";
+/** Comma-separated list of header names that middleware wants to override. */
+var MIDDLEWARE_OVERRIDE_HEADERS = "x-middleware-override-headers";
+/** Carries cookies set by middleware for same-render reads. */
+var MIDDLEWARE_SET_COOKIE_HEADER = "x-middleware-set-cookie";
+/** Signal from `NextResponse.next()` — value "1" means "continue to next handler". */
+var MIDDLEWARE_NEXT_HEADER = "x-middleware-next";
+/** Rewrite destination URL set by `NextResponse.rewrite()`. */
+var MIDDLEWARE_REWRITE_HEADER = "x-middleware-rewrite";
+/** Redirect URL set by middleware. */
+var MIDDLEWARE_REDIRECT_HEADER = "x-middleware-redirect";
+/** Skip-middleware signal. */
+var MIDDLEWARE_SKIP_HEADER = "x-middleware-skip";
+var NEXT_ROUTER_STATE_TREE_HEADER = "Next-Router-State-Tree";
+var NEXT_ROUTER_PREFETCH_HEADER = "Next-Router-Prefetch";
+var NEXT_ROUTER_SEGMENT_PREFETCH_HEADER = "Next-Router-Segment-Prefetch";
+var NEXT_URL_HEADER = "Next-Url";
+/** Lowercase flight header variants used in middleware forwarding. */
+var FLIGHT_HEADERS = [
+	"rsc",
+	"next-router-state-tree",
+	"next-router-prefetch",
+	"next-hmr-refresh",
+	"next-router-segment-prefetch"
+];
+/**
+* Headers that must be stripped from external requests before any handler
+* processes them. An attacker could forge these to influence routing or
+* impersonate internal data fetches.
+*
+* Ported from Next.js `INTERNAL_HEADERS`:
+* https://github.com/vercel/next.js/blob/canary/packages/next/src/server/lib/server-ipc/utils.ts
+*/
+var INTERNAL_HEADERS = [
+	MIDDLEWARE_REWRITE_HEADER,
+	MIDDLEWARE_REDIRECT_HEADER,
+	MIDDLEWARE_SET_COOKIE_HEADER,
+	MIDDLEWARE_SKIP_HEADER,
+	MIDDLEWARE_OVERRIDE_HEADERS,
+	MIDDLEWARE_NEXT_HEADER,
+	"x-now-route-matches",
+	"x-matched-path",
+	"x-nextjs-data",
+	"x-next-resume-state-length"
+];
+//#endregion
+//#region node_modules/vinext/dist/server/middleware-request-headers.js
+var CREDENTIAL_REQUEST_HEADERS = ["authorization", "cookie"];
+function getMiddlewareHeaderValue(source, key) {
+	if (source instanceof Headers) return source.get(key);
+	const value = source[key];
+	if (value === void 0) return null;
+	return Array.isArray(value) ? value[0] ?? null : value;
+}
+function getOverrideHeaderNames(source) {
+	const rawValue = getMiddlewareHeaderValue(source, MIDDLEWARE_OVERRIDE_HEADERS);
+	if (rawValue === null) return null;
+	return rawValue.split(",").map((key) => key.trim()).filter(Boolean);
+}
+function getForwardedRequestHeaders(source) {
+	const forwardedHeaders = /* @__PURE__ */ new Map();
+	if (source instanceof Headers) {
+		for (const [key, value] of source.entries()) if (key.startsWith("x-middleware-request-")) forwardedHeaders.set(key.slice(MIDDLEWARE_REQUEST_HEADER_PREFIX.length), value);
+		return forwardedHeaders;
+	}
+	for (const [key, value] of Object.entries(source)) {
+		if (!key.startsWith("x-middleware-request-")) continue;
+		const normalizedValue = Array.isArray(value) ? value[0] ?? "" : value;
+		forwardedHeaders.set(key.slice(MIDDLEWARE_REQUEST_HEADER_PREFIX.length), normalizedValue);
+	}
+	return forwardedHeaders;
+}
+function cloneHeaders(source) {
+	const cloned = new Headers();
+	for (const [key, value] of source.entries()) cloned.append(key, value);
+	return cloned;
+}
+function buildRequestHeadersFromMiddlewareResponse(baseHeaders, middlewareHeaders, options = {}) {
+	const overrideHeaderNames = getOverrideHeaderNames(middlewareHeaders);
+	const forwardedHeaders = getForwardedRequestHeaders(middlewareHeaders);
+	if (overrideHeaderNames === null && forwardedHeaders.size === 0) return null;
+	const nextHeaders = overrideHeaderNames === null ? cloneHeaders(baseHeaders) : new Headers();
+	if (overrideHeaderNames === null) {
+		for (const [key, value] of forwardedHeaders) nextHeaders.set(key, value);
+		return nextHeaders;
+	}
+	if (options.preserveCredentialHeaders) {
+		const overrideHeaderNameSet = new Set(overrideHeaderNames);
+		for (const key of CREDENTIAL_REQUEST_HEADERS) {
+			if (overrideHeaderNameSet.has(key)) continue;
+			const value = baseHeaders.get(key);
+			if (value !== null) nextHeaders.set(key, value);
+		}
+	}
+	for (const key of overrideHeaderNames) {
+		const value = forwardedHeaders.get(key);
+		if (value !== void 0) nextHeaders.set(key, value);
+	}
+	return nextHeaders;
+}
+function shouldKeepMiddlewareHeader(key) {
+	return key === "x-middleware-override-headers" || key === "x-middleware-set-cookie" || key.startsWith("x-middleware-request-");
+}
+//#endregion
+//#region node_modules/vinext/dist/config/config-matchers.js
+/**
+* Cache for compiled regex patterns in matchConfigPattern.
+*
+* Redirect/rewrite patterns are static — they come from next.config.js and
+* never change at runtime. Without caching, every request that hits the regex
+* branch re-runs the full tokeniser walk + isSafeRegex + new RegExp() for
+* every rule in the array. On apps with many locale-prefixed rules (which all
+* contain `(` and therefore enter the regex branch) this dominated profiling
+* at ~2.4 seconds of CPU self-time.
+*
+* Value is `null` when safeRegExp rejected the pattern (ReDoS risk), so we
+* skip it on subsequent requests too without re-running the scanner.
+*/
+var _compiledPatternCache = /* @__PURE__ */ new Map();
+/**
+* Cache for compiled header source regexes in matchHeaders.
+*
+* Each NextHeader rule has a `source` that is run through escapeHeaderSource()
+* then safeRegExp() to produce a RegExp. Both are pure functions of the source
+* string and the result never changes. Without caching, every request
+* re-runs the full escapeHeaderSource tokeniser + isSafeRegex scan + new RegExp()
+* for every header rule.
+*
+* Value is `null` when safeRegExp rejected the pattern (ReDoS risk).
+*/
+var _compiledHeaderSourceCache = /* @__PURE__ */ new Map();
+/**
+* Cache for compiled has/missing condition value regexes in checkSingleCondition.
+*
+* Each has/missing condition may carry a `value` string that is passed directly
+* to safeRegExp() for matching against header/cookie/query/host values. The
+* condition objects are static (from next.config.js) so the compiled RegExp
+* never changes. Without caching, safeRegExp() is called on every request for
+* every condition on every rule.
+*
+* Value is `null` when safeRegExp rejected the pattern, or `false` when the
+* value string was undefined (no regex needed — use exact string comparison).
+*/
+var _compiledConditionCache = /* @__PURE__ */ new Map();
+/**
+* Cache for destination substitution regexes in substituteDestinationParams.
+*
+* The regex depends only on the set of param keys captured from the matched
+* source pattern. Caching by sorted key list avoids recompiling a new RegExp
+* for repeated redirect/rewrite calls that use the same param shape.
+*/
+var _compiledDestinationParamCache = /* @__PURE__ */ new Map();
+/**
+* Generic helper for the regex compilation caches above.
+*
+* Each cache stores the compiled artifact (or `null` when safeRegExp rejected
+* the pattern) the first time a key is seen, and reuses it forever. The
+* `undefined` sentinel distinguishes "not yet seen" from "seen and rejected"
+* so we never re-run isSafeRegex on the same input.
+*
+* Keep the security path intact: `compile()` is responsible for calling
+* safeRegExp(); this helper only handles caching.
+*/
+function getCachedRegex(cache, key, compile) {
+	let value = cache.get(key);
+	if (value === void 0) {
+		value = compile();
+		cache.set(key, value);
+	}
+	return value;
+}
+/**
+* Redirect index for O(1) locale-static rule lookup.
+*
+* Many Next.js apps generate 50-100 redirect rules of the form:
+*   /:locale(en|es|fr|...)?/some-static-path  →  /some-destination
+*
+* The compiled regex for each is like:
+*   ^/(en|es|fr|...)?/some-static-path$
+*
+* When no redirect matches (the common case for ordinary page loads),
+* matchRedirect previously ran exec() on every one of those regexes —
+* ~2ms per call, ~2992ms total self-time in profiles.
+*
+* The index splits rules into two buckets:
+*
+*   localeStatic — rules whose source is exactly /:paramName(alt1|alt2|...)?/suffix
+*     where `suffix` is a static path with no further params or regex groups.
+*     These are indexed in a Map<suffix, entry[]> for O(1) lookup after a
+*     single fast strip of the optional locale prefix.
+*
+*   linear — all other rules. Matched with the original O(n) loop.
+*
+* The index is stored in a WeakMap keyed by the redirects array so it is
+* computed once per config load and GC'd when the array is no longer live.
+*
+* ## Ordering invariant
+*
+* Redirect rules must be evaluated in their original order (first match wins).
+* Each locale-static entry stores its `originalIndex` so that, when a
+* locale-static fast-path match is found, any linear rules that appear earlier
+* in the array are still checked first.
+*/
+/** Matches `/:param(alternation)?/static/suffix` — the locale-static pattern. */
+var _LOCALE_STATIC_RE = /^\/:[\w-]+\(([^)]+)\)\?\/([a-zA-Z0-9_~.%@!$&'*+,;=:/-]+)$/;
+var _redirectIndexCache = /* @__PURE__ */ new WeakMap();
+/**
+* Build (or retrieve from cache) the redirect index for a given redirects array.
+*
+* Called once per config load from matchRedirect. The WeakMap ensures the index
+* is recomputed if the config is reloaded (new array reference) and GC'd when
+* the array is collected.
+*/
+function _getRedirectIndex(redirects) {
+	let index = _redirectIndexCache.get(redirects);
+	if (index !== void 0) return index;
+	const localeStatic = /* @__PURE__ */ new Map();
+	const linear = [];
+	for (let i = 0; i < redirects.length; i++) {
+		const redirect = redirects[i];
+		const m = _LOCALE_STATIC_RE.exec(redirect.source);
+		if (m) {
+			const paramName = redirect.source.slice(2, redirect.source.indexOf("("));
+			const alternation = m[1];
+			const suffix = "/" + m[2];
+			const altRe = safeRegExp("^(?:" + alternation + ")$");
+			if (!altRe) {
+				linear.push([i, redirect]);
+				continue;
+			}
+			const entry = {
+				paramName,
+				altRe,
+				redirect,
+				originalIndex: i
+			};
+			const bucket = localeStatic.get(suffix);
+			if (bucket) bucket.push(entry);
+			else localeStatic.set(suffix, [entry]);
+		} else linear.push([i, redirect]);
+	}
+	index = {
+		localeStatic,
+		linear
+	};
+	_redirectIndexCache.set(redirects, index);
+	return index;
+}
+/** Hop-by-hop headers that should not be forwarded through a proxy. */
+var HOP_BY_HOP_HEADERS = new Set([
+	"connection",
+	"keep-alive",
+	"proxy-authenticate",
+	"proxy-authorization",
+	"te",
+	"trailers",
+	"transfer-encoding",
+	"upgrade"
+]);
+/**
+* Request hop-by-hop headers to strip before proxying with fetch().
+* Intentionally narrower than HOP_BY_HOP_HEADERS: external rewrite proxying
+* still forwards proxy auth credentials, while response sanitization strips
+* them before returning data to the client.
+*/
+var REQUEST_HOP_BY_HOP_HEADERS = new Set([
+	"connection",
+	"keep-alive",
+	"te",
+	"trailers",
+	"transfer-encoding",
+	"upgrade"
+]);
+function stripHopByHopRequestHeaders(headers) {
+	const connectionTokens = (headers.get("connection") || "").split(",").map((value) => value.trim().toLowerCase()).filter(Boolean);
+	for (const header of REQUEST_HOP_BY_HOP_HEADERS) headers.delete(header);
+	for (const token of connectionTokens) headers.delete(token);
+}
+/**
+* Detect regex patterns vulnerable to catastrophic backtracking (ReDoS).
+*
+* Uses a lightweight heuristic: scans the pattern string for nested quantifiers
+* (a quantifier applied to a group that itself contains a quantifier). This
+* catches the most common pathological patterns like `(a+)+`, `(.*)*`,
+* `([^/]+)+`, `(a|a+)+` without needing a full regex parser.
+*
+* Returns true if the pattern appears safe, false if it's potentially dangerous.
+*/
+function isSafeRegex(pattern) {
+	const quantifierAtDepth = [];
+	let depth = 0;
+	let i = 0;
+	while (i < pattern.length) {
+		const ch = pattern[i];
+		if (ch === "\\") {
+			i += 2;
+			continue;
+		}
+		if (ch === "[") {
+			i++;
+			while (i < pattern.length && pattern[i] !== "]") {
+				if (pattern[i] === "\\") i++;
+				i++;
+			}
+			i++;
+			continue;
+		}
+		if (ch === "(") {
+			depth++;
+			if (quantifierAtDepth.length <= depth) quantifierAtDepth.push(false);
+			else quantifierAtDepth[depth] = false;
+			i++;
+			continue;
+		}
+		if (ch === ")") {
+			const hadQuantifier = depth > 0 && quantifierAtDepth[depth];
+			if (depth > 0) depth--;
+			const next = pattern[i + 1];
+			if (next === "+" || next === "*" || next === "{") {
+				if (hadQuantifier) return false;
+				if (depth >= 0 && depth < quantifierAtDepth.length) quantifierAtDepth[depth] = true;
+			}
+			i++;
+			continue;
+		}
+		if (ch === "+" || ch === "*") {
+			if (depth > 0) quantifierAtDepth[depth] = true;
+			i++;
+			continue;
+		}
+		if (ch === "?") {
+			const prev = i > 0 ? pattern[i - 1] : "";
+			if (prev !== "+" && prev !== "*" && prev !== "?" && prev !== "}") {
+				if (depth > 0) quantifierAtDepth[depth] = true;
+			}
+			i++;
+			continue;
+		}
+		if (ch === "{") {
+			let j = i + 1;
+			while (j < pattern.length && /[\d,]/.test(pattern[j])) j++;
+			if (j < pattern.length && pattern[j] === "}" && j > i + 1) {
+				if (depth > 0) quantifierAtDepth[depth] = true;
+				i = j + 1;
+				continue;
+			}
+		}
+		i++;
+	}
+	return true;
+}
+/**
+* Compile a regex pattern safely. Returns the compiled RegExp or null if the
+* pattern is invalid or vulnerable to ReDoS.
+*
+* Logs a warning when a pattern is rejected so developers can fix their config.
+*/
+function safeRegExp(pattern, flags) {
+	if (!isSafeRegex(pattern)) {
+		console.warn(`[vinext] Ignoring potentially unsafe regex pattern (ReDoS risk): ${pattern}\n  Patterns with nested quantifiers (e.g. (a+)+) can cause catastrophic backtracking.\n  Simplify the pattern to avoid nested repetition.`);
+		return null;
+	}
+	try {
+		return new RegExp(pattern, flags);
+	} catch {
+		return null;
+	}
+}
+/**
+* Convert a Next.js header/rewrite/redirect source pattern into a regex string.
+*
+* Regex groups in the source (e.g. `(\d+)`) are extracted first, the remaining
+* text is escaped/converted in a **single pass** (avoiding chained `.replace()`
+* which CodeQL flags as incomplete sanitization), then groups are restored.
+*/
+function escapeHeaderSource(source) {
+	const S = "";
+	const groups = [];
+	const withPlaceholders = source.replace(/\(([^)]+)\)/g, (_m, inner) => {
+		groups.push(inner);
+		return `${S}G${groups.length - 1}${S}`;
+	});
+	let result = "";
+	const re = new RegExp(`${S}G(\\d+)${S}|:[\\w-]+|[.+?*]|[^.+?*:\\uE000]+`, "g");
+	let m;
+	while ((m = re.exec(withPlaceholders)) !== null) if (m[1] !== void 0) result += `(${groups[Number(m[1])]})`;
+	else if (m[0].startsWith(":")) {
+		const constraintMatch = withPlaceholders.slice(re.lastIndex).match(new RegExp(`^${S}G(\\d+)${S}`));
+		if (constraintMatch) {
+			re.lastIndex += constraintMatch[0].length;
+			result += `(${groups[Number(constraintMatch[1])]})`;
+		} else result += "[^/]+";
+	} else switch (m[0]) {
+		case ".":
+			result += "\\.";
+			break;
+		case "+":
+			result += "\\+";
+			break;
+		case "?":
+			result += "\\?";
+			break;
+		case "*":
+			result += ".*";
+			break;
+		default:
+			result += m[0];
+			break;
+	}
+	return result;
+}
+/**
+* Parse a Cookie header string into a key-value record.
+*/
+function parseCookies(cookieHeader) {
+	if (!cookieHeader) return {};
+	const cookies = {};
+	for (const part of cookieHeader.split(";")) {
+		const eq = part.indexOf("=");
+		if (eq === -1) continue;
+		const key = part.slice(0, eq).trim();
+		const value = part.slice(eq + 1).trim();
+		if (key) cookies[key] = value;
+	}
+	return cookies;
+}
+/**
+* Build a RequestContext from a Web Request object.
+*/
+function requestContextFromRequest(request) {
+	const url = new URL(request.url);
+	return {
+		headers: request.headers,
+		cookies: parseCookies(request.headers.get("cookie")),
+		query: url.searchParams,
+		host: normalizeHost(request.headers.get("host"), url.hostname)
+	};
+}
+function normalizeHost(hostHeader, fallbackHostname) {
+	return (hostHeader ?? fallbackHostname).split(":", 1)[0].toLowerCase();
+}
+function _emptyParams() {
+	return Object.create(null);
+}
+function _matchConditionValue(actualValue, expectedValue) {
+	if (expectedValue === void 0) return _emptyParams();
+	const re = _cachedConditionRegex(expectedValue);
+	if (re) {
+		const match = re.exec(actualValue);
+		if (!match) return null;
+		const params = _emptyParams();
+		if (match.groups) {
+			for (const [key, value] of Object.entries(match.groups)) if (value !== void 0) params[key] = value;
+		}
+		return params;
+	}
+	return actualValue === expectedValue ? _emptyParams() : null;
+}
+/**
+* Check a single has/missing condition against request context.
+* Returns captured params when the condition is satisfied, or null otherwise.
+*/
+function matchSingleCondition(condition, ctx) {
+	switch (condition.type) {
+		case "header": {
+			const headerValue = ctx.headers.get(condition.key);
+			if (headerValue === null) return null;
+			return _matchConditionValue(headerValue, condition.value);
+		}
+		case "cookie": {
+			const cookieValue = ctx.cookies[condition.key];
+			if (cookieValue === void 0) return null;
+			return _matchConditionValue(cookieValue, condition.value);
+		}
+		case "query": {
+			const queryValue = ctx.query.get(condition.key);
+			if (queryValue === null) return null;
+			return _matchConditionValue(queryValue, condition.value);
+		}
+		case "host":
+			if (condition.value !== void 0) return _matchConditionValue(ctx.host, condition.value);
+			return ctx.host === condition.key ? _emptyParams() : null;
+		default: return null;
+	}
+}
+/**
+* Return a cached RegExp for a has/missing condition value string, compiling
+* on first use. Returns null if safeRegExp rejected the pattern or if the
+* value is not a valid regex (fall back to exact string comparison).
+*/
+function _cachedConditionRegex(value) {
+	return getCachedRegex(_compiledConditionCache, value, () => safeRegExp(`^${value}$`));
+}
+/**
+* Check all has/missing conditions for a config rule.
+* Returns true if the rule should be applied (all has conditions pass, all missing conditions pass).
+*
+* - has: every condition must match (the request must have it)
+* - missing: every condition must NOT match (the request must not have it)
+*/
+function collectConditionParams(has, missing, ctx) {
+	const params = _emptyParams();
+	if (has) for (const condition of has) {
+		const conditionParams = matchSingleCondition(condition, ctx);
+		if (!conditionParams) return null;
+		Object.assign(params, conditionParams);
+	}
+	if (missing) {
+		for (const condition of missing) if (matchSingleCondition(condition, ctx)) return null;
+	}
+	return params;
+}
+function checkHasConditions(has, missing, ctx) {
+	return collectConditionParams(has, missing, ctx) !== null;
+}
+/**
+* If the current position in `str` starts with a parenthesized group, consume
+* it and advance `re.lastIndex` past the closing `)`. Returns the group
+* contents or null if no group is present.
+*/
+function extractConstraint$1(str, re) {
+	if (str[re.lastIndex] !== "(") return null;
+	const start = re.lastIndex + 1;
+	let depth = 1;
+	let i = start;
+	while (i < str.length && depth > 0) {
+		if (str[i] === "(") depth++;
+		else if (str[i] === ")") depth--;
+		i++;
+	}
+	if (depth !== 0) return null;
+	re.lastIndex = i;
+	return str.slice(start, i - 1);
+}
+/**
+* Match a Next.js config pattern (from redirects/rewrites sources) against a pathname.
+* Returns matched params or null.
+*
+* Supports:
+*   :param     - matches a single path segment
+*   :param*    - matches zero or more segments (catch-all)
+*   :param+    - matches one or more segments
+*   (regex)    - inline regex patterns in the source
+*   :param(constraint) - named param with inline regex constraint
+*/
+function matchConfigPattern(pathname, pattern) {
+	if (pattern.includes("(") || pattern.includes("\\") || /:[\w-]+[*+][^/]/.test(pattern) || /:[\w-]+\./.test(pattern)) try {
+		const compiled = getCachedRegex(_compiledPatternCache, pattern, () => {
+			const paramNames = [];
+			let regexStr = "";
+			const tokenRe = /:([\w-]+)|[.]|[^:.]+/g;
+			let tok;
+			while ((tok = tokenRe.exec(pattern)) !== null) if (tok[1] !== void 0) {
+				const name = tok[1];
+				const rest = pattern.slice(tokenRe.lastIndex);
+				if (rest.startsWith("*") || rest.startsWith("+")) {
+					const quantifier = rest[0];
+					tokenRe.lastIndex += 1;
+					const constraint = extractConstraint$1(pattern, tokenRe);
+					paramNames.push(name);
+					if (constraint !== null) regexStr += `(${constraint})`;
+					else regexStr += quantifier === "*" ? "(.*)" : "(.+)";
+				} else {
+					const constraint = extractConstraint$1(pattern, tokenRe);
+					paramNames.push(name);
+					regexStr += constraint !== null ? `(${constraint})` : "([^/]+)";
+				}
+			} else if (tok[0] === ".") regexStr += "\\.";
+			else regexStr += tok[0];
+			const re = safeRegExp("^" + regexStr + "$");
+			return re ? {
+				re,
+				paramNames
+			} : null;
+		});
+		if (!compiled) return null;
+		const match = compiled.re.exec(pathname);
+		if (!match) return null;
+		const params = Object.create(null);
+		for (let i = 0; i < compiled.paramNames.length; i++) params[compiled.paramNames[i]] = match[i + 1] ?? "";
+		return params;
+	} catch {}
+	const catchAllMatch = pattern.match(/:([\w-]+)(\*|\+)$/);
+	if (catchAllMatch) {
+		const prefix = pattern.slice(0, pattern.lastIndexOf(":"));
+		const paramName = catchAllMatch[1];
+		const isPlus = catchAllMatch[2] === "+";
+		const prefixNoSlash = prefix.replace(/\/$/, "");
+		if (!pathname.startsWith(prefixNoSlash)) return null;
+		const charAfter = pathname[prefixNoSlash.length];
+		if (charAfter !== void 0 && charAfter !== "/") return null;
+		const rest = pathname.slice(prefixNoSlash.length);
+		if (isPlus && (!rest || rest === "/")) return null;
+		let restValue = rest.startsWith("/") ? rest.slice(1) : rest;
+		return { [paramName]: restValue };
+	}
+	const parts = pattern.split("/");
+	const pathParts = pathname.split("/");
+	if (parts.length !== pathParts.length) return null;
+	const params = Object.create(null);
+	for (let i = 0; i < parts.length; i++) if (parts[i].startsWith(":")) params[parts[i].slice(1)] = pathParts[i];
+	else if (parts[i] !== pathParts[i]) return null;
+	return params;
+}
+/**
+* Apply redirect rules from next.config.js.
+* Returns the redirect info if a redirect was matched, or null.
+*
+* `ctx` provides the request context (cookies, headers, query, host) used
+* to evaluate has/missing conditions. Next.js always has request context
+* when evaluating redirects, so this parameter is required.
+*
+* ## Performance
+*
+* Rules with a locale-capture-group prefix (the dominant pattern in large
+* Next.js apps — e.g. `/:locale(en|es|fr|...)?/some-path`) are handled via
+* a pre-built index. Instead of running exec() on each locale regex
+* individually, we:
+*
+*   1. Strip the optional locale prefix from the pathname with one cheap
+*      string-slice check (no regex exec on the hot path).
+*   2. Look up the stripped suffix in a Map<suffix, entry[]>.
+*   3. For each matching entry, validate the captured locale string against
+*      a small, anchored alternation regex.
+*
+* This reduces the per-request cost from O(n × regex) to O(1) map lookup +
+* O(matches × tiny-regex), eliminating the ~2992ms self-time reported in
+* profiles for apps with 63+ locale-prefixed rules.
+*
+* Rules that don't fit the locale-static pattern fall back to the original
+* linear matchConfigPattern scan.
+*
+* ## Ordering invariant
+*
+* First match wins, preserving the original redirect array order. When a
+* locale-static fast-path match is found at position N, all linear rules with
+* an original index < N are checked via matchConfigPattern first — they are
+* few in practice (typically zero) so this is not a hot-path concern.
+*/
+function matchRedirect(pathname, redirects, ctx) {
+	if (redirects.length === 0) return null;
+	const index = _getRedirectIndex(redirects);
+	let localeMatch = null;
+	let localeMatchIndex = Infinity;
+	if (index.localeStatic.size > 0) {
+		const noLocaleBucket = index.localeStatic.get(pathname);
+		if (noLocaleBucket) for (const entry of noLocaleBucket) {
+			if (entry.originalIndex >= localeMatchIndex) continue;
+			const redirect = entry.redirect;
+			const conditionParams = redirect.has || redirect.missing ? collectConditionParams(redirect.has, redirect.missing, ctx) : _emptyParams();
+			if (!conditionParams) continue;
+			localeMatch = {
+				destination: substituteAndSanitizeDestination(redirect.destination, {
+					[entry.paramName]: "",
+					...conditionParams
+				}),
+				permanent: redirect.permanent
+			};
+			localeMatchIndex = entry.originalIndex;
+			break;
+		}
+		const slashTwo = pathname.indexOf("/", 1);
+		if (slashTwo !== -1) {
+			const suffix = pathname.slice(slashTwo);
+			const localePart = pathname.slice(1, slashTwo);
+			const localeBucket = index.localeStatic.get(suffix);
+			if (localeBucket) for (const entry of localeBucket) {
+				if (entry.originalIndex >= localeMatchIndex) continue;
+				if (!entry.altRe.test(localePart)) continue;
+				const redirect = entry.redirect;
+				const conditionParams = redirect.has || redirect.missing ? collectConditionParams(redirect.has, redirect.missing, ctx) : _emptyParams();
+				if (!conditionParams) continue;
+				localeMatch = {
+					destination: substituteAndSanitizeDestination(redirect.destination, {
+						[entry.paramName]: localePart,
+						...conditionParams
+					}),
+					permanent: redirect.permanent
+				};
+				localeMatchIndex = entry.originalIndex;
+				break;
+			}
+		}
+	}
+	for (const [origIdx, redirect] of index.linear) {
+		if (origIdx >= localeMatchIndex) break;
+		const params = matchConfigPattern(pathname, redirect.source);
+		if (params) {
+			const conditionParams = redirect.has || redirect.missing ? collectConditionParams(redirect.has, redirect.missing, ctx) : _emptyParams();
+			if (!conditionParams) continue;
+			return {
+				destination: substituteAndSanitizeDestination(redirect.destination, {
+					...params,
+					...conditionParams
+				}),
+				permanent: redirect.permanent
+			};
+		}
+	}
+	return localeMatch;
+}
+/**
+* Apply rewrite rules from next.config.js.
+* Returns the rewritten URL or null if no rewrite matched.
+*
+* `ctx` provides the request context (cookies, headers, query, host) used
+* to evaluate has/missing conditions. Next.js always has request context
+* when evaluating rewrites, so this parameter is required.
+*/
+function matchRewrite(pathname, rewrites, ctx) {
+	for (const rewrite of rewrites) {
+		const params = matchConfigPattern(pathname, rewrite.source);
+		if (params) {
+			const conditionParams = rewrite.has || rewrite.missing ? collectConditionParams(rewrite.has, rewrite.missing, ctx) : _emptyParams();
+			if (!conditionParams) continue;
+			return substituteAndSanitizeDestination(rewrite.destination, {
+				...params,
+				...conditionParams
+			});
+		}
+	}
+	return null;
+}
+/**
+* Substitute all matched route params into a redirect/rewrite destination.
+*
+* Handles repeated params (e.g. `/api/:id/:id`) and catch-all suffix forms
+* (`:path*`, `:path+`) in a single pass. Unknown params are left intact.
+*/
+function substituteDestinationParams(destination, params) {
+	const keys = Object.keys(params);
+	if (keys.length === 0) return destination;
+	const sortedKeys = [...keys].sort((a, b) => b.length - a.length);
+	const cacheKey = sortedKeys.join("\0");
+	let paramRe = _compiledDestinationParamCache.get(cacheKey);
+	if (!paramRe) {
+		const paramAlternation = sortedKeys.map((key) => key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
+		paramRe = new RegExp(`:(${paramAlternation})([+*])?(?![A-Za-z0-9_])`, "g");
+		_compiledDestinationParamCache.set(cacheKey, paramRe);
+	}
+	return destination.replace(paramRe, (_token, key) => params[key]);
+}
+/**
+* Substitute params into a redirect/rewrite destination and sanitize the
+* result. Used by every redirect/rewrite branch — the substitution can
+* introduce protocol-relative URLs (e.g. `//evil.com` from a decoded `%2F`
+* in a catch-all param), which sanitizeDestination collapses.
+*/
+function substituteAndSanitizeDestination(destination, params) {
+	return sanitizeDestination(substituteDestinationParams(destination, params));
+}
+/**
+* Sanitize a redirect/rewrite destination to collapse protocol-relative URLs.
+*
+* After parameter substitution, a destination like `/:path*` can become
+* `//evil.com` if the catch-all captured a decoded `%2F` (`/evil.com`).
+* Browsers interpret `//evil.com` as a protocol-relative URL, redirecting
+* users off-site.
+*
+* This function collapses any leading double (or more) slashes to a single
+* slash for non-external (relative) destinations.
+*/
+function sanitizeDestination(dest) {
+	if (dest.startsWith("http://") || dest.startsWith("https://")) return dest;
+	dest = dest.replace(/^[\\/]+/, "/");
+	return dest;
+}
+/**
+* Check if a URL is external (absolute URL or protocol-relative).
+* Detects any URL scheme (http:, https:, data:, javascript:, blob:, etc.)
+* per RFC 3986, plus protocol-relative URLs (//).
+*/
+function isExternalUrl(url) {
+	return /^[a-z][a-z0-9+.-]*:/i.test(url) || url.startsWith("//");
+}
+/**
+* Proxy an incoming request to an external URL and return the upstream response.
+*
+* Used for external rewrites (e.g. `/ph/:path*` → `https://us.i.posthog.com/:path*`).
+* Next.js handles these as server-side reverse proxies, forwarding the request
+* method, headers, and body to the external destination.
+*
+* Works in all runtimes (Node.js, Cloudflare Workers) via the standard fetch() API.
+*/
+async function proxyExternalRequest(request, externalUrl) {
+	const originalUrl = new URL(request.url);
+	const targetUrl = new URL(externalUrl);
+	const destinationKeys = new Set(targetUrl.searchParams.keys());
+	for (const [key, value] of originalUrl.searchParams) if (!destinationKeys.has(key)) targetUrl.searchParams.append(key, value);
+	const headers = new Headers(request.headers);
+	headers.set("host", targetUrl.host);
+	stripHopByHopRequestHeaders(headers);
+	const keysToDelete = [];
+	for (const key of headers.keys()) if (key.startsWith("x-middleware-")) keysToDelete.push(key);
+	for (const key of keysToDelete) headers.delete(key);
+	headers.delete(VINEXT_PRERENDER_SECRET_HEADER);
+	headers.delete(VINEXT_MW_CTX_HEADER);
+	const method = request.method;
+	const hasBody = method !== "GET" && method !== "HEAD";
+	const init = {
+		method,
+		headers,
+		redirect: "manual"
+	};
+	if (hasBody && request.body) {
+		init.body = request.body;
+		init.duplex = "half";
+	}
+	const controller = new AbortController();
+	const timeout = setTimeout(() => controller.abort(), 3e4);
+	let upstreamResponse;
+	try {
+		upstreamResponse = await fetch(targetUrl.href, {
+			...init,
+			signal: controller.signal
+		});
+	} catch (e) {
+		if (e instanceof Error && e.name === "AbortError") {
+			console.error("[vinext] External rewrite proxy timeout:", targetUrl.href);
+			return new Response("Gateway Timeout", { status: 504 });
+		}
+		console.error("[vinext] External rewrite proxy error:", e);
+		return new Response("Bad Gateway", { status: 502 });
+	} finally {
+		clearTimeout(timeout);
+	}
+	const isNodeRuntime = typeof process !== "undefined" && !!process.versions?.node;
+	const responseHeaders = new Headers();
+	upstreamResponse.headers.forEach((value, key) => {
+		const lower = key.toLowerCase();
+		if (HOP_BY_HOP_HEADERS.has(lower)) return;
+		if (isNodeRuntime && (lower === "content-encoding" || lower === "content-length")) return;
+		responseHeaders.append(key, value);
+	});
+	return new Response(upstreamResponse.body, {
+		status: upstreamResponse.status,
+		statusText: upstreamResponse.statusText,
+		headers: responseHeaders
+	});
+}
+/**
+* Apply custom header rules from next.config.js.
+* Returns an array of { key, value } pairs to set on the response.
+*
+* `ctx` provides the request context (cookies, headers, query, host) used
+* to evaluate has/missing conditions. Next.js always has request context
+* when evaluating headers, so this parameter is required.
+*/
+function matchHeaders(pathname, headers, ctx) {
+	const result = [];
+	for (const rule of headers) {
+		const sourceRegex = getCachedRegex(_compiledHeaderSourceCache, rule.source, () => safeRegExp("^" + escapeHeaderSource(rule.source) + "$"));
+		if (sourceRegex && sourceRegex.test(pathname)) {
+			if (rule.has || rule.missing) {
+				if (!checkHasConditions(rule.has, rule.missing, ctx)) continue;
+			}
+			result.push(...rule.headers);
+		}
+	}
+	return result;
+}
+//#endregion
+//#region node_modules/vinext/dist/server/request-pipeline.js
+/**
+* Shared request pipeline utilities.
+*
+* Extracted from generated entries and server hot paths to keep codegen focused
+* on app shape while normal modules own request behavior. Some dev-server and
+* worker-template setup code still has inline normalization that should be
+* migrated in follow-up work.
+*
+* These utilities handle the common request lifecycle steps: protocol-
+* relative URL guards, basePath stripping, trailing slash normalization,
+* and CSRF origin validation.
+*
+* Plain-text error response builders (forbidden / not-found / etc.) live in
+* `./http-error-responses.ts`.
+*/
+/**
+* Guard against protocol-relative URL open redirects.
+*
+* Paths like `//example.com/` would be redirected to `//example.com` by the
+* trailing-slash normalizer, which browsers interpret as `http://example.com`.
+* Backslashes are equivalent to forward slashes in the URL spec
+* (e.g. `/\evil.com` is treated as `//evil.com` by browsers).
+*
+* Next.js returns 404 for these paths. We check the RAW pathname before
+* normalization so the guard fires before normalizePath collapses `//`.
+*
+* Percent-encoded variants are also blocked because:
+*   - `%5C` decodes to `\` (browsers treat `/\evil.com` as `//evil.com`).
+*   - `%2F` decodes to `/` (so `/%2F/evil.com` effectively becomes `//evil.com`).
+* These forms survive segment-wise decoding that re-encodes path delimiters
+* (e.g. `normalizePathnameForRouteMatchStrict`), so a later trailing-slash
+* redirect would still echo the encoded form in its `Location` header. See
+* `isOpenRedirectShaped` for the full list of rejected leading-segment forms.
+*
+* @param rawPathname - The raw pathname from the URL, before any normalization
+* @returns A 404 Response if the path is protocol-relative, or null to continue
+*/
+function guardProtocolRelativeUrl(rawPathname) {
+	if (isOpenRedirectShaped(rawPathname)) return notFoundResponse();
+	return null;
+}
+/**
+* Returns true if a request pathname looks like a protocol-relative open
+* redirect, in either literal or percent-encoded form.
+*
+* Exported for call sites that need to replicate the guard inline (Pages
+* Router worker codegen, Node production server) and for defense-in-depth
+* checks inside redirect emitters.
+*
+* A pathname is considered "open redirect shaped" when its first segment,
+* after decoding backslashes and encoded delimiters, would cause a browser
+* to resolve a `Location` containing the pathname as protocol-relative:
+*
+*   - literal   `//evil.com`
+*   - literal   `/\evil.com`             (browsers normalize `\` to `/`)
+*   - encoded   `/%5Cevil.com`           (`%5C` decodes to `\` in Location)
+*   - encoded   `/%2F/evil.com`          (`%2F` decodes to `/` → `//`)
+*   - mixed     `/%5C%2F`, `/%5C%5C`     (and other combinations)
+*
+* We explicitly do not require a valid percent sequence elsewhere in the
+* pathname — we only examine the leading bytes (up to the second real or
+* encoded delimiter) so malformed suffixes can still reach the normal
+* "400 Bad Request" decode path instead of being masked as "404".
+*/
+function isOpenRedirectShaped(rawPathname) {
+	if (!rawPathname.startsWith("/")) return false;
+	const afterSlash = rawPathname.slice(1);
+	if (afterSlash.startsWith("/") || afterSlash.startsWith("\\")) return true;
+	if (afterSlash.length >= 3 && afterSlash[0] === "%") {
+		const encoded = afterSlash.slice(0, 3).toLowerCase();
+		if (encoded === "%5c" || encoded === "%2f") return true;
+	}
+	return false;
+}
+/**
+* Apply matched next.config.js headers to a Web Headers object.
+*
+* Next.js evaluates config header match conditions against the original
+* request snapshot. Middleware response headers still win for the same
+* response key, while multi-value headers are additive.
+*/
+function applyConfigHeadersToResponse(responseHeaders, options) {
+	const matched = matchHeaders(options.pathname, options.configHeaders, options.requestContext);
+	for (const header of matched) {
+		const lowerName = header.key.toLowerCase();
+		if (lowerName === "vary" || lowerName === "set-cookie") responseHeaders.append(header.key, header.value);
+		else if (!responseHeaders.has(lowerName)) responseHeaders.set(header.key, header.value);
+	}
+}
+function createStaticFileSignal(pathname, context) {
+	const headers = new Headers({ [VINEXT_STATIC_FILE_HEADER]: encodeURIComponent(pathname) });
+	if (context.headers) for (const [key, value] of context.headers) headers.append(key, value);
+	return new Response(null, {
+		status: context.status ?? 200,
+		headers
+	});
+}
+/**
+* Resolve the public/ filesystem-route slot in the Next.js routing order.
+*
+* Public files are checked after middleware and before afterFiles/fallback
+* rewrites. The generated App Router entry provides the public-file set; this
+* helper owns the request-method and RSC exclusions plus static-file signaling.
+*/
+function resolvePublicFileRoute(options) {
+	if (options.request.method !== "GET" && options.request.method !== "HEAD") return null;
+	if (options.pathname.endsWith(".rsc")) return null;
+	if (!options.publicFiles.has(options.cleanPathname)) return null;
+	return createStaticFileSignal(options.cleanPathname, options.middlewareContext);
+}
+/**
+* Check if the pathname needs a trailing slash redirect, and return the
+* redirect Response if so.
+*
+* Follows Next.js behavior:
+* - `/api` routes are never redirected
+* - The root path `/` is never redirected
+* - If `trailingSlash` is true, redirect `/about` → `/about/`
+* - If `trailingSlash` is false (default), redirect `/about/` → `/about`
+*
+* @param pathname - The basePath-stripped pathname
+* @param basePath - The basePath to prepend to the redirect Location
+* @param trailingSlash - Whether trailing slashes should be enforced
+* @param search - The query string (including `?`) to preserve in the redirect
+* @returns A 308 redirect Response, or null if no redirect is needed
+*/
+function normalizeTrailingSlash(pathname, basePath, trailingSlash, search) {
+	if (pathname === "/" || pathname === "/api" || pathname.startsWith("/api/")) return null;
+	if (isOpenRedirectShaped(pathname)) return notFoundResponse();
+	const hasTrailing = pathname.endsWith("/");
+	if (trailingSlash && !hasTrailing && !pathname.endsWith(".rsc")) return new Response(null, {
+		status: 308,
+		headers: { Location: basePath + pathname + "/" + search }
+	});
+	if (!trailingSlash && hasTrailing) return new Response(null, {
+		status: 308,
+		headers: { Location: basePath + removeTrailingSlash(pathname) + search }
+	});
+	return null;
+}
+/**
+* Validate CSRF origin for server action requests.
+*
+* Matches Next.js behavior: compares the Origin header against the Host
+* header. If they don't match, the request is rejected with 403 unless
+* the origin is in the allowedOrigins list.
+*
+* @param request - The incoming Request
+* @param allowedOrigins - Origins from experimental.serverActions.allowedOrigins
+* @returns A 403 Response if origin validation fails, or null to continue
+*/
+function validateCsrfOrigin(request, allowedOrigins = []) {
+	const originHeader = request.headers.get("origin");
+	if (!originHeader) return null;
+	if (originHeader === "null") {
+		if (allowedOrigins.includes("null")) return null;
+		console.warn(`[vinext] CSRF origin "null" blocked for server action. To allow requests from sandboxed contexts, add "null" to experimental.serverActions.allowedOrigins.`);
+		return forbiddenResponse();
+	}
+	let originHost;
+	try {
+		originHost = new URL(originHeader).host.toLowerCase();
+	} catch {
+		return forbiddenResponse();
+	}
+	const hostHeader = (request.headers.get("host") || "").split(",")[0].trim().toLowerCase() || new URL(request.url).host.toLowerCase();
+	if (originHost === hostHeader) return null;
+	if (allowedOrigins.length > 0 && isOriginAllowed(originHost, allowedOrigins)) return null;
+	console.warn(`[vinext] CSRF origin mismatch: origin "${originHost}" does not match host "${hostHeader}". Blocking server action request.`);
+	return forbiddenResponse();
+}
+/**
+* Reject malformed Flight container reference graphs in server action payloads.
+*
+* `@vitejs/plugin-rsc` vendors its own React Flight decoder. Malicious action
+* payloads can abuse container references (`$Q`, `$W`, `$i`) to trigger very
+* expensive deserialization before the action is even looked up.
+*
+* Legitimate React-encoded container payloads use separate numeric backing
+* fields (e.g. field `1` plus root field `0` containing `"$Q1"`). We reject
+* numeric backing-field graphs that contain missing backing fields or cycles.
+* Regular user form fields are ignored entirely.
+*/
+async function validateServerActionPayload(body) {
+	const containerRefRe = /"\$([QWi])(\d+)"/g;
+	const fieldRefs = /* @__PURE__ */ new Map();
+	const collectRefs = (fieldKey, text) => {
+		const refs = /* @__PURE__ */ new Set();
+		let match;
+		containerRefRe.lastIndex = 0;
+		while ((match = containerRefRe.exec(text)) !== null) refs.add(match[2]);
+		fieldRefs.set(fieldKey, refs);
+	};
+	if (typeof body === "string") collectRefs("0", body);
+	else for (const [key, value] of body.entries()) {
+		if (!/^\d+$/.test(key)) continue;
+		if (typeof value === "string") {
+			collectRefs(key, value);
+			continue;
+		}
+		if (typeof value?.text === "function") collectRefs(key, await value.text());
+	}
+	if (fieldRefs.size === 0) return null;
+	const knownFields = new Set(fieldRefs.keys());
+	for (const refs of fieldRefs.values()) for (const ref of refs) if (!knownFields.has(ref)) return new Response("Invalid server action payload", {
+		status: 400,
+		headers: { "Content-Type": "text/plain" }
+	});
+	const visited = /* @__PURE__ */ new Set();
+	const stack = /* @__PURE__ */ new Set();
+	const hasCycle = (node) => {
+		if (stack.has(node)) return true;
+		if (visited.has(node)) return false;
+		visited.add(node);
+		stack.add(node);
+		for (const ref of fieldRefs.get(node) ?? []) if (hasCycle(ref)) return true;
+		stack.delete(node);
+		return false;
+	};
+	for (const node of fieldRefs.keys()) if (hasCycle(node)) return new Response("Invalid server action payload", {
+		status: 400,
+		headers: { "Content-Type": "text/plain" }
+	});
+	return null;
+}
+/**
+* Check if an origin matches any pattern in the allowed origins list.
+* Supports wildcard subdomains (e.g. `*.example.com`).
+*/
+/**
+* Segment-by-segment domain matching for wildcard origin patterns.
+* `*` matches exactly one DNS label; `**` matches one or more labels.
+*
+* Ported from Next.js: packages/next/src/server/app-render/csrf-protection.ts
+* https://github.com/vercel/next.js/blob/canary/packages/next/src/server/app-render/csrf-protection.ts
+*/
+function matchWildcardDomain(domain, pattern) {
+	const normalizedDomain = domain.replace(/[A-Z]/g, (c) => c.toLowerCase());
+	const normalizedPattern = pattern.replace(/[A-Z]/g, (c) => c.toLowerCase());
+	const domainParts = normalizedDomain.split(".");
+	const patternParts = normalizedPattern.split(".");
+	if (patternParts.length < 1) return false;
+	if (domainParts.length < patternParts.length) return false;
+	if (patternParts.length === 1 && (patternParts[0] === "*" || patternParts[0] === "**")) return false;
+	while (patternParts.length) {
+		const patternPart = patternParts.pop();
+		const domainPart = domainParts.pop();
+		if (patternPart === void 0) return false;
+		switch (patternPart) {
+			case "": return false;
+			case "*": if (domainPart) continue;
+			else return false;
+			case "**":
+				if (patternParts.length > 0) return false;
+				return domainPart !== void 0;
+			default: if (patternPart !== domainPart) return false;
+		}
+	}
+	return domainParts.length === 0;
+}
+function isOriginAllowed(origin, allowed) {
+	for (const pattern of allowed) if (pattern.includes("*")) {
+		if (matchWildcardDomain(origin, pattern)) return true;
+	} else if (origin.toLowerCase() === pattern.toLowerCase()) return true;
+	return false;
+}
+/**
+* Validate an image optimization URL parameter.
+*
+* Ensures the URL is a relative path that doesn't escape the origin:
+* - Must start with "/" but not "//"
+* - Backslashes are normalized (browsers treat `\` as `/`)
+* - Origin validation as defense-in-depth
+*
+* @param rawUrl - The raw `url` query parameter value
+* @param requestUrl - The full request URL for origin comparison
+* @returns An error Response if validation fails, or the normalized image URL
+*/
+function validateImageUrl(rawUrl, requestUrl) {
+	const imgUrl = rawUrl?.replaceAll("\\", "/") ?? null;
+	if (!imgUrl || !imgUrl.startsWith("/") || imgUrl.startsWith("//")) return new Response(!rawUrl ? "Missing url parameter" : "Only relative URLs allowed", { status: 400 });
+	const url = new URL(requestUrl);
+	if (new URL(imgUrl, url.origin).origin !== url.origin) return new Response("Only relative URLs allowed", { status: 400 });
+	return imgUrl;
+}
+/**
+* Strip internal `x-middleware-*` headers from a Headers object.
+*
+* Middleware uses `x-middleware-*` headers as internal signals (e.g.
+* `x-middleware-next`, `x-middleware-rewrite`, `x-middleware-request-*`).
+* These must be removed before sending the response to the client.
+*
+* @param headers - The Headers object to modify in place
+*/
+function processMiddlewareHeaders(headers) {
+	const keysToDelete = [];
+	for (const key of headers.keys()) if (key.startsWith("x-middleware-")) keysToDelete.push(key);
+	for (const key of keysToDelete) headers.delete(key);
+}
+/**
+* Strip internal headers from an inbound request so they cannot be forged by
+* an external attacker to influence routing or impersonate internal state.
+*
+* Must be called at every request entry point BEFORE middleware, routing,
+* or any handler logic accesses the request headers.
+*
+* Returns a new Headers object with internal headers removed. The input
+* is never mutated — Request.headers is immutable in Workers/miniflare
+* environments (see applyMiddlewareRequestHeaders in config-matchers.ts
+* for the same cloning pattern).
+*
+* @param headers - The source Headers (never modified)
+* @returns A new Headers with INTERNAL_HEADERS removed
+*/
+function filterInternalHeaders(headers) {
+	const filtered = new Headers();
+	for (const [key, value] of headers) if (!INTERNAL_HEADERS.includes(key.toLowerCase())) filtered.append(key, value);
+	return filtered;
+}
+function getRequestCf(request) {
+	const cf = Reflect.get(request, "cf");
+	return cf === void 0 ? void 0 : cf;
+}
+/**
+* Clone a Request while overriding headers, preserving metadata when possible.
+*
+* Some runtimes (Workers) allow `new Request(request, { headers })` which
+* retains redirect/signal/cf data. Others (Node/undici across realms) can throw
+* when cloning a foreign Request instance. In that case, fall back to building
+* a RequestInit with best-effort metadata.
+*/
+function cloneRequestWithHeaders(request, headers) {
+	let cloned;
+	try {
+		cloned = new Request(request, { headers });
+	} catch {
+		const init = {
+			method: request.method,
+			headers,
+			body: request.body ?? void 0,
+			redirect: request.redirect,
+			signal: request.signal,
+			integrity: request.integrity,
+			cache: request.cache,
+			mode: request.mode,
+			credentials: request.credentials,
+			referrer: request.referrer,
+			referrerPolicy: request.referrerPolicy
+		};
+		if (request.body) init.duplex = "half";
+		cloned = new Request(request.url, init);
+	}
+	const cf = getRequestCf(request);
+	if (cf !== void 0) Object.defineProperty(cloned, "cf", {
+		value: cf,
+		enumerable: true,
+		configurable: true
+	});
+	return cloned;
+}
+//#endregion
+//#region node_modules/vinext/dist/server/worker-utils.js
+/**
+* Shared utilities for Cloudflare Worker entries.
+*
+* Used by hand-written example worker entries and can be imported as
+* "vinext/server/worker-utils". The generated worker entry (deploy.ts)
+* inlines these functions in its template string.
+*/
+/**
+* Merge middleware/config headers into a response.
+* Response headers take precedence over middleware headers for all headers
+* except Set-Cookie, which is additive (both middleware and response cookies
+* are preserved). Uses getSetCookie() to preserve multiple Set-Cookie values.
+* Keep this in sync with prod-server.ts and the generated copy in deploy.ts.
+*/
+var NO_BODY_RESPONSE_STATUSES = new Set([
+	204,
+	205,
+	304
+]);
+function isVinextStreamedHtmlResponse(response) {
+	return response.__vinextStreamedHtmlResponse === true;
+}
+function isContentLengthHeader(name) {
+	return name.toLowerCase() === "content-length";
+}
+function cancelResponseBody(response) {
+	const body = response.body;
+	if (!body || body.locked) return;
+	body.cancel().catch(() => {});
+}
+function buildHeaderRecord(response, omitNames = []) {
+	const omitted = new Set(omitNames.map((name) => name.toLowerCase()));
+	const headers = {};
+	response.headers.forEach((value, key) => {
+		if (omitted.has(key.toLowerCase()) || key === "set-cookie") return;
+		headers[key] = value;
+	});
+	const cookies = response.headers.getSetCookie?.() ?? [];
+	if (cookies.length > 0) headers["set-cookie"] = cookies;
+	return headers;
+}
+function mergeHeaders(response, extraHeaders, statusOverride) {
+	const status = statusOverride ?? response.status;
+	const merged = new Headers();
+	for (const [k, v] of Object.entries(extraHeaders)) {
+		if (isContentLengthHeader(k)) continue;
+		if (Array.isArray(v)) for (const item of v) merged.append(k, item);
+		else merged.set(k, v);
+	}
+	response.headers.forEach((v, k) => {
+		if (k === "set-cookie") return;
+		merged.set(k, v);
+	});
+	const responseCookies = response.headers.getSetCookie?.() ?? [];
+	for (const cookie of responseCookies) merged.append("set-cookie", cookie);
+	const shouldDropBody = NO_BODY_RESPONSE_STATUSES.has(status);
+	const shouldStripStreamLength = isVinextStreamedHtmlResponse(response) && merged.has("content-length");
+	if (!Object.keys(extraHeaders).some((key) => !isContentLengthHeader(key)) && statusOverride === void 0 && !shouldDropBody && !shouldStripStreamLength) return response;
+	if (shouldDropBody) {
+		cancelResponseBody(response);
+		merged.delete("content-encoding");
+		merged.delete("content-length");
+		merged.delete("content-type");
+		merged.delete("transfer-encoding");
+		return new Response(null, {
+			status,
+			statusText: status === response.status ? response.statusText : void 0,
+			headers: merged
+		});
+	}
+	if (shouldStripStreamLength) merged.delete("content-length");
+	return new Response(response.body, {
+		status,
+		statusText: status === response.status ? response.statusText : void 0,
+		headers: merged
+	});
+}
+async function resolveStaticAssetSignal(signalResponse, options) {
+	const signal = signalResponse.headers.get(VINEXT_STATIC_FILE_HEADER);
+	if (!signal) return null;
+	let assetPath = "/";
+	try {
+		assetPath = decodeURIComponent(signal);
+	} catch {
+		assetPath = signal;
+	}
+	const extraHeaders = buildHeaderRecord(signalResponse, [
+		VINEXT_STATIC_FILE_HEADER,
+		"content-encoding",
+		"content-length",
+		"content-type"
+	]);
+	cancelResponseBody(signalResponse);
+	const assetResponse = await options.fetchAsset(assetPath);
+	return mergeHeaders(assetResponse, extraHeaders, assetResponse.ok && signalResponse.status !== 200 ? signalResponse.status : void 0);
+}
+//#endregion
+//#region node_modules/@vitejs/plugin-rsc/dist/dist-rz-Bnebz.js
+function tinyassert(value, message) {
+	if (value) return;
+	if (message instanceof Error) throw message;
+	throw new TinyAssertionError(message, tinyassert);
+}
+var TinyAssertionError = class extends Error {
+	constructor(message, stackStartFunction) {
+		super(message ?? "TinyAssertionError");
+		if (stackStartFunction && "captureStackTrace" in Error) Error.captureStackTrace(this, stackStartFunction);
+	}
+};
+function safeFunctionCast(f) {
+	return f;
+}
+function memoize(f, options) {
+	const keyFn = options?.keyFn ?? ((...args) => args[0]);
+	const cache = options?.cache ?? /* @__PURE__ */ new Map();
+	return safeFunctionCast(function(...args) {
+		const key = keyFn(...args);
+		const value = cache.get(key);
+		if (typeof value !== "undefined") return value;
+		const newValue = f.apply(this, args);
+		cache.set(key, newValue);
+		return newValue;
+	});
+}
+//#endregion
+//#region node_modules/@vitejs/plugin-rsc/dist/shared-BViDMJTQ.js
+var SERVER_REFERENCE_PREFIX = "$$server:";
+var SERVER_DECODE_CLIENT_PREFIX = "$$decode-client:";
+function removeReferenceCacheTag(id) {
+	return id.split("$$cache=")[0];
+}
+function setInternalRequire() {
+	globalThis.__vite_rsc_require__ = (id) => {
+		if (id.startsWith("$$server:")) {
+			id = id.slice(9);
+			return globalThis.__vite_rsc_server_require__(id);
+		}
+		return globalThis.__vite_rsc_client_require__(id);
+	};
+}
+//#endregion
+//#region node_modules/react/cjs/react.react-server.production.js
+/**
+* @license React
+* react.react-server.production.js
+*
+* Copyright (c) Meta Platforms, Inc. and affiliates.
+*
+* This source code is licensed under the MIT license found in the
+* LICENSE file in the root directory of this source tree.
+*/
+var require_react_react_server_production = /* @__PURE__ */ __commonJSMin(((exports) => {
+	var ReactSharedInternals = {
+		H: null,
+		A: null
+	};
+	function formatProdErrorMessage(code) {
+		var url = "https://react.dev/errors/" + code;
+		if (1 < arguments.length) {
+			url += "?args[]=" + encodeURIComponent(arguments[1]);
+			for (var i = 2; i < arguments.length; i++) url += "&args[]=" + encodeURIComponent(arguments[i]);
+		}
+		return "Minified React error #" + code + "; visit " + url + " for the full message or use the non-minified dev environment for full errors and additional helpful warnings.";
+	}
+	var isArrayImpl = Array.isArray;
+	function noop() {}
+	var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator;
+	function getIteratorFn(maybeIterable) {
+		if (null === maybeIterable || "object" !== typeof maybeIterable) return null;
+		maybeIterable = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable["@@iterator"];
+		return "function" === typeof maybeIterable ? maybeIterable : null;
+	}
+	var hasOwnProperty = Object.prototype.hasOwnProperty, assign = Object.assign;
+	function ReactElement(type, key, props) {
+		var refProp = props.ref;
+		return {
+			$$typeof: REACT_ELEMENT_TYPE,
+			type,
+			key,
+			ref: void 0 !== refProp ? refProp : null,
+			props
+		};
+	}
+	function cloneAndReplaceKey(oldElement, newKey) {
+		return ReactElement(oldElement.type, newKey, oldElement.props);
+	}
+	function isValidElement(object) {
+		return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
+	}
+	function escape(key) {
+		var escaperLookup = {
+			"=": "=0",
+			":": "=2"
+		};
+		return "$" + key.replace(/[=:]/g, function(match) {
+			return escaperLookup[match];
+		});
+	}
+	var userProvidedKeyEscapeRegex = /\/+/g;
+	function getElementKey(element, index) {
+		return "object" === typeof element && null !== element && null != element.key ? escape("" + element.key) : index.toString(36);
+	}
+	function resolveThenable(thenable) {
+		switch (thenable.status) {
+			case "fulfilled": return thenable.value;
+			case "rejected": throw thenable.reason;
+			default: switch ("string" === typeof thenable.status ? thenable.then(noop, noop) : (thenable.status = "pending", thenable.then(function(fulfilledValue) {
+				"pending" === thenable.status && (thenable.status = "fulfilled", thenable.value = fulfilledValue);
+			}, function(error) {
+				"pending" === thenable.status && (thenable.status = "rejected", thenable.reason = error);
+			})), thenable.status) {
+				case "fulfilled": return thenable.value;
+				case "rejected": throw thenable.reason;
+			}
+		}
+		throw thenable;
+	}
+	function mapIntoArray(children, array, escapedPrefix, nameSoFar, callback) {
+		var type = typeof children;
+		if ("undefined" === type || "boolean" === type) children = null;
+		var invokeCallback = !1;
+		if (null === children) invokeCallback = !0;
+		else switch (type) {
+			case "bigint":
+			case "string":
+			case "number":
+				invokeCallback = !0;
+				break;
+			case "object": switch (children.$$typeof) {
+				case REACT_ELEMENT_TYPE:
+				case REACT_PORTAL_TYPE:
+					invokeCallback = !0;
+					break;
+				case REACT_LAZY_TYPE: return invokeCallback = children._init, mapIntoArray(invokeCallback(children._payload), array, escapedPrefix, nameSoFar, callback);
+			}
+		}
+		if (invokeCallback) return callback = callback(children), invokeCallback = "" === nameSoFar ? "." + getElementKey(children, 0) : nameSoFar, isArrayImpl(callback) ? (escapedPrefix = "", null != invokeCallback && (escapedPrefix = invokeCallback.replace(userProvidedKeyEscapeRegex, "$&/") + "/"), mapIntoArray(callback, array, escapedPrefix, "", function(c) {
+			return c;
+		})) : null != callback && (isValidElement(callback) && (callback = cloneAndReplaceKey(callback, escapedPrefix + (null == callback.key || children && children.key === callback.key ? "" : ("" + callback.key).replace(userProvidedKeyEscapeRegex, "$&/") + "/") + invokeCallback)), array.push(callback)), 1;
+		invokeCallback = 0;
+		var nextNamePrefix = "" === nameSoFar ? "." : nameSoFar + ":";
+		if (isArrayImpl(children)) for (var i = 0; i < children.length; i++) nameSoFar = children[i], type = nextNamePrefix + getElementKey(nameSoFar, i), invokeCallback += mapIntoArray(nameSoFar, array, escapedPrefix, type, callback);
+		else if (i = getIteratorFn(children), "function" === typeof i) for (children = i.call(children), i = 0; !(nameSoFar = children.next()).done;) nameSoFar = nameSoFar.value, type = nextNamePrefix + getElementKey(nameSoFar, i++), invokeCallback += mapIntoArray(nameSoFar, array, escapedPrefix, type, callback);
+		else if ("object" === type) {
+			if ("function" === typeof children.then) return mapIntoArray(resolveThenable(children), array, escapedPrefix, nameSoFar, callback);
+			array = String(children);
+			throw Error(formatProdErrorMessage(31, "[object Object]" === array ? "object with keys {" + Object.keys(children).join(", ") + "}" : array));
+		}
+		return invokeCallback;
+	}
+	function mapChildren(children, func, context) {
+		if (null == children) return children;
+		var result = [], count = 0;
+		mapIntoArray(children, result, "", "", function(child) {
+			return func.call(context, child, count++);
+		});
+		return result;
+	}
+	function lazyInitializer(payload) {
+		if (-1 === payload._status) {
+			var ctor = payload._result;
+			ctor = ctor();
+			ctor.then(function(moduleObject) {
+				if (0 === payload._status || -1 === payload._status) payload._status = 1, payload._result = moduleObject;
+			}, function(error) {
+				if (0 === payload._status || -1 === payload._status) payload._status = 2, payload._result = error;
+			});
+			-1 === payload._status && (payload._status = 0, payload._result = ctor);
+		}
+		if (1 === payload._status) return payload._result.default;
+		throw payload._result;
+	}
+	function createCacheRoot() {
+		return /* @__PURE__ */ new WeakMap();
+	}
+	function createCacheNode() {
+		return {
+			s: 0,
+			v: void 0,
+			o: null,
+			p: null
+		};
+	}
+	exports.Children = {
+		map: mapChildren,
+		forEach: function(children, forEachFunc, forEachContext) {
+			mapChildren(children, function() {
+				forEachFunc.apply(this, arguments);
+			}, forEachContext);
+		},
+		count: function(children) {
+			var n = 0;
+			mapChildren(children, function() {
+				n++;
+			});
+			return n;
+		},
+		toArray: function(children) {
+			return mapChildren(children, function(child) {
+				return child;
+			}) || [];
+		},
+		only: function(children) {
+			if (!isValidElement(children)) throw Error(formatProdErrorMessage(143));
+			return children;
+		}
+	};
+	exports.Fragment = REACT_FRAGMENT_TYPE;
+	exports.Profiler = REACT_PROFILER_TYPE;
+	exports.StrictMode = REACT_STRICT_MODE_TYPE;
+	exports.Suspense = REACT_SUSPENSE_TYPE;
+	exports.__SERVER_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE = ReactSharedInternals;
+	exports.cache = function(fn) {
+		return function() {
+			var dispatcher = ReactSharedInternals.A;
+			if (!dispatcher) return fn.apply(null, arguments);
+			var fnMap = dispatcher.getCacheForType(createCacheRoot);
+			dispatcher = fnMap.get(fn);
+			void 0 === dispatcher && (dispatcher = createCacheNode(), fnMap.set(fn, dispatcher));
+			fnMap = 0;
+			for (var l = arguments.length; fnMap < l; fnMap++) {
+				var arg = arguments[fnMap];
+				if ("function" === typeof arg || "object" === typeof arg && null !== arg) {
+					var objectCache = dispatcher.o;
+					null === objectCache && (dispatcher.o = objectCache = /* @__PURE__ */ new WeakMap());
+					dispatcher = objectCache.get(arg);
+					void 0 === dispatcher && (dispatcher = createCacheNode(), objectCache.set(arg, dispatcher));
+				} else objectCache = dispatcher.p, null === objectCache && (dispatcher.p = objectCache = /* @__PURE__ */ new Map()), dispatcher = objectCache.get(arg), void 0 === dispatcher && (dispatcher = createCacheNode(), objectCache.set(arg, dispatcher));
+			}
+			if (1 === dispatcher.s) return dispatcher.v;
+			if (2 === dispatcher.s) throw dispatcher.v;
+			try {
+				var result = fn.apply(null, arguments);
+				fnMap = dispatcher;
+				fnMap.s = 1;
+				return fnMap.v = result;
+			} catch (error) {
+				throw result = dispatcher, result.s = 2, result.v = error, error;
+			}
+		};
+	};
+	exports.cacheSignal = function() {
+		var dispatcher = ReactSharedInternals.A;
+		return dispatcher ? dispatcher.cacheSignal() : null;
+	};
+	exports.captureOwnerStack = function() {
+		return null;
+	};
+	exports.cloneElement = function(element, config, children) {
+		if (null === element || void 0 === element) throw Error(formatProdErrorMessage(267, element));
+		var props = assign({}, element.props), key = element.key;
+		if (null != config) for (propName in void 0 !== config.key && (key = "" + config.key), config) !hasOwnProperty.call(config, propName) || "key" === propName || "__self" === propName || "__source" === propName || "ref" === propName && void 0 === config.ref || (props[propName] = config[propName]);
+		var propName = arguments.length - 2;
+		if (1 === propName) props.children = children;
+		else if (1 < propName) {
+			for (var childArray = Array(propName), i = 0; i < propName; i++) childArray[i] = arguments[i + 2];
+			props.children = childArray;
+		}
+		return ReactElement(element.type, key, props);
+	};
+	exports.createElement = function(type, config, children) {
+		var propName, props = {}, key = null;
+		if (null != config) for (propName in void 0 !== config.key && (key = "" + config.key), config) hasOwnProperty.call(config, propName) && "key" !== propName && "__self" !== propName && "__source" !== propName && (props[propName] = config[propName]);
+		var childrenLength = arguments.length - 2;
+		if (1 === childrenLength) props.children = children;
+		else if (1 < childrenLength) {
+			for (var childArray = Array(childrenLength), i = 0; i < childrenLength; i++) childArray[i] = arguments[i + 2];
+			props.children = childArray;
+		}
+		if (type && type.defaultProps) for (propName in childrenLength = type.defaultProps, childrenLength) void 0 === props[propName] && (props[propName] = childrenLength[propName]);
+		return ReactElement(type, key, props);
+	};
+	exports.createRef = function() {
+		return { current: null };
+	};
+	exports.forwardRef = function(render) {
+		return {
+			$$typeof: REACT_FORWARD_REF_TYPE,
+			render
+		};
+	};
+	exports.isValidElement = isValidElement;
+	exports.lazy = function(ctor) {
+		return {
+			$$typeof: REACT_LAZY_TYPE,
+			_payload: {
+				_status: -1,
+				_result: ctor
+			},
+			_init: lazyInitializer
+		};
+	};
+	exports.memo = function(type, compare) {
+		return {
+			$$typeof: REACT_MEMO_TYPE,
+			type,
+			compare: void 0 === compare ? null : compare
+		};
+	};
+	exports.use = function(usable) {
+		return ReactSharedInternals.H.use(usable);
+	};
+	exports.useCallback = function(callback, deps) {
+		return ReactSharedInternals.H.useCallback(callback, deps);
+	};
+	exports.useDebugValue = function() {};
+	exports.useId = function() {
+		return ReactSharedInternals.H.useId();
+	};
+	exports.useMemo = function(create, deps) {
+		return ReactSharedInternals.H.useMemo(create, deps);
+	};
+	exports.version = "19.2.6";
+}));
+//#endregion
+//#region node_modules/react/react.react-server.js
+var require_react_react_server = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+	module.exports = require_react_react_server_production();
+}));
+//#endregion
+//#region node_modules/react-dom/cjs/react-dom.react-server.production.js
+/**
+* @license React
+* react-dom.react-server.production.js
+*
+* Copyright (c) Meta Platforms, Inc. and affiliates.
+*
+* This source code is licensed under the MIT license found in the
+* LICENSE file in the root directory of this source tree.
+*/
+var require_react_dom_react_server_production = /* @__PURE__ */ __commonJSMin(((exports) => {
+	var React = require_react_react_server();
+	function noop() {}
+	var Internals = {
+		d: {
+			f: noop,
+			r: function() {
+				throw Error("Invalid form element. requestFormReset must be passed a form that was rendered by React.");
+			},
+			D: noop,
+			C: noop,
+			L: noop,
+			m: noop,
+			X: noop,
+			S: noop,
+			M: noop
+		},
+		p: 0,
+		findDOMNode: null
+	};
+	if (!React.__SERVER_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE) throw Error("The \"react\" package in this environment is not configured correctly. The \"react-server\" condition must be enabled in any environment that runs React Server Components.");
+	function getCrossOriginStringAs(as, input) {
+		if ("font" === as) return "";
+		if ("string" === typeof input) return "use-credentials" === input ? input : "";
+	}
+	exports.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE = Internals;
+	exports.preconnect = function(href, options) {
+		"string" === typeof href && (options ? (options = options.crossOrigin, options = "string" === typeof options ? "use-credentials" === options ? options : "" : void 0) : options = null, Internals.d.C(href, options));
+	};
+	exports.prefetchDNS = function(href) {
+		"string" === typeof href && Internals.d.D(href);
+	};
+	exports.preinit = function(href, options) {
+		if ("string" === typeof href && options && "string" === typeof options.as) {
+			var as = options.as, crossOrigin = getCrossOriginStringAs(as, options.crossOrigin), integrity = "string" === typeof options.integrity ? options.integrity : void 0, fetchPriority = "string" === typeof options.fetchPriority ? options.fetchPriority : void 0;
+			"style" === as ? Internals.d.S(href, "string" === typeof options.precedence ? options.precedence : void 0, {
+				crossOrigin,
+				integrity,
+				fetchPriority
+			}) : "script" === as && Internals.d.X(href, {
+				crossOrigin,
+				integrity,
+				fetchPriority,
+				nonce: "string" === typeof options.nonce ? options.nonce : void 0
+			});
+		}
+	};
+	exports.preinitModule = function(href, options) {
+		if ("string" === typeof href) if ("object" === typeof options && null !== options) {
+			if (null == options.as || "script" === options.as) {
+				var crossOrigin = getCrossOriginStringAs(options.as, options.crossOrigin);
+				Internals.d.M(href, {
+					crossOrigin,
+					integrity: "string" === typeof options.integrity ? options.integrity : void 0,
+					nonce: "string" === typeof options.nonce ? options.nonce : void 0
+				});
+			}
+		} else options ?? Internals.d.M(href);
+	};
+	exports.preload = function(href, options) {
+		if ("string" === typeof href && "object" === typeof options && null !== options && "string" === typeof options.as) {
+			var as = options.as, crossOrigin = getCrossOriginStringAs(as, options.crossOrigin);
+			Internals.d.L(href, as, {
+				crossOrigin,
+				integrity: "string" === typeof options.integrity ? options.integrity : void 0,
+				nonce: "string" === typeof options.nonce ? options.nonce : void 0,
+				type: "string" === typeof options.type ? options.type : void 0,
+				fetchPriority: "string" === typeof options.fetchPriority ? options.fetchPriority : void 0,
+				referrerPolicy: "string" === typeof options.referrerPolicy ? options.referrerPolicy : void 0,
+				imageSrcSet: "string" === typeof options.imageSrcSet ? options.imageSrcSet : void 0,
+				imageSizes: "string" === typeof options.imageSizes ? options.imageSizes : void 0,
+				media: "string" === typeof options.media ? options.media : void 0
+			});
+		}
+	};
+	exports.preloadModule = function(href, options) {
+		if ("string" === typeof href) if (options) {
+			var crossOrigin = getCrossOriginStringAs(options.as, options.crossOrigin);
+			Internals.d.m(href, {
+				as: "string" === typeof options.as && "script" !== options.as ? options.as : void 0,
+				crossOrigin,
+				integrity: "string" === typeof options.integrity ? options.integrity : void 0
+			});
+		} else Internals.d.m(href);
+	};
+	exports.version = "19.2.6";
+}));
+//#endregion
+//#region node_modules/react-dom/react-dom.react-server.js
+var require_react_dom_react_server = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+	module.exports = require_react_dom_react_server_production();
+}));
+//#endregion
+//#region node_modules/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.production.js
+var require_react_server_dom_webpack_server_edge_production = /* @__PURE__ */ __commonJSMin(((exports) => {
+	globalThis.AsyncLocalStorage = __viteRscAsyncHooks.AsyncLocalStorage;
+	/**
+	* @license React
+	* react-server-dom-webpack-server.edge.production.js
+	*
+	* Copyright (c) Meta Platforms, Inc. and affiliates.
+	*
+	* This source code is licensed under the MIT license found in the
+	* LICENSE file in the root directory of this source tree.
+	*/
+	var ReactDOM = require_react_dom_react_server(), React = require_react_react_server(), REACT_LEGACY_ELEMENT_TYPE = Symbol.for("react.element"), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_MEMO_CACHE_SENTINEL = Symbol.for("react.memo_cache_sentinel");
+	var MAYBE_ITERATOR_SYMBOL = Symbol.iterator;
+	function getIteratorFn(maybeIterable) {
+		if (null === maybeIterable || "object" !== typeof maybeIterable) return null;
+		maybeIterable = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable["@@iterator"];
+		return "function" === typeof maybeIterable ? maybeIterable : null;
+	}
+	var ASYNC_ITERATOR = Symbol.asyncIterator;
+	function handleErrorInNextTick(error) {
+		setTimeout(function() {
+			throw error;
+		});
+	}
+	var LocalPromise = Promise, scheduleMicrotask = "function" === typeof queueMicrotask ? queueMicrotask : function(callback) {
+		LocalPromise.resolve(null).then(callback).catch(handleErrorInNextTick);
+	}, currentView = null, writtenBytes = 0;
+	function writeChunkAndReturn(destination, chunk) {
+		if (0 !== chunk.byteLength) if (2048 < chunk.byteLength) 0 < writtenBytes && (destination.enqueue(new Uint8Array(currentView.buffer, 0, writtenBytes)), currentView = new Uint8Array(2048), writtenBytes = 0), destination.enqueue(chunk);
+		else {
+			var allowableBytes = currentView.length - writtenBytes;
+			allowableBytes < chunk.byteLength && (0 === allowableBytes ? destination.enqueue(currentView) : (currentView.set(chunk.subarray(0, allowableBytes), writtenBytes), destination.enqueue(currentView), chunk = chunk.subarray(allowableBytes)), currentView = new Uint8Array(2048), writtenBytes = 0);
+			currentView.set(chunk, writtenBytes);
+			writtenBytes += chunk.byteLength;
+		}
+		return !0;
+	}
+	var textEncoder = new TextEncoder();
+	function stringToChunk(content) {
+		return textEncoder.encode(content);
+	}
+	function byteLengthOfChunk(chunk) {
+		return chunk.byteLength;
+	}
+	function closeWithError(destination, error) {
+		"function" === typeof destination.error ? destination.error(error) : destination.close();
+	}
+	var CLIENT_REFERENCE_TAG$1 = Symbol.for("react.client.reference"), SERVER_REFERENCE_TAG = Symbol.for("react.server.reference");
+	function registerClientReferenceImpl(proxyImplementation, id, async) {
+		return Object.defineProperties(proxyImplementation, {
+			$$typeof: { value: CLIENT_REFERENCE_TAG$1 },
+			$$id: { value: id },
+			$$async: { value: async }
+		});
+	}
+	var FunctionBind = Function.prototype.bind, ArraySlice = Array.prototype.slice;
+	function bind() {
+		var newFn = FunctionBind.apply(this, arguments);
+		if (this.$$typeof === SERVER_REFERENCE_TAG) {
+			var args = ArraySlice.call(arguments, 1), $$typeof = { value: SERVER_REFERENCE_TAG }, $$id = { value: this.$$id };
+			args = { value: this.$$bound ? this.$$bound.concat(args) : args };
+			return Object.defineProperties(newFn, {
+				$$typeof,
+				$$id,
+				$$bound: args,
+				bind: {
+					value: bind,
+					configurable: !0
+				}
+			});
+		}
+		return newFn;
+	}
+	var serverReferenceToString = {
+		value: function() {
+			return "function () { [omitted code] }";
+		},
+		configurable: !0,
+		writable: !0
+	}, PROMISE_PROTOTYPE = Promise.prototype, deepProxyHandlers = {
+		get: function(target, name) {
+			switch (name) {
+				case "$$typeof": return target.$$typeof;
+				case "$$id": return target.$$id;
+				case "$$async": return target.$$async;
+				case "name": return target.name;
+				case "displayName": return;
+				case "defaultProps": return;
+				case "_debugInfo": return;
+				case "toJSON": return;
+				case Symbol.toPrimitive: return Object.prototype[Symbol.toPrimitive];
+				case Symbol.toStringTag: return Object.prototype[Symbol.toStringTag];
+				case "Provider": throw Error("Cannot render a Client Context Provider on the Server. Instead, you can export a Client Component wrapper that itself renders a Client Context Provider.");
+				case "then": throw Error("Cannot await or return from a thenable. You cannot await a client module from a server component.");
+			}
+			throw Error("Cannot access " + (String(target.name) + "." + String(name)) + " on the server. You cannot dot into a client module from a server component. You can only pass the imported name through.");
+		},
+		set: function() {
+			throw Error("Cannot assign to a client module from a server module.");
+		}
+	};
+	function getReference(target, name) {
+		switch (name) {
+			case "$$typeof": return target.$$typeof;
+			case "$$id": return target.$$id;
+			case "$$async": return target.$$async;
+			case "name": return target.name;
+			case "defaultProps": return;
+			case "_debugInfo": return;
+			case "toJSON": return;
+			case Symbol.toPrimitive: return Object.prototype[Symbol.toPrimitive];
+			case Symbol.toStringTag: return Object.prototype[Symbol.toStringTag];
+			case "__esModule":
+				var moduleId = target.$$id;
+				target.default = registerClientReferenceImpl(function() {
+					throw Error("Attempted to call the default export of " + moduleId + " from the server but it's on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.");
+				}, target.$$id + "#", target.$$async);
+				return !0;
+			case "then":
+				if (target.then) return target.then;
+				if (target.$$async) return;
+				var clientReference = registerClientReferenceImpl({}, target.$$id, !0), proxy = new Proxy(clientReference, proxyHandlers$1);
+				target.status = "fulfilled";
+				target.value = proxy;
+				return target.then = registerClientReferenceImpl(function(resolve) {
+					return Promise.resolve(resolve(proxy));
+				}, target.$$id + "#then", !1);
+		}
+		if ("symbol" === typeof name) throw Error("Cannot read Symbol exports. Only named exports are supported on a client module imported on the server.");
+		clientReference = target[name];
+		clientReference || (clientReference = registerClientReferenceImpl(function() {
+			throw Error("Attempted to call " + String(name) + "() from the server but " + String(name) + " is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.");
+		}, target.$$id + "#" + name, target.$$async), Object.defineProperty(clientReference, "name", { value: name }), clientReference = target[name] = new Proxy(clientReference, deepProxyHandlers));
+		return clientReference;
+	}
+	var proxyHandlers$1 = {
+		get: function(target, name) {
+			return getReference(target, name);
+		},
+		getOwnPropertyDescriptor: function(target, name) {
+			var descriptor = Object.getOwnPropertyDescriptor(target, name);
+			descriptor || (descriptor = {
+				value: getReference(target, name),
+				writable: !1,
+				configurable: !1,
+				enumerable: !1
+			}, Object.defineProperty(target, name, descriptor));
+			return descriptor;
+		},
+		getPrototypeOf: function() {
+			return PROMISE_PROTOTYPE;
+		},
+		set: function() {
+			throw Error("Cannot assign to a client module from a server module.");
+		}
+	}, ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, previousDispatcher = ReactDOMSharedInternals.d;
+	ReactDOMSharedInternals.d = {
+		f: previousDispatcher.f,
+		r: previousDispatcher.r,
+		D: prefetchDNS,
+		C: preconnect,
+		L: preload,
+		m: preloadModule$1,
+		X: preinitScript,
+		S: preinitStyle,
+		M: preinitModuleScript
+	};
+	function prefetchDNS(href) {
+		if ("string" === typeof href && href) {
+			var request = resolveRequest();
+			if (request) {
+				var hints = request.hints, key = "D|" + href;
+				hints.has(key) || (hints.add(key), emitHint(request, "D", href));
+			} else previousDispatcher.D(href);
+		}
+	}
+	function preconnect(href, crossOrigin) {
+		if ("string" === typeof href) {
+			var request = resolveRequest();
+			if (request) {
+				var hints = request.hints, key = "C|" + (null == crossOrigin ? "null" : crossOrigin) + "|" + href;
+				hints.has(key) || (hints.add(key), "string" === typeof crossOrigin ? emitHint(request, "C", [href, crossOrigin]) : emitHint(request, "C", href));
+			} else previousDispatcher.C(href, crossOrigin);
+		}
+	}
+	function preload(href, as, options) {
+		if ("string" === typeof href) {
+			var request = resolveRequest();
+			if (request) {
+				var hints = request.hints, key = "L";
+				if ("image" === as && options) {
+					var imageSrcSet = options.imageSrcSet, imageSizes = options.imageSizes, uniquePart = "";
+					"string" === typeof imageSrcSet && "" !== imageSrcSet ? (uniquePart += "[" + imageSrcSet + "]", "string" === typeof imageSizes && (uniquePart += "[" + imageSizes + "]")) : uniquePart += "[][]" + href;
+					key += "[image]" + uniquePart;
+				} else key += "[" + as + "]" + href;
+				hints.has(key) || (hints.add(key), (options = trimOptions(options)) ? emitHint(request, "L", [
+					href,
+					as,
+					options
+				]) : emitHint(request, "L", [href, as]));
+			} else previousDispatcher.L(href, as, options);
+		}
+	}
+	function preloadModule$1(href, options) {
+		if ("string" === typeof href) {
+			var request = resolveRequest();
+			if (request) {
+				var hints = request.hints, key = "m|" + href;
+				if (hints.has(key)) return;
+				hints.add(key);
+				return (options = trimOptions(options)) ? emitHint(request, "m", [href, options]) : emitHint(request, "m", href);
+			}
+			previousDispatcher.m(href, options);
+		}
+	}
+	function preinitStyle(href, precedence, options) {
+		if ("string" === typeof href) {
+			var request = resolveRequest();
+			if (request) {
+				var hints = request.hints, key = "S|" + href;
+				if (hints.has(key)) return;
+				hints.add(key);
+				return (options = trimOptions(options)) ? emitHint(request, "S", [
+					href,
+					"string" === typeof precedence ? precedence : 0,
+					options
+				]) : "string" === typeof precedence ? emitHint(request, "S", [href, precedence]) : emitHint(request, "S", href);
+			}
+			previousDispatcher.S(href, precedence, options);
+		}
+	}
+	function preinitScript(src, options) {
+		if ("string" === typeof src) {
+			var request = resolveRequest();
+			if (request) {
+				var hints = request.hints, key = "X|" + src;
+				if (hints.has(key)) return;
+				hints.add(key);
+				return (options = trimOptions(options)) ? emitHint(request, "X", [src, options]) : emitHint(request, "X", src);
+			}
+			previousDispatcher.X(src, options);
+		}
+	}
+	function preinitModuleScript(src, options) {
+		if ("string" === typeof src) {
+			var request = resolveRequest();
+			if (request) {
+				var hints = request.hints, key = "M|" + src;
+				if (hints.has(key)) return;
+				hints.add(key);
+				return (options = trimOptions(options)) ? emitHint(request, "M", [src, options]) : emitHint(request, "M", src);
+			}
+			previousDispatcher.M(src, options);
+		}
+	}
+	function trimOptions(options) {
+		if (null == options) return null;
+		var hasProperties = !1, trimmed = {}, key;
+		for (key in options) null != options[key] && (hasProperties = !0, trimmed[key] = options[key]);
+		return hasProperties ? trimmed : null;
+	}
+	function getChildFormatContext(parentContext, type, props) {
+		switch (type) {
+			case "img":
+				type = props.src;
+				var srcSet = props.srcSet;
+				if (!("lazy" === props.loading || !type && !srcSet || "string" !== typeof type && null != type || "string" !== typeof srcSet && null != srcSet || "low" === props.fetchPriority || parentContext & 3) && ("string" !== typeof type || ":" !== type[4] || "d" !== type[0] && "D" !== type[0] || "a" !== type[1] && "A" !== type[1] || "t" !== type[2] && "T" !== type[2] || "a" !== type[3] && "A" !== type[3]) && ("string" !== typeof srcSet || ":" !== srcSet[4] || "d" !== srcSet[0] && "D" !== srcSet[0] || "a" !== srcSet[1] && "A" !== srcSet[1] || "t" !== srcSet[2] && "T" !== srcSet[2] || "a" !== srcSet[3] && "A" !== srcSet[3])) {
+					var sizes = "string" === typeof props.sizes ? props.sizes : void 0;
+					var input = props.crossOrigin;
+					preload(type || "", "image", {
+						imageSrcSet: srcSet,
+						imageSizes: sizes,
+						crossOrigin: "string" === typeof input ? "use-credentials" === input ? input : "" : void 0,
+						integrity: props.integrity,
+						type: props.type,
+						fetchPriority: props.fetchPriority,
+						referrerPolicy: props.referrerPolicy
+					});
+				}
+				return parentContext;
+			case "link":
+				type = props.rel;
+				srcSet = props.href;
+				if (!(parentContext & 1 || null != props.itemProp || "string" !== typeof type || "string" !== typeof srcSet || "" === srcSet)) switch (type) {
+					case "preload":
+						preload(srcSet, props.as, {
+							crossOrigin: props.crossOrigin,
+							integrity: props.integrity,
+							nonce: props.nonce,
+							type: props.type,
+							fetchPriority: props.fetchPriority,
+							referrerPolicy: props.referrerPolicy,
+							imageSrcSet: props.imageSrcSet,
+							imageSizes: props.imageSizes,
+							media: props.media
+						});
+						break;
+					case "modulepreload":
+						preloadModule$1(srcSet, {
+							as: props.as,
+							crossOrigin: props.crossOrigin,
+							integrity: props.integrity,
+							nonce: props.nonce
+						});
+						break;
+					case "stylesheet": preload(srcSet, "stylesheet", {
+						crossOrigin: props.crossOrigin,
+						integrity: props.integrity,
+						nonce: props.nonce,
+						type: props.type,
+						fetchPriority: props.fetchPriority,
+						referrerPolicy: props.referrerPolicy,
+						media: props.media
+					});
+				}
+				return parentContext;
+			case "picture": return parentContext | 2;
+			case "noscript": return parentContext | 1;
+			default: return parentContext;
+		}
+	}
+	var supportsRequestStorage = "function" === typeof AsyncLocalStorage, requestStorage = supportsRequestStorage ? new AsyncLocalStorage() : null, TEMPORARY_REFERENCE_TAG = Symbol.for("react.temporary.reference"), proxyHandlers = {
+		get: function(target, name) {
+			switch (name) {
+				case "$$typeof": return target.$$typeof;
+				case "name": return;
+				case "displayName": return;
+				case "defaultProps": return;
+				case "_debugInfo": return;
+				case "toJSON": return;
+				case Symbol.toPrimitive: return Object.prototype[Symbol.toPrimitive];
+				case Symbol.toStringTag: return Object.prototype[Symbol.toStringTag];
+				case "Provider": throw Error("Cannot render a Client Context Provider on the Server. Instead, you can export a Client Component wrapper that itself renders a Client Context Provider.");
+				case "then": return;
+			}
+			throw Error("Cannot access " + String(name) + " on the server. You cannot dot into a temporary client reference from a server component. You can only pass the value through to the client.");
+		},
+		set: function() {
+			throw Error("Cannot assign to a temporary client reference from a server module.");
+		}
+	};
+	function createTemporaryReference(temporaryReferences, id) {
+		var reference = Object.defineProperties(function() {
+			throw Error("Attempted to call a temporary Client Reference from the server but it is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.");
+		}, { $$typeof: { value: TEMPORARY_REFERENCE_TAG } });
+		reference = new Proxy(reference, proxyHandlers);
+		temporaryReferences.set(reference, id);
+		return reference;
+	}
+	function noop() {}
+	var SuspenseException = Error("Suspense Exception: This is not a real error! It's an implementation detail of `use` to interrupt the current render. You must either rethrow it immediately, or move the `use` call outside of the `try/catch` block. Capturing without rethrowing will lead to unexpected behavior.\n\nTo handle async errors, wrap your component in an error boundary, or call the promise's `.catch` method and pass the result to `use`.");
+	function trackUsedThenable(thenableState, thenable, index) {
+		index = thenableState[index];
+		void 0 === index ? thenableState.push(thenable) : index !== thenable && (thenable.then(noop, noop), thenable = index);
+		switch (thenable.status) {
+			case "fulfilled": return thenable.value;
+			case "rejected": throw thenable.reason;
+			default:
+				"string" === typeof thenable.status ? thenable.then(noop, noop) : (thenableState = thenable, thenableState.status = "pending", thenableState.then(function(fulfilledValue) {
+					if ("pending" === thenable.status) {
+						var fulfilledThenable = thenable;
+						fulfilledThenable.status = "fulfilled";
+						fulfilledThenable.value = fulfilledValue;
+					}
+				}, function(error) {
+					if ("pending" === thenable.status) {
+						var rejectedThenable = thenable;
+						rejectedThenable.status = "rejected";
+						rejectedThenable.reason = error;
+					}
+				}));
+				switch (thenable.status) {
+					case "fulfilled": return thenable.value;
+					case "rejected": throw thenable.reason;
+				}
+				suspendedThenable = thenable;
+				throw SuspenseException;
+		}
+	}
+	var suspendedThenable = null;
+	function getSuspendedThenable() {
+		if (null === suspendedThenable) throw Error("Expected a suspended thenable. This is a bug in React. Please file an issue.");
+		var thenable = suspendedThenable;
+		suspendedThenable = null;
+		return thenable;
+	}
+	var currentRequest$1 = null, thenableIndexCounter = 0, thenableState = null;
+	function getThenableStateAfterSuspending() {
+		var state = thenableState || [];
+		thenableState = null;
+		return state;
+	}
+	var HooksDispatcher = {
+		readContext: unsupportedContext,
+		use,
+		useCallback: function(callback) {
+			return callback;
+		},
+		useContext: unsupportedContext,
+		useEffect: unsupportedHook,
+		useImperativeHandle: unsupportedHook,
+		useLayoutEffect: unsupportedHook,
+		useInsertionEffect: unsupportedHook,
+		useMemo: function(nextCreate) {
+			return nextCreate();
+		},
+		useReducer: unsupportedHook,
+		useRef: unsupportedHook,
+		useState: unsupportedHook,
+		useDebugValue: function() {},
+		useDeferredValue: unsupportedHook,
+		useTransition: unsupportedHook,
+		useSyncExternalStore: unsupportedHook,
+		useId,
+		useHostTransitionStatus: unsupportedHook,
+		useFormState: unsupportedHook,
+		useActionState: unsupportedHook,
+		useOptimistic: unsupportedHook,
+		useMemoCache: function(size) {
+			for (var data = Array(size), i = 0; i < size; i++) data[i] = REACT_MEMO_CACHE_SENTINEL;
+			return data;
+		},
+		useCacheRefresh: function() {
+			return unsupportedRefresh;
+		}
+	};
+	HooksDispatcher.useEffectEvent = unsupportedHook;
+	function unsupportedHook() {
+		throw Error("This Hook is not supported in Server Components.");
+	}
+	function unsupportedRefresh() {
+		throw Error("Refreshing the cache is not supported in Server Components.");
+	}
+	function unsupportedContext() {
+		throw Error("Cannot read a Client Context from a Server Component.");
+	}
+	function useId() {
+		if (null === currentRequest$1) throw Error("useId can only be used while React is rendering");
+		var id = currentRequest$1.identifierCount++;
+		return "_" + currentRequest$1.identifierPrefix + "S_" + id.toString(32) + "_";
+	}
+	function use(usable) {
+		if (null !== usable && "object" === typeof usable || "function" === typeof usable) {
+			if ("function" === typeof usable.then) {
+				var index = thenableIndexCounter;
+				thenableIndexCounter += 1;
+				null === thenableState && (thenableState = []);
+				return trackUsedThenable(thenableState, usable, index);
+			}
+			usable.$$typeof === REACT_CONTEXT_TYPE && unsupportedContext();
+		}
+		if (usable.$$typeof === CLIENT_REFERENCE_TAG$1) {
+			if (null != usable.value && usable.value.$$typeof === REACT_CONTEXT_TYPE) throw Error("Cannot read a Client Context from a Server Component.");
+			throw Error("Cannot use() an already resolved Client Reference.");
+		}
+		throw Error("An unsupported type was passed to use(): " + String(usable));
+	}
+	var DefaultAsyncDispatcher = {
+		getCacheForType: function(resourceType) {
+			var JSCompiler_inline_result = (JSCompiler_inline_result = resolveRequest()) ? JSCompiler_inline_result.cache : /* @__PURE__ */ new Map();
+			var entry = JSCompiler_inline_result.get(resourceType);
+			void 0 === entry && (entry = resourceType(), JSCompiler_inline_result.set(resourceType, entry));
+			return entry;
+		},
+		cacheSignal: function() {
+			var request = resolveRequest();
+			return request ? request.cacheController.signal : null;
+		}
+	}, ReactSharedInternalsServer = React.__SERVER_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+	if (!ReactSharedInternalsServer) throw Error("The \"react\" package in this environment is not configured correctly. The \"react-server\" condition must be enabled in any environment that runs React Server Components.");
+	var isArrayImpl = Array.isArray, getPrototypeOf = Object.getPrototypeOf;
+	function objectName(object) {
+		object = Object.prototype.toString.call(object);
+		return object.slice(8, object.length - 1);
+	}
+	function describeValueForErrorMessage(value) {
+		switch (typeof value) {
+			case "string": return JSON.stringify(10 >= value.length ? value : value.slice(0, 10) + "...");
+			case "object":
+				if (isArrayImpl(value)) return "[...]";
+				if (null !== value && value.$$typeof === CLIENT_REFERENCE_TAG) return "client";
+				value = objectName(value);
+				return "Object" === value ? "{...}" : value;
+			case "function": return value.$$typeof === CLIENT_REFERENCE_TAG ? "client" : (value = value.displayName || value.name) ? "function " + value : "function";
+			default: return String(value);
+		}
+	}
+	function describeElementType(type) {
+		if ("string" === typeof type) return type;
+		switch (type) {
+			case REACT_SUSPENSE_TYPE: return "Suspense";
+			case REACT_SUSPENSE_LIST_TYPE: return "SuspenseList";
+		}
+		if ("object" === typeof type) switch (type.$$typeof) {
+			case REACT_FORWARD_REF_TYPE: return describeElementType(type.render);
+			case REACT_MEMO_TYPE: return describeElementType(type.type);
+			case REACT_LAZY_TYPE:
+				var payload = type._payload;
+				type = type._init;
+				try {
+					return describeElementType(type(payload));
+				} catch (x) {}
+		}
+		return "";
+	}
+	var CLIENT_REFERENCE_TAG = Symbol.for("react.client.reference");
+	function describeObjectForErrorMessage(objectOrArray, expandedName) {
+		var objKind = objectName(objectOrArray);
+		if ("Object" !== objKind && "Array" !== objKind) return objKind;
+		objKind = -1;
+		var length = 0;
+		if (isArrayImpl(objectOrArray)) {
+			var str = "[";
+			for (var i = 0; i < objectOrArray.length; i++) {
+				0 < i && (str += ", ");
+				var value = objectOrArray[i];
+				value = "object" === typeof value && null !== value ? describeObjectForErrorMessage(value) : describeValueForErrorMessage(value);
+				"" + i === expandedName ? (objKind = str.length, length = value.length, str += value) : str = 10 > value.length && 40 > str.length + value.length ? str + value : str + "...";
+			}
+			str += "]";
+		} else if (objectOrArray.$$typeof === REACT_ELEMENT_TYPE) str = "<" + describeElementType(objectOrArray.type) + "/>";
+		else {
+			if (objectOrArray.$$typeof === CLIENT_REFERENCE_TAG) return "client";
+			str = "{";
+			i = Object.keys(objectOrArray);
+			for (value = 0; value < i.length; value++) {
+				0 < value && (str += ", ");
+				var name = i[value], encodedKey = JSON.stringify(name);
+				str += ("\"" + name + "\"" === encodedKey ? name : encodedKey) + ": ";
+				encodedKey = objectOrArray[name];
+				encodedKey = "object" === typeof encodedKey && null !== encodedKey ? describeObjectForErrorMessage(encodedKey) : describeValueForErrorMessage(encodedKey);
+				name === expandedName ? (objKind = str.length, length = encodedKey.length, str += encodedKey) : str = 10 > encodedKey.length && 40 > str.length + encodedKey.length ? str + encodedKey : str + "...";
+			}
+			str += "}";
+		}
+		return void 0 === expandedName ? str : -1 < objKind && 0 < length ? (objectOrArray = " ".repeat(objKind) + "^".repeat(length), "\n  " + str + "\n  " + objectOrArray) : "\n  " + str;
+	}
+	var hasOwnProperty = Object.prototype.hasOwnProperty, ObjectPrototype$1 = Object.prototype, stringify = JSON.stringify;
+	function defaultErrorHandler(error) {
+		console.error(error);
+	}
+	function RequestInstance(type, model, bundlerConfig, onError, onPostpone, onAllReady, onFatalError, identifierPrefix, temporaryReferences) {
+		if (null !== ReactSharedInternalsServer.A && ReactSharedInternalsServer.A !== DefaultAsyncDispatcher) throw Error("Currently React only supports one RSC renderer at a time.");
+		ReactSharedInternalsServer.A = DefaultAsyncDispatcher;
+		var abortSet = /* @__PURE__ */ new Set(), pingedTasks = [], hints = /* @__PURE__ */ new Set();
+		this.type = type;
+		this.status = 10;
+		this.flushScheduled = !1;
+		this.destination = this.fatalError = null;
+		this.bundlerConfig = bundlerConfig;
+		this.cache = /* @__PURE__ */ new Map();
+		this.cacheController = new AbortController();
+		this.pendingChunks = this.nextChunkId = 0;
+		this.hints = hints;
+		this.abortableTasks = abortSet;
+		this.pingedTasks = pingedTasks;
+		this.completedImportChunks = [];
+		this.completedHintChunks = [];
+		this.completedRegularChunks = [];
+		this.completedErrorChunks = [];
+		this.writtenSymbols = /* @__PURE__ */ new Map();
+		this.writtenClientReferences = /* @__PURE__ */ new Map();
+		this.writtenServerReferences = /* @__PURE__ */ new Map();
+		this.writtenObjects = /* @__PURE__ */ new WeakMap();
+		this.temporaryReferences = temporaryReferences;
+		this.identifierPrefix = identifierPrefix || "";
+		this.identifierCount = 1;
+		this.taintCleanupQueue = [];
+		this.onError = void 0 === onError ? defaultErrorHandler : onError;
+		this.onPostpone = void 0 === onPostpone ? noop : onPostpone;
+		this.onAllReady = onAllReady;
+		this.onFatalError = onFatalError;
+		type = createTask(this, model, null, !1, 0, abortSet);
+		pingedTasks.push(type);
+	}
+	var currentRequest = null;
+	function resolveRequest() {
+		if (currentRequest) return currentRequest;
+		if (supportsRequestStorage) {
+			var store = requestStorage.getStore();
+			if (store) return store;
+		}
+		return null;
+	}
+	function serializeThenable(request, task, thenable) {
+		var newTask = createTask(request, thenable, task.keyPath, task.implicitSlot, task.formatContext, request.abortableTasks);
+		switch (thenable.status) {
+			case "fulfilled": return newTask.model = thenable.value, pingTask(request, newTask), newTask.id;
+			case "rejected": return erroredTask(request, newTask, thenable.reason), newTask.id;
+			default:
+				if (12 === request.status) return request.abortableTasks.delete(newTask), 21 === request.type ? (haltTask(newTask), finishHaltedTask(newTask, request)) : (task = request.fatalError, abortTask(newTask), finishAbortedTask(newTask, request, task)), newTask.id;
+				"string" !== typeof thenable.status && (thenable.status = "pending", thenable.then(function(fulfilledValue) {
+					"pending" === thenable.status && (thenable.status = "fulfilled", thenable.value = fulfilledValue);
+				}, function(error) {
+					"pending" === thenable.status && (thenable.status = "rejected", thenable.reason = error);
+				}));
+		}
+		thenable.then(function(value) {
+			newTask.model = value;
+			pingTask(request, newTask);
+		}, function(reason) {
+			0 === newTask.status && (erroredTask(request, newTask, reason), enqueueFlush(request));
+		});
+		return newTask.id;
+	}
+	function serializeReadableStream(request, task, stream) {
+		function progress(entry) {
+			if (0 === streamTask.status) if (entry.done) streamTask.status = 1, entry = streamTask.id.toString(16) + ":C\n", request.completedRegularChunks.push(stringToChunk(entry)), request.abortableTasks.delete(streamTask), request.cacheController.signal.removeEventListener("abort", abortStream), enqueueFlush(request), callOnAllReadyIfReady(request);
+			else try {
+				streamTask.model = entry.value, request.pendingChunks++, tryStreamTask(request, streamTask), enqueueFlush(request), reader.read().then(progress, error);
+			} catch (x$11) {
+				error(x$11);
+			}
+		}
+		function error(reason) {
+			0 === streamTask.status && (request.cacheController.signal.removeEventListener("abort", abortStream), erroredTask(request, streamTask, reason), enqueueFlush(request), reader.cancel(reason).then(error, error));
+		}
+		function abortStream() {
+			if (0 === streamTask.status) {
+				var signal = request.cacheController.signal;
+				signal.removeEventListener("abort", abortStream);
+				signal = signal.reason;
+				21 === request.type ? (request.abortableTasks.delete(streamTask), haltTask(streamTask), finishHaltedTask(streamTask, request)) : (erroredTask(request, streamTask, signal), enqueueFlush(request));
+				reader.cancel(signal).then(error, error);
+			}
+		}
+		var supportsBYOB = stream.supportsBYOB;
+		if (void 0 === supportsBYOB) try {
+			stream.getReader({ mode: "byob" }).releaseLock(), supportsBYOB = !0;
+		} catch (x) {
+			supportsBYOB = !1;
+		}
+		var reader = stream.getReader(), streamTask = createTask(request, task.model, task.keyPath, task.implicitSlot, task.formatContext, request.abortableTasks);
+		request.pendingChunks++;
+		task = streamTask.id.toString(16) + ":" + (supportsBYOB ? "r" : "R") + "\n";
+		request.completedRegularChunks.push(stringToChunk(task));
+		request.cacheController.signal.addEventListener("abort", abortStream);
+		reader.read().then(progress, error);
+		return serializeByValueID(streamTask.id);
+	}
+	function serializeAsyncIterable(request, task, iterable, iterator) {
+		function progress(entry) {
+			if (0 === streamTask.status) if (entry.done) {
+				streamTask.status = 1;
+				if (void 0 === entry.value) var endStreamRow = streamTask.id.toString(16) + ":C\n";
+				else try {
+					var chunkId = outlineModelWithFormatContext(request, entry.value, 0);
+					endStreamRow = streamTask.id.toString(16) + ":C" + stringify(serializeByValueID(chunkId)) + "\n";
+				} catch (x) {
+					error(x);
+					return;
+				}
+				request.completedRegularChunks.push(stringToChunk(endStreamRow));
+				request.abortableTasks.delete(streamTask);
+				request.cacheController.signal.removeEventListener("abort", abortIterable);
+				enqueueFlush(request);
+				callOnAllReadyIfReady(request);
+			} else try {
+				streamTask.model = entry.value, request.pendingChunks++, tryStreamTask(request, streamTask), enqueueFlush(request), iterator.next().then(progress, error);
+			} catch (x$12) {
+				error(x$12);
+			}
+		}
+		function error(reason) {
+			0 === streamTask.status && (request.cacheController.signal.removeEventListener("abort", abortIterable), erroredTask(request, streamTask, reason), enqueueFlush(request), "function" === typeof iterator.throw && iterator.throw(reason).then(error, error));
+		}
+		function abortIterable() {
+			if (0 === streamTask.status) {
+				var signal = request.cacheController.signal;
+				signal.removeEventListener("abort", abortIterable);
+				var reason = signal.reason;
+				21 === request.type ? (request.abortableTasks.delete(streamTask), haltTask(streamTask), finishHaltedTask(streamTask, request)) : (erroredTask(request, streamTask, signal.reason), enqueueFlush(request));
+				"function" === typeof iterator.throw && iterator.throw(reason).then(error, error);
+			}
+		}
+		iterable = iterable === iterator;
+		var streamTask = createTask(request, task.model, task.keyPath, task.implicitSlot, task.formatContext, request.abortableTasks);
+		request.pendingChunks++;
+		task = streamTask.id.toString(16) + ":" + (iterable ? "x" : "X") + "\n";
+		request.completedRegularChunks.push(stringToChunk(task));
+		request.cacheController.signal.addEventListener("abort", abortIterable);
+		iterator.next().then(progress, error);
+		return serializeByValueID(streamTask.id);
+	}
+	function emitHint(request, code, model) {
+		model = stringify(model);
+		code = stringToChunk(":H" + code + model + "\n");
+		request.completedHintChunks.push(code);
+		enqueueFlush(request);
+	}
+	function readThenable(thenable) {
+		if ("fulfilled" === thenable.status) return thenable.value;
+		if ("rejected" === thenable.status) throw thenable.reason;
+		throw thenable;
+	}
+	function createLazyWrapperAroundWakeable(request, task, wakeable) {
+		switch (wakeable.status) {
+			case "fulfilled": return wakeable.value;
+			case "rejected": break;
+			default: "string" !== typeof wakeable.status && (wakeable.status = "pending", wakeable.then(function(fulfilledValue) {
+				"pending" === wakeable.status && (wakeable.status = "fulfilled", wakeable.value = fulfilledValue);
+			}, function(error) {
+				"pending" === wakeable.status && (wakeable.status = "rejected", wakeable.reason = error);
+			}));
+		}
+		return {
+			$$typeof: REACT_LAZY_TYPE,
+			_payload: wakeable,
+			_init: readThenable
+		};
+	}
+	function voidHandler() {}
+	function processServerComponentReturnValue(request, task, Component, result) {
+		if ("object" !== typeof result || null === result || result.$$typeof === CLIENT_REFERENCE_TAG$1) return result;
+		if ("function" === typeof result.then) return createLazyWrapperAroundWakeable(request, task, result);
+		var iteratorFn = getIteratorFn(result);
+		return iteratorFn ? (request = {}, request[Symbol.iterator] = function() {
+			return iteratorFn.call(result);
+		}, request) : "function" !== typeof result[ASYNC_ITERATOR] || "function" === typeof ReadableStream && result instanceof ReadableStream ? result : (request = {}, request[ASYNC_ITERATOR] = function() {
+			return result[ASYNC_ITERATOR]();
+		}, request);
+	}
+	function renderFunctionComponent(request, task, key, Component, props) {
+		var prevThenableState = task.thenableState;
+		task.thenableState = null;
+		thenableIndexCounter = 0;
+		thenableState = prevThenableState;
+		props = Component(props, void 0);
+		if (12 === request.status) throw "object" === typeof props && null !== props && "function" === typeof props.then && props.$$typeof !== CLIENT_REFERENCE_TAG$1 && props.then(voidHandler, voidHandler), null;
+		props = processServerComponentReturnValue(request, task, Component, props);
+		Component = task.keyPath;
+		prevThenableState = task.implicitSlot;
+		null !== key ? task.keyPath = null === Component ? key : Component + "," + key : null === Component && (task.implicitSlot = !0);
+		request = renderModelDestructive(request, task, emptyRoot, "", props);
+		task.keyPath = Component;
+		task.implicitSlot = prevThenableState;
+		return request;
+	}
+	function renderFragment(request, task, children) {
+		return null !== task.keyPath ? (request = [
+			REACT_ELEMENT_TYPE,
+			REACT_FRAGMENT_TYPE,
+			task.keyPath,
+			{ children }
+		], task.implicitSlot ? [request] : request) : children;
+	}
+	var serializedSize = 0;
+	function deferTask(request, task) {
+		task = createTask(request, task.model, task.keyPath, task.implicitSlot, task.formatContext, request.abortableTasks);
+		pingTask(request, task);
+		return serializeLazyID(task.id);
+	}
+	function renderElement(request, task, type, key, ref, props) {
+		if (null !== ref && void 0 !== ref) throw Error("Refs cannot be used in Server Components, nor passed to Client Components.");
+		if ("function" === typeof type && type.$$typeof !== CLIENT_REFERENCE_TAG$1 && type.$$typeof !== TEMPORARY_REFERENCE_TAG) return renderFunctionComponent(request, task, key, type, props);
+		if (type === REACT_FRAGMENT_TYPE && null === key) return type = task.implicitSlot, null === task.keyPath && (task.implicitSlot = !0), props = renderModelDestructive(request, task, emptyRoot, "", props.children), task.implicitSlot = type, props;
+		if (null != type && "object" === typeof type && type.$$typeof !== CLIENT_REFERENCE_TAG$1) switch (type.$$typeof) {
+			case REACT_LAZY_TYPE:
+				var init = type._init;
+				type = init(type._payload);
+				if (12 === request.status) throw null;
+				return renderElement(request, task, type, key, ref, props);
+			case REACT_FORWARD_REF_TYPE: return renderFunctionComponent(request, task, key, type.render, props);
+			case REACT_MEMO_TYPE: return renderElement(request, task, type.type, key, ref, props);
+		}
+		else "string" === typeof type && (ref = task.formatContext, init = getChildFormatContext(ref, type, props), ref !== init && null != props.children && outlineModelWithFormatContext(request, props.children, init));
+		request = key;
+		key = task.keyPath;
+		null === request ? request = key : null !== key && (request = key + "," + request);
+		props = [
+			REACT_ELEMENT_TYPE,
+			type,
+			request,
+			props
+		];
+		task = task.implicitSlot && null !== request ? [props] : props;
+		return task;
+	}
+	function pingTask(request, task) {
+		var pingedTasks = request.pingedTasks;
+		pingedTasks.push(task);
+		1 === pingedTasks.length && (request.flushScheduled = null !== request.destination, 21 === request.type || 10 === request.status ? scheduleMicrotask(function() {
+			return performWork(request);
+		}) : setTimeout(function() {
+			return performWork(request);
+		}, 0));
+	}
+	function createTask(request, model, keyPath, implicitSlot, formatContext, abortSet) {
+		request.pendingChunks++;
+		var id = request.nextChunkId++;
+		"object" !== typeof model || null === model || null !== keyPath || implicitSlot || request.writtenObjects.set(model, serializeByValueID(id));
+		var task = {
+			id,
+			status: 0,
+			model,
+			keyPath,
+			implicitSlot,
+			formatContext,
+			ping: function() {
+				return pingTask(request, task);
+			},
+			toJSON: function(parentPropertyName, value) {
+				serializedSize += parentPropertyName.length;
+				var prevKeyPath = task.keyPath, prevImplicitSlot = task.implicitSlot;
+				try {
+					var JSCompiler_inline_result = renderModelDestructive(request, task, this, parentPropertyName, value);
+				} catch (thrownValue) {
+					if (parentPropertyName = task.model, parentPropertyName = "object" === typeof parentPropertyName && null !== parentPropertyName && (parentPropertyName.$$typeof === REACT_ELEMENT_TYPE || parentPropertyName.$$typeof === REACT_LAZY_TYPE), 12 === request.status) task.status = 3, 21 === request.type ? (prevKeyPath = request.nextChunkId++, prevKeyPath = parentPropertyName ? serializeLazyID(prevKeyPath) : serializeByValueID(prevKeyPath), JSCompiler_inline_result = prevKeyPath) : (prevKeyPath = request.fatalError, JSCompiler_inline_result = parentPropertyName ? serializeLazyID(prevKeyPath) : serializeByValueID(prevKeyPath));
+					else if (value = thrownValue === SuspenseException ? getSuspendedThenable() : thrownValue, "object" === typeof value && null !== value && "function" === typeof value.then) {
+						JSCompiler_inline_result = createTask(request, task.model, task.keyPath, task.implicitSlot, task.formatContext, request.abortableTasks);
+						var ping = JSCompiler_inline_result.ping;
+						value.then(ping, ping);
+						JSCompiler_inline_result.thenableState = getThenableStateAfterSuspending();
+						task.keyPath = prevKeyPath;
+						task.implicitSlot = prevImplicitSlot;
+						JSCompiler_inline_result = parentPropertyName ? serializeLazyID(JSCompiler_inline_result.id) : serializeByValueID(JSCompiler_inline_result.id);
+					} else task.keyPath = prevKeyPath, task.implicitSlot = prevImplicitSlot, request.pendingChunks++, prevKeyPath = request.nextChunkId++, prevImplicitSlot = logRecoverableError(request, value, task), emitErrorChunk(request, prevKeyPath, prevImplicitSlot), JSCompiler_inline_result = parentPropertyName ? serializeLazyID(prevKeyPath) : serializeByValueID(prevKeyPath);
+				}
+				return JSCompiler_inline_result;
+			},
+			thenableState: null
+		};
+		abortSet.add(task);
+		return task;
+	}
+	function serializeByValueID(id) {
+		return "$" + id.toString(16);
+	}
+	function serializeLazyID(id) {
+		return "$L" + id.toString(16);
+	}
+	function encodeReferenceChunk(request, id, reference) {
+		request = stringify(reference);
+		id = id.toString(16) + ":" + request + "\n";
+		return stringToChunk(id);
+	}
+	function serializeClientReference(request, parent, parentPropertyName, clientReference) {
+		var clientReferenceKey = clientReference.$$async ? clientReference.$$id + "#async" : clientReference.$$id, writtenClientReferences = request.writtenClientReferences, existingId = writtenClientReferences.get(clientReferenceKey);
+		if (void 0 !== existingId) return parent[0] === REACT_ELEMENT_TYPE && "1" === parentPropertyName ? serializeLazyID(existingId) : serializeByValueID(existingId);
+		try {
+			var config = request.bundlerConfig, modulePath = clientReference.$$id;
+			existingId = "";
+			var resolvedModuleData = config[modulePath];
+			if (resolvedModuleData) existingId = resolvedModuleData.name;
+			else {
+				var idx = modulePath.lastIndexOf("#");
+				-1 !== idx && (existingId = modulePath.slice(idx + 1), resolvedModuleData = config[modulePath.slice(0, idx)]);
+				if (!resolvedModuleData) throw Error("Could not find the module \"" + modulePath + "\" in the React Client Manifest. This is probably a bug in the React Server Components bundler.");
+			}
+			if (!0 === resolvedModuleData.async && !0 === clientReference.$$async) throw Error("The module \"" + modulePath + "\" is marked as an async ESM module but was loaded as a CJS proxy. This is probably a bug in the React Server Components bundler.");
+			var JSCompiler_inline_result = !0 === resolvedModuleData.async || !0 === clientReference.$$async ? [
+				resolvedModuleData.id,
+				resolvedModuleData.chunks,
+				existingId,
+				1
+			] : [
+				resolvedModuleData.id,
+				resolvedModuleData.chunks,
+				existingId
+			];
+			request.pendingChunks++;
+			var importId = request.nextChunkId++, json = stringify(JSCompiler_inline_result), processedChunk = stringToChunk(importId.toString(16) + ":I" + json + "\n");
+			request.completedImportChunks.push(processedChunk);
+			writtenClientReferences.set(clientReferenceKey, importId);
+			return parent[0] === REACT_ELEMENT_TYPE && "1" === parentPropertyName ? serializeLazyID(importId) : serializeByValueID(importId);
+		} catch (x) {
+			return request.pendingChunks++, parent = request.nextChunkId++, parentPropertyName = logRecoverableError(request, x, null), emitErrorChunk(request, parent, parentPropertyName), serializeByValueID(parent);
+		}
+	}
+	function outlineModelWithFormatContext(request, value, formatContext) {
+		value = createTask(request, value, null, !1, formatContext, request.abortableTasks);
+		retryTask(request, value);
+		return value.id;
+	}
+	function serializeTypedArray(request, tag, typedArray) {
+		request.pendingChunks++;
+		var bufferId = request.nextChunkId++;
+		emitTypedArrayChunk(request, bufferId, tag, typedArray, !1);
+		return serializeByValueID(bufferId);
+	}
+	function serializeBlob(request, blob) {
+		function progress(entry) {
+			if (0 === newTask.status) if (entry.done) request.cacheController.signal.removeEventListener("abort", abortBlob), pingTask(request, newTask);
+			else return model.push(entry.value), reader.read().then(progress).catch(error);
+		}
+		function error(reason) {
+			0 === newTask.status && (request.cacheController.signal.removeEventListener("abort", abortBlob), erroredTask(request, newTask, reason), enqueueFlush(request), reader.cancel(reason).then(error, error));
+		}
+		function abortBlob() {
+			if (0 === newTask.status) {
+				var signal = request.cacheController.signal;
+				signal.removeEventListener("abort", abortBlob);
+				signal = signal.reason;
+				21 === request.type ? (request.abortableTasks.delete(newTask), haltTask(newTask), finishHaltedTask(newTask, request)) : (erroredTask(request, newTask, signal), enqueueFlush(request));
+				reader.cancel(signal).then(error, error);
+			}
+		}
+		var model = [blob.type], newTask = createTask(request, model, null, !1, 0, request.abortableTasks), reader = blob.stream().getReader();
+		request.cacheController.signal.addEventListener("abort", abortBlob);
+		reader.read().then(progress).catch(error);
+		return "$B" + newTask.id.toString(16);
+	}
+	var modelRoot = !1;
+	function renderModelDestructive(request, task, parent, parentPropertyName, value) {
+		task.model = value;
+		if (value === REACT_ELEMENT_TYPE) return "$";
+		if (null === value) return null;
+		if ("object" === typeof value) {
+			switch (value.$$typeof) {
+				case REACT_ELEMENT_TYPE:
+					var elementReference = null, writtenObjects = request.writtenObjects;
+					if (null === task.keyPath && !task.implicitSlot) {
+						var existingReference = writtenObjects.get(value);
+						if (void 0 !== existingReference) if (modelRoot === value) modelRoot = null;
+						else return existingReference;
+						else -1 === parentPropertyName.indexOf(":") && (parent = writtenObjects.get(parent), void 0 !== parent && (elementReference = parent + ":" + parentPropertyName, writtenObjects.set(value, elementReference)));
+					}
+					if (3200 < serializedSize) return deferTask(request, task);
+					parentPropertyName = value.props;
+					parent = parentPropertyName.ref;
+					request = renderElement(request, task, value.type, value.key, void 0 !== parent ? parent : null, parentPropertyName);
+					"object" === typeof request && null !== request && null !== elementReference && (writtenObjects.has(request) || writtenObjects.set(request, elementReference));
+					return request;
+				case REACT_LAZY_TYPE:
+					if (3200 < serializedSize) return deferTask(request, task);
+					task.thenableState = null;
+					parentPropertyName = value._init;
+					value = parentPropertyName(value._payload);
+					if (12 === request.status) throw null;
+					return renderModelDestructive(request, task, emptyRoot, "", value);
+				case REACT_LEGACY_ELEMENT_TYPE: throw Error("A React Element from an older version of React was rendered. This is not supported. It can happen if:\n- Multiple copies of the \"react\" package is used.\n- A library pre-bundled an old copy of \"react\" or \"react/jsx-runtime\".\n- A compiler tries to \"inline\" JSX instead of using the runtime.");
+			}
+			if (value.$$typeof === CLIENT_REFERENCE_TAG$1) return serializeClientReference(request, parent, parentPropertyName, value);
+			if (void 0 !== request.temporaryReferences && (elementReference = request.temporaryReferences.get(value), void 0 !== elementReference)) return "$T" + elementReference;
+			elementReference = request.writtenObjects;
+			writtenObjects = elementReference.get(value);
+			if ("function" === typeof value.then) {
+				if (void 0 !== writtenObjects) {
+					if (null !== task.keyPath || task.implicitSlot) return "$@" + serializeThenable(request, task, value).toString(16);
+					if (modelRoot === value) modelRoot = null;
+					else return writtenObjects;
+				}
+				request = "$@" + serializeThenable(request, task, value).toString(16);
+				elementReference.set(value, request);
+				return request;
+			}
+			if (void 0 !== writtenObjects) if (modelRoot === value) {
+				if (writtenObjects !== serializeByValueID(task.id)) return writtenObjects;
+				modelRoot = null;
+			} else return writtenObjects;
+			else if (-1 === parentPropertyName.indexOf(":") && (writtenObjects = elementReference.get(parent), void 0 !== writtenObjects)) {
+				existingReference = parentPropertyName;
+				if (isArrayImpl(parent) && parent[0] === REACT_ELEMENT_TYPE) switch (parentPropertyName) {
+					case "1":
+						existingReference = "type";
+						break;
+					case "2":
+						existingReference = "key";
+						break;
+					case "3":
+						existingReference = "props";
+						break;
+					case "4": existingReference = "_owner";
+				}
+				elementReference.set(value, writtenObjects + ":" + existingReference);
+			}
+			if (isArrayImpl(value)) return renderFragment(request, task, value);
+			if (value instanceof Map) return value = Array.from(value), "$Q" + outlineModelWithFormatContext(request, value, 0).toString(16);
+			if (value instanceof Set) return value = Array.from(value), "$W" + outlineModelWithFormatContext(request, value, 0).toString(16);
+			if ("function" === typeof FormData && value instanceof FormData) return value = Array.from(value.entries()), "$K" + outlineModelWithFormatContext(request, value, 0).toString(16);
+			if (value instanceof Error) return "$Z";
+			if (value instanceof ArrayBuffer) return serializeTypedArray(request, "A", new Uint8Array(value));
+			if (value instanceof Int8Array) return serializeTypedArray(request, "O", value);
+			if (value instanceof Uint8Array) return serializeTypedArray(request, "o", value);
+			if (value instanceof Uint8ClampedArray) return serializeTypedArray(request, "U", value);
+			if (value instanceof Int16Array) return serializeTypedArray(request, "S", value);
+			if (value instanceof Uint16Array) return serializeTypedArray(request, "s", value);
+			if (value instanceof Int32Array) return serializeTypedArray(request, "L", value);
+			if (value instanceof Uint32Array) return serializeTypedArray(request, "l", value);
+			if (value instanceof Float32Array) return serializeTypedArray(request, "G", value);
+			if (value instanceof Float64Array) return serializeTypedArray(request, "g", value);
+			if (value instanceof BigInt64Array) return serializeTypedArray(request, "M", value);
+			if (value instanceof BigUint64Array) return serializeTypedArray(request, "m", value);
+			if (value instanceof DataView) return serializeTypedArray(request, "V", value);
+			if ("function" === typeof Blob && value instanceof Blob) return serializeBlob(request, value);
+			if (elementReference = getIteratorFn(value)) return parentPropertyName = elementReference.call(value), parentPropertyName === value ? (value = Array.from(parentPropertyName), "$i" + outlineModelWithFormatContext(request, value, 0).toString(16)) : renderFragment(request, task, Array.from(parentPropertyName));
+			if ("function" === typeof ReadableStream && value instanceof ReadableStream) return serializeReadableStream(request, task, value);
+			elementReference = value[ASYNC_ITERATOR];
+			if ("function" === typeof elementReference) return null !== task.keyPath ? (request = [
+				REACT_ELEMENT_TYPE,
+				REACT_FRAGMENT_TYPE,
+				task.keyPath,
+				{ children: value }
+			], request = task.implicitSlot ? [request] : request) : (parentPropertyName = elementReference.call(value), request = serializeAsyncIterable(request, task, value, parentPropertyName)), request;
+			if (value instanceof Date) return "$D" + value.toJSON();
+			request = getPrototypeOf(value);
+			if (request !== ObjectPrototype$1 && (null === request || null !== getPrototypeOf(request))) throw Error("Only plain objects, and a few built-ins, can be passed to Client Components from Server Components. Classes or null prototypes are not supported." + describeObjectForErrorMessage(parent, parentPropertyName));
+			return value;
+		}
+		if ("string" === typeof value) {
+			serializedSize += value.length;
+			if ("Z" === value[value.length - 1] && parent[parentPropertyName] instanceof Date) return "$D" + value;
+			if (1024 <= value.length && null !== byteLengthOfChunk) return request.pendingChunks++, task = request.nextChunkId++, emitTextChunk(request, task, value, !1), serializeByValueID(task);
+			request = "$" === value[0] ? "$" + value : value;
+			return request;
+		}
+		if ("boolean" === typeof value) return value;
+		if ("number" === typeof value) return Number.isFinite(value) ? 0 === value && -Infinity === 1 / value ? "$-0" : value : Infinity === value ? "$Infinity" : -Infinity === value ? "$-Infinity" : "$NaN";
+		if ("undefined" === typeof value) return "$undefined";
+		if ("function" === typeof value) {
+			if (value.$$typeof === CLIENT_REFERENCE_TAG$1) return serializeClientReference(request, parent, parentPropertyName, value);
+			if (value.$$typeof === SERVER_REFERENCE_TAG) return task = request.writtenServerReferences, parentPropertyName = task.get(value), void 0 !== parentPropertyName ? request = "$h" + parentPropertyName.toString(16) : (parentPropertyName = value.$$bound, parentPropertyName = null === parentPropertyName ? null : Promise.resolve(parentPropertyName), request = outlineModelWithFormatContext(request, {
+				id: value.$$id,
+				bound: parentPropertyName
+			}, 0), task.set(value, request), request = "$h" + request.toString(16)), request;
+			if (void 0 !== request.temporaryReferences && (request = request.temporaryReferences.get(value), void 0 !== request)) return "$T" + request;
+			if (value.$$typeof === TEMPORARY_REFERENCE_TAG) throw Error("Could not reference an opaque temporary reference. This is likely due to misconfiguring the temporaryReferences options on the server.");
+			if (/^on[A-Z]/.test(parentPropertyName)) throw Error("Event handlers cannot be passed to Client Component props." + describeObjectForErrorMessage(parent, parentPropertyName) + "\nIf you need interactivity, consider converting part of this to a Client Component.");
+			throw Error("Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with \"use server\". Or maybe you meant to call this function rather than return it." + describeObjectForErrorMessage(parent, parentPropertyName));
+		}
+		if ("symbol" === typeof value) {
+			task = request.writtenSymbols;
+			elementReference = task.get(value);
+			if (void 0 !== elementReference) return serializeByValueID(elementReference);
+			elementReference = value.description;
+			if (Symbol.for(elementReference) !== value) throw Error("Only global symbols received from Symbol.for(...) can be passed to Client Components. The symbol Symbol.for(" + (value.description + ") cannot be found among global symbols.") + describeObjectForErrorMessage(parent, parentPropertyName));
+			request.pendingChunks++;
+			parentPropertyName = request.nextChunkId++;
+			parent = encodeReferenceChunk(request, parentPropertyName, "$S" + elementReference);
+			request.completedImportChunks.push(parent);
+			task.set(value, parentPropertyName);
+			return serializeByValueID(parentPropertyName);
+		}
+		if ("bigint" === typeof value) return "$n" + value.toString(10);
+		throw Error("Type " + typeof value + " is not supported in Client Component props." + describeObjectForErrorMessage(parent, parentPropertyName));
+	}
+	function logRecoverableError(request, error) {
+		var prevRequest = currentRequest;
+		currentRequest = null;
+		try {
+			var onError = request.onError;
+			var errorDigest = supportsRequestStorage ? requestStorage.run(void 0, onError, error) : onError(error);
+		} finally {
+			currentRequest = prevRequest;
+		}
+		if (null != errorDigest && "string" !== typeof errorDigest) throw Error("onError returned something with a type other than \"string\". onError should return a string and may return null or undefined but must not return anything else. It received something of type \"" + typeof errorDigest + "\" instead");
+		return errorDigest || "";
+	}
+	function fatalError(request, error) {
+		var onFatalError = request.onFatalError;
+		onFatalError(error);
+		null !== request.destination ? (request.status = 14, closeWithError(request.destination, error)) : (request.status = 13, request.fatalError = error);
+		request.cacheController.abort(Error("The render was aborted due to a fatal error.", { cause: error }));
+	}
+	function emitErrorChunk(request, id, digest) {
+		digest = { digest };
+		id = id.toString(16) + ":E" + stringify(digest) + "\n";
+		id = stringToChunk(id);
+		request.completedErrorChunks.push(id);
+	}
+	function emitModelChunk(request, id, json) {
+		id = id.toString(16) + ":" + json + "\n";
+		id = stringToChunk(id);
+		request.completedRegularChunks.push(id);
+	}
+	function emitTypedArrayChunk(request, id, tag, typedArray, debug) {
+		debug ? request.pendingDebugChunks++ : request.pendingChunks++;
+		debug = new Uint8Array(typedArray.buffer, typedArray.byteOffset, typedArray.byteLength);
+		typedArray = 2048 < typedArray.byteLength ? debug.slice() : debug;
+		debug = typedArray.byteLength;
+		id = id.toString(16) + ":" + tag + debug.toString(16) + ",";
+		id = stringToChunk(id);
+		request.completedRegularChunks.push(id, typedArray);
+	}
+	function emitTextChunk(request, id, text, debug) {
+		if (null === byteLengthOfChunk) throw Error("Existence of byteLengthOfChunk should have already been checked. This is a bug in React.");
+		debug ? request.pendingDebugChunks++ : request.pendingChunks++;
+		text = stringToChunk(text);
+		debug = text.byteLength;
+		id = id.toString(16) + ":T" + debug.toString(16) + ",";
+		id = stringToChunk(id);
+		request.completedRegularChunks.push(id, text);
+	}
+	function emitChunk(request, task, value) {
+		var id = task.id;
+		"string" === typeof value && null !== byteLengthOfChunk ? emitTextChunk(request, id, value, !1) : value instanceof ArrayBuffer ? emitTypedArrayChunk(request, id, "A", new Uint8Array(value), !1) : value instanceof Int8Array ? emitTypedArrayChunk(request, id, "O", value, !1) : value instanceof Uint8Array ? emitTypedArrayChunk(request, id, "o", value, !1) : value instanceof Uint8ClampedArray ? emitTypedArrayChunk(request, id, "U", value, !1) : value instanceof Int16Array ? emitTypedArrayChunk(request, id, "S", value, !1) : value instanceof Uint16Array ? emitTypedArrayChunk(request, id, "s", value, !1) : value instanceof Int32Array ? emitTypedArrayChunk(request, id, "L", value, !1) : value instanceof Uint32Array ? emitTypedArrayChunk(request, id, "l", value, !1) : value instanceof Float32Array ? emitTypedArrayChunk(request, id, "G", value, !1) : value instanceof Float64Array ? emitTypedArrayChunk(request, id, "g", value, !1) : value instanceof BigInt64Array ? emitTypedArrayChunk(request, id, "M", value, !1) : value instanceof BigUint64Array ? emitTypedArrayChunk(request, id, "m", value, !1) : value instanceof DataView ? emitTypedArrayChunk(request, id, "V", value, !1) : (value = stringify(value, task.toJSON), emitModelChunk(request, task.id, value));
+	}
+	function erroredTask(request, task, error) {
+		task.status = 4;
+		error = logRecoverableError(request, error, task);
+		emitErrorChunk(request, task.id, error);
+		request.abortableTasks.delete(task);
+		callOnAllReadyIfReady(request);
+	}
+	var emptyRoot = {};
+	function retryTask(request, task) {
+		if (0 === task.status) {
+			task.status = 5;
+			var parentSerializedSize = serializedSize;
+			try {
+				modelRoot = task.model;
+				var resolvedModel = renderModelDestructive(request, task, emptyRoot, "", task.model);
+				modelRoot = resolvedModel;
+				task.keyPath = null;
+				task.implicitSlot = !1;
+				if ("object" === typeof resolvedModel && null !== resolvedModel) request.writtenObjects.set(resolvedModel, serializeByValueID(task.id)), emitChunk(request, task, resolvedModel);
+				else {
+					var json = stringify(resolvedModel);
+					emitModelChunk(request, task.id, json);
+				}
+				task.status = 1;
+				request.abortableTasks.delete(task);
+				callOnAllReadyIfReady(request);
+			} catch (thrownValue) {
+				if (12 === request.status) if (request.abortableTasks.delete(task), task.status = 0, 21 === request.type) haltTask(task), finishHaltedTask(task, request);
+				else {
+					var errorId = request.fatalError;
+					abortTask(task);
+					finishAbortedTask(task, request, errorId);
+				}
+				else {
+					var x = thrownValue === SuspenseException ? getSuspendedThenable() : thrownValue;
+					if ("object" === typeof x && null !== x && "function" === typeof x.then) {
+						task.status = 0;
+						task.thenableState = getThenableStateAfterSuspending();
+						var ping = task.ping;
+						x.then(ping, ping);
+					} else erroredTask(request, task, x);
+				}
+			} finally {
+				serializedSize = parentSerializedSize;
+			}
+		}
+	}
+	function tryStreamTask(request, task) {
+		var parentSerializedSize = serializedSize;
+		try {
+			emitChunk(request, task, task.model);
+		} finally {
+			serializedSize = parentSerializedSize;
+		}
+	}
+	function performWork(request) {
+		var prevDispatcher = ReactSharedInternalsServer.H;
+		ReactSharedInternalsServer.H = HooksDispatcher;
+		var prevRequest = currentRequest;
+		currentRequest$1 = currentRequest = request;
+		try {
+			var pingedTasks = request.pingedTasks;
+			request.pingedTasks = [];
+			for (var i = 0; i < pingedTasks.length; i++) retryTask(request, pingedTasks[i]);
+			flushCompletedChunks(request);
+		} catch (error) {
+			logRecoverableError(request, error, null), fatalError(request, error);
+		} finally {
+			ReactSharedInternalsServer.H = prevDispatcher, currentRequest$1 = null, currentRequest = prevRequest;
+		}
+	}
+	function abortTask(task) {
+		0 === task.status && (task.status = 3);
+	}
+	function finishAbortedTask(task, request, errorId) {
+		3 === task.status && (errorId = serializeByValueID(errorId), task = encodeReferenceChunk(request, task.id, errorId), request.completedErrorChunks.push(task));
+	}
+	function haltTask(task) {
+		0 === task.status && (task.status = 3);
+	}
+	function finishHaltedTask(task, request) {
+		3 === task.status && request.pendingChunks--;
+	}
+	function flushCompletedChunks(request) {
+		var destination = request.destination;
+		if (null !== destination) {
+			currentView = new Uint8Array(2048);
+			writtenBytes = 0;
+			try {
+				for (var importsChunks = request.completedImportChunks, i = 0; i < importsChunks.length; i++) request.pendingChunks--, writeChunkAndReturn(destination, importsChunks[i]);
+				importsChunks.splice(0, i);
+				var hintChunks = request.completedHintChunks;
+				for (i = 0; i < hintChunks.length; i++) writeChunkAndReturn(destination, hintChunks[i]);
+				hintChunks.splice(0, i);
+				var regularChunks = request.completedRegularChunks;
+				for (i = 0; i < regularChunks.length; i++) request.pendingChunks--, writeChunkAndReturn(destination, regularChunks[i]);
+				regularChunks.splice(0, i);
+				var errorChunks = request.completedErrorChunks;
+				for (i = 0; i < errorChunks.length; i++) request.pendingChunks--, writeChunkAndReturn(destination, errorChunks[i]);
+				errorChunks.splice(0, i);
+			} finally {
+				request.flushScheduled = !1, currentView && 0 < writtenBytes && (destination.enqueue(new Uint8Array(currentView.buffer, 0, writtenBytes)), currentView = null, writtenBytes = 0);
+			}
+		}
+		0 === request.pendingChunks && (12 > request.status && request.cacheController.abort(Error("This render completed successfully. All cacheSignals are now aborted to allow clean up of any unused resources.")), null !== request.destination && (request.status = 14, request.destination.close(), request.destination = null));
+	}
+	function startWork(request) {
+		request.flushScheduled = null !== request.destination;
+		supportsRequestStorage ? scheduleMicrotask(function() {
+			requestStorage.run(request, performWork, request);
+		}) : scheduleMicrotask(function() {
+			return performWork(request);
+		});
+		setTimeout(function() {
+			10 === request.status && (request.status = 11);
+		}, 0);
+	}
+	function enqueueFlush(request) {
+		!1 === request.flushScheduled && 0 === request.pingedTasks.length && null !== request.destination && (request.flushScheduled = !0, setTimeout(function() {
+			request.flushScheduled = !1;
+			flushCompletedChunks(request);
+		}, 0));
+	}
+	function callOnAllReadyIfReady(request) {
+		0 === request.abortableTasks.size && (request = request.onAllReady, request());
+	}
+	function startFlowing(request, destination) {
+		if (13 === request.status) request.status = 14, closeWithError(destination, request.fatalError);
+		else if (14 !== request.status && null === request.destination) {
+			request.destination = destination;
+			try {
+				flushCompletedChunks(request);
+			} catch (error) {
+				logRecoverableError(request, error, null), fatalError(request, error);
+			}
+		}
+	}
+	function finishHalt(request, abortedTasks) {
+		try {
+			abortedTasks.forEach(function(task) {
+				return finishHaltedTask(task, request);
+			});
+			var onAllReady = request.onAllReady;
+			onAllReady();
+			flushCompletedChunks(request);
+		} catch (error) {
+			logRecoverableError(request, error, null), fatalError(request, error);
+		}
+	}
+	function finishAbort(request, abortedTasks, errorId) {
+		try {
+			abortedTasks.forEach(function(task) {
+				return finishAbortedTask(task, request, errorId);
+			});
+			var onAllReady = request.onAllReady;
+			onAllReady();
+			flushCompletedChunks(request);
+		} catch (error) {
+			logRecoverableError(request, error, null), fatalError(request, error);
+		}
+	}
+	function abort(request, reason) {
+		if (!(11 < request.status)) try {
+			request.status = 12;
+			request.cacheController.abort(reason);
+			var abortableTasks = request.abortableTasks;
+			if (0 < abortableTasks.size) if (21 === request.type) abortableTasks.forEach(function(task) {
+				return haltTask(task, request);
+			}), setTimeout(function() {
+				return finishHalt(request, abortableTasks);
+			}, 0);
+			else {
+				var error = void 0 === reason ? Error("The render was aborted by the server without a reason.") : "object" === typeof reason && null !== reason && "function" === typeof reason.then ? Error("The render was aborted by the server with a promise.") : reason, digest = logRecoverableError(request, error, null), errorId = request.nextChunkId++;
+				request.fatalError = errorId;
+				request.pendingChunks++;
+				emitErrorChunk(request, errorId, digest, error, !1, null);
+				abortableTasks.forEach(function(task) {
+					return abortTask(task, request, errorId);
+				});
+				setTimeout(function() {
+					return finishAbort(request, abortableTasks, errorId);
+				}, 0);
+			}
+			else {
+				var onAllReady = request.onAllReady;
+				onAllReady();
+				flushCompletedChunks(request);
+			}
+		} catch (error$26) {
+			logRecoverableError(request, error$26, null), fatalError(request, error$26);
+		}
+	}
+	function resolveServerReference(bundlerConfig, id) {
+		var name = "", resolvedModuleData = bundlerConfig[id];
+		if (resolvedModuleData) name = resolvedModuleData.name;
+		else {
+			var idx = id.lastIndexOf("#");
+			-1 !== idx && (name = id.slice(idx + 1), resolvedModuleData = bundlerConfig[id.slice(0, idx)]);
+			if (!resolvedModuleData) throw Error("Could not find the module \"" + id + "\" in the React Server Manifest. This is probably a bug in the React Server Components bundler.");
+		}
+		return resolvedModuleData.async ? [
+			resolvedModuleData.id,
+			resolvedModuleData.chunks,
+			name,
+			1
+		] : [
+			resolvedModuleData.id,
+			resolvedModuleData.chunks,
+			name
+		];
+	}
+	var chunkCache = /* @__PURE__ */ new Map();
+	function requireAsyncModule(id) {
+		var promise = __vite_rsc_require__(id);
+		if ("function" !== typeof promise.then || "fulfilled" === promise.status) return null;
+		promise.then(function(value) {
+			promise.status = "fulfilled";
+			promise.value = value;
+		}, function(reason) {
+			promise.status = "rejected";
+			promise.reason = reason;
+		});
+		return promise;
+	}
+	function ignoreReject() {}
+	function preloadModule(metadata) {
+		for (var chunks = metadata[1], promises = [], i = 0; i < chunks.length;) {
+			var chunkId = chunks[i++];
+			chunks[i++];
+			var entry = chunkCache.get(chunkId);
+			if (void 0 === entry) {
+				entry = __webpack_chunk_load__(chunkId);
+				promises.push(entry);
+				var resolve = chunkCache.set.bind(chunkCache, chunkId, null);
+				entry.then(resolve, ignoreReject);
+				chunkCache.set(chunkId, entry);
+			} else null !== entry && promises.push(entry);
+		}
+		return 4 === metadata.length ? 0 === promises.length ? requireAsyncModule(metadata[0]) : Promise.all(promises).then(function() {
+			return requireAsyncModule(metadata[0]);
+		}) : 0 < promises.length ? Promise.all(promises) : null;
+	}
+	function requireModule(metadata) {
+		var moduleExports = __vite_rsc_require__(metadata[0]);
+		if (4 === metadata.length && "function" === typeof moduleExports.then) if ("fulfilled" === moduleExports.status) moduleExports = moduleExports.value;
+		else throw moduleExports.reason;
+		if ("*" === metadata[2]) return moduleExports;
+		if ("" === metadata[2]) return moduleExports.__esModule ? moduleExports.default : moduleExports;
+		if (hasOwnProperty.call(moduleExports, metadata[2])) return moduleExports[metadata[2]];
+	}
+	function appendBackingEntry(backingStore, key, value) {
+		backingStore.data.append(key, value);
+		value = backingStore.keys;
+		null === value ? (backingStore.keys = Array.from(backingStore.data.keys()), backingStore.keyPointer = 0) : value.push(key);
+	}
+	var RESPONSE_SYMBOL = Symbol();
+	function ReactPromise(status, value, reason) {
+		this.status = status;
+		this.value = value;
+		this.reason = reason;
+	}
+	ReactPromise.prototype = Object.create(Promise.prototype);
+	ReactPromise.prototype.then = function(resolve, reject) {
+		switch (this.status) {
+			case "resolved_model": initializeModelChunk(this);
+		}
+		switch (this.status) {
+			case "fulfilled":
+				if ("function" === typeof resolve) {
+					for (var inspectedValue = this.value, cycleProtection = 0, visited = /* @__PURE__ */ new Set(); inspectedValue instanceof ReactPromise;) {
+						cycleProtection++;
+						if (inspectedValue === this || visited.has(inspectedValue) || 1e3 < cycleProtection) {
+							"function" === typeof reject && reject(Error("Cannot have cyclic thenables."));
+							return;
+						}
+						visited.add(inspectedValue);
+						if ("fulfilled" === inspectedValue.status) inspectedValue = inspectedValue.value;
+						else break;
+					}
+					resolve(this.value);
+				}
+				break;
+			case "pending":
+			case "blocked":
+				"function" === typeof resolve && (null === this.value && (this.value = []), this.value.push(resolve));
+				"function" === typeof reject && (null === this.reason && (this.reason = []), this.reason.push(reject));
+				break;
+			default: "function" === typeof reject && reject(this.reason);
+		}
+	};
+	var ObjectPrototype = Object.prototype, ArrayPrototype = Array.prototype;
+	function wakeChunk(response, listeners, value, chunk) {
+		for (var i = 0; i < listeners.length; i++) {
+			var listener = listeners[i];
+			"function" === typeof listener ? listener(value) : fulfillReference(response, listener, value, chunk.reason);
+		}
+	}
+	function rejectChunk(response, listeners, error) {
+		for (var i = 0; i < listeners.length; i++) {
+			var listener = listeners[i];
+			"function" === typeof listener ? listener(error) : rejectReference(response, listener.handler, error);
+		}
+	}
+	function triggerErrorOnChunk(response, chunk, error) {
+		if ("pending" !== chunk.status && "blocked" !== chunk.status) chunk.reason.error(error);
+		else {
+			var listeners = chunk.reason;
+			chunk.status = "rejected";
+			chunk.reason = error;
+			null !== listeners && rejectChunk(response, listeners, error);
+		}
+	}
+	function createResolvedModelChunk(response, value, id) {
+		var $jscomp$compprop2 = {};
+		return new ReactPromise("resolved_model", value, ($jscomp$compprop2.id = id, $jscomp$compprop2[RESPONSE_SYMBOL] = response, $jscomp$compprop2));
+	}
+	function resolveModelChunk(response, chunk, value, id) {
+		if ("pending" !== chunk.status) chunk = chunk.reason, "C" === value[0] ? chunk.close("C" === value ? "\"$undefined\"" : value.slice(1)) : chunk.enqueueModel(value);
+		else {
+			var resolveListeners = chunk.value, rejectListeners = chunk.reason;
+			chunk.status = "resolved_model";
+			chunk.value = value;
+			value = {};
+			chunk.reason = (value.id = id, value[RESPONSE_SYMBOL] = response, value);
+			if (null !== resolveListeners) switch (initializeModelChunk(chunk), chunk.status) {
+				case "fulfilled":
+					wakeChunk(response, resolveListeners, chunk.value, chunk);
+					break;
+				case "blocked":
+				case "pending":
+					if (chunk.value) for (response = 0; response < resolveListeners.length; response++) chunk.value.push(resolveListeners[response]);
+					else chunk.value = resolveListeners;
+					if (chunk.reason) {
+						if (rejectListeners) for (resolveListeners = 0; resolveListeners < rejectListeners.length; resolveListeners++) chunk.reason.push(rejectListeners[resolveListeners]);
+					} else chunk.reason = rejectListeners;
+					break;
+				case "rejected": rejectListeners && rejectChunk(response, rejectListeners, chunk.reason);
+			}
+		}
+	}
+	function createResolvedIteratorResultChunk(response, value, done) {
+		var $jscomp$compprop4 = {};
+		return new ReactPromise("resolved_model", (done ? "{\"done\":true,\"value\":" : "{\"done\":false,\"value\":") + value + "}", ($jscomp$compprop4.id = -1, $jscomp$compprop4[RESPONSE_SYMBOL] = response, $jscomp$compprop4));
+	}
+	function resolveIteratorResultChunk(response, chunk, value, done) {
+		resolveModelChunk(response, chunk, (done ? "{\"done\":true,\"value\":" : "{\"done\":false,\"value\":") + value + "}", -1);
+	}
+	function loadServerReference$1(response, metaData, parentObject, key) {
+		function reject(error) {
+			var rejectListeners = blockedPromise.reason, erroredPromise = blockedPromise;
+			erroredPromise.status = "rejected";
+			erroredPromise.value = null;
+			erroredPromise.reason = error;
+			null !== rejectListeners && rejectChunk(response, rejectListeners, error);
+			rejectReference(response, handler, error);
+		}
+		var id = metaData.id;
+		if ("string" !== typeof id || "then" === key) return null;
+		var cachedPromise = metaData.$$promise;
+		if (void 0 !== cachedPromise) {
+			if ("fulfilled" === cachedPromise.status) return cachedPromise = cachedPromise.value, "__proto__" === key ? null : parentObject[key] = cachedPromise;
+			initializingHandler ? (id = initializingHandler, id.deps++) : id = initializingHandler = {
+				chunk: null,
+				value: null,
+				reason: null,
+				deps: 1,
+				errored: !1
+			};
+			cachedPromise.then(resolveReference.bind(null, response, id, parentObject, key), rejectReference.bind(null, response, id));
+			return null;
+		}
+		var blockedPromise = new ReactPromise("blocked", null, null);
+		metaData.$$promise = blockedPromise;
+		var serverReference = resolveServerReference(response._bundlerConfig, id);
+		cachedPromise = metaData.bound;
+		if (id = preloadModule(serverReference)) cachedPromise instanceof ReactPromise && (id = Promise.all([id, cachedPromise]));
+		else if (cachedPromise instanceof ReactPromise) id = Promise.resolve(cachedPromise);
+		else return cachedPromise = requireModule(serverReference), id = blockedPromise, id.status = "fulfilled", id.value = cachedPromise;
+		if (initializingHandler) {
+			var handler = initializingHandler;
+			handler.deps++;
+		} else handler = initializingHandler = {
+			chunk: null,
+			value: null,
+			reason: null,
+			deps: 1,
+			errored: !1
+		};
+		id.then(function() {
+			var resolvedValue = requireModule(serverReference);
+			if (metaData.bound) {
+				var promiseValue = metaData.bound.value;
+				promiseValue = isArrayImpl(promiseValue) ? promiseValue.slice(0) : [];
+				if (1e3 < promiseValue.length) {
+					reject(Error("Server Function has too many bound arguments. Received " + promiseValue.length + " but the limit is 1000."));
+					return;
+				}
+				promiseValue.unshift(null);
+				resolvedValue = resolvedValue.bind.apply(resolvedValue, promiseValue);
+			}
+			promiseValue = blockedPromise.value;
+			var initializedPromise = blockedPromise;
+			initializedPromise.status = "fulfilled";
+			initializedPromise.value = resolvedValue;
+			initializedPromise.reason = null;
+			null !== promiseValue && wakeChunk(response, promiseValue, resolvedValue, initializedPromise);
+			resolveReference(response, handler, parentObject, key, resolvedValue);
+		}, reject);
+		return null;
+	}
+	function reviveModel(response, parentObj, parentKey, value, reference, arrayRoot) {
+		if ("string" === typeof value) return parseModelString(response, parentObj, parentKey, value, reference, arrayRoot);
+		if ("object" === typeof value && null !== value) if (void 0 !== reference && void 0 !== response._temporaryReferences && response._temporaryReferences.set(value, reference), isArrayImpl(value)) {
+			if (null === arrayRoot) {
+				var childContext = {
+					count: 0,
+					fork: !1
+				};
+				response._rootArrayContexts.set(value, childContext);
+			} else childContext = arrayRoot;
+			1 < value.length && (childContext.fork = !0);
+			bumpArrayCount(childContext, value.length + 1, response);
+			for (parentObj = 0; parentObj < value.length; parentObj++) value[parentObj] = reviveModel(response, value, "" + parentObj, value[parentObj], void 0 !== reference ? reference + ":" + parentObj : void 0, childContext);
+		} else for (childContext in value) hasOwnProperty.call(value, childContext) && ("__proto__" === childContext ? delete value[childContext] : (parentObj = void 0 !== reference && -1 === childContext.indexOf(":") ? reference + ":" + childContext : void 0, parentObj = reviveModel(response, value, childContext, value[childContext], parentObj, null), void 0 !== parentObj ? value[childContext] = parentObj : delete value[childContext]));
+		return value;
+	}
+	function bumpArrayCount(arrayContext, slots, response) {
+		if ((arrayContext.count += slots) > response._arraySizeLimit && arrayContext.fork) throw Error("Maximum array nesting exceeded. Large nested arrays can be dangerous. Try adding intermediate objects.");
+	}
+	var initializingHandler = null;
+	function initializeModelChunk(chunk) {
+		var prevHandler = initializingHandler;
+		initializingHandler = null;
+		var _chunk$reason = chunk.reason, response = _chunk$reason[RESPONSE_SYMBOL];
+		_chunk$reason = _chunk$reason.id;
+		_chunk$reason = -1 === _chunk$reason ? void 0 : _chunk$reason.toString(16);
+		var resolvedModel = chunk.value;
+		chunk.status = "blocked";
+		chunk.value = null;
+		chunk.reason = null;
+		try {
+			var rawModel = JSON.parse(resolvedModel);
+			resolvedModel = {
+				count: 0,
+				fork: !1
+			};
+			var value = reviveModel(response, { "": rawModel }, "", rawModel, _chunk$reason, resolvedModel), resolveListeners = chunk.value;
+			if (null !== resolveListeners) for (chunk.value = null, chunk.reason = null, rawModel = 0; rawModel < resolveListeners.length; rawModel++) {
+				var listener = resolveListeners[rawModel];
+				"function" === typeof listener ? listener(value) : fulfillReference(response, listener, value, resolvedModel);
+			}
+			if (null !== initializingHandler) {
+				if (initializingHandler.errored) throw initializingHandler.reason;
+				if (0 < initializingHandler.deps) {
+					initializingHandler.value = value;
+					initializingHandler.reason = resolvedModel;
+					initializingHandler.chunk = chunk;
+					return;
+				}
+			}
+			chunk.status = "fulfilled";
+			chunk.value = value;
+			chunk.reason = resolvedModel;
+		} catch (error) {
+			chunk.status = "rejected", chunk.reason = error;
+		} finally {
+			initializingHandler = prevHandler;
+		}
+	}
+	function reportGlobalError(response, error) {
+		response._closed = !0;
+		response._closedReason = error;
+		response._chunks.forEach(function(chunk) {
+			"pending" === chunk.status ? triggerErrorOnChunk(response, chunk, error) : "fulfilled" === chunk.status && null !== chunk.reason && (chunk = chunk.reason, "function" === typeof chunk.error && chunk.error(error));
+		});
+	}
+	function getChunk(response, id) {
+		var chunks = response._chunks, chunk = chunks.get(id);
+		chunk || (chunk = response._formData.data.get(response._prefix + id), chunk = "string" === typeof chunk ? createResolvedModelChunk(response, chunk, id) : response._closed ? new ReactPromise("rejected", null, response._closedReason) : new ReactPromise("pending", null, null), chunks.set(id, chunk));
+		return chunk;
+	}
+	function fulfillReference(response, reference, value, arrayRoot) {
+		var handler = reference.handler, parentObject = reference.parentObject, key = reference.key, map = reference.map, path = reference.path;
+		try {
+			for (var localLength = 0, rootArrayContexts = response._rootArrayContexts, i = 1; i < path.length; i++) {
+				var name = path[i];
+				if ("object" !== typeof value || null === value || getPrototypeOf(value) !== ObjectPrototype && getPrototypeOf(value) !== ArrayPrototype || !hasOwnProperty.call(value, name)) throw Error("Invalid reference.");
+				value = value[name];
+				if (isArrayImpl(value)) localLength = 0, arrayRoot = rootArrayContexts.get(value) || arrayRoot;
+				else if (arrayRoot = null, "string" === typeof value) localLength = value.length;
+				else if ("bigint" === typeof value) {
+					var n = Math.abs(Number(value));
+					localLength = 0 === n ? 1 : Math.floor(Math.log10(n)) + 1;
+				} else localLength = ArrayBuffer.isView(value) ? value.byteLength : 0;
+			}
+			var resolvedValue = map(response, value, parentObject, key);
+			var referenceArrayRoot = reference.arrayRoot;
+			null !== referenceArrayRoot && (null !== arrayRoot ? (arrayRoot.fork && (referenceArrayRoot.fork = !0), bumpArrayCount(referenceArrayRoot, arrayRoot.count, response)) : 0 < localLength && bumpArrayCount(referenceArrayRoot, localLength, response));
+		} catch (error) {
+			rejectReference(response, handler, error);
+			return;
+		}
+		resolveReference(response, handler, parentObject, key, resolvedValue);
+	}
+	function resolveReference(response, handler, parentObject, key, resolvedValue) {
+		"__proto__" !== key && (parentObject[key] = resolvedValue);
+		"" === key && null === handler.value && (handler.value = resolvedValue);
+		handler.deps--;
+		0 === handler.deps && (parentObject = handler.chunk, null !== parentObject && "blocked" === parentObject.status && (key = parentObject.value, parentObject.status = "fulfilled", parentObject.value = handler.value, parentObject.reason = handler.reason, null !== key && wakeChunk(response, key, handler.value, parentObject)));
+	}
+	function rejectReference(response, handler, error) {
+		handler.errored || (handler.errored = !0, handler.value = null, handler.reason = error, handler = handler.chunk, null !== handler && "blocked" === handler.status && triggerErrorOnChunk(response, handler, error));
+	}
+	function getOutlinedModel(response, reference, parentObject, key, referenceArrayRoot, map) {
+		reference = reference.split(":");
+		var id = parseInt(reference[0], 16), chunk = getChunk(response, id);
+		switch (chunk.status) {
+			case "resolved_model": initializeModelChunk(chunk);
+		}
+		switch (chunk.status) {
+			case "fulfilled":
+				id = chunk.value;
+				chunk = chunk.reason;
+				if (null !== chunk && "error" in chunk) throw Error("Expected an initialized chunk but got an initialized stream chunk instead. This payload may have been submitted by an older version of React.");
+				for (var localLength = 0, rootArrayContexts = response._rootArrayContexts, i = 1; i < reference.length; i++) {
+					localLength = reference[i];
+					if ("object" !== typeof id || null === id || getPrototypeOf(id) !== ObjectPrototype && getPrototypeOf(id) !== ArrayPrototype || !hasOwnProperty.call(id, localLength)) throw Error("Invalid reference.");
+					id = id[localLength];
+					isArrayImpl(id) ? (localLength = 0, chunk = rootArrayContexts.get(id) || chunk) : (chunk = null, "string" === typeof id ? localLength = id.length : "bigint" === typeof id ? (localLength = Math.abs(Number(id)), localLength = 0 === localLength ? 1 : Math.floor(Math.log10(localLength)) + 1) : localLength = ArrayBuffer.isView(id) ? id.byteLength : 0);
+				}
+				parentObject = map(response, id, parentObject, key);
+				null !== referenceArrayRoot && (null !== chunk ? (chunk.fork && (referenceArrayRoot.fork = !0), bumpArrayCount(referenceArrayRoot, chunk.count, response)) : 0 < localLength && bumpArrayCount(referenceArrayRoot, localLength, response));
+				return parentObject;
+			case "blocked": return initializingHandler ? (response = initializingHandler, response.deps++) : response = initializingHandler = {
+				chunk: null,
+				value: null,
+				reason: null,
+				deps: 1,
+				errored: !1
+			}, referenceArrayRoot = {
+				handler: response,
+				parentObject,
+				key,
+				map,
+				path: reference,
+				arrayRoot: referenceArrayRoot
+			}, null === chunk.value ? chunk.value = [referenceArrayRoot] : chunk.value.push(referenceArrayRoot), null === chunk.reason ? chunk.reason = [referenceArrayRoot] : chunk.reason.push(referenceArrayRoot), null;
+			case "pending": throw Error("Invalid forward reference.");
+			default: return initializingHandler ? (initializingHandler.errored = !0, initializingHandler.value = null, initializingHandler.reason = chunk.reason) : initializingHandler = {
+				chunk: null,
+				value: null,
+				reason: chunk.reason,
+				deps: 0,
+				errored: !0
+			}, null;
+		}
+	}
+	function createMap(response, model) {
+		if (!isArrayImpl(model)) throw Error("Invalid Map initializer.");
+		if (!0 === model.$$consumed) throw Error("Already initialized Map.");
+		model.$$consumed = !0;
+		return new Map(model);
+	}
+	function createSet(response, model) {
+		if (!isArrayImpl(model)) throw Error("Invalid Set initializer.");
+		if (!0 === model.$$consumed) throw Error("Already initialized Set.");
+		model.$$consumed = !0;
+		return new Set(model);
+	}
+	function extractIterator(response, model) {
+		if (!isArrayImpl(model)) throw Error("Invalid Iterator initializer.");
+		if (!0 === model.$$consumed) throw Error("Already initialized Iterator.");
+		model.$$consumed = !0;
+		return model[Symbol.iterator]();
+	}
+	function createModel(response, model, parentObject, key) {
+		return "then" === key && "function" === typeof model ? null : model;
+	}
+	function parseTypedArray(response, reference, constructor, bytesPerElement, parentObject, parentKey, referenceArrayRoot) {
+		function reject(error) {
+			if (!handler.errored) {
+				handler.errored = !0;
+				handler.value = null;
+				handler.reason = error;
+				var chunk = handler.chunk;
+				null !== chunk && "blocked" === chunk.status && triggerErrorOnChunk(response, chunk, error);
+			}
+		}
+		reference = parseInt(reference.slice(2), 16);
+		var key = response._prefix + reference;
+		bytesPerElement = response._chunks;
+		if (bytesPerElement.has(reference)) throw Error("Already initialized typed array.");
+		bytesPerElement.set(reference, new ReactPromise("rejected", null, Error("Already initialized typed array.")));
+		reference = response._formData.data.get(key).arrayBuffer();
+		if (initializingHandler) {
+			var handler = initializingHandler;
+			handler.deps++;
+		} else handler = initializingHandler = {
+			chunk: null,
+			value: null,
+			reason: null,
+			deps: 1,
+			errored: !1
+		};
+		reference.then(function(buffer) {
+			try {
+				null !== referenceArrayRoot && bumpArrayCount(referenceArrayRoot, buffer.byteLength, response);
+				var resolvedValue = constructor === ArrayBuffer ? buffer : new constructor(buffer);
+				"__proto__" !== key && (parentObject[parentKey] = resolvedValue);
+				"" === parentKey && null === handler.value && (handler.value = resolvedValue);
+			} catch (x) {
+				reject(x);
+				return;
+			}
+			handler.deps--;
+			0 === handler.deps && (buffer = handler.chunk, null !== buffer && "blocked" === buffer.status && (resolvedValue = buffer.value, buffer.status = "fulfilled", buffer.value = handler.value, buffer.reason = null, null !== resolvedValue && wakeChunk(response, resolvedValue, handler.value, buffer)));
+		}, reject);
+		return null;
+	}
+	function resolveStream(response, id, stream, controller) {
+		var chunks = response._chunks;
+		stream = new ReactPromise("fulfilled", stream, controller);
+		chunks.set(id, stream);
+		response = response._formData.data.getAll(response._prefix + id);
+		for (id = 0; id < response.length; id++) chunks = response[id], "string" === typeof chunks && ("C" === chunks[0] ? controller.close("C" === chunks ? "\"$undefined\"" : chunks.slice(1)) : controller.enqueueModel(chunks));
+	}
+	function parseReadableStream(response, reference, type) {
+		function enqueue(value) {
+			"bytes" !== type || ArrayBuffer.isView(value) ? controller.enqueue(value) : flightController.error(Error("Invalid data for bytes stream."));
+		}
+		reference = parseInt(reference.slice(2), 16);
+		if (response._chunks.has(reference)) throw Error("Already initialized stream.");
+		var controller = null, closed = !1, stream = new ReadableStream({
+			type,
+			start: function(c) {
+				controller = c;
+			}
+		}), previousBlockedChunk = null, flightController = {
+			enqueueModel: function(json) {
+				if (null === previousBlockedChunk) {
+					var chunk = createResolvedModelChunk(response, json, -1);
+					initializeModelChunk(chunk);
+					"fulfilled" === chunk.status ? enqueue(chunk.value) : (chunk.then(enqueue, flightController.error), previousBlockedChunk = chunk);
+				} else {
+					chunk = previousBlockedChunk;
+					var chunk$31 = new ReactPromise("pending", null, null);
+					chunk$31.then(enqueue, flightController.error);
+					previousBlockedChunk = chunk$31;
+					chunk.then(function() {
+						previousBlockedChunk === chunk$31 && (previousBlockedChunk = null);
+						resolveModelChunk(response, chunk$31, json, -1);
+					});
+				}
+			},
+			close: function() {
+				if (!closed) if (closed = !0, null === previousBlockedChunk) controller.close();
+				else {
+					var blockedChunk = previousBlockedChunk;
+					previousBlockedChunk = null;
+					blockedChunk.then(function() {
+						return controller.close();
+					});
+				}
+			},
+			error: function(error) {
+				if (!closed) if (closed = !0, null === previousBlockedChunk) controller.error(error);
+				else {
+					var blockedChunk = previousBlockedChunk;
+					previousBlockedChunk = null;
+					blockedChunk.then(function() {
+						return controller.error(error);
+					});
+				}
+			}
+		};
+		resolveStream(response, reference, stream, flightController);
+		return stream;
+	}
+	function FlightIterator(next) {
+		this.next = next;
+	}
+	FlightIterator.prototype = {};
+	FlightIterator.prototype[ASYNC_ITERATOR] = function() {
+		return this;
+	};
+	function parseAsyncIterable(response, reference, iterator) {
+		reference = parseInt(reference.slice(2), 16);
+		if (response._chunks.has(reference)) throw Error("Already initialized stream.");
+		var buffer = [], closed = !1, nextWriteIndex = 0, $jscomp$compprop5 = {};
+		$jscomp$compprop5 = ($jscomp$compprop5[ASYNC_ITERATOR] = function() {
+			var nextReadIndex = 0;
+			return new FlightIterator(function(arg) {
+				if (void 0 !== arg) throw Error("Values cannot be passed to next() of AsyncIterables passed to Client Components.");
+				if (nextReadIndex === buffer.length) {
+					if (closed) return new ReactPromise("fulfilled", {
+						done: !0,
+						value: void 0
+					}, null);
+					buffer[nextReadIndex] = new ReactPromise("pending", null, null);
+				}
+				return buffer[nextReadIndex++];
+			});
+		}, $jscomp$compprop5);
+		iterator = iterator ? $jscomp$compprop5[ASYNC_ITERATOR]() : $jscomp$compprop5;
+		resolveStream(response, reference, iterator, {
+			enqueueModel: function(value) {
+				nextWriteIndex === buffer.length ? buffer[nextWriteIndex] = createResolvedIteratorResultChunk(response, value, !1) : resolveIteratorResultChunk(response, buffer[nextWriteIndex], value, !1);
+				nextWriteIndex++;
+			},
+			close: function(value) {
+				if (!closed) for (closed = !0, nextWriteIndex === buffer.length ? buffer[nextWriteIndex] = createResolvedIteratorResultChunk(response, value, !0) : resolveIteratorResultChunk(response, buffer[nextWriteIndex], value, !0), nextWriteIndex++; nextWriteIndex < buffer.length;) resolveIteratorResultChunk(response, buffer[nextWriteIndex++], "\"$undefined\"", !0);
+			},
+			error: function(error) {
+				if (!closed) for (closed = !0, nextWriteIndex === buffer.length && (buffer[nextWriteIndex] = new ReactPromise("pending", null, null)); nextWriteIndex < buffer.length;) triggerErrorOnChunk(response, buffer[nextWriteIndex++], error);
+			}
+		});
+		return iterator;
+	}
+	function parseModelString(response, obj, key, value, reference, arrayRoot) {
+		if ("$" === value[0]) {
+			switch (value[1]) {
+				case "$": return null !== arrayRoot && bumpArrayCount(arrayRoot, value.length - 1, response), value.slice(1);
+				case "@": return obj = parseInt(value.slice(2), 16), getChunk(response, obj);
+				case "h": return arrayRoot = value.slice(2), getOutlinedModel(response, arrayRoot, obj, key, null, loadServerReference$1);
+				case "T":
+					if (void 0 === reference || void 0 === response._temporaryReferences) throw Error("Could not reference an opaque temporary reference. This is likely due to misconfiguring the temporaryReferences options on the server.");
+					return createTemporaryReference(response._temporaryReferences, reference);
+				case "Q": return arrayRoot = value.slice(2), getOutlinedModel(response, arrayRoot, obj, key, null, createMap);
+				case "W": return arrayRoot = value.slice(2), getOutlinedModel(response, arrayRoot, obj, key, null, createSet);
+				case "K":
+					key = value.slice(2);
+					obj = response._prefix + "_";
+					key = obj + key + "_";
+					arrayRoot = new FormData();
+					for (response = response._formData;;) {
+						value = response.keys;
+						null === value && (value = response.keys = Array.from(response.data.keys()), response.keyPointer = 0);
+						value = value[response.keyPointer];
+						if (void 0 === value) break;
+						if (value.startsWith(key)) {
+							reference = response.data.getAll(value);
+							for (var referencedFormDataKey = value.slice(key.length), i = 0; i < reference.length; i++) arrayRoot.append(referencedFormDataKey, reference[i]);
+							response.data.delete(value);
+							response.keyPointer++;
+						} else if (value.startsWith(obj)) break;
+						else response.keyPointer++;
+					}
+					return arrayRoot;
+				case "i": return arrayRoot = value.slice(2), getOutlinedModel(response, arrayRoot, obj, key, null, extractIterator);
+				case "I": return Infinity;
+				case "-": return "$-0" === value ? -0 : -Infinity;
+				case "N": return NaN;
+				case "u": return;
+				case "D": return new Date(Date.parse(value.slice(2)));
+				case "n":
+					obj = value.slice(2);
+					if (300 < obj.length) throw Error("BigInt is too large. Received " + obj.length + " digits but the limit is 300.");
+					null !== arrayRoot && bumpArrayCount(arrayRoot, obj.length, response);
+					return BigInt(obj);
+				case "A": return parseTypedArray(response, value, ArrayBuffer, 1, obj, key, arrayRoot);
+				case "O": return parseTypedArray(response, value, Int8Array, 1, obj, key, arrayRoot);
+				case "o": return parseTypedArray(response, value, Uint8Array, 1, obj, key, arrayRoot);
+				case "U": return parseTypedArray(response, value, Uint8ClampedArray, 1, obj, key, arrayRoot);
+				case "S": return parseTypedArray(response, value, Int16Array, 2, obj, key, arrayRoot);
+				case "s": return parseTypedArray(response, value, Uint16Array, 2, obj, key, arrayRoot);
+				case "L": return parseTypedArray(response, value, Int32Array, 4, obj, key, arrayRoot);
+				case "l": return parseTypedArray(response, value, Uint32Array, 4, obj, key, arrayRoot);
+				case "G": return parseTypedArray(response, value, Float32Array, 4, obj, key, arrayRoot);
+				case "g": return parseTypedArray(response, value, Float64Array, 8, obj, key, arrayRoot);
+				case "M": return parseTypedArray(response, value, BigInt64Array, 8, obj, key, arrayRoot);
+				case "m": return parseTypedArray(response, value, BigUint64Array, 8, obj, key, arrayRoot);
+				case "V": return parseTypedArray(response, value, DataView, 1, obj, key, arrayRoot);
+				case "B": return obj = parseInt(value.slice(2), 16), response._formData.data.get(response._prefix + obj);
+				case "R": return parseReadableStream(response, value, void 0);
+				case "r": return parseReadableStream(response, value, "bytes");
+				case "X": return parseAsyncIterable(response, value, !1);
+				case "x": return parseAsyncIterable(response, value, !0);
+			}
+			value = value.slice(1);
+			return getOutlinedModel(response, value, obj, key, arrayRoot, createModel);
+		}
+		null !== arrayRoot && bumpArrayCount(arrayRoot, value.length, response);
+		return value;
+	}
+	function createResponse(bundlerConfig, formFieldPrefix, temporaryReferences) {
+		var backingFormData = 3 < arguments.length && void 0 !== arguments[3] ? arguments[3] : new FormData(), arraySizeLimit = 4 < arguments.length && void 0 !== arguments[4] ? arguments[4] : 1e6;
+		return {
+			_bundlerConfig: bundlerConfig,
+			_prefix: formFieldPrefix,
+			_formData: {
+				data: backingFormData,
+				keyPointer: -1,
+				keys: null
+			},
+			_chunks: /* @__PURE__ */ new Map(),
+			_closed: !1,
+			_closedReason: null,
+			_temporaryReferences: temporaryReferences,
+			_rootArrayContexts: /* @__PURE__ */ new WeakMap(),
+			_arraySizeLimit: arraySizeLimit
+		};
+	}
+	function close(response) {
+		reportGlobalError(response, Error("Connection closed."));
+	}
+	function loadServerReference(bundlerConfig, metaData) {
+		var id = metaData.id;
+		if ("string" !== typeof id) return null;
+		var serverReference = resolveServerReference(bundlerConfig, id);
+		bundlerConfig = preloadModule(serverReference);
+		metaData = metaData.bound;
+		return metaData instanceof Promise ? Promise.all([metaData, bundlerConfig]).then(function(_ref) {
+			_ref = _ref[0];
+			var fn = requireModule(serverReference);
+			if (1e3 < _ref.length) throw Error("Server Function has too many bound arguments. Received " + _ref.length + " but the limit is 1000.");
+			return fn.bind.apply(fn, [null].concat(_ref));
+		}) : bundlerConfig ? Promise.resolve(bundlerConfig).then(function() {
+			return requireModule(serverReference);
+		}) : Promise.resolve(requireModule(serverReference));
+	}
+	function decodeBoundActionMetaData(body, serverManifest, formFieldPrefix, arraySizeLimit) {
+		body = createResponse(serverManifest, formFieldPrefix, void 0, body, arraySizeLimit);
+		close(body);
+		body = getChunk(body, 0);
+		body.then(function() {});
+		if ("fulfilled" !== body.status) throw body.reason;
+		return body.value;
+	}
+	exports.createClientModuleProxy = function(moduleId) {
+		moduleId = registerClientReferenceImpl({}, moduleId, !1);
+		return new Proxy(moduleId, proxyHandlers$1);
+	};
+	exports.createTemporaryReferenceSet = function() {
+		return /* @__PURE__ */ new WeakMap();
+	};
+	exports.decodeAction = function(body, serverManifest) {
+		var formData = new FormData(), action = null, seenActions = /* @__PURE__ */ new Set();
+		body.forEach(function(value, key) {
+			key.startsWith("$ACTION_") ? key.startsWith("$ACTION_REF_") ? seenActions.has(key) || (seenActions.add(key), value = "$ACTION_" + key.slice(12) + ":", value = decodeBoundActionMetaData(body, serverManifest, value), action = loadServerReference(serverManifest, value)) : key.startsWith("$ACTION_ID_") && !seenActions.has(key) && (seenActions.add(key), value = key.slice(11), action = loadServerReference(serverManifest, {
+				id: value,
+				bound: null
+			})) : formData.append(key, value);
+		});
+		return null === action ? null : action.then(function(fn) {
+			return fn.bind(null, formData);
+		});
+	};
+	exports.decodeFormState = function(actionResult, body, serverManifest) {
+		var keyPath = body.get("$ACTION_KEY");
+		if ("string" !== typeof keyPath) return Promise.resolve(null);
+		var metaData = null;
+		body.forEach(function(value, key) {
+			key.startsWith("$ACTION_REF_") && (value = "$ACTION_" + key.slice(12) + ":", metaData = decodeBoundActionMetaData(body, serverManifest, value));
+		});
+		if (null === metaData) return Promise.resolve(null);
+		var referenceId = metaData.id;
+		return Promise.resolve(metaData.bound).then(function(bound) {
+			return null === bound ? null : [
+				actionResult,
+				keyPath,
+				referenceId,
+				bound.length - 1
+			];
+		});
+	};
+	exports.decodeReply = function(body, webpackMap, options) {
+		if ("string" === typeof body) {
+			var form = new FormData();
+			form.append("0", body);
+			body = form;
+		}
+		body = createResponse(webpackMap, "", options ? options.temporaryReferences : void 0, body, options ? options.arraySizeLimit : void 0);
+		webpackMap = getChunk(body, 0);
+		close(body);
+		return webpackMap;
+	};
+	exports.decodeReplyFromAsyncIterable = function(iterable, webpackMap, options) {
+		function progress(entry) {
+			if (entry.done) close(response);
+			else {
+				entry = entry.value;
+				var name = entry[0];
+				entry = entry[1];
+				if ("string" === typeof entry) {
+					appendBackingEntry(response._formData, name, entry);
+					var prefix = response._prefix;
+					if (name.startsWith(prefix)) {
+						var chunks = response._chunks;
+						name = +name.slice(prefix.length);
+						(chunks = chunks.get(name)) && resolveModelChunk(response, chunks, entry, name);
+					}
+				} else appendBackingEntry(response._formData, name, entry);
+				iterator.next().then(progress, error);
+			}
+		}
+		function error(reason) {
+			reportGlobalError(response, reason);
+			"function" === typeof iterator.throw && iterator.throw(reason).then(error, error);
+		}
+		var iterator = iterable[ASYNC_ITERATOR](), response = createResponse(webpackMap, "", options ? options.temporaryReferences : void 0, void 0, options ? options.arraySizeLimit : void 0);
+		iterator.next().then(progress, error);
+		return getChunk(response, 0);
+	};
+	exports.prerender = function(model, webpackMap, options) {
+		return new Promise(function(resolve, reject) {
+			var request = new RequestInstance(21, model, webpackMap, options ? options.onError : void 0, options ? options.onPostpone : void 0, function() {
+				resolve({ prelude: new ReadableStream({
+					type: "bytes",
+					pull: function(controller) {
+						startFlowing(request, controller);
+					},
+					cancel: function(reason) {
+						request.destination = null;
+						abort(request, reason);
+					}
+				}, { highWaterMark: 0 }) });
+			}, reject, options ? options.identifierPrefix : void 0, options ? options.temporaryReferences : void 0);
+			if (options && options.signal) {
+				var signal = options.signal;
+				if (signal.aborted) abort(request, signal.reason);
+				else {
+					var listener = function() {
+						abort(request, signal.reason);
+						signal.removeEventListener("abort", listener);
+					};
+					signal.addEventListener("abort", listener);
+				}
+			}
+			startWork(request);
+		});
+	};
+	exports.registerClientReference = function(proxyImplementation, id, exportName) {
+		return registerClientReferenceImpl(proxyImplementation, id + "#" + exportName, !1);
+	};
+	exports.registerServerReference = function(reference, id, exportName) {
+		return Object.defineProperties(reference, {
+			$$typeof: { value: SERVER_REFERENCE_TAG },
+			$$id: {
+				value: null === exportName ? id : id + "#" + exportName,
+				configurable: !0
+			},
+			$$bound: {
+				value: null,
+				configurable: !0
+			},
+			bind: {
+				value: bind,
+				configurable: !0
+			},
+			toString: serverReferenceToString
+		});
+	};
+	exports.renderToReadableStream = function(model, webpackMap, options) {
+		var request = new RequestInstance(20, model, webpackMap, options ? options.onError : void 0, options ? options.onPostpone : void 0, noop, noop, options ? options.identifierPrefix : void 0, options ? options.temporaryReferences : void 0);
+		if (options && options.signal) {
+			var signal = options.signal;
+			if (signal.aborted) abort(request, signal.reason);
+			else {
+				var listener = function() {
+					abort(request, signal.reason);
+					signal.removeEventListener("abort", listener);
+				};
+				signal.addEventListener("abort", listener);
+			}
+		}
+		return new ReadableStream({
+			type: "bytes",
+			start: function() {
+				startWork(request);
+			},
+			pull: function(controller) {
+				startFlowing(request, controller);
+			},
+			cancel: function(reason) {
+				request.destination = null;
+				abort(request, reason);
+			}
+		}, { highWaterMark: 0 });
+	};
+}));
+//#endregion
+//#region node_modules/@vitejs/plugin-rsc/dist/core/rsc.js
+var import_server_edge = /* @__PURE__ */ __toESM((/* @__PURE__ */ __commonJSMin(((exports) => {
+	var s = require_react_server_dom_webpack_server_edge_production();
+	exports.renderToReadableStream = s.renderToReadableStream;
+	exports.decodeReply = s.decodeReply;
+	exports.decodeReplyFromAsyncIterable = s.decodeReplyFromAsyncIterable;
+	exports.decodeAction = s.decodeAction;
+	exports.decodeFormState = s.decodeFormState;
+	exports.registerServerReference = s.registerServerReference;
+	exports.registerClientReference = s.registerClientReference;
+	exports.createClientModuleProxy = s.createClientModuleProxy;
+	exports.createTemporaryReferenceSet = s.createTemporaryReferenceSet;
+})))(), 1);
+var init = false;
+var requireModule;
+function setRequireModule(options) {
+	if (init) return;
+	init = true;
+	requireModule = (id) => {
+		return options.load(removeReferenceCacheTag(id));
+	};
+	globalThis.__vite_rsc_server_require__ = memoize(async (id) => {
+		if (id.startsWith("$$decode-client:")) {
+			id = id.slice(SERVER_DECODE_CLIENT_PREFIX.length);
+			id = removeReferenceCacheTag(id);
+			const target = {};
+			const getOrCreateClientReference = (name) => {
+				return target[name] ??= import_server_edge.registerClientReference(() => {
+					throw new Error(`Unexpectedly client reference export '${name}' is called on server`);
+				}, id, name);
+			};
+			return new Proxy(target, { getOwnPropertyDescriptor(_target, name) {
+				if (typeof name !== "string" || name === "then") return Reflect.getOwnPropertyDescriptor(target, name);
+				getOrCreateClientReference(name);
+				return Reflect.getOwnPropertyDescriptor(target, name);
+			} });
+		}
+		return requireModule(id);
+	});
+	setInternalRequire();
+}
+async function loadServerAction(id) {
+	const [file, name] = id.split("#");
+	return (await requireModule(file))[name];
+}
+function createServerManifest() {
+	const cacheTag = "";
+	return new Proxy({}, { get(_target, $$id, _receiver) {
+		tinyassert(typeof $$id === "string");
+		let [id, name] = $$id.split("#");
+		tinyassert(id);
+		tinyassert(name);
+		return {
+			id: SERVER_REFERENCE_PREFIX + id + cacheTag,
+			name,
+			chunks: [],
+			async: true
+		};
+	} });
+}
+function createClientManifest(options) {
+	const cacheTag = "";
+	return new Proxy({}, { get(_target, $$id, _receiver) {
+		tinyassert(typeof $$id === "string");
+		let [id, name] = $$id.split("#");
+		tinyassert(id);
+		tinyassert(name);
+		options?.onClientReference?.({
+			id,
+			name
+		});
+		return {
+			id: id + cacheTag,
+			name,
+			chunks: [],
+			async: true
+		};
+	} });
+}
+//#endregion
+//#region node_modules/react-server-dom-webpack/cjs/react-server-dom-webpack-client.edge.production.js
+/**
+* @license React
+* react-server-dom-webpack-client.edge.production.js
+*
+* Copyright (c) Meta Platforms, Inc. and affiliates.
+*
+* This source code is licensed under the MIT license found in the
+* LICENSE file in the root directory of this source tree.
+*/
+var require_react_server_dom_webpack_client_edge_production = /* @__PURE__ */ __commonJSMin(((exports) => {
+	var ReactDOM = require_react_dom_react_server(), hasOwnProperty = Object.prototype.hasOwnProperty;
+	function requireModule(metadata) {
+		var moduleExports = __vite_rsc_require__(metadata[0]);
+		if (4 === metadata.length && "function" === typeof moduleExports.then) if ("fulfilled" === moduleExports.status) moduleExports = moduleExports.value;
+		else throw moduleExports.reason;
+		if ("*" === metadata[2]) return moduleExports;
+		if ("" === metadata[2]) return moduleExports.__esModule ? moduleExports.default : moduleExports;
+		if (hasOwnProperty.call(moduleExports, metadata[2])) return moduleExports[metadata[2]];
+	}
+	ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+	var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_LAZY_TYPE = Symbol.for("react.lazy");
+	Array.isArray;
+	Function.prototype.bind;
+	Array.prototype.slice;
+	function ReactPromise(status, value, reason) {
+		this.status = status;
+		this.value = value;
+		this.reason = reason;
+	}
+	ReactPromise.prototype = Object.create(Promise.prototype);
+	ReactPromise.prototype.then = function(resolve, reject) {
+		switch (this.status) {
+			case "resolved_model":
+				initializeModelChunk(this);
+				break;
+			case "resolved_module": initializeModuleChunk(this);
+		}
+		switch (this.status) {
+			case "fulfilled":
+				"function" === typeof resolve && resolve(this.value);
+				break;
+			case "pending":
+			case "blocked":
+				"function" === typeof resolve && (null === this.value && (this.value = []), this.value.push(resolve));
+				"function" === typeof reject && (null === this.reason && (this.reason = []), this.reason.push(reject));
+				break;
+			case "halted": break;
+			default: "function" === typeof reject && reject(this.reason);
+		}
+	};
+	function wakeChunk(listeners, value, chunk) {
+		for (var i = 0; i < listeners.length; i++) {
+			var listener = listeners[i];
+			"function" === typeof listener ? listener(value) : fulfillReference(listener, value, chunk);
+		}
+	}
+	function rejectChunk(listeners, error) {
+		for (var i = 0; i < listeners.length; i++) {
+			var listener = listeners[i];
+			"function" === typeof listener ? listener(error) : rejectReference(listener, error);
+		}
+	}
+	function resolveBlockedCycle(resolvedChunk, reference) {
+		var referencedChunk = reference.handler.chunk;
+		if (null === referencedChunk) return null;
+		if (referencedChunk === resolvedChunk) return reference.handler;
+		reference = referencedChunk.value;
+		if (null !== reference) for (referencedChunk = 0; referencedChunk < reference.length; referencedChunk++) {
+			var listener = reference[referencedChunk];
+			if ("function" !== typeof listener && (listener = resolveBlockedCycle(resolvedChunk, listener), null !== listener)) return listener;
+		}
+		return null;
+	}
+	function triggerErrorOnChunk(response, chunk, error) {
+		"pending" !== chunk.status && "blocked" !== chunk.status ? chunk.reason.error(error) : (response = chunk.reason, chunk.status = "rejected", chunk.reason = error, null !== response && rejectChunk(response, error));
+	}
+	var initializingHandler = null;
+	function initializeModelChunk(chunk) {
+		var prevHandler = initializingHandler;
+		initializingHandler = null;
+		var resolvedModel = chunk.value, response = chunk.reason;
+		chunk.status = "blocked";
+		chunk.value = null;
+		chunk.reason = null;
+		try {
+			var value = JSON.parse(resolvedModel, response._fromJSON), resolveListeners = chunk.value;
+			if (null !== resolveListeners) for (chunk.value = null, chunk.reason = null, resolvedModel = 0; resolvedModel < resolveListeners.length; resolvedModel++) {
+				var listener = resolveListeners[resolvedModel];
+				"function" === typeof listener ? listener(value) : fulfillReference(listener, value, chunk);
+			}
+			if (null !== initializingHandler) {
+				if (initializingHandler.errored) throw initializingHandler.reason;
+				if (0 < initializingHandler.deps) {
+					initializingHandler.value = value;
+					initializingHandler.chunk = chunk;
+					return;
+				}
+			}
+			chunk.status = "fulfilled";
+			chunk.value = value;
+		} catch (error) {
+			chunk.status = "rejected", chunk.reason = error;
+		} finally {
+			initializingHandler = prevHandler;
+		}
+	}
+	function initializeModuleChunk(chunk) {
+		try {
+			var value = requireModule(chunk.value);
+			chunk.status = "fulfilled";
+			chunk.value = value;
+		} catch (error) {
+			chunk.status = "rejected", chunk.reason = error;
+		}
+	}
+	function fulfillReference(reference, value) {
+		var response = reference.response, handler = reference.handler, parentObject = reference.parentObject, key = reference.key, map = reference.map, path = reference.path;
+		try {
+			for (var i = 1; i < path.length; i++) {
+				for (; "object" === typeof value && null !== value && value.$$typeof === REACT_LAZY_TYPE;) {
+					var referencedChunk = value._payload;
+					if (referencedChunk === handler.chunk) value = handler.value;
+					else {
+						switch (referencedChunk.status) {
+							case "resolved_model":
+								initializeModelChunk(referencedChunk);
+								break;
+							case "resolved_module": initializeModuleChunk(referencedChunk);
+						}
+						switch (referencedChunk.status) {
+							case "fulfilled":
+								value = referencedChunk.value;
+								continue;
+							case "blocked":
+								var cyclicHandler = resolveBlockedCycle(referencedChunk, reference);
+								if (null !== cyclicHandler) {
+									value = cyclicHandler.value;
+									continue;
+								}
+							case "pending":
+								path.splice(0, i - 1);
+								null === referencedChunk.value ? referencedChunk.value = [reference] : referencedChunk.value.push(reference);
+								null === referencedChunk.reason ? referencedChunk.reason = [reference] : referencedChunk.reason.push(reference);
+								return;
+							case "halted": return;
+							default:
+								rejectReference(reference, referencedChunk.reason);
+								return;
+						}
+					}
+				}
+				var name = path[i];
+				if ("object" === typeof value && null !== value && hasOwnProperty.call(value, name)) value = value[name];
+				else throw Error("Invalid reference.");
+			}
+			for (; "object" === typeof value && null !== value && value.$$typeof === REACT_LAZY_TYPE;) {
+				var referencedChunk$44 = value._payload;
+				if (referencedChunk$44 === handler.chunk) value = handler.value;
+				else {
+					switch (referencedChunk$44.status) {
+						case "resolved_model":
+							initializeModelChunk(referencedChunk$44);
+							break;
+						case "resolved_module": initializeModuleChunk(referencedChunk$44);
+					}
+					switch (referencedChunk$44.status) {
+						case "fulfilled":
+							value = referencedChunk$44.value;
+							continue;
+					}
+					break;
+				}
+			}
+			var mappedValue = map(response, value, parentObject, key);
+			"__proto__" !== key && (parentObject[key] = mappedValue);
+			"" === key && null === handler.value && (handler.value = mappedValue);
+			if (parentObject[0] === REACT_ELEMENT_TYPE && "object" === typeof handler.value && null !== handler.value && handler.value.$$typeof === REACT_ELEMENT_TYPE) {
+				var element = handler.value;
+				switch (key) {
+					case "3": element.props = mappedValue;
+				}
+			}
+		} catch (error) {
+			rejectReference(reference, error);
+			return;
+		}
+		handler.deps--;
+		0 === handler.deps && (reference = handler.chunk, null !== reference && "blocked" === reference.status && (value = reference.value, reference.status = "fulfilled", reference.value = handler.value, reference.reason = handler.reason, null !== value && wakeChunk(value, handler.value, reference)));
+	}
+	function rejectReference(reference, error) {
+		var handler = reference.handler;
+		reference = reference.response;
+		handler.errored || (handler.errored = !0, handler.value = null, handler.reason = error, handler = handler.chunk, null !== handler && "blocked" === handler.status && triggerErrorOnChunk(reference, handler, error));
+	}
+}));
+(/* @__PURE__ */ __commonJSMin(((exports, module) => {
+	module.exports = require_react_server_dom_webpack_client_edge_production();
+})))();
+function renderToReadableStream$2(data, options, extraOptions) {
+	return import_server_edge.renderToReadableStream(data, createClientManifest({ onClientReference: extraOptions?.onClientReference }), options);
+}
+function registerClientReference(proxy, id, name) {
+	return import_server_edge.registerClientReference(proxy, id, name);
+}
+var decodeReply = (body, options) => import_server_edge.decodeReply(body, createServerManifest(), options);
+function decodeAction(body) {
+	return import_server_edge.decodeAction(body, createServerManifest());
+}
+function decodeFormState(actionResult, body) {
+	return import_server_edge.decodeFormState(actionResult, body, createServerManifest());
+}
+var createTemporaryReferenceSet = import_server_edge.createTemporaryReferenceSet;
+//#endregion
+//#region \0virtual:vite-rsc/server-references
+var server_references_default = {};
+//#endregion
+//#region node_modules/@vitejs/plugin-rsc/dist/rsc.js
+initialize();
+function initialize() {
+	setRequireModule({ load: async (id) => {
+		{
+			const import_ = server_references_default[id];
+			if (!import_) throw new Error(`server reference not found '${id}'`);
+			return import_();
+		}
+	} });
+}
+function renderToReadableStream$1(data, options, extraOptions) {
+	return renderToReadableStream$2(data, options, { onClientReference(metadata) {
+		const deps = assetsManifest.clientReferenceDeps[metadata.id] ?? {
+			js: [],
+			css: []
+		};
+		extraOptions?.onClientReference?.({
+			id: metadata.id,
+			name: metadata.name,
+			deps
+		});
+	} });
+}
+//#endregion
+//#region node_modules/vinext/dist/server/rsc-stream-hints.js
+var REACT_FLIGHT_STYLESHEET_PRELOAD_HINT = /(\d*:HL\[.*?),"stylesheet"(\]|,)/g;
+/**
+* React Flight emits HL hints with "stylesheet" for CSS preloads, but the
+* HTML spec requires "style" for <link rel="preload">. Rewrite each complete
+* Flight line so SSR embeds, navigation, and server actions see valid hints.
+*/
+function normalizeReactFlightHintLine(line) {
+	return line.replace(REACT_FLIGHT_STYLESHEET_PRELOAD_HINT, "$1,\"style\"$2");
+}
+function normalizeReactFlightPreloadHints(stream) {
+	const decoder = new TextDecoder();
+	const encoder = new TextEncoder();
+	let carry = "";
+	return stream.pipeThrough(new TransformStream({
+		transform(chunk, controller) {
+			const text = carry + decoder.decode(chunk, { stream: true });
+			const lastNewline = text.lastIndexOf("\n");
+			if (lastNewline === -1) {
+				carry = text;
+				return;
+			}
+			carry = text.slice(lastNewline + 1);
+			controller.enqueue(encoder.encode(normalizeReactFlightHintLine(text.slice(0, lastNewline + 1))));
+		},
+		flush(controller) {
+			const text = carry + decoder.decode();
+			if (text) controller.enqueue(encoder.encode(normalizeReactFlightHintLine(text)));
+		}
+	}));
+}
+function createRscRenderer(render) {
+	return (model, options) => normalizeReactFlightPreloadHints(render(model, options));
+}
+//#endregion
+//#region node_modules/vinext/dist/shims/readonly-url-search-params.js
+var import_react_react_server = /* @__PURE__ */ __toESM(require_react_react_server(), 1);
+var ReadonlyURLSearchParamsError = class extends Error {
+	constructor() {
+		super("Method unavailable on `ReadonlyURLSearchParams`. Read more: https://nextjs.org/docs/app/api-reference/functions/use-search-params#updating-searchparams");
+	}
+};
+/**
+* Read-only URLSearchParams wrapper matching Next.js runtime behavior.
+* Mutation methods remain present for instanceof/API compatibility but throw.
+*/
+var ReadonlyURLSearchParams = class extends URLSearchParams {
+	append(_name, _value) {
+		throw new ReadonlyURLSearchParamsError();
+	}
+	delete(_name, _value) {
+		throw new ReadonlyURLSearchParamsError();
+	}
+	set(_name, _value) {
+		throw new ReadonlyURLSearchParamsError();
+	}
+	sort() {
+		throw new ReadonlyURLSearchParamsError();
+	}
+};
+//#endregion
+//#region node_modules/vinext/dist/shims/url-safety.js
+/**
+* Shared URL safety utilities for Link, Form, and navigation shims.
+*
+* Centralizes dangerous URI scheme detection so all components and
+* navigation functions use the same validation logic.
+*/
+/**
+* Detect dangerous URI schemes that should never be navigated to.
+*
+* Adapted from Next.js's javascript URL detector:
+* packages/next/src/client/lib/javascript-url.ts
+* https://github.com/vercel/next.js/blob/canary/packages/next/src/client/lib/javascript-url.ts
+*
+* URL parsing ignores leading C0 control characters / spaces, and treats
+* embedded tab/newline characters in the scheme as insignificant. We mirror
+* that behavior here so obfuscated values like `java\nscript:` and
+* `\x00javascript:` are still blocked.
+*
+* Vinext intentionally extends this handling to `data:` and `vbscript:` too,
+* since both are also dangerous navigation targets.
+*/
+var LEADING_IGNORED = "[\\u0000-\\u001F \\u200B\\uFEFF]*";
+var SCHEME_IGNORED = "[\\r\\n\\t]*";
+function buildDangerousSchemeRegex(scheme) {
+	const chars = scheme.split("").join(SCHEME_IGNORED);
+	return new RegExp(`^${LEADING_IGNORED}${chars}${SCHEME_IGNORED}:`, "i");
+}
+buildDangerousSchemeRegex("javascript"), buildDangerousSchemeRegex("data"), buildDangerousSchemeRegex("vbscript");
+//#endregion
+//#region node_modules/vinext/dist/utils/hash.js
+/**
+* FNV-1a hash producing a 64-bit result (two 32-bit rounds with different seeds).
+* Used for deterministic key generation where collisions must be rare.
+*/
+function fnv1a64(input) {
+	let h1 = 2166136261;
+	for (let i = 0; i < input.length; i++) {
+		h1 ^= input.charCodeAt(i);
+		h1 = h1 * 16777619 >>> 0;
+	}
+	let h2 = 84696351;
+	for (let i = 0; i < input.length; i++) {
+		h2 ^= input.charCodeAt(i);
+		h2 = h2 * 16777619 >>> 0;
+	}
+	return h1.toString(36) + h2.toString(36);
+}
+//#endregion
+//#region node_modules/vinext/dist/server/artifact-compatibility.js
+function createArtifactCompatibilityEnvelope(input = {}) {
+	return {
+		schemaVersion: 1,
+		graphVersion: input.graphVersion ?? null,
+		deploymentVersion: input.deploymentVersion ?? null,
+		appElementsSchemaVersion: 1,
+		rscPayloadSchemaVersion: 1,
+		rootBoundaryId: input.rootBoundaryId ?? null,
+		renderEpoch: input.renderEpoch ?? null
+	};
+}
+function createArtifactCompatibilityGraphVersion(input) {
+	return `app-route-graph:${fnv1a64(JSON.stringify([input.routePattern, input.rootBoundaryId]))}`;
+}
+function isRecord(value) {
+	return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+function isStringOrNull(value) {
+	return typeof value === "string" || value === null;
+}
+function hasCurrentSchemaVersions(record) {
+	return record.schemaVersion === 1 && record.appElementsSchemaVersion === 1 && record.rscPayloadSchemaVersion === 1;
+}
+function parseArtifactCompatibilityEnvelope(value) {
+	if (!isRecord(value)) return null;
+	if (!hasCurrentSchemaVersions(value)) return null;
+	if (!isStringOrNull(value.graphVersion)) return null;
+	if (!isStringOrNull(value.deploymentVersion)) return null;
+	if (!isStringOrNull(value.rootBoundaryId)) return null;
+	if (!isStringOrNull(value.renderEpoch)) return null;
+	return {
+		schemaVersion: 1,
+		graphVersion: value.graphVersion,
+		deploymentVersion: value.deploymentVersion,
+		appElementsSchemaVersion: 1,
+		rscPayloadSchemaVersion: 1,
+		rootBoundaryId: value.rootBoundaryId,
+		renderEpoch: value.renderEpoch
+	};
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-elements-wire.js
+var APP_INTERCEPTION_SEPARATOR = "\0";
+var APP_ARTIFACT_COMPATIBILITY_KEY = "__artifactCompatibility";
+var APP_INTERCEPTION_CONTEXT_KEY = "__interceptionContext";
+var APP_LAYOUT_IDS_KEY = "__layoutIds";
+var APP_LAYOUT_FLAGS_KEY = "__layoutFlags";
+var APP_ROUTE_KEY = "__route";
+var APP_ROOT_LAYOUT_KEY = "__rootLayout";
+var APP_UNMATCHED_SLOT_WIRE_VALUE = "__VINEXT_UNMATCHED_SLOT__";
+var UNMATCHED_SLOT = Symbol.for("vinext.unmatchedSlot");
+function appendInterceptionContext(identity, interceptionContext) {
+	return interceptionContext === null ? identity : `${identity}${APP_INTERCEPTION_SEPARATOR}${interceptionContext}`;
+}
+function createAppPayloadRouteId(routePath, interceptionContext) {
+	return appendInterceptionContext(`route:${routePath}`, interceptionContext);
+}
+function createAppPayloadPageId(routePath, interceptionContext) {
+	return appendInterceptionContext(`page:${routePath}`, interceptionContext);
+}
+function createAppPayloadLayoutId(treePath) {
+	return `layout:${treePath}`;
+}
+function createAppPayloadTemplateId(treePath) {
+	return `template:${treePath}`;
+}
+function createAppPayloadSlotId(slotName, treePath) {
+	return `slot:${slotName}:${treePath}`;
+}
+function createAppPayloadCacheKey(rscUrl, interceptionContext) {
+	return appendInterceptionContext(rscUrl, interceptionContext);
+}
+function parsePathWithInterception(input) {
+	const separatorIndex = input.indexOf(APP_INTERCEPTION_SEPARATOR);
+	const path = separatorIndex === -1 ? input : input.slice(0, separatorIndex);
+	if (!path.startsWith("/")) return null;
+	return {
+		interceptionContext: separatorIndex === -1 ? null : input.slice(separatorIndex + 1),
+		path
+	};
+}
+/**
+* AppElements tree paths are absolute route-tree paths on the wire.
+* Bare segment names are not valid layout/template/slot tree identities.
+*/
+function parseTreePath(input) {
+	return input.startsWith("/") ? input : null;
+}
+function parseAppElementsWireElementKey(key) {
+	if (key.startsWith("route:")) {
+		const parsed = parsePathWithInterception(key.slice(6));
+		if (!parsed) return null;
+		return {
+			interceptionContext: parsed.interceptionContext,
+			kind: "route",
+			path: parsed.path
+		};
+	}
+	if (key.startsWith("page:")) {
+		const parsed = parsePathWithInterception(key.slice(5));
+		if (!parsed) return null;
+		return {
+			interceptionContext: parsed.interceptionContext,
+			kind: "page",
+			path: parsed.path
+		};
+	}
+	if (key.startsWith("layout:")) {
+		const treePath = parseTreePath(key.slice(7));
+		return treePath ? {
+			kind: "layout",
+			treePath
+		} : null;
+	}
+	if (key.startsWith("template:")) {
+		const treePath = parseTreePath(key.slice(9));
+		return treePath ? {
+			kind: "template",
+			treePath
+		} : null;
+	}
+	if (key.startsWith("slot:")) {
+		const body = key.slice(5);
+		const separatorIndex = body.indexOf(":");
+		if (separatorIndex <= 0) return null;
+		const name = body.slice(0, separatorIndex);
+		const treePath = parseTreePath(body.slice(separatorIndex + 1));
+		return treePath ? {
+			kind: "slot",
+			name,
+			treePath
+		} : null;
+	}
+	return null;
+}
+function isAppElementsWireSlotId(key) {
+	if (!key.startsWith("slot:")) return false;
+	const body = key.slice(5);
+	const separatorIndex = body.indexOf(":");
+	return separatorIndex > 0 && body.charCodeAt(separatorIndex + 1) === 47;
+}
+function createAppElementsWireMetadataEntries(input) {
+	return {
+		[APP_ROUTE_KEY]: input.routeId,
+		[APP_INTERCEPTION_CONTEXT_KEY]: input.interceptionContext,
+		[APP_LAYOUT_IDS_KEY]: [...input.layoutIds ?? []],
+		[APP_ROOT_LAYOUT_KEY]: input.rootLayoutTreePath
+	};
+}
+function normalizeAppElements(elements) {
+	let needsNormalization = false;
+	for (const [key, value] of Object.entries(elements)) if (isAppElementsWireSlotId(key) && value === "__VINEXT_UNMATCHED_SLOT__") {
+		needsNormalization = true;
+		break;
+	}
+	if (!needsNormalization) return elements;
+	const normalized = {};
+	for (const [key, value] of Object.entries(elements)) normalized[key] = isAppElementsWireSlotId(key) && value === "__VINEXT_UNMATCHED_SLOT__" ? UNMATCHED_SLOT : value;
+	return normalized;
+}
+function isLayoutFlagsRecord(value) {
+	if (typeof value !== "object" || value === null || Array.isArray(value)) return false;
+	for (const v of Object.values(value)) if (v !== "s" && v !== "d") return false;
+	return true;
+}
+function parseLayoutFlags(value) {
+	if (isLayoutFlagsRecord(value)) return value;
+	return {};
+}
+function parseLayoutIds(value) {
+	if (value === void 0) return [];
+	if (!Array.isArray(value)) throw new Error("[vinext] Invalid __layoutIds in App Router payload: expected layout id string[]");
+	const layoutIds = [];
+	for (const entry of value) {
+		if (typeof entry !== "string") throw new Error("[vinext] Invalid __layoutIds in App Router payload: expected layout id string[]");
+		if (parseAppElementsWireElementKey(entry)?.kind !== "layout") throw new Error("[vinext] Invalid __layoutIds in App Router payload: expected layout ids");
+		layoutIds.push(entry);
+	}
+	return layoutIds;
+}
+/**
+* Type predicate for a plain (non-null, non-array) record of app payload values.
+* Used to distinguish the App Router payload object from bare React elements at
+* the render boundary. Narrows to `Readonly<Record<string, unknown>>` because
+* the outgoing payload carries heterogeneous values (ReactNodes for the rendered
+* tree, plus metadata like `__layoutFlags` which is a plain object). Delegates
+* to React's canonical `isValidElement` so we don't depend on React's internal
+* `$$typeof` marker scheme.
+*/
+function isAppElementsRecord(value) {
+	if (typeof value !== "object" || value === null) return false;
+	if (Array.isArray(value)) return false;
+	if ((0, import_react_react_server.isValidElement)(value)) return false;
+	return true;
+}
+function withLayoutFlags(elements, layoutFlags) {
+	return {
+		...elements,
+		[APP_LAYOUT_FLAGS_KEY]: layoutFlags
+	};
+}
+function buildOutgoingAppPayload(input) {
+	if (!isAppElementsRecord(input.element)) return input.element;
+	return {
+		...input.element,
+		[APP_LAYOUT_FLAGS_KEY]: input.layoutFlags,
+		[APP_ARTIFACT_COMPATIBILITY_KEY]: input.artifactCompatibility ?? createArtifactCompatibilityEnvelope()
+	};
+}
+function readArtifactCompatibilityMetadata(value) {
+	if (value === void 0) return createArtifactCompatibilityEnvelope();
+	return parseArtifactCompatibilityEnvelope(value) ?? createArtifactCompatibilityEnvelope();
+}
+function readAppElementsMetadata(elements) {
+	const routeId = elements[APP_ROUTE_KEY];
+	if (typeof routeId !== "string") throw new Error("[vinext] Missing __route string in App Router payload");
+	const interceptionContext = elements[APP_INTERCEPTION_CONTEXT_KEY];
+	if (interceptionContext !== void 0 && interceptionContext !== null && typeof interceptionContext !== "string") throw new Error("[vinext] Invalid __interceptionContext in App Router payload");
+	const rootLayoutTreePath = elements[APP_ROOT_LAYOUT_KEY];
+	if (rootLayoutTreePath === void 0) throw new Error("[vinext] Missing __rootLayout key in App Router payload");
+	if (rootLayoutTreePath !== null && typeof rootLayoutTreePath !== "string") throw new Error("[vinext] Invalid __rootLayout in App Router payload: expected string or null");
+	const layoutFlags = parseLayoutFlags(elements[APP_LAYOUT_FLAGS_KEY]);
+	const layoutIds = parseLayoutIds(elements[APP_LAYOUT_IDS_KEY]);
+	return {
+		artifactCompatibility: readArtifactCompatibilityMetadata(elements[APP_ARTIFACT_COMPATIBILITY_KEY]),
+		interceptionContext: interceptionContext ?? null,
+		layoutIds,
+		layoutFlags,
+		routeId,
+		rootLayoutTreePath
+	};
+}
+var AppElementsWire = {
+	keys: {
+		artifactCompatibility: APP_ARTIFACT_COMPATIBILITY_KEY,
+		interceptionContext: APP_INTERCEPTION_CONTEXT_KEY,
+		layoutIds: APP_LAYOUT_IDS_KEY,
+		layoutFlags: APP_LAYOUT_FLAGS_KEY,
+		rootLayout: APP_ROOT_LAYOUT_KEY,
+		route: APP_ROUTE_KEY
+	},
+	unmatchedSlotValue: APP_UNMATCHED_SLOT_WIRE_VALUE,
+	createMetadataEntries: createAppElementsWireMetadataEntries,
+	decode: normalizeAppElements,
+	encodeCacheKey: createAppPayloadCacheKey,
+	encodeLayoutId: createAppPayloadLayoutId,
+	encodeOutgoingPayload: buildOutgoingAppPayload,
+	encodePageId: createAppPayloadPageId,
+	encodeRouteId: createAppPayloadRouteId,
+	encodeSlotId: createAppPayloadSlotId,
+	encodeTemplateId: createAppPayloadTemplateId,
+	isSlotId: isAppElementsWireSlotId,
+	parseElementKey: parseAppElementsWireElementKey,
+	readMetadata: readAppElementsMetadata,
+	withLayoutFlags
+};
+//#endregion
+//#region node_modules/vinext/dist/server/app-mounted-slots-header.js
+/**
+* Normalize the `x-vinext-mounted-slots` header for request handling and cache keying.
+*
+* The browser sends mounted slot ids as a space-separated list in the order slots were
+* rendered, which changes across navigations. This normalizes to a canonical form
+* (sorted, deduplicated) so equivalent slot sets map to the same RSC cache entry.
+*
+* Consumed by:
+*   - app-rsc-request-normalization (request lifecycle, reads incoming header)
+*   - app-elements (outgoing x-vinext-mounted-slots construction)
+*   - isr-cache (RSC cache key generation)
+*/
+function normalizeMountedSlotsHeader(raw) {
+	if (!raw) return null;
+	return Array.from(new Set(raw.split(/\s+/).filter(Boolean))).sort().join(" ") || null;
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-rsc-render-mode.js
+var APP_RSC_RENDER_MODE_NAVIGATION = "navigation";
+var APP_RSC_RENDER_MODE_REFRESH_PRESERVE_UI = "refresh-preserve-ui";
+var APP_RSC_RENDER_MODE_ACTION_RERENDER_PRESERVE_UI = "action-rerender-preserve-ui";
+function shouldSuppressLoadingBoundaries(mode) {
+	return mode === "refresh-preserve-ui" || mode === "action-rerender-preserve-ui";
+}
+function shouldUsePreserveUiCacheVariant(mode) {
+	return shouldSuppressLoadingBoundaries(mode);
+}
+function parseAppRscRenderMode(value) {
+	switch (value) {
+		case APP_RSC_RENDER_MODE_REFRESH_PRESERVE_UI: return APP_RSC_RENDER_MODE_REFRESH_PRESERVE_UI;
+		case APP_RSC_RENDER_MODE_ACTION_RERENDER_PRESERVE_UI: return APP_RSC_RENDER_MODE_ACTION_RERENDER_PRESERVE_UI;
+		default: return APP_RSC_RENDER_MODE_NAVIGATION;
+	}
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-rsc-cache-busting.js
+/**
+* RSC cache-busting hashes cover the headers that make a `.rsc` payload vary.
+* Client-side variant headers must survive transit through CDNs and reverse
+* proxies; stripping them changes the server hash and turns stale URLs into
+* repeated canonicalization redirects.
+*/
+var VINEXT_RSC_CACHE_BUSTING_SEARCH_PARAM = "_rsc";
+var VINEXT_RSC_VARY_HEADER = [
+	"RSC",
+	"Accept",
+	NEXT_ROUTER_STATE_TREE_HEADER,
+	NEXT_ROUTER_PREFETCH_HEADER,
+	NEXT_ROUTER_SEGMENT_PREFETCH_HEADER,
+	NEXT_URL_HEADER,
+	VINEXT_INTERCEPTION_CONTEXT_HEADER,
+	VINEXT_MOUNTED_SLOTS_HEADER,
+	VINEXT_RSC_RENDER_MODE_HEADER
+].join(", ");
+var CACHE_BUSTING_DIGEST_BYTES = 12;
+var textEncoder = new TextEncoder();
+function encodeBase64Url(bytes) {
+	let binary = "";
+	for (const byte of bytes) binary += String.fromCharCode(byte);
+	return btoa(binary).replaceAll("+", "-").replaceAll("/", "_").replace(/=+$/, "");
+}
+function normalizeHeaderValue(value) {
+	return value ?? "0";
+}
+function normalizeRenderModeHeaderValue(value) {
+	const renderMode = parseAppRscRenderMode(value);
+	return renderMode === "navigation" ? null : renderMode;
+}
+function createCacheBustingInput(headers, options = {}) {
+	const values = [
+		headers.get(NEXT_ROUTER_PREFETCH_HEADER),
+		headers.get(NEXT_ROUTER_SEGMENT_PREFETCH_HEADER),
+		headers.get(NEXT_ROUTER_STATE_TREE_HEADER),
+		headers.get(NEXT_URL_HEADER),
+		headers.get(VINEXT_INTERCEPTION_CONTEXT_HEADER),
+		headers.get(VINEXT_MOUNTED_SLOTS_HEADER),
+		...options.includeRenderModeHeader === false ? [] : [normalizeRenderModeHeaderValue(headers.get(VINEXT_RSC_RENDER_MODE_HEADER))]
+	];
+	if (values.every((value) => value === null)) return null;
+	return values.map(normalizeHeaderValue).join(",");
+}
+async function sha256CacheBustingHash(input) {
+	const digest = await globalThis.crypto.subtle.digest("SHA-256", textEncoder.encode(input));
+	return encodeBase64Url(new Uint8Array(digest).subarray(0, CACHE_BUSTING_DIGEST_BYTES));
+}
+function computeLegacyRscCacheBustingSearchParam(headers) {
+	const input = createCacheBustingInput(headers);
+	return input === null ? "" : fnv1a64(input);
+}
+async function computePreviousRscCacheBustingSearchParam(headers) {
+	const input = createCacheBustingInput(headers, { includeRenderModeHeader: false });
+	if (input === null) return null;
+	return sha256CacheBustingHash(input);
+}
+function computePreviousLegacyRscCacheBustingSearchParam(headers) {
+	const input = createCacheBustingInput(headers, { includeRenderModeHeader: false });
+	return input === null ? null : fnv1a64(input);
+}
+function getSearchPairsWithoutRscCacheBusting(url) {
+	return (url.search.startsWith("?") ? url.search.slice(1) : url.search).split("&").filter((pair) => pair.length > 0 && !isRscCacheBustingSearchPair(pair));
+}
+function isRscCacheBustingSearchPair(pair) {
+	const separatorIndex = pair.indexOf("=");
+	const rawKey = separatorIndex === -1 ? pair : pair.slice(0, separatorIndex);
+	try {
+		return decodeURIComponent(rawKey.replaceAll("+", " ")) === VINEXT_RSC_CACHE_BUSTING_SEARCH_PARAM;
+	} catch {
+		return rawKey === VINEXT_RSC_CACHE_BUSTING_SEARCH_PARAM;
+	}
+}
+async function computeRscCacheBustingSearchParam(headers) {
+	const input = createCacheBustingInput(headers);
+	if (input === null) return "";
+	return sha256CacheBustingHash(input);
+}
+function setRscCacheBustingSearchParam(url, hash) {
+	const pairs = getSearchPairsWithoutRscCacheBusting(url);
+	pairs.push(hash.length > 0 ? `${VINEXT_RSC_CACHE_BUSTING_SEARCH_PARAM}=${hash}` : VINEXT_RSC_CACHE_BUSTING_SEARCH_PARAM);
+	url.search = `?${pairs.join("&")}`;
+}
+function stripRscCacheBustingSearchParam(url) {
+	const pairs = getSearchPairsWithoutRscCacheBusting(url);
+	url.search = pairs.length > 0 ? `?${pairs.join("&")}` : "";
+}
+/**
+* Remove a trailing `.rsc` suffix from a pathname. Returns the pathname
+* unchanged when the suffix is absent.
+*/
+function stripRscSuffix(pathname) {
+	return pathname.endsWith(".rsc") ? pathname.slice(0, -4) : pathname;
+}
+function toRscRequestPath(href) {
+	const hashIndex = href.indexOf("#");
+	const beforeHash = hashIndex === -1 ? href : href.slice(0, hashIndex);
+	const queryIndex = beforeHash.indexOf("?");
+	const pathname = queryIndex === -1 ? beforeHash : beforeHash.slice(0, queryIndex);
+	const query = queryIndex === -1 ? "" : beforeHash.slice(queryIndex);
+	return `${pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname}.rsc${query}`;
+}
+async function createRscRequestUrl(href, headers) {
+	const url = new URL(toRscRequestPath(href), "http://vinext.local");
+	setRscCacheBustingSearchParam(url, await computeRscCacheBustingSearchParam(headers));
+	return `${url.pathname}${url.search}`;
+}
+async function createRscRedirectLocation(location, request) {
+	const requestUrl = new URL(request.url);
+	const destinationUrl = new URL(location, requestUrl);
+	if (destinationUrl.origin !== requestUrl.origin) return destinationUrl.toString();
+	const rscPath = await createRscRequestUrl(`${destinationUrl.pathname}${destinationUrl.search}`, request.headers);
+	return `${destinationUrl.origin}${rscPath}`;
+}
+async function resolveInvalidRscCacheBustingRequest(options) {
+	if (!options.isRscRequest || options.request.method !== "GET" && options.request.method !== "HEAD") return null;
+	const url = new URL(options.request.url);
+	const actualHash = url.searchParams.get(VINEXT_RSC_CACHE_BUSTING_SEARCH_PARAM);
+	const expectedHash = await computeRscCacheBustingSearchParam(options.request.headers);
+	if (actualHash === null && expectedHash === "") return null;
+	const acceptedHashes = new Set([expectedHash]);
+	if (actualHash !== null && actualHash !== expectedHash) {
+		acceptedHashes.add(computeLegacyRscCacheBustingSearchParam(options.request.headers));
+		if (normalizeRenderModeHeaderValue(options.request.headers.get("X-Vinext-Rsc-Render-Mode")) === null) {
+			const previousHash = await computePreviousRscCacheBustingSearchParam(options.request.headers);
+			const previousLegacyHash = computePreviousLegacyRscCacheBustingSearchParam(options.request.headers);
+			if (previousHash !== null) acceptedHashes.add(previousHash);
+			if (previousLegacyHash !== null) acceptedHashes.add(previousLegacyHash);
+		}
+	}
+	if (actualHash !== null && acceptedHashes.has(actualHash)) return null;
+	setRscCacheBustingSearchParam(url, expectedHash);
+	return new Response(null, {
+		status: 307,
+		headers: { Location: `${url.pathname}${url.search}` }
+	});
+}
+//#endregion
+//#region node_modules/vinext/dist/shims/navigation.js
+var _SERVER_INSERTED_HTML_CTX_KEY = Symbol.for("vinext.serverInsertedHTMLContext");
+function getServerInsertedHTMLContext() {
+	if (typeof import_react_react_server.createContext !== "function") return null;
+	const globalState = globalThis;
+	if (!globalState[_SERVER_INSERTED_HTML_CTX_KEY]) globalState[_SERVER_INSERTED_HTML_CTX_KEY] = import_react_react_server.createContext(null);
+	return globalState[_SERVER_INSERTED_HTML_CTX_KEY] ?? null;
+}
+getServerInsertedHTMLContext();
+var GLOBAL_ACCESSORS_KEY = Symbol.for("vinext.navigation.globalAccessors");
+var _GLOBAL_ACCESSORS_KEY = GLOBAL_ACCESSORS_KEY;
+var _GLOBAL_HYDRATION_CONTEXT_KEY = Symbol.for("vinext.navigation.clientHydrationContext");
+function _getGlobalAccessors() {
+	return globalThis[_GLOBAL_ACCESSORS_KEY];
+}
+function _getClientHydrationContext() {
+	const globalState = globalThis;
+	if (Object.prototype.hasOwnProperty.call(globalState, _GLOBAL_HYDRATION_CONTEXT_KEY)) return globalState[_GLOBAL_HYDRATION_CONTEXT_KEY] ?? null;
+}
+function _setClientHydrationContext(ctx) {
+	globalThis[_GLOBAL_HYDRATION_CONTEXT_KEY] = ctx;
+}
+var _serverContext = null;
+var _getServerContext = () => {
+	if (typeof window !== "undefined") {
+		const hydrationContext = _getClientHydrationContext();
+		return hydrationContext !== void 0 ? hydrationContext : _serverContext;
+	}
+	const g = _getGlobalAccessors();
+	return g ? g.getServerContext() : _serverContext;
+};
+var _setServerContext = (ctx) => {
+	if (typeof window !== "undefined") {
+		_serverContext = ctx;
+		_setClientHydrationContext(ctx);
+		return;
+	}
+	const g = _getGlobalAccessors();
+	if (g) g.setServerContext(ctx);
+	else _serverContext = ctx;
+};
+/**
+* Register ALS-backed state accessors. Called by navigation-state.ts on import.
+* @internal
+*/
+function _registerStateAccessors(accessors) {
+	_getServerContext = accessors.getServerContext;
+	_setServerContext = accessors.setServerContext;
+	accessors.getInsertedHTMLCallbacks;
+	accessors.clearInsertedHTMLCallbacks;
+}
+/**
+* Get the navigation context for the current SSR/RSC render.
+* Reads from AsyncLocalStorage when available (concurrent-safe),
+* otherwise falls back to module-level state.
+*/
+function getNavigationContext() {
+	return _getServerContext();
+}
+/**
+* Set the navigation context for the current SSR/RSC render.
+* Called by the framework entry before rendering each request.
+*/
+function setNavigationContext(ctx) {
+	_setServerContext(ctx);
+}
+var isServer = typeof window === "undefined";
+var _CLIENT_NAV_STATE_KEY = Symbol.for("vinext.clientNavigationState");
+function getClientNavigationState() {
+	if (isServer) return null;
+	const globalState = window;
+	globalState[_CLIENT_NAV_STATE_KEY] ??= {
+		listeners: /* @__PURE__ */ new Set(),
+		cachedSearch: window.location.search,
+		cachedReadonlySearchParams: new ReadonlyURLSearchParams(window.location.search),
+		cachedPathname: stripBasePath(window.location.pathname, ""),
+		clientParams: {},
+		clientParamsJson: "{}",
+		pendingClientParams: null,
+		pendingClientParamsJson: null,
+		pendingPathname: null,
+		pendingPathnameNavId: null,
+		originalPushState: window.history.pushState.bind(window.history),
+		originalReplaceState: window.history.replaceState.bind(window.history),
+		patchInstalled: false,
+		hasPendingNavigationUpdate: false,
+		suppressUrlNotifyCount: 0,
+		navigationSnapshotActiveCount: 0
+	};
+	return globalState[_CLIENT_NAV_STATE_KEY];
+}
+function notifyNavigationListeners() {
+	const state = getClientNavigationState();
+	if (!state) return;
+	for (const fn of state.listeners) fn();
+}
+function syncCommittedUrlStateFromLocation() {
+	const state = getClientNavigationState();
+	if (!state) return false;
+	let changed = false;
+	const pathname = stripBasePath(window.location.pathname, "");
+	if (pathname !== state.cachedPathname) {
+		state.cachedPathname = pathname;
+		changed = true;
+	}
+	const search = window.location.search;
+	if (search !== state.cachedSearch) {
+		state.cachedSearch = search;
+		state.cachedReadonlySearchParams = new ReadonlyURLSearchParams(search);
+		changed = true;
+	}
+	return changed;
+}
+/**
+* Commit pending client navigation state to committed snapshots.
+*
+* navId is optional: callers that don't own pendingPathname (for example,
+* superseded pre-paint cleanup) may pass undefined to flush URL/params state
+* without clearing pendingPathname owned by the active navigation. Such callers
+* must opt in explicitly if they also own an activated render snapshot.
+*/
+function commitClientNavigationState(navId, options) {
+	if (isServer) return;
+	const state = getClientNavigationState();
+	if (!state) return;
+	if ((navId !== void 0 || options?.releaseSnapshot === true) && state.navigationSnapshotActiveCount > 0) state.navigationSnapshotActiveCount -= 1;
+	const urlChanged = syncCommittedUrlStateFromLocation();
+	if (state.pendingClientParams !== null && state.pendingClientParamsJson !== null) {
+		state.clientParams = state.pendingClientParams;
+		state.clientParamsJson = state.pendingClientParamsJson;
+		state.pendingClientParams = null;
+		state.pendingClientParamsJson = null;
+	}
+	if (state.pendingPathnameNavId === null || navId !== void 0 && state.pendingPathnameNavId === navId) {
+		state.pendingPathname = null;
+		state.pendingPathnameNavId = null;
+	}
+	const shouldNotify = urlChanged || state.hasPendingNavigationUpdate;
+	state.hasPendingNavigationUpdate = false;
+	if (shouldNotify) notifyNavigationListeners();
+}
+/**
+* Restore scroll position from a history state object (used on popstate).
+*
+* When an RSC navigation is in flight (back/forward triggers both this
+* handler and the browser entry's popstate handler which calls
+* __VINEXT_RSC_NAVIGATE__), we must wait for the new content to render
+* before scrolling. Otherwise the user sees old content flash at the
+* restored scroll position.
+*
+* This handler fires before the browser entry's popstate handler (because
+* navigation.ts is loaded before hydration completes), so we defer via a
+* microtask to give the browser entry handler a chance to set
+* __VINEXT_RSC_PENDING__. Promise.resolve() schedules a microtask
+* that runs after all synchronous event listeners have completed.
+*/
+function restoreScrollPosition(state) {
+	if (state && typeof state === "object" && "__vinext_scrollY" in state) {
+		const { __vinext_scrollX: x, __vinext_scrollY: y } = state;
+		Promise.resolve().then(() => {
+			const pending = window.__VINEXT_RSC_PENDING__ ?? null;
+			if (pending) pending.then(() => {
+				requestAnimationFrame(() => {
+					window.scrollTo(x, y);
+				});
+			});
+			else requestAnimationFrame(() => {
+				window.scrollTo(x, y);
+			});
+		});
+	}
+}
+if (!isServer) {
+	const state = getClientNavigationState();
+	if (state && !state.patchInstalled) {
+		state.patchInstalled = true;
+		window.addEventListener("popstate", (event) => {
+			if (typeof window.__VINEXT_RSC_NAVIGATE__ !== "function") {
+				commitClientNavigationState();
+				restoreScrollPosition(event.state);
+			}
+		});
+		window.history.pushState = function patchedPushState(data, unused, url) {
+			state.originalPushState.call(window.history, data, unused, url);
+			if (state.suppressUrlNotifyCount === 0) commitClientNavigationState();
+		};
+		window.history.replaceState = function patchedReplaceState(data, unused, url) {
+			state.originalReplaceState.call(window.history, data, unused, url);
+			if (state.suppressUrlNotifyCount === 0) commitClientNavigationState();
+		};
+	}
+}
+//#endregion
+//#region node_modules/vinext/dist/shims/client-hook-error.js
+/**
+* Shared error helper for client-only hooks called in Server Components.
+*
+* Used by `.react-server.ts` shim variants to provide a clear, actionable
+* error message when a developer forgets the "use client" directive.
+*
+* @see https://github.com/cloudflare/vinext/issues/834
+*/
+function buildClientHookErrorMessage(hookName) {
+	return `${hookName} only works in Client Components. Add the "use client" directive at the top of the file to use it. Read more: https://nextjs.org/docs/messages/react-client-hook-in-server-component`;
+}
+//#endregion
+//#region node_modules/vinext/dist/shims/internal/cookie-serialize.js
+/**
+* RFC 6265 §4.1.1: cookie-name is a token (RFC 2616 §2.2).
+* Allowed: any visible ASCII (0x21-0x7E) except separators: ()<>@,;:\"/[]?={}
+*/
+var VALID_COOKIE_NAME_RE = /^[\x21\x23-\x27\x2A\x2B\x2D\x2E\x30-\x39\x41-\x5A\x5E-\x7A\x7C\x7E]+$/;
+function validateCookieName(name) {
+	if (!name || !VALID_COOKIE_NAME_RE.test(name)) throw new Error(`Invalid cookie name: ${JSON.stringify(name)}`);
+}
+//#endregion
+//#region node_modules/vinext/dist/shims/internal/parse-cookie-header.js
+/**
+* Port of the current Next.js/@edge-runtime request cookie parser semantics.
+*
+* Important details:
+* - split on a semicolon-plus-optional-spaces pattern
+* - preserve whitespace around names/values otherwise
+* - bare tokens become "true"
+* - malformed percent-encoded values are skipped
+* - duplicate names collapse to the last value via Map.set()
+*/
+function parseCookieHeader(cookieHeader) {
+	const cookies = /* @__PURE__ */ new Map();
+	for (const pair of cookieHeader.split(/; */)) {
+		if (!pair) continue;
+		const splitAt = pair.indexOf("=");
+		if (splitAt === -1) {
+			cookies.set(pair, "true");
+			continue;
+		}
+		const key = pair.slice(0, splitAt);
+		const value = pair.slice(splitAt + 1);
+		try {
+			cookies.set(key, decodeURIComponent(value));
+		} catch {}
+	}
+	return cookies;
+}
+//#endregion
+//#region node_modules/vinext/dist/shims/headers.js
+var _FALLBACK_KEY$4 = Symbol.for("vinext.nextHeadersShim.fallback");
+var _g$6 = globalThis;
+var _als$2 = getOrCreateAls("vinext.nextHeadersShim.als");
+var _fallbackState$3 = _g$6[_FALLBACK_KEY$4] ??= {
+	headersContext: null,
+	dynamicUsageDetected: false,
+	invalidDynamicUsageError: null,
+	pendingSetCookies: [],
+	draftModeCookieHeader: null,
+	phase: "render"
+};
+(/* @__PURE__ */ new Date(0)).toUTCString();
+function splitMiddlewareSetCookieHeader(value) {
+	const cookies = [];
+	let start = 0;
+	let inExpires = false;
+	let expiresCommaSeen = false;
+	for (let i = 0; i < value.length; i++) {
+		if (value.slice(i, i + 8).toLowerCase() === "expires=") {
+			inExpires = true;
+			expiresCommaSeen = false;
+			i += 7;
+			continue;
+		}
+		const ch = value[i];
+		if (inExpires && ch === ";") {
+			inExpires = false;
+			expiresCommaSeen = false;
+			continue;
+		}
+		if (ch !== ",") continue;
+		if (inExpires && !expiresCommaSeen) {
+			expiresCommaSeen = true;
+			continue;
+		}
+		const cookie = value.slice(start, i).trim();
+		if (cookie) cookies.push(cookie);
+		start = i + 1;
+		inExpires = false;
+		expiresCommaSeen = false;
+	}
+	const cookie = value.slice(start).trim();
+	if (cookie) cookies.push(cookie);
+	return cookies;
+}
+function setCookieNameValue(setCookie) {
+	const equalsIndex = setCookie.indexOf("=");
+	if (equalsIndex <= 0) return null;
+	const name = setCookie.slice(0, equalsIndex).trim();
+	const valueEnd = setCookie.indexOf(";", equalsIndex + 1);
+	const encodedValue = setCookie.slice(equalsIndex + 1, valueEnd === -1 ? void 0 : valueEnd);
+	let value;
+	try {
+		value = decodeURIComponent(encodedValue);
+	} catch {
+		value = encodedValue;
+	}
+	return {
+		name,
+		value
+	};
+}
+function rebuildCookiesFromHeader(ctx, cookieHeader) {
+	ctx.cookies.clear();
+	if (cookieHeader === null) return;
+	const nextCookies = parseCookieHeader(cookieHeader);
+	for (const [name, value] of nextCookies) ctx.cookies.set(name, value);
+}
+function mergeMiddlewareSetCookies(ctx, rawHeader) {
+	if (rawHeader === null) return false;
+	let merged = false;
+	for (const setCookie of splitMiddlewareSetCookieHeader(rawHeader)) {
+		const entry = setCookieNameValue(setCookie);
+		if (!entry) continue;
+		ctx.cookies.set(entry.name, entry.value);
+		merged = true;
+	}
+	return merged;
+}
+function _getState$2() {
+	if (isInsideUnifiedScope()) return getRequestContext();
+	return _als$2.getStore() ?? _fallbackState$3;
+}
+/**
+* Dynamic usage flag — set when a component calls connection(), cookies(),
+* headers(), or noStore() during rendering. When true, ISR caching is
+* bypassed and the response gets Cache-Control: no-store.
+*/
+/**
+* Mark the current render as requiring dynamic (uncached) rendering.
+* Called by connection(), cookies(), headers(), and noStore().
+*/
+function markDynamicUsage() {
+	const state = _getState$2();
+	if (state.headersContext?.forceStatic) return;
+	state.dynamicUsageDetected = true;
+}
+/** Symbol used by cache-runtime.ts to store the "use cache" ALS on globalThis */
+var _USE_CACHE_ALS_KEY = Symbol.for("vinext.cacheRuntime.contextAls");
+/** Symbol used by cache.ts to store the unstable_cache ALS on globalThis */
+var _UNSTABLE_CACHE_ALS_KEY = Symbol.for("vinext.unstableCache.als");
+var _gHeaders = globalThis;
+function _isInsideUseCache() {
+	return _gHeaders[_USE_CACHE_ALS_KEY]?.getStore() != null;
+}
+function _isInsideUnstableCache() {
+	return _gHeaders[_UNSTABLE_CACHE_ALS_KEY]?.getStore() === true;
+}
+/**
+* Throw if the current execution is inside a "use cache" or unstable_cache()
+* scope. Called by dynamic request APIs (headers, cookies, connection) to
+* prevent request-specific data from being frozen into cached results.
+*
+* @param apiName - The name of the API being called (e.g. "connection()")
+*/
+function throwIfInsideCacheScope(apiName) {
+	if (_isInsideUseCache()) {
+		const error = /* @__PURE__ */ new Error(`\`${apiName}\` cannot be called inside "use cache". If you need this data inside a cached function, call \`${apiName}\` outside and pass the required data as an argument.`);
+		try {
+			const ctx = getRequestContext();
+			if (ctx) ctx.invalidDynamicUsageError = error;
+		} catch {}
+		throw error;
+	}
+	if (_isInsideUnstableCache()) {
+		const error = /* @__PURE__ */ new Error(`\`${apiName}\` cannot be called inside a function cached with \`unstable_cache()\`. If you need this data inside a cached function, call \`${apiName}\` outside and pass the required data as an argument.`);
+		try {
+			const ctx = getRequestContext();
+			if (ctx) ctx.invalidDynamicUsageError = error;
+		} catch {}
+		throw error;
+	}
+}
+/**
+* Check, consume, and return any invalid dynamic usage error recorded during
+* the render (e.g. cookies() called inside "use cache"). This error persists
+* even if the throw was caught by user-code try/catch, so it can surface on
+* client-side navigations where the static shell validation is skipped.
+* Ported from Next.js: workStore.invalidDynamicUsageError in
+* packages/next/src/server/app-render/app-render.tsx
+* https://github.com/vercel/next.js/commit/f5e54c06726b571a042fce67417e40a29f6b8689
+*/
+function consumeInvalidDynamicUsageError() {
+	const state = _getState$2();
+	const err = state.invalidDynamicUsageError;
+	state.invalidDynamicUsageError = null;
+	return err;
+}
+/**
+* Check and reset the dynamic usage flag.
+* Called by the server after rendering to decide on caching.
+*/
+function consumeDynamicUsage() {
+	const state = _getState$2();
+	const used = state.dynamicUsageDetected;
+	state.dynamicUsageDetected = false;
+	return used;
+}
+function _setStatePhase(state, phase) {
+	const previous = state.phase;
+	state.phase = phase;
+	return previous;
+}
+function setHeadersAccessPhase(phase) {
+	return _setStatePhase(_getState$2(), phase);
+}
+/**
+* Set the headers/cookies context for the current RSC render.
+* Called by the framework's RSC entry before rendering each request.
+*
+* @deprecated Prefer runWithHeadersContext() which uses als.run() for
+* proper per-request isolation. This function mutates the ALS store
+* in-place and is only safe for cleanup (ctx=null) within an existing
+* als.run() scope.
+*/
+/**
+* Returns the current live HeadersContext from ALS (or the fallback).
+* Used after applyMiddlewareRequestHeaders() to build a post-middleware
+* request context for afterFiles/fallback rewrite has/missing evaluation.
+*/
+function getHeadersContext() {
+	return _getState$2().headersContext;
+}
+function setHeadersContext(ctx) {
+	const state = _getState$2();
+	if (ctx !== null) {
+		state.headersContext = ctx;
+		state.dynamicUsageDetected = false;
+		state.pendingSetCookies = [];
+		state.draftModeCookieHeader = null;
+		state.phase = "render";
+	} else {
+		state.headersContext = null;
+		state.phase = "render";
+	}
+}
+/**
+* Apply middleware-forwarded request headers to the current headers context.
+*
+* When Next.js middleware calls `NextResponse.next()` or `NextResponse.rewrite()`
+* with `{ request: { headers } }`, the modified headers are encoded on the
+* middleware response. This function decodes that protocol and applies the
+* resulting request header set to the live `HeadersContext`. When an override
+* list is present, omitted headers are deleted as part of the rebuild.
+*
+* Cached `readonlyHeaders` and `readonlyCookies` snapshots on the
+* HeadersContext must be invalidated whenever this function rebuilds the
+* underlying `headers`/`cookies`. Otherwise a middleware that reads
+* `headers()` (or `cookies()`) before returning a request-header override —
+* for example `@clerk/nextjs`, whose `clerkClient()` reads `headers()` via
+* `buildRequestLike()` during middleware execution — primes a sealed snapshot
+* built from the *pre*-override request, and any subsequent `headers()` call
+* from a Server Component would return that stale snapshot instead of the
+* middleware-modified view.
+*/
+function applyMiddlewareRequestHeaders(middlewareResponseHeaders) {
+	const state = _getState$2();
+	if (!state.headersContext) return;
+	const ctx = state.headersContext;
+	const previousCookieHeader = ctx.headers.get("cookie");
+	const middlewareSetCookieHeader = middlewareResponseHeaders.get(MIDDLEWARE_SET_COOKIE_HEADER);
+	const nextHeaders = buildRequestHeadersFromMiddlewareResponse(ctx.headers, middlewareResponseHeaders);
+	if (!nextHeaders && middlewareSetCookieHeader === null) return;
+	if (nextHeaders) {
+		ctx.headers = nextHeaders;
+		ctx.readonlyHeaders = void 0;
+		const nextCookieHeader = nextHeaders.get("cookie");
+		if (previousCookieHeader !== nextCookieHeader) {
+			rebuildCookiesFromHeader(ctx, nextCookieHeader);
+			ctx.readonlyCookies = void 0;
+			ctx.mutableCookies = void 0;
+		}
+	}
+	if (mergeMiddlewareSetCookies(ctx, middlewareSetCookieHeader)) {
+		ctx.readonlyCookies = void 0;
+		ctx.mutableCookies = void 0;
+	}
+}
+/** Methods on `Headers` that mutate state. Hoisted to module scope — static. */
+var _HEADERS_MUTATING_METHODS = new Set([
+	"set",
+	"delete",
+	"append"
+]);
+var ReadonlyHeadersError = class ReadonlyHeadersError extends Error {
+	constructor() {
+		super("Headers cannot be modified. Read more: https://nextjs.org/docs/app/api-reference/functions/headers");
+	}
+	static callable() {
+		throw new ReadonlyHeadersError();
+	}
+};
+function _decorateRequestApiPromise(promise, target) {
+	return new Proxy(promise, {
+		get(promiseTarget, prop) {
+			if (prop in promiseTarget) {
+				const value = Reflect.get(promiseTarget, prop, promiseTarget);
+				return typeof value === "function" ? value.bind(promiseTarget) : value;
+			}
+			const value = Reflect.get(target, prop, target);
+			return typeof value === "function" ? value.bind(target) : value;
+		},
+		has(promiseTarget, prop) {
+			return prop in promiseTarget || prop in target;
+		},
+		ownKeys(promiseTarget) {
+			return Array.from(new Set([...Reflect.ownKeys(promiseTarget), ...Reflect.ownKeys(target)]));
+		},
+		getOwnPropertyDescriptor(promiseTarget, prop) {
+			return Reflect.getOwnPropertyDescriptor(promiseTarget, prop) ?? Reflect.getOwnPropertyDescriptor(target, prop);
+		}
+	});
+}
+var _decoratedHeadersPromises = /* @__PURE__ */ new WeakMap();
+function _getOrCreateDecoratedRequestApiPromise(cache, target) {
+	const cached = cache.get(target);
+	if (cached) return cached;
+	const promise = _decorateRequestApiPromise(Promise.resolve(target), target);
+	cache.set(target, promise);
+	return promise;
+}
+function _decorateRejectedRequestApiPromise(error) {
+	const normalizedError = error instanceof Error ? error : new Error(String(error));
+	const promise = Promise.reject(normalizedError);
+	promise.catch(() => {});
+	return _decorateRequestApiPromise(promise, new Proxy({}, { get(_target, prop) {
+		if (prop === "then" || prop === "catch" || prop === "finally") return;
+		throw normalizedError;
+	} }));
+}
+function _sealHeaders(headers) {
+	return new Proxy(headers, { get(target, prop) {
+		if (typeof prop === "string" && _HEADERS_MUTATING_METHODS.has(prop)) throw new ReadonlyHeadersError();
+		const value = Reflect.get(target, prop, target);
+		return typeof value === "function" ? value.bind(target) : value;
+	} });
+}
+function _getReadonlyHeaders(ctx) {
+	if (!ctx.readonlyHeaders) ctx.readonlyHeaders = _sealHeaders(ctx.headers);
+	return ctx.readonlyHeaders;
+}
+/**
+* Create a HeadersContext from a standard Request object.
+*
+* Performance note: In Workerd (Cloudflare Workers), `new Headers(request.headers)`
+* copies the entire header map across the V8/C++ boundary, which shows up as
+* ~815 ms self-time in production profiles when requests carry many headers.
+* We defer this copy with a lazy proxy:
+*
+* - Reads (`get`, `has`, `entries`, …) are forwarded directly to the original
+*   immutable `request.headers` — zero copy cost on the hot path.
+* - The first mutating call (`set`, `delete`, `append`) materialises
+*   `new Headers(request.headers)` once, then applies the mutation to the copy.
+*   All subsequent operations go to the copy.
+*
+* This means the ~815 ms copy only occurs when middleware actually rewrites
+* request headers via `NextResponse.next({ request: { headers } })`, which is
+* uncommon.  Pure read requests (the vast majority) pay zero copy cost.
+*
+* Cookie parsing is also deferred: the `cookie` header string is not split
+* until the first call to `cookies()` or `draftMode()`.
+*/
+function headersContextFromRequest(request) {
+	let _mutable = null;
+	const headersProxy = new Proxy(request.headers, { get(target, prop) {
+		const src = _mutable ?? target;
+		if (typeof prop === "string" && _HEADERS_MUTATING_METHODS.has(prop)) return (...args) => {
+			if (!_mutable) _mutable = new Headers(target);
+			return _mutable[prop](...args);
+		};
+		const value = Reflect.get(src, prop, src);
+		return typeof value === "function" ? value.bind(src) : value;
+	} });
+	let _cookies = null;
+	function getCookies() {
+		if (_cookies) return _cookies;
+		_cookies = parseCookieHeader(headersProxy.get("cookie") || "");
+		return _cookies;
+	}
+	return {
+		headers: headersProxy,
+		get cookies() {
+			return getCookies();
+		}
+	};
+}
+/**
+* Read-only Headers instance from the incoming request.
+* Returns a Promise in Next.js 15+ style (but resolves synchronously since
+* the context is already available).
+*/
+function headers() {
+	try {
+		throwIfInsideCacheScope("headers()");
+	} catch (error) {
+		return _decorateRejectedRequestApiPromise(error);
+	}
+	const state = _getState$2();
+	if (!state.headersContext) return _decorateRejectedRequestApiPromise(/* @__PURE__ */ new Error("headers() can only be called from a Server Component, Route Handler, or Server Action. Make sure you're not calling it from a Client Component."));
+	if (state.headersContext.accessError) return _decorateRejectedRequestApiPromise(state.headersContext.accessError);
+	markDynamicUsage();
+	return _getOrCreateDecoratedRequestApiPromise(_decoratedHeadersPromises, _getReadonlyHeaders(state.headersContext));
+}
+/** Accumulated Set-Cookie headers from cookies().set() / .delete() calls */
+/**
+* Get and clear all pending Set-Cookie headers generated by cookies().set()/delete().
+* Called by the framework after rendering to attach headers to the response.
+*/
+function getAndClearPendingCookies() {
+	const state = _getState$2();
+	const cookies = state.pendingSetCookies;
+	state.pendingSetCookies = [];
+	return cookies;
+}
+var DRAFT_MODE_COOKIE = "__prerender_bypass";
+(/* @__PURE__ */ new Date(0)).toUTCString();
+function getDraftSecret() {
+	return "c9a2165a-76f3-4a9c-9d44-5a6ccd9ed723";
+}
+/**
+* Get any Set-Cookie header generated by draftMode().enable()/disable().
+* Called by the framework after rendering to attach the header to the response.
+*/
+function getDraftModeCookieHeader() {
+	const state = _getState$2();
+	const header = state.draftModeCookieHeader;
+	state.draftModeCookieHeader = null;
+	return header;
+}
+function isDraftModeRequest(request) {
+	const cookieHeader = request.headers.get("cookie");
+	if (!cookieHeader) return false;
+	return parseCookieHeader(cookieHeader).get(DRAFT_MODE_COOKIE) === getDraftSecret();
+}
+//#endregion
+//#region node_modules/vinext/dist/shims/thenable-params.js
+function hasParamProperty(obj, prop) {
+	return Object.prototype.hasOwnProperty.call(obj, prop);
+}
+var wellKnownProperties = new Set([
+	"hasOwnProperty",
+	"isPrototypeOf",
+	"propertyIsEnumerable",
+	"toString",
+	"valueOf",
+	"toLocaleString",
+	"then",
+	"catch",
+	"finally",
+	"status",
+	"value",
+	"error",
+	"displayName",
+	"_debugInfo",
+	"toJSON",
+	"$$typeof",
+	"__esModule",
+	"@@iterator"
+]);
+function isWellKnownProperty(prop) {
+	return wellKnownProperties.has(prop);
+}
+function makeThenableParams(obj) {
+	const plain = { ...obj };
+	const promise = Promise.resolve(plain);
+	return new Proxy(promise, {
+		get(target, prop, receiver) {
+			if (!isWellKnownProperty(prop) && hasParamProperty(plain, prop)) return Reflect.get(plain, prop);
+			const value = Reflect.get(target, prop, receiver);
+			return typeof value === "function" ? value.bind(target) : value;
+		},
+		getOwnPropertyDescriptor(target, prop) {
+			if (!isWellKnownProperty(prop) && hasParamProperty(plain, prop)) return {
+				configurable: true,
+				enumerable: true,
+				value: Reflect.get(plain, prop),
+				writable: true
+			};
+			return Reflect.getOwnPropertyDescriptor(target, prop);
+		},
+		has(target, prop) {
+			return Reflect.has(target, prop) || !isWellKnownProperty(prop) && hasParamProperty(plain, prop);
+		},
+		ownKeys() {
+			return Reflect.ownKeys(plain).filter((prop) => !isWellKnownProperty(prop));
+		}
+	});
+}
+//#endregion
+//#region node_modules/react/cjs/react-jsx-runtime.react-server.production.js
+/**
+* @license React
+* react-jsx-runtime.react-server.production.js
+*
+* Copyright (c) Meta Platforms, Inc. and affiliates.
+*
+* This source code is licensed under the MIT license found in the
+* LICENSE file in the root directory of this source tree.
+*/
+var require_react_jsx_runtime_react_server_production = /* @__PURE__ */ __commonJSMin(((exports) => {
+	var React = require_react_react_server(), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
+	if (!React.__SERVER_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE) throw Error("The \"react\" package in this environment is not configured correctly. The \"react-server\" condition must be enabled in any environment that runs React Server Components.");
+	function jsxProd(type, config, maybeKey) {
+		var key = null;
+		void 0 !== maybeKey && (key = "" + maybeKey);
+		void 0 !== config.key && (key = "" + config.key);
+		if ("key" in config) {
+			maybeKey = {};
+			for (var propName in config) "key" !== propName && (maybeKey[propName] = config[propName]);
+		} else maybeKey = config;
+		config = maybeKey.ref;
+		return {
+			$$typeof: REACT_ELEMENT_TYPE,
+			type,
+			key,
+			ref: void 0 !== config ? config : null,
+			props: maybeKey
+		};
+	}
+	exports.Fragment = REACT_FRAGMENT_TYPE;
+	exports.jsx = jsxProd;
+	exports.jsxs = jsxProd;
+}));
+//#endregion
+//#region node_modules/vinext/dist/shims/metadata.js
+var import_jsx_runtime_react_server = (/* @__PURE__ */ __commonJSMin(((exports, module) => {
+	module.exports = require_react_jsx_runtime_react_server_production();
+})))();
+/**
+* Resolve viewport config from a module. Handles both static `viewport` export
+* and async `generateViewport()` function.
+*/
+async function resolveModuleViewport(mod, params) {
+	if (typeof mod.generateViewport === "function") {
+		const asyncParams = makeThenableParams(params);
+		return await mod.generateViewport({ params: asyncParams });
+	}
+	if (mod.viewport && typeof mod.viewport === "object") return mod.viewport;
+	return null;
+}
+/**
+* Merge viewport configs from multiple sources (layouts + page).
+* Later entries override earlier ones.
+*/
+var DEFAULT_VIEWPORT = {
+	width: "device-width",
+	initialScale: 1
+};
+function mergeViewport(viewportList) {
+	const merged = { ...DEFAULT_VIEWPORT };
+	for (const vp of viewportList) Object.assign(merged, vp);
+	return merged;
+}
+/**
+* React component that renders viewport meta tags into <head>.
+*/
+function ViewportHead({ viewport }) {
+	const elements = [];
+	let key = 0;
+	const parts = [];
+	if (viewport.width !== void 0) parts.push(`width=${viewport.width}`);
+	if (viewport.height !== void 0) parts.push(`height=${viewport.height}`);
+	if (viewport.initialScale !== void 0) parts.push(`initial-scale=${viewport.initialScale}`);
+	if (viewport.minimumScale !== void 0) parts.push(`minimum-scale=${viewport.minimumScale}`);
+	if (viewport.maximumScale !== void 0) parts.push(`maximum-scale=${viewport.maximumScale}`);
+	if (viewport.userScalable !== void 0) parts.push(`user-scalable=${viewport.userScalable ? "yes" : "no"}`);
+	if (parts.length > 0) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+		name: "viewport",
+		content: parts.join(", ")
+	}, key++));
+	if (viewport.themeColor) {
+		if (typeof viewport.themeColor === "string") elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			name: "theme-color",
+			content: viewport.themeColor
+		}, key++));
+		else if (Array.isArray(viewport.themeColor)) for (const entry of viewport.themeColor) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			name: "theme-color",
+			content: entry.color,
+			...entry.media ? { media: entry.media } : {}
+		}, key++));
+	}
+	if (viewport.colorScheme) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+		name: "color-scheme",
+		content: viewport.colorScheme
+	}, key++));
+	return /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(import_jsx_runtime_react_server.Fragment, { children: elements });
+}
+function isPlainObject$1(value) {
+	return typeof value === "object" && value !== null && !Array.isArray(value) && !(value instanceof URL);
+}
+function isOtherMetadata(value) {
+	if (!isPlainObject$1(value)) return false;
+	return Object.values(value).every((item) => {
+		if (typeof item === "string") return true;
+		return Array.isArray(item) && item.every((nestedItem) => typeof nestedItem === "string");
+	});
+}
+/**
+* Extract a plain string title from a metadata title value.
+*/
+function resolveStringTitle(title) {
+	if (typeof title === "string") return title;
+	if (title && typeof title === "object") return title.absolute ?? title.default ?? void 0;
+}
+/**
+* Post-process merged metadata to cross-fill openGraph and Twitter fields.
+*
+* Next.js runs this once after all layouts/pages and file-based metadata
+* have been resolved. When openGraph exists, it auto-fills missing
+* twitter:title/description/images from openGraph (falling back to root
+* metadata title/description). Existing openGraph/twitter objects also inherit
+* missing title/description from root metadata.
+*
+* Ported from Next.js:
+* https://github.com/vercel/next.js/blob/canary/packages/next/src/lib/metadata/resolve-metadata.ts
+*/
+function postProcessMetadata(merged) {
+	const result = { ...merged };
+	const resolvedTitle = resolveStringTitle(result.title);
+	if (result.openGraph) {
+		const og = { ...result.openGraph };
+		if (!og.title && resolvedTitle) og.title = resolvedTitle;
+		if (!og.description && result.description) og.description = result.description;
+		result.openGraph = og;
+	}
+	if (result.openGraph) {
+		const autoFill = {};
+		const existingTwitter = result.twitter;
+		const hasTwTitle = existingTwitter ? Boolean(existingTwitter.title) : false;
+		const hasTwDescription = existingTwitter ? Boolean(existingTwitter.description) : false;
+		const hasTwImages = existingTwitter ? Object.prototype.hasOwnProperty.call(existingTwitter, "images") && Boolean(existingTwitter.images) : false;
+		if (!hasTwTitle) {
+			if (result.openGraph.title) autoFill.title = result.openGraph.title;
+			else if (resolvedTitle) autoFill.title = resolvedTitle;
+		}
+		if (!hasTwDescription) autoFill.description = result.openGraph.description || result.description || void 0;
+		if (!hasTwImages) autoFill.images = result.openGraph.images;
+		if (Object.keys(autoFill).length > 0) if (existingTwitter) result.twitter = {
+			...existingTwitter,
+			...autoFill
+		};
+		else result.twitter = autoFill;
+	}
+	if (result.twitter) {
+		const tw = { ...result.twitter };
+		if (!tw.title && resolvedTitle) tw.title = resolvedTitle;
+		if (!tw.description && result.description) tw.description = result.description;
+		result.twitter = tw;
+	}
+	if (result.twitter) {
+		const tw = { ...result.twitter };
+		if (!tw.card) {
+			const images = tw.images;
+			tw.card = (Array.isArray(images) ? images.length > 0 : Boolean(images)) ? "summary_large_image" : "summary";
+		}
+		result.twitter = tw;
+	}
+	return result;
+}
+/**
+* Merge metadata from multiple sources (layouts + page).
+*
+* The list is ordered [rootLayout, nestedLayout, ..., page].
+* Title template from layouts applies to the page title but NOT to
+* the segment that defines the template itself. `title.absolute`
+* skips all templates. `title.default` is the fallback when no
+* child provides a title.
+*
+* For top-level keys, later entries override earlier ones. `other` custom meta
+* tags are the exception: Next.js merges those across segments.
+*/
+function mergeMetadataEntries(entries) {
+	if (entries.length === 0) return {};
+	const merged = {};
+	let parentTemplate;
+	for (const entry of entries) {
+		const meta = entry.metadata;
+		const isPage = Boolean(entry.isPage);
+		const contributesTitle = entry.contributesTitle !== false;
+		if (contributesTitle && !isPage && meta.title && typeof meta.title === "object" && meta.title.template) parentTemplate = meta.title.template;
+		for (const key of Object.keys(meta)) {
+			if (key === "title") continue;
+			const incoming = meta[key];
+			const existing = merged[key];
+			if (key === "other" && isOtherMetadata(existing) && isOtherMetadata(incoming)) merged.other = {
+				...existing,
+				...incoming
+			};
+			else merged[key] = incoming;
+		}
+		if (contributesTitle && meta.title !== void 0) merged.title = meta.title;
+	}
+	const finalTitle = merged.title;
+	if (finalTitle) {
+		if (typeof finalTitle === "string") {
+			if (parentTemplate) merged.title = parentTemplate.replace("%s", finalTitle);
+		} else if (typeof finalTitle === "object") {
+			if (finalTitle.absolute) merged.title = finalTitle.absolute;
+			else if (finalTitle.default) merged.title = finalTitle.default;
+			else if (finalTitle.template && !finalTitle.default && !finalTitle.absolute) merged.title = void 0;
+		}
+	}
+	return merged;
+}
+/**
+* Resolve metadata from a module. Handles both static `metadata` export
+* and async `generateMetadata()` function.
+*
+* @param parent - A Promise that resolves to the accumulated (merged) metadata
+*   from all ancestor segments. Passed as the second argument to
+*   `generateMetadata()`, matching Next.js's eager-execution-with-serial-
+*   resolution approach. If not provided, defaults to a promise that resolves
+*   to an empty object (so `await parent` never throws).
+*/
+async function resolveModuleMetadata(mod, params = {}, searchParams, parent = Promise.resolve({})) {
+	if (typeof mod.generateMetadata === "function") {
+		const asyncParams = makeThenableParams(params);
+		const props = searchParams === void 0 ? { params: asyncParams } : {
+			params: asyncParams,
+			searchParams: makeThenableParams(searchParams)
+		};
+		return await mod.generateMetadata(props, parent);
+	}
+	if (mod.metadata && typeof mod.metadata === "object") return mod.metadata;
+	return null;
+}
+/**
+* React component that renders metadata as HTML head elements.
+* Used by the RSC entry to inject into the <head>.
+*/
+function isIconDescriptor(value) {
+	if (typeof value !== "object" || value === null || value instanceof URL || Array.isArray(value)) return false;
+	const urlValue = Reflect.get(value, "url");
+	return typeof urlValue === "string" || urlValue instanceof URL;
+}
+function isIconsMap(value) {
+	return typeof value === "object" && !(value instanceof URL) && !Array.isArray(value) && !isIconDescriptor(value);
+}
+function normalizeUrlDescriptor(value, createDescriptor) {
+	if (typeof value === "string" || value instanceof URL) return createDescriptor(value);
+	return value;
+}
+function normalizeUrlDescriptorEntries(value, createDescriptor) {
+	if (!value) return [];
+	if (Array.isArray(value)) return value.map((entry) => normalizeUrlDescriptor(entry, createDescriptor));
+	return [normalizeUrlDescriptor(value, createDescriptor)];
+}
+function MetadataHead({ metadata }) {
+	const elements = [];
+	let key = 0;
+	const base = metadata.metadataBase;
+	function resolveUrl(url) {
+		if (!url) return void 0;
+		const s = typeof url === "string" ? url : url instanceof URL ? url.toString() : String(url);
+		if (!base) return s;
+		if (s.startsWith("http://") || s.startsWith("https://") || s.startsWith("//")) return s;
+		try {
+			return new URL(s, base).toString();
+		} catch {
+			return s;
+		}
+	}
+	const title = typeof metadata.title === "string" ? metadata.title : typeof metadata.title === "object" ? metadata.title.absolute || metadata.title.default : void 0;
+	if (title) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("title", { children: title }, key++));
+	if (metadata.description) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+		name: "description",
+		content: metadata.description
+	}, key++));
+	if (metadata.generator) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+		name: "generator",
+		content: metadata.generator
+	}, key++));
+	if (metadata.applicationName) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+		name: "application-name",
+		content: metadata.applicationName
+	}, key++));
+	if (metadata.referrer) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+		name: "referrer",
+		content: metadata.referrer
+	}, key++));
+	if (metadata.keywords) {
+		const kw = Array.isArray(metadata.keywords) ? metadata.keywords.join(",") : metadata.keywords;
+		elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			name: "keywords",
+			content: kw
+		}, key++));
+	}
+	if (metadata.authors) {
+		const authorList = Array.isArray(metadata.authors) ? metadata.authors : [metadata.authors];
+		for (const author of authorList) {
+			if (author.name) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+				name: "author",
+				content: author.name
+			}, key++));
+			if (author.url) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("link", {
+				rel: "author",
+				href: author.url
+			}, key++));
+		}
+	}
+	if (metadata.creator) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+		name: "creator",
+		content: metadata.creator
+	}, key++));
+	if (metadata.publisher) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+		name: "publisher",
+		content: metadata.publisher
+	}, key++));
+	if (metadata.formatDetection) {
+		const parts = [];
+		if (metadata.formatDetection.telephone === false) parts.push("telephone=no");
+		if (metadata.formatDetection.address === false) parts.push("address=no");
+		if (metadata.formatDetection.email === false) parts.push("email=no");
+		if (parts.length > 0) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			name: "format-detection",
+			content: parts.join(", ")
+		}, key++));
+	}
+	if (metadata.category) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+		name: "category",
+		content: metadata.category
+	}, key++));
+	if (metadata.robots) if (typeof metadata.robots === "string") elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+		name: "robots",
+		content: metadata.robots
+	}, key++));
+	else {
+		const { googleBot, ...robotsRest } = metadata.robots;
+		const robotParts = [];
+		for (const [k, v] of Object.entries(robotsRest)) if (v === true) robotParts.push(k);
+		else if (v === false) robotParts.push(`no${k}`);
+		else if (typeof v === "string" || typeof v === "number") robotParts.push(`${k}:${v}`);
+		if (robotParts.length > 0) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			name: "robots",
+			content: robotParts.join(", ")
+		}, key++));
+		if (googleBot) if (typeof googleBot === "string") elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			name: "googlebot",
+			content: googleBot
+		}, key++));
+		else {
+			const gbParts = [];
+			for (const [k, v] of Object.entries(googleBot)) if (v === true) gbParts.push(k);
+			else if (v === false) gbParts.push(`no${k}`);
+			else if (typeof v === "string" || typeof v === "number") gbParts.push(`${k}:${v}`);
+			if (gbParts.length > 0) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+				name: "googlebot",
+				content: gbParts.join(", ")
+			}, key++));
+		}
+	}
+	if (metadata.openGraph) {
+		const og = metadata.openGraph;
+		if (og.title) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			property: "og:title",
+			content: og.title
+		}, key++));
+		if (og.description) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			property: "og:description",
+			content: og.description
+		}, key++));
+		if (og.url) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			property: "og:url",
+			content: resolveUrl(og.url)
+		}, key++));
+		if (og.siteName) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			property: "og:site_name",
+			content: og.siteName
+		}, key++));
+		if (og.type) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			property: "og:type",
+			content: og.type
+		}, key++));
+		if (og.locale) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			property: "og:locale",
+			content: og.locale
+		}, key++));
+		if (og.publishedTime) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			property: "article:published_time",
+			content: og.publishedTime
+		}, key++));
+		if (og.modifiedTime) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			property: "article:modified_time",
+			content: og.modifiedTime
+		}, key++));
+		if (og.authors) for (const author of og.authors) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			property: "article:author",
+			content: author
+		}, key++));
+		if (og.images) {
+			const imgList = typeof og.images === "string" || og.images instanceof URL ? [{ url: og.images }] : Array.isArray(og.images) ? og.images : [og.images];
+			for (const img of imgList) {
+				const imgUrl = typeof img === "string" || img instanceof URL ? img : img.url;
+				elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+					property: "og:image",
+					content: resolveUrl(imgUrl)
+				}, key++));
+				if (typeof img !== "string" && !(img instanceof URL)) {
+					if (img.width) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+						property: "og:image:width",
+						content: String(img.width)
+					}, key++));
+					if (img.height) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+						property: "og:image:height",
+						content: String(img.height)
+					}, key++));
+					if (img.type) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+						property: "og:image:type",
+						content: img.type
+					}, key++));
+					if (img.alt) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+						property: "og:image:alt",
+						content: img.alt
+					}, key++));
+				}
+			}
+		}
+		if (og.videos) for (const video of og.videos) {
+			elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+				property: "og:video",
+				content: resolveUrl(video.url)
+			}, key++));
+			if (video.width) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+				property: "og:video:width",
+				content: String(video.width)
+			}, key++));
+			if (video.height) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+				property: "og:video:height",
+				content: String(video.height)
+			}, key++));
+		}
+		if (og.audio) for (const audio of og.audio) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			property: "og:audio",
+			content: resolveUrl(audio.url)
+		}, key++));
+	}
+	if (metadata.twitter) {
+		const tw = metadata.twitter;
+		if (tw.card) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			name: "twitter:card",
+			content: tw.card
+		}, key++));
+		if (tw.site) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			name: "twitter:site",
+			content: tw.site
+		}, key++));
+		if (tw.siteId) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			name: "twitter:site:id",
+			content: tw.siteId
+		}, key++));
+		if (tw.title) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			name: "twitter:title",
+			content: tw.title
+		}, key++));
+		if (tw.description) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			name: "twitter:description",
+			content: tw.description
+		}, key++));
+		if (tw.creator) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			name: "twitter:creator",
+			content: tw.creator
+		}, key++));
+		if (tw.creatorId) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			name: "twitter:creator:id",
+			content: tw.creatorId
+		}, key++));
+		if (tw.images) {
+			const imgList = typeof tw.images === "string" || tw.images instanceof URL ? [tw.images] : Array.isArray(tw.images) ? tw.images : [tw.images];
+			for (const img of imgList) {
+				const imgUrl = typeof img === "string" || img instanceof URL ? img : img.url;
+				elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+					name: "twitter:image",
+					content: resolveUrl(imgUrl)
+				}, key++));
+				if (typeof img !== "string" && !(img instanceof URL)) {
+					if (img.type) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+						name: "twitter:image:type",
+						content: img.type
+					}, key++));
+					if (img.width) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+						name: "twitter:image:width",
+						content: String(img.width)
+					}, key++));
+					if (img.height) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+						name: "twitter:image:height",
+						content: String(img.height)
+					}, key++));
+					if (img.alt) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+						name: "twitter:image:alt",
+						content: img.alt
+					}, key++));
+				}
+			}
+		}
+		if (tw.players) {
+			const players = Array.isArray(tw.players) ? tw.players : [tw.players];
+			for (const player of players) {
+				const playerUrl = player.playerUrl.toString();
+				const streamUrl = player.streamUrl.toString();
+				elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+					name: "twitter:player",
+					content: resolveUrl(playerUrl)
+				}, key++));
+				elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+					name: "twitter:player:stream",
+					content: resolveUrl(streamUrl)
+				}, key++));
+				elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+					name: "twitter:player:width",
+					content: String(player.width)
+				}, key++));
+				elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+					name: "twitter:player:height",
+					content: String(player.height)
+				}, key++));
+			}
+		}
+		if (tw.app) {
+			const { app } = tw;
+			for (const platform of [
+				"iphone",
+				"ipad",
+				"googleplay"
+			]) {
+				if (app.name) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+					name: `twitter:app:name:${platform}`,
+					content: app.name
+				}, key++));
+				if (app.id[platform] !== void 0) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+					name: `twitter:app:id:${platform}`,
+					content: String(app.id[platform])
+				}, key++));
+				if (app.url?.[platform] !== void 0) {
+					const appUrl = app.url[platform].toString();
+					elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+						name: `twitter:app:url:${platform}`,
+						content: resolveUrl(appUrl)
+					}, key++));
+				}
+			}
+		}
+	}
+	if (metadata.icons) {
+		const iconEntries = isIconsMap(metadata.icons) ? normalizeUrlDescriptorEntries(metadata.icons.icon, (url) => ({ url })) : normalizeUrlDescriptorEntries(metadata.icons, (url) => ({ url }));
+		if (isIconsMap(metadata.icons) && metadata.icons.shortcut) {
+			const shortcuts = Array.isArray(metadata.icons.shortcut) ? metadata.icons.shortcut : [metadata.icons.shortcut];
+			for (const s of shortcuts) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("link", {
+				rel: "shortcut icon",
+				href: resolveUrl(s)
+			}, key++));
+		}
+		if (iconEntries.length > 0) for (const i of iconEntries) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("link", {
+			rel: "icon",
+			href: resolveUrl(i.url),
+			...i.sizes ? { sizes: i.sizes } : {},
+			...i.type ? { type: i.type } : {},
+			...i.media ? { media: i.media } : {}
+		}, key++));
+		if (isIconsMap(metadata.icons) && metadata.icons.apple) for (const a of normalizeUrlDescriptorEntries(metadata.icons.apple, (url) => ({ url }))) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("link", {
+			rel: "apple-touch-icon",
+			href: resolveUrl(a.url),
+			...a.sizes ? { sizes: a.sizes } : {},
+			...a.type ? { type: a.type } : {}
+		}, key++));
+		if (isIconsMap(metadata.icons) && metadata.icons.other) for (const o of metadata.icons.other) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("link", {
+			rel: o.rel,
+			href: resolveUrl(o.url),
+			...o.sizes ? { sizes: o.sizes } : {}
+		}, key++));
+	}
+	if (metadata.manifest) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("link", {
+		rel: "manifest",
+		href: resolveUrl(metadata.manifest)
+	}, key++));
+	if (metadata.alternates) {
+		const alt = metadata.alternates;
+		if (alt.canonical) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("link", {
+			rel: "canonical",
+			href: resolveUrl(alt.canonical)
+		}, key++));
+		if (alt.languages) for (const [lang, href] of Object.entries(alt.languages)) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("link", {
+			rel: "alternate",
+			hrefLang: lang,
+			href: resolveUrl(href)
+		}, key++));
+		if (alt.media) for (const [media, href] of Object.entries(alt.media)) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("link", {
+			rel: "alternate",
+			media,
+			href: resolveUrl(href)
+		}, key++));
+		if (alt.types) for (const [type, href] of Object.entries(alt.types)) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("link", {
+			rel: "alternate",
+			type,
+			href: resolveUrl(href)
+		}, key++));
+	}
+	if (metadata.verification) {
+		const v = metadata.verification;
+		if (v.google) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			name: "google-site-verification",
+			content: v.google
+		}, key++));
+		if (v.yahoo) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			name: "y_key",
+			content: v.yahoo
+		}, key++));
+		if (v.yandex) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			name: "yandex-verification",
+			content: v.yandex
+		}, key++));
+		if (v.other) for (const [name, content] of Object.entries(v.other)) {
+			const values = Array.isArray(content) ? content : [content];
+			for (const val of values) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+				name,
+				content: val
+			}, key++));
+		}
+	}
+	if (metadata.appleWebApp) {
+		const awa = metadata.appleWebApp;
+		if (awa.capable !== false) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			name: "mobile-web-app-capable",
+			content: "yes"
+		}, key++));
+		if (awa.title) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			name: "apple-mobile-web-app-title",
+			content: awa.title
+		}, key++));
+		if (awa.statusBarStyle) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			name: "apple-mobile-web-app-status-bar-style",
+			content: awa.statusBarStyle
+		}, key++));
+		if (awa.startupImage) {
+			const imgs = typeof awa.startupImage === "string" ? [{ url: awa.startupImage }] : awa.startupImage;
+			for (const img of imgs) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("link", {
+				rel: "apple-touch-startup-image",
+				href: resolveUrl(img.url),
+				...img.media ? { media: img.media } : {}
+			}, key++));
+		}
+	}
+	if (metadata.itunes) {
+		const { appId, appArgument } = metadata.itunes;
+		let content = `app-id=${appId}`;
+		if (appArgument) content += `, app-argument=${appArgument}`;
+		elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			name: "apple-itunes-app",
+			content
+		}, key++));
+	}
+	if (metadata.appLinks) {
+		const al = metadata.appLinks;
+		for (const platform of [
+			"ios",
+			"iphone",
+			"ipad",
+			"android",
+			"windows_phone",
+			"windows",
+			"windows_universal",
+			"web"
+		]) {
+			const entries = al[platform];
+			if (!entries) continue;
+			const list = Array.isArray(entries) ? entries : [entries];
+			for (const entry of list) for (const [k, v] of Object.entries(entry)) {
+				if (v === void 0 || v === null) continue;
+				const str = String(v);
+				const content = k === "url" ? resolveUrl(str) : str;
+				elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+					property: `al:${platform}:${k}`,
+					content
+				}, key++));
+			}
+		}
+	}
+	if (metadata.other) for (const [name, content] of Object.entries(metadata.other)) {
+		const values = Array.isArray(content) ? content : [content];
+		for (const val of values) elements.push(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", {
+			name,
+			content: val
+		}, key++));
+	}
+	return /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(import_jsx_runtime_react_server.Fragment, { children: elements });
+}
+//#endregion
+//#region node_modules/vinext/dist/utils/encode-cache-tag.js
+/**
+* Cache-tag canonicalisation.
+*
+* Tags can flow into HTTP headers (e.g. `x-next-cache-tags` on ISR responses,
+* Cloudflare cache-tag headers, downstream Worker code) where Node's
+* `validateHeaderValue` rejects any byte outside `\t\x20-\x7e` and crashes
+* the response with `ERR_INVALID_CHAR`. Even on platforms with permissive
+* header setters, divergence between storage form and wire form silently
+* breaks invalidation when a `revalidateTag` call's tag does not byte-match
+* the form that was stored.
+*
+* The fix is to apply this encoding at every public boundary so storage,
+* comparison, and the wire all see the same ASCII-safe form. The fast-path
+* returns the input unchanged for already-ASCII tags (the common case), so
+* pre-encoded `%xx` input round-trips losslessly without `decodeURIComponent`
+* mangling literal `%xx` characters.
+*
+* The replacement matches *runs* of out-of-class code units rather than each
+* code unit individually so surrogate pairs (emoji, non-BMP characters) are
+* handed to `encodeURIComponent` as a complete code point — a per-code-unit
+* regex would split the pair and throw `URIError`.
+*
+* Mirrors Next.js's `packages/next/src/server/lib/encode-cache-tag.ts`
+* (introduced in vercel/next.js#93601).
+*/
+var OUT_OF_CLASS_CHAR = /[^\t\x20-\x7e]/;
+var OUT_OF_CLASS_RUN = /[^\t\x20-\x7e]+/g;
+function encodeCacheTag(tag) {
+	return OUT_OF_CLASS_CHAR.test(tag) ? tag.replace(OUT_OF_CLASS_RUN, (run) => encodeURIComponent(run)) : tag;
+}
+function encodeCacheTags(tags) {
+	return tags.map(encodeCacheTag);
+}
+//#endregion
+//#region node_modules/vinext/dist/shims/internal/work-unit-async-storage.js
+/**
+* Shim for next/dist/server/app-render/work-unit-async-storage.external
+* and next/dist/client/components/request-async-storage.external
+*
+* Tracks the current rendering context type so that dynamic APIs
+* (io, headers, cookies, etc.) can branch on whether they're
+* inside a request, prerender, cache scope, or other context.
+*
+* Used by: @sentry/nextjs (runtime resolve for request context injection),
+* io() for hanging-promise behavior during prerendering.
+*/
+var workUnitAsyncStorage = new AsyncLocalStorage$1();
+//#endregion
+//#region node_modules/vinext/dist/utils/cache-control-metadata.js
+function isUnknownRecord(value) {
+	return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+function readRecordField(ctx, field) {
+	const value = ctx?.[field];
+	return isUnknownRecord(value) ? value : void 0;
+}
+function readCacheControlNumberField(ctx, field) {
+	const value = readRecordField(ctx, "cacheControl")?.[field] ?? ctx?.[field];
+	return typeof value === "number" ? value : void 0;
+}
+//#endregion
+//#region node_modules/vinext/dist/shims/cache.js
+function readStringArrayField(ctx, field) {
+	const value = ctx?.[field];
+	if (!Array.isArray(value)) return [];
+	return value.filter((item) => typeof item === "string");
+}
+var MemoryCacheHandler = class {
+	store = /* @__PURE__ */ new Map();
+	tagRevalidatedAt = /* @__PURE__ */ new Map();
+	async get(key, _ctx) {
+		const entry = this.store.get(key);
+		if (!entry) return null;
+		for (const tag of entry.tags) {
+			const revalidatedAt = this.tagRevalidatedAt.get(tag);
+			if (revalidatedAt && revalidatedAt >= entry.lastModified) {
+				this.store.delete(key);
+				return null;
+			}
+		}
+		for (const tag of readStringArrayField(_ctx, "softTags")) {
+			const revalidatedAt = this.tagRevalidatedAt.get(tag);
+			if (revalidatedAt && revalidatedAt >= entry.lastModified) return null;
+		}
+		if (entry.expireAt !== null && Date.now() > entry.expireAt) {
+			this.store.delete(key);
+			return null;
+		}
+		if (entry.revalidateAt !== null && Date.now() > entry.revalidateAt) return {
+			lastModified: entry.lastModified,
+			value: entry.value,
+			cacheState: "stale",
+			cacheControl: entry.cacheControl
+		};
+		return {
+			lastModified: entry.lastModified,
+			value: entry.value,
+			cacheControl: entry.cacheControl
+		};
+	}
+	async set(key, data, ctx) {
+		const tagSet = /* @__PURE__ */ new Set();
+		if (data && "tags" in data && Array.isArray(data.tags)) for (const t of data.tags) tagSet.add(t);
+		for (const t of readStringArrayField(ctx, "tags")) tagSet.add(t);
+		const tags = [...tagSet];
+		let effectiveRevalidate;
+		let effectiveExpire;
+		effectiveRevalidate = readCacheControlNumberField(ctx, "revalidate");
+		effectiveExpire = readCacheControlNumberField(ctx, "expire");
+		if (data && "revalidate" in data && typeof data.revalidate === "number") effectiveRevalidate = data.revalidate;
+		if (effectiveRevalidate === 0) return;
+		const now = Date.now();
+		const revalidateAt = typeof effectiveRevalidate === "number" && effectiveRevalidate > 0 ? now + effectiveRevalidate * 1e3 : null;
+		const expireAt = typeof effectiveExpire === "number" && effectiveExpire > 0 ? now + effectiveExpire * 1e3 : null;
+		const cacheControl = typeof effectiveRevalidate === "number" ? effectiveExpire === void 0 ? { revalidate: effectiveRevalidate } : {
+			revalidate: effectiveRevalidate,
+			expire: effectiveExpire
+		} : void 0;
+		this.store.set(key, {
+			value: data,
+			tags,
+			lastModified: now,
+			revalidateAt,
+			expireAt,
+			cacheControl
+		});
+	}
+	async revalidateTag(tags, _durations) {
+		const tagList = Array.isArray(tags) ? tags : [tags];
+		const now = Date.now();
+		for (const tag of tagList) this.tagRevalidatedAt.set(tag, now);
+	}
+	resetRequestCache() {}
+};
+var _HANDLER_KEY = Symbol.for("vinext.cacheHandler");
+var _gHandler = globalThis;
+function _getActiveHandler() {
+	return _gHandler[_HANDLER_KEY] ?? (_gHandler[_HANDLER_KEY] = new MemoryCacheHandler());
+}
+/**
+* Get the active CacheHandler (for internal use or testing).
+*/
+function getCacheHandler() {
+	return _getActiveHandler();
+}
+/**
+* A fulfilled thenable that React can unwrap synchronously via `use()`
+* without ever suspending. Reusing a single instance avoids allocating
+* on every call — matching Next.js's browser/client implementation.
+*
+* @see https://github.com/vercel/next.js/blob/canary/packages/next/src/client/request/io.browser.ts
+*/
+var _resolvedIOPromise = Promise.resolve(void 0);
+_resolvedIOPromise.status = "fulfilled";
+_resolvedIOPromise.value = void 0;
+var _FALLBACK_KEY$3 = Symbol.for("vinext.cache.fallback");
+var _g$5 = globalThis;
+var _cacheAls = getOrCreateAls("vinext.cache.als");
+var _cacheFallbackState = _g$5[_FALLBACK_KEY$3] ??= {
+	actionRevalidationKind: 0,
+	requestScopedCacheLife: null,
+	unstableCacheRevalidation: "foreground"
+};
+var ACTION_DID_NOT_REVALIDATE$1 = 0;
+function _getCacheState() {
+	if (isInsideUnifiedScope()) return getRequestContext();
+	return _cacheAls.getStore() ?? _cacheFallbackState;
+}
+function getAndClearActionRevalidationKind() {
+	const state = _getCacheState();
+	const kind = state.actionRevalidationKind;
+	state.actionRevalidationKind = ACTION_DID_NOT_REVALIDATE$1;
+	return kind;
+}
+/**
+* Read the request-scoped cache life without clearing it. Prerender response
+* shaping needs the metadata before the manifest writer consumes it after the
+* body has been fully rendered.
+* @internal
+*/
+function _peekRequestScopedCacheLife() {
+	const config = _getCacheState().requestScopedCacheLife;
+	return config === null ? null : { ...config };
+}
+/**
+* Consume and reset the request-scoped cache life. Returns null if none was set.
+* @internal
+*/
+function _consumeRequestScopedCacheLife() {
+	const state = _getCacheState();
+	const config = state.requestScopedCacheLife;
+	state.requestScopedCacheLife = null;
+	return config;
+}
+getOrCreateAls("vinext.unstableCache.als");
+//#endregion
+//#region node_modules/vinext/dist/shims/fetch-cache.js
+/**
+* Extended fetch() with Next.js caching semantics.
+*
+* Patches `globalThis.fetch` during server rendering to support:
+*
+*   fetch(url, { next: { revalidate: 60, tags: ['posts'] } })
+*   fetch(url, { cache: 'force-cache' })
+*   fetch(url, { cache: 'no-store' })
+*
+* Cached responses are stored via the pluggable CacheHandler, so
+* revalidateTag() and revalidatePath() invalidate fetch-level caches.
+*
+* Usage (in server entry):
+*   import { withFetchCache, cleanupFetchCache } from './fetch-cache';
+*   const cleanup = withFetchCache();
+*   try { ... render ... } finally { cleanup(); }
+*
+* Or use the async helper:
+*   await runWithFetchCache(async () => { ... render ... });
+*/
+/**
+* Headers excluded from the cache key. These are W3C trace context headers
+* that can break request caching and deduplication.
+* All other headers ARE included in the cache key, matching Next.js behavior.
+*/
+var HEADER_BLOCKLIST = ["traceparent", "tracestate"];
+var CACHE_KEY_PREFIX = "v3";
+var MAX_CACHE_KEY_BODY_BYTES = 1024 * 1024;
+var BodyTooLargeForCacheKeyError = class extends Error {
+	constructor() {
+		super("Fetch body too large for cache key generation");
+	}
+};
+var SkipCacheKeyGenerationError = class extends Error {
+	constructor() {
+		super("Fetch body could not be serialized for cache key generation");
+	}
+};
+/**
+* Collect all headers from the request, excluding the blocklist.
+* Merges headers from both the Request object and the init object,
+* with init taking precedence (matching fetch() spec behavior).
+*/
+function collectHeaders(input, init) {
+	const merged = {};
+	if (input instanceof Request && input.headers) input.headers.forEach((v, k) => {
+		merged[k] = v;
+	});
+	if (init?.headers) (init.headers instanceof Headers ? init.headers : new Headers(init.headers)).forEach((v, k) => {
+		merged[k] = v;
+	});
+	for (const blocked of HEADER_BLOCKLIST) delete merged[blocked];
+	return merged;
+}
+/**
+* Check whether a fetch request carries any per-user auth headers.
+* Used for the safety bypass (skip caching when auth headers are present
+* without an explicit cache opt-in).
+*/
+var AUTH_HEADERS = [
+	"authorization",
+	"cookie",
+	"x-api-key"
+];
+function hasAuthHeaders(input, init) {
+	const headers = collectHeaders(input, init);
+	return AUTH_HEADERS.some((name) => name in headers);
+}
+async function serializeFormData(formData, pushBodyChunk, getTotalBodyBytes) {
+	for (const [key, val] of formData.entries()) {
+		if (typeof val === "string") {
+			pushBodyChunk(JSON.stringify([key, {
+				kind: "string",
+				value: val
+			}]));
+			continue;
+		}
+		if (val.size > MAX_CACHE_KEY_BODY_BYTES || getTotalBodyBytes() + val.size > MAX_CACHE_KEY_BODY_BYTES) throw new BodyTooLargeForCacheKeyError();
+		pushBodyChunk(JSON.stringify([key, {
+			kind: "file",
+			name: val.name,
+			type: val.type,
+			value: await val.text()
+		}]));
+	}
+}
+function getParsedFormContentType(contentType) {
+	const mediaType = contentType?.split(";")[0]?.trim().toLowerCase();
+	if (mediaType === "multipart/form-data" || mediaType === "application/x-www-form-urlencoded") return mediaType;
+}
+function stripMultipartBoundary(contentType) {
+	const [type, ...params] = contentType.split(";");
+	const keptParams = params.map((param) => param.trim()).filter(Boolean).filter((param) => !/^boundary\s*=/i.test(param));
+	const normalizedType = type.trim().toLowerCase();
+	return keptParams.length > 0 ? `${normalizedType}; ${keptParams.join("; ")}` : normalizedType;
+}
+async function readRequestBodyChunksWithinLimit(request) {
+	const contentLengthHeader = request.headers.get("content-length");
+	if (contentLengthHeader) {
+		const contentLength = Number(contentLengthHeader);
+		if (Number.isFinite(contentLength) && contentLength > MAX_CACHE_KEY_BODY_BYTES) throw new BodyTooLargeForCacheKeyError();
+	}
+	const requestClone = request.clone();
+	const contentType = requestClone.headers.get("content-type") ?? void 0;
+	const reader = requestClone.body?.getReader();
+	if (!reader) return {
+		chunks: [],
+		contentType
+	};
+	const chunks = [];
+	let totalBodyBytes = 0;
+	try {
+		while (true) {
+			const { done, value } = await reader.read();
+			if (done) break;
+			totalBodyBytes += value.byteLength;
+			if (totalBodyBytes > MAX_CACHE_KEY_BODY_BYTES) throw new BodyTooLargeForCacheKeyError();
+			chunks.push(value);
+		}
+	} catch (err) {
+		reader.cancel().catch(() => {});
+		throw err;
+	}
+	return {
+		chunks,
+		contentType
+	};
+}
+/**
+* Serialize request body into string chunks for cache key inclusion.
+* Handles all body types: string, Uint8Array, ReadableStream, FormData, Blob,
+* and Request object bodies.
+* Returns the serialized body chunks and optionally stashes the original body
+* on init as `_ogBody` so it can still be used after stream consumption.
+*/
+async function serializeBody(input, init) {
+	if (!init?.body && !(input instanceof Request && input.body)) return { bodyChunks: [] };
+	const bodyChunks = [];
+	const encoder = new TextEncoder();
+	const decoder = new TextDecoder();
+	let totalBodyBytes = 0;
+	let canonicalizedContentType;
+	const pushBodyChunk = (chunk) => {
+		totalBodyBytes += encoder.encode(chunk).byteLength;
+		if (totalBodyBytes > MAX_CACHE_KEY_BODY_BYTES) throw new BodyTooLargeForCacheKeyError();
+		bodyChunks.push(chunk);
+	};
+	const getTotalBodyBytes = () => totalBodyBytes;
+	if (init?.body instanceof Uint8Array) {
+		if (init.body.byteLength > MAX_CACHE_KEY_BODY_BYTES) throw new BodyTooLargeForCacheKeyError();
+		pushBodyChunk(decoder.decode(init.body));
+		init._ogBody = init.body;
+	} else if (init?.body && typeof init.body.getReader === "function") {
+		const [bodyForHashing, bodyForFetch] = init.body.tee();
+		init._ogBody = bodyForFetch;
+		const reader = bodyForHashing.getReader();
+		try {
+			while (true) {
+				const { done, value } = await reader.read();
+				if (done) break;
+				if (typeof value === "string") pushBodyChunk(value);
+				else {
+					totalBodyBytes += value.byteLength;
+					if (totalBodyBytes > MAX_CACHE_KEY_BODY_BYTES) throw new BodyTooLargeForCacheKeyError();
+					bodyChunks.push(decoder.decode(value, { stream: true }));
+				}
+			}
+			const finalChunk = decoder.decode();
+			if (finalChunk) pushBodyChunk(finalChunk);
+		} catch (err) {
+			await reader.cancel();
+			if (err instanceof BodyTooLargeForCacheKeyError) throw err;
+			throw new SkipCacheKeyGenerationError();
+		}
+	} else if (init?.body instanceof URLSearchParams) {
+		init._ogBody = init.body;
+		pushBodyChunk(init.body.toString());
+	} else if (init?.body && typeof init.body.keys === "function") {
+		const formData = init.body;
+		init._ogBody = init.body;
+		await serializeFormData(formData, pushBodyChunk, getTotalBodyBytes);
+	} else if (init?.body && typeof init.body.arrayBuffer === "function") {
+		const blob = init.body;
+		if (blob.size > MAX_CACHE_KEY_BODY_BYTES) throw new BodyTooLargeForCacheKeyError();
+		pushBodyChunk(await blob.text());
+		const arrayBuffer = await blob.arrayBuffer();
+		init._ogBody = new Blob([arrayBuffer], { type: blob.type });
+	} else if (typeof init?.body === "string") {
+		if (init.body.length > MAX_CACHE_KEY_BODY_BYTES) throw new BodyTooLargeForCacheKeyError();
+		pushBodyChunk(init.body);
+		init._ogBody = init.body;
+	} else if (input instanceof Request && input.body) {
+		let chunks;
+		let contentType;
+		try {
+			({chunks, contentType} = await readRequestBodyChunksWithinLimit(input));
+		} catch (err) {
+			if (err instanceof BodyTooLargeForCacheKeyError) throw err;
+			throw new SkipCacheKeyGenerationError();
+		}
+		const formContentType = getParsedFormContentType(contentType);
+		if (formContentType) try {
+			await serializeFormData(await new Request(input.url, {
+				method: input.method,
+				headers: contentType ? { "content-type": contentType } : void 0,
+				body: new Blob(chunks)
+			}).formData(), pushBodyChunk, getTotalBodyBytes);
+			canonicalizedContentType = formContentType === "multipart/form-data" && contentType ? stripMultipartBoundary(contentType) : void 0;
+			return {
+				bodyChunks,
+				canonicalizedContentType
+			};
+		} catch (err) {
+			if (err instanceof BodyTooLargeForCacheKeyError) throw err;
+			throw new SkipCacheKeyGenerationError();
+		}
+		for (const chunk of chunks) pushBodyChunk(decoder.decode(chunk, { stream: true }));
+		const finalChunk = decoder.decode();
+		if (finalChunk) pushBodyChunk(finalChunk);
+	}
+	return {
+		bodyChunks,
+		canonicalizedContentType
+	};
+}
+/**
+* Generate a deterministic cache key from a fetch request.
+*
+* Matches Next.js behavior: the key is a SHA-256 hash of a JSON array
+* containing URL, method, all headers (minus blocklist), all RequestInit
+* options, and the serialized body.
+*/
+async function buildFetchCacheKey(input, init) {
+	let url;
+	let method = "GET";
+	if (typeof input === "string") url = input;
+	else if (input instanceof URL) url = input.toString();
+	else {
+		url = input.url;
+		method = input.method || "GET";
+	}
+	if (init?.method) method = init.method;
+	const headers = collectHeaders(input, init);
+	const { bodyChunks, canonicalizedContentType } = await serializeBody(input, init);
+	if (canonicalizedContentType) headers["content-type"] = canonicalizedContentType;
+	const cacheString = JSON.stringify([
+		CACHE_KEY_PREFIX,
+		url,
+		method,
+		headers,
+		init?.mode,
+		init?.redirect,
+		init?.credentials,
+		init?.referrer,
+		init?.referrerPolicy,
+		init?.integrity,
+		init?.cache,
+		bodyChunks
+	]);
+	const buffer = new TextEncoder().encode(cacheString);
+	const hashBuffer = await crypto.subtle.digest("SHA-256", buffer);
+	return Array.prototype.map.call(new Uint8Array(hashBuffer), (b) => b.toString(16).padStart(2, "0")).join("");
+}
+var _PENDING_KEY = Symbol.for("vinext.fetchCache.pendingRefetches");
+var _gPending = globalThis;
+var pendingRefetches = _gPending[_PENDING_KEY] ??= /* @__PURE__ */ new Map();
+var DEDUP_TIMEOUT_MS = 6e4;
+var _ORIG_FETCH_KEY = Symbol.for("vinext.fetchCache.originalFetch");
+var _gFetch = globalThis;
+var originalFetch = _gFetch[_ORIG_FETCH_KEY] ??= globalThis.fetch;
+var _FALLBACK_KEY$2 = Symbol.for("vinext.fetchCache.fallback");
+var _g$4 = globalThis;
+var _als$1 = getOrCreateAls("vinext.fetchCache.als");
+var _noop = () => {};
+var _responseBodyRegistry;
+if (globalThis.FinalizationRegistry) _responseBodyRegistry = new FinalizationRegistry((weakRef) => {
+	const stream = weakRef.deref();
+	if (stream && !stream.locked) stream.cancel("Response object has been garbage collected").then(_noop, _noop);
+});
+var _fallbackState$2 = _g$4[_FALLBACK_KEY$2] ??= {
+	currentRequestTags: [],
+	currentFetchSoftTags: [],
+	currentFetchCacheMode: null,
+	isFetchDedupeActive: false,
+	currentFetchDedupeEntries: /* @__PURE__ */ new Map()
+};
+function _getState$1() {
+	if (isInsideUnifiedScope()) return getRequestContext();
+	return _als$1.getStore() ?? _fallbackState$2;
+}
+/**
+* Get tags collected during the current render pass.
+* Useful for associating page-level cache entries with all the
+* fetch tags used during rendering.
+*/
+function getCollectedFetchTags() {
+	return [..._getState$1().currentRequestTags];
+}
+/**
+* Set path-derived implicit tags for fetch cache reads in the current render.
+*
+* These are intentionally not persisted on fetch entries. They mirror Next.js
+* `softTags`: `revalidatePath()` should make a fetch miss while rendering the
+* affected route, without permanently coupling a shared fetch entry to one path.
+*/
+function setCurrentFetchSoftTags(tags) {
+	_getState$1().currentFetchSoftTags = [...tags];
+}
+function setCurrentFetchCacheMode(mode) {
+	_getState$1().currentFetchCacheMode = mode;
+}
+function isNoStoreFetch(cacheDirective, nextOpts) {
+	return cacheDirective === "no-store" || cacheDirective === "no-cache" || nextOpts?.revalidate === false || nextOpts?.revalidate === 0;
+}
+function isCacheableFetch(cacheDirective, nextOpts) {
+	return cacheDirective === "force-cache" || typeof nextOpts?.revalidate === "number" && nextOpts.revalidate > 0;
+}
+function hasExplicitRevalidateValue(nextOpts) {
+	return nextOpts?.revalidate !== void 0;
+}
+function resolveSegmentCacheDirective(cacheDirective, nextOpts, mode) {
+	if (!mode || mode === "auto") return cacheDirective;
+	switch (mode) {
+		case "force-cache": return "force-cache";
+		case "force-no-store": return "no-store";
+		case "only-cache":
+			if (isNoStoreFetch(cacheDirective, nextOpts)) throw new Error("Route segment config `fetchCache = \"only-cache\"` conflicts with no-store fetch.");
+			return cacheDirective ?? "force-cache";
+		case "only-no-store":
+			if (isCacheableFetch(cacheDirective, nextOpts)) throw new Error("Route segment config `fetchCache = \"only-no-store\"` conflicts with cacheable fetch.");
+			return cacheDirective ?? "no-store";
+		case "default-cache": return cacheDirective ?? (hasExplicitRevalidateValue(nextOpts) ? void 0 : "force-cache");
+		case "default-no-store": return cacheDirective ?? (hasExplicitRevalidateValue(nextOpts) ? void 0 : "no-store");
+	}
+	return cacheDirective;
+}
+function getFetchCacheDirective(input, init) {
+	if (init?.cache !== void 0) return init.cache;
+	if (!(input instanceof Request) || input.cache === "default") return;
+	return input.cache;
+}
+function buildFetchDedupeKey(request) {
+	const filteredHeaders = Array.from(request.headers.entries()).filter(([key]) => !HEADER_BLOCKLIST.includes(key.toLowerCase()));
+	return JSON.stringify([
+		request.method,
+		filteredHeaders,
+		request.mode,
+		request.redirect,
+		request.credentials,
+		request.referrer,
+		request.referrerPolicy,
+		request.integrity
+	]);
+}
+function createFetchDedupeCandidate(input, init) {
+	if (init?.signal) return null;
+	const method = init?.method?.toUpperCase();
+	if (method && method !== "GET" && method !== "HEAD") return null;
+	if (init?.keepalive) return null;
+	const request = typeof input === "string" || input instanceof URL ? new Request(input, init) : input;
+	if (request.method !== "GET" && request.method !== "HEAD" || request.keepalive) return null;
+	return {
+		url: request.url,
+		key: buildFetchDedupeKey(request)
+	};
+}
+function buildDedupeClone(body, source) {
+	const cloned = new Response(body, {
+		status: source.status,
+		statusText: source.statusText,
+		headers: new Headers(source.headers)
+	});
+	Object.defineProperty(cloned, "url", {
+		value: source.url,
+		configurable: true,
+		enumerable: true,
+		writable: false
+	});
+	if (_responseBodyRegistry && cloned.body) _responseBodyRegistry.register(cloned, new WeakRef(cloned.body));
+	return cloned;
+}
+function cloneDedupeResponse(response) {
+	if (!response.body) return [buildDedupeClone(null, response), buildDedupeClone(null, response)];
+	const [body1, body2] = response.body.tee();
+	return [buildDedupeClone(body1, response), buildDedupeClone(body2, response)];
+}
+function dedupeFetch(input, init) {
+	const state = _getState$1();
+	if (!state.isFetchDedupeActive) return originalFetch(input, init);
+	const candidate = createFetchDedupeCandidate(input, init);
+	if (!candidate) return originalFetch(input, init);
+	const entriesByUrl = state.currentFetchDedupeEntries;
+	let entries = entriesByUrl.get(candidate.url);
+	if (!entries) {
+		entries = [];
+		entriesByUrl.set(candidate.url, entries);
+	}
+	for (const entry of entries) {
+		if (entry.key !== candidate.key) continue;
+		return entry.promise.then(() => {
+			if (!entry.response) throw new Error("[vinext] Missing deduped fetch response");
+			const [responseForCaller, responseForFutureCaller] = cloneDedupeResponse(entry.response);
+			entry.response = responseForFutureCaller;
+			return responseForCaller;
+		});
+	}
+	const promise = originalFetch(input, init);
+	const entry = {
+		key: candidate.key,
+		promise,
+		response: null
+	};
+	entries.push(entry);
+	return promise.then((response) => {
+		const [responseForCaller, responseForFutureCaller] = cloneDedupeResponse(response);
+		entry.response = responseForFutureCaller;
+		return responseForCaller;
+	}, (err) => {
+		const idx = entries.indexOf(entry);
+		if (idx !== -1) entries.splice(idx, 1);
+		throw err;
+	});
+}
+/**
+* Create a patched fetch function with Next.js caching semantics.
+*
+* The patched fetch:
+* 1. Checks `cache` and `next` options to determine caching behavior
+* 2. On cache hit, returns the cached response without hitting the network
+* 3. On cache miss, fetches from network, stores in cache, returns response
+* 4. Respects `next.revalidate` for TTL-based revalidation
+* 5. Respects `next.tags` for tag-based invalidation via revalidateTag()
+*/
+function createPatchedFetch() {
+	return async function patchedFetch(input, init) {
+		const nextOpts = init?.next;
+		const cacheDirective = resolveSegmentCacheDirective(getFetchCacheDirective(input, init), nextOpts, _getState$1().currentFetchCacheMode);
+		if (!nextOpts && !cacheDirective) return dedupeFetch(input, init);
+		if (cacheDirective === "no-store" || cacheDirective === "no-cache" || nextOpts?.revalidate === false || nextOpts?.revalidate === 0) return dedupeFetch(input, stripNextFromInit(init, cacheDirective));
+		if (!(cacheDirective === "force-cache" || typeof nextOpts?.revalidate === "number" && nextOpts.revalidate > 0) && hasAuthHeaders(input, init)) return dedupeFetch(input, stripNextFromInit(init, cacheDirective));
+		let revalidateSeconds;
+		if (cacheDirective === "force-cache") revalidateSeconds = nextOpts?.revalidate && typeof nextOpts.revalidate === "number" ? nextOpts.revalidate : 31536e3;
+		else if (typeof nextOpts?.revalidate === "number" && nextOpts.revalidate > 0) revalidateSeconds = nextOpts.revalidate;
+		else if (nextOpts?.tags && nextOpts.tags.length > 0) revalidateSeconds = 31536e3;
+		else return dedupeFetch(input, stripNextFromInit(init, cacheDirective));
+		const tags = encodeCacheTags(nextOpts?.tags ?? []);
+		const softTags = _getState$1().currentFetchSoftTags;
+		let fetchInit = stripNextFromInit(init, cacheDirective);
+		let cacheKey;
+		try {
+			cacheKey = await buildFetchCacheKey(input, fetchInit);
+			fetchInit = stripNextFromInit(fetchInit, cacheDirective);
+		} catch (err) {
+			if (err instanceof BodyTooLargeForCacheKeyError || err instanceof SkipCacheKeyGenerationError) {
+				fetchInit = stripNextFromInit(fetchInit, cacheDirective);
+				return dedupeFetch(input, fetchInit);
+			}
+			throw err;
+		}
+		const handler = getCacheHandler();
+		const reqTags = _getState$1().currentRequestTags;
+		if (tags.length > 0) {
+			for (const tag of tags) if (!reqTags.includes(tag)) reqTags.push(tag);
+		}
+		try {
+			const cached = await handler.get(cacheKey, {
+				kind: "FETCH",
+				tags,
+				softTags
+			});
+			if (cached?.value && cached.value.kind === "FETCH" && cached.cacheState !== "stale") {
+				const cachedData = cached.value.data;
+				return new Response(cachedData.body, {
+					status: cachedData.status ?? 200,
+					headers: cachedData.headers
+				});
+			}
+			if (cached?.value && cached.value.kind === "FETCH" && cached.cacheState === "stale") {
+				const staleData = cached.value.data;
+				if (!pendingRefetches.has(cacheKey)) {
+					const refetchPromise = originalFetch(input, fetchInit).then(async (freshResp) => {
+						if (freshResp.status !== 200) return;
+						const freshBody = await freshResp.text();
+						const freshHeaders = {};
+						freshResp.headers.forEach((v, k) => {
+							if (k.toLowerCase() === "set-cookie") return;
+							freshHeaders[k] = v;
+						});
+						const freshValue = {
+							kind: "FETCH",
+							data: {
+								headers: freshHeaders,
+								body: freshBody,
+								url: typeof input === "string" ? input : input instanceof URL ? input.toString() : input.url,
+								status: freshResp.status
+							},
+							tags,
+							revalidate: revalidateSeconds
+						};
+						await handler.set(cacheKey, freshValue, {
+							fetchCache: true,
+							tags,
+							revalidate: revalidateSeconds
+						});
+					}).catch((err) => {
+						const url = typeof input === "string" ? input : input instanceof URL ? input.toString() : input.url;
+						console.error(`[vinext] fetch cache background revalidation failed for ${url} (key=${cacheKey.slice(0, 12)}...):`, err);
+					}).finally(() => {
+						if (pendingRefetches.get(cacheKey) === refetchPromise) pendingRefetches.delete(cacheKey);
+						clearTimeout(timeoutId);
+					});
+					pendingRefetches.set(cacheKey, refetchPromise);
+					const timeoutId = setTimeout(() => {
+						if (pendingRefetches.get(cacheKey) === refetchPromise) pendingRefetches.delete(cacheKey);
+					}, DEDUP_TIMEOUT_MS);
+					getRequestExecutionContext()?.waitUntil(refetchPromise);
+				}
+				return new Response(staleData.body, {
+					status: staleData.status ?? 200,
+					headers: staleData.headers
+				});
+			}
+		} catch (cacheErr) {
+			console.error("[vinext] fetch cache read error:", cacheErr);
+		}
+		const response = await dedupeFetch(input, fetchInit);
+		if (response.status === 200) {
+			const cloned = response.clone();
+			const body = await cloned.text();
+			const headers = {};
+			cloned.headers.forEach((v, k) => {
+				if (k.toLowerCase() === "set-cookie") return;
+				headers[k] = v;
+			});
+			const cacheValue = {
+				kind: "FETCH",
+				data: {
+					headers,
+					body,
+					url: typeof input === "string" ? input : input instanceof URL ? input.toString() : input.url,
+					status: cloned.status
+				},
+				tags,
+				revalidate: revalidateSeconds
+			};
+			handler.set(cacheKey, cacheValue, {
+				fetchCache: true,
+				tags,
+				revalidate: revalidateSeconds
+			}).catch((err) => {
+				console.error("[vinext] fetch cache write error:", err);
+			});
+		}
+		return response;
+	};
+}
+/**
+* Strip the `next` property from RequestInit before passing to real fetch.
+* The `next` property is not a standard fetch option and would cause warnings
+* in some environments.
+*/
+function stripNextFromInit(init, cacheOverride) {
+	if (!init) return cacheOverride === void 0 ? void 0 : { cache: cacheOverride };
+	const { next: _next, _ogBody, ...rest } = init;
+	if (cacheOverride !== void 0) rest.cache = cacheOverride;
+	if (_ogBody !== void 0) rest.body = _ogBody;
+	return Object.keys(rest).length > 0 ? rest : void 0;
+}
+var _PATCH_KEY = Symbol.for("vinext.fetchCache.patchInstalled");
+function _ensurePatchInstalled() {
+	if (_g$4[_PATCH_KEY]) return;
+	_g$4[_PATCH_KEY] = true;
+	globalThis.fetch = createPatchedFetch();
+}
+function runWithFetchDedupe(fn) {
+	_ensurePatchInstalled();
+	const state = _getState$1();
+	if (state.isFetchDedupeActive) return fn();
+	if (isInsideUnifiedScope()) return runWithUnifiedStateMutation((uCtx) => {
+		uCtx.isFetchDedupeActive = true;
+		uCtx.currentFetchDedupeEntries = /* @__PURE__ */ new Map();
+	}, fn);
+	return _als$1.run({
+		...state,
+		isFetchDedupeActive: true,
+		currentFetchDedupeEntries: /* @__PURE__ */ new Map()
+	}, fn);
+}
+/**
+* Install the patched fetch without creating a standalone ALS scope.
+*
+* `runWithFetchCache()` is the standalone helper: it installs the patch and
+* creates an isolated per-request tag store. The unified request context owns
+* that isolation itself via `currentRequestTags`, so callers inside
+* `runWithRequestContext()` only need the process-global fetch monkey-patch.
+*/
+function ensureFetchPatch() {
+	_ensurePatchInstalled();
+}
+//#endregion
+//#region node_modules/vinext/dist/server/csp.js
+var ESCAPE_REGEX = /[&><\u2028\u2029]/;
+function matchesDirectiveName(directive, name) {
+	return directive === name || directive.startsWith(`${name} `);
+}
+function getScriptNonceFromHeader(cspHeaderValue) {
+	const directives = cspHeaderValue.split(";").map((directive) => directive.trim());
+	const directive = directives.find((value) => matchesDirectiveName(value, "script-src")) ?? directives.find((value) => matchesDirectiveName(value, "default-src"));
+	if (!directive) return;
+	const nonce = directive.split(" ").slice(1).map((source) => source.trim()).find((source) => source.startsWith("'nonce-") && source.length > 8 && source.endsWith("'"))?.slice(7, -1);
+	if (!nonce) return;
+	if (ESCAPE_REGEX.test(nonce)) throw new Error("Nonce value from Content-Security-Policy contained HTML escape characters.\nLearn more: https://nextjs.org/docs/messages/nonce-contained-invalid-characters");
+	return nonce;
+}
+function getScriptNonceFromHeaders(headers) {
+	const csp = headers?.get("content-security-policy") ?? headers?.get("content-security-policy-report-only");
+	if (!csp) return;
+	return getScriptNonceFromHeader(csp);
+}
+function getScriptNonceFromHeaderSources(...headersList) {
+	for (const headers of headersList) {
+		const nonce = getScriptNonceFromHeaders(headers);
+		if (nonce) return nonce;
+	}
+}
+//#endregion
+//#region node_modules/vinext/dist/server/middleware-response-headers.js
+var ADDITIVE_RESPONSE_HEADER_NAMES = new Set(["set-cookie", "vary"]);
+function mergeVaryHeader(target, value) {
+	const existing = target.get("Vary");
+	const tokens = (existing ? `${existing}, ${value}` : value).split(",").map((token) => token.trim()).filter((token) => token.length > 0);
+	if (tokens.some((token) => token === "*")) {
+		target.set("Vary", "*");
+		return;
+	}
+	const seen = /* @__PURE__ */ new Set();
+	const merged = [];
+	for (const token of tokens) {
+		const normalized = token.toLowerCase();
+		if (seen.has(normalized)) continue;
+		seen.add(normalized);
+		merged.push(token);
+	}
+	target.set("Vary", merged.join(", "));
+}
+/**
+* Merge middleware response headers into a target Headers object.
+*
+* Set-Cookie and Vary are accumulated (append) since multiple sources can
+* contribute values. All other headers use set() so middleware owns singular
+* response headers like Cache-Control.
+*/
+function mergeMiddlewareResponseHeaders(target, middlewareHeaders) {
+	if (!middlewareHeaders) return;
+	for (const [key, value] of middlewareHeaders) {
+		if (key.toLowerCase() === "vary") {
+			mergeVaryHeader(target, value);
+			continue;
+		}
+		if (ADDITIVE_RESPONSE_HEADER_NAMES.has(key.toLowerCase())) {
+			target.append(key, value);
+			continue;
+		}
+		target.set(key, value);
+	}
+}
+//#endregion
+//#region node_modules/vinext/dist/routing/utils.js
+var PATH_DELIMITER_REGEX = /([/#?\\]|%(2f|23|3f|5c))/gi;
+function encodePathDelimiters(segment) {
+	return segment.replace(PATH_DELIMITER_REGEX, (char) => encodeURIComponent(char));
+}
+/**
+* Decode a filesystem or URL path segment while preserving encoded path delimiters.
+* Mirrors Next.js segment-wise decoding so "%5F" becomes "_" but "%2F" stays "%2F".
+*/
+function decodeRouteSegment(segment) {
+	try {
+		return encodePathDelimiters(decodeURIComponent(segment));
+	} catch {
+		return segment;
+	}
+}
+/**
+* Strict variant for request pipelines that should reject malformed percent-encoding.
+*/
+function decodeRouteSegmentStrict(segment) {
+	return encodePathDelimiters(decodeURIComponent(segment));
+}
+/**
+* Normalize a pathname for route matching by decoding each segment independently.
+* This prevents encoded slashes from turning into real path separators.
+*/
+function normalizePathnameForRouteMatch(pathname) {
+	return pathname.split("/").map((segment) => decodeRouteSegment(segment)).join("/");
+}
+/**
+* Strict pathname normalization for live request handling.
+* Throws on malformed percent-encoding so callers can return 400.
+*/
+function normalizePathnameForRouteMatchStrict(pathname) {
+	return pathname.split("/").map((segment) => decodeRouteSegmentStrict(segment)).join("/");
+}
+function decodeMatchedParam(value) {
+	try {
+		return decodeURIComponent(value);
+	} catch {
+		return value;
+	}
+}
+/**
+* Decode captured route params with `decodeURIComponent`, mirroring Next.js
+* route-matcher.ts:25-27. Mutates the params object in place. Catch-all
+* arrays are decoded element-wise. Malformed escapes are preserved (the
+* strict normalization layer rejects them at the request boundary).
+*/
+function decodeMatchedParams(params) {
+	for (const key of Object.keys(params)) {
+		const value = params[key];
+		if (Array.isArray(value)) params[key] = value.map(decodeMatchedParam);
+		else params[key] = decodeMatchedParam(value);
+	}
+}
+//#endregion
+//#region node_modules/vinext/dist/shims/server.js
+var NextRequest = class extends Request {
+	_nextUrl;
+	_url;
+	_cookies;
+	constructor(input, init) {
+		const { nextConfig: _nextConfig, ...requestInit } = init ?? {};
+		if (input instanceof Request) {
+			const requestInput = requestInit.body === void 0 && input.body && !input.bodyUsed ? input.clone() : input;
+			super(requestInput, requestInit);
+		} else super(input, requestInit);
+		const url = typeof input === "string" ? new URL(input, "http://localhost") : input instanceof URL ? input : new URL(input.url, "http://localhost");
+		const urlConfig = _nextConfig ? {
+			basePath: _nextConfig.basePath,
+			nextConfig: { i18n: _nextConfig.i18n }
+		} : void 0;
+		this._nextUrl = new NextURL(url, void 0, urlConfig);
+		this._url = process.env.__NEXT_NO_MIDDLEWARE_URL_NORMALIZE ? url.toString() : this._nextUrl.toString();
+		this._cookies = new RequestCookies(this.headers);
+	}
+	get nextUrl() {
+		return this._nextUrl;
+	}
+	get url() {
+		return this._url;
+	}
+	get cookies() {
+		return this._cookies;
+	}
+	/**
+	* Client IP address. Prefers Cloudflare's trusted CF-Connecting-IP header
+	* over the spoofable X-Forwarded-For. Returns undefined if unavailable.
+	*/
+	get ip() {
+		return this.headers.get("cf-connecting-ip") ?? this.headers.get("x-real-ip") ?? this.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? void 0;
+	}
+	/**
+	* Geolocation data. Platform-dependent (e.g., Cloudflare, Vercel).
+	* Returns undefined if not available.
+	*/
+	get geo() {
+		const country = this.headers.get("cf-ipcountry") ?? this.headers.get("x-vercel-ip-country") ?? void 0;
+		if (!country) return void 0;
+		return {
+			country,
+			city: this.headers.get("cf-ipcity") ?? this.headers.get("x-vercel-ip-city") ?? void 0,
+			region: this.headers.get("cf-region") ?? this.headers.get("x-vercel-ip-country-region") ?? void 0,
+			latitude: this.headers.get("cf-iplatitude") ?? this.headers.get("x-vercel-ip-latitude") ?? void 0,
+			longitude: this.headers.get("cf-iplongitude") ?? this.headers.get("x-vercel-ip-longitude") ?? void 0
+		};
+	}
+	/**
+	* The build ID of the Next.js application.
+	* Delegates to `nextUrl.buildId` to match Next.js API surface.
+	* Can be used in middleware to detect deployment skew between client and server.
+	*/
+	get buildId() {
+		return this._nextUrl.buildId;
+	}
+};
+var NextURL = class NextURL {
+	/** Internal URL stores the pathname WITHOUT basePath or locale prefix. */
+	_url;
+	_basePath;
+	_locale;
+	_defaultLocale;
+	_locales;
+	constructor(input, base, config) {
+		this._url = new URL(input.toString(), base);
+		this._basePath = config?.basePath ?? "";
+		this._stripBasePath();
+		const i18n = config?.nextConfig?.i18n;
+		if (i18n) {
+			this._locales = [...i18n.locales];
+			this._defaultLocale = i18n.defaultLocale;
+			this._analyzeLocale(this._locales);
+		}
+	}
+	/** Strip basePath prefix from the internal pathname. */
+	_stripBasePath() {
+		if (!this._basePath) return;
+		this._url.pathname = stripBasePath(this._url.pathname, this._basePath);
+	}
+	/** Extract locale from pathname, stripping it from the internal URL. */
+	_analyzeLocale(locales) {
+		const segments = this._url.pathname.split("/");
+		const candidate = segments[1]?.toLowerCase();
+		const match = locales.find((l) => l.toLowerCase() === candidate);
+		if (match) {
+			this._locale = match;
+			this._url.pathname = "/" + segments.slice(2).join("/");
+		} else this._locale = this._defaultLocale;
+	}
+	/**
+	* Reconstruct the full pathname with basePath + locale prefix.
+	* Mirrors Next.js's internal formatPathname().
+	*/
+	_formatPathname() {
+		let prefix = this._basePath;
+		if (this._locale && this._locale !== this._defaultLocale) prefix += "/" + this._locale;
+		if (!prefix) return this._url.pathname;
+		const inner = this._url.pathname;
+		return inner === "/" ? prefix : prefix + inner;
+	}
+	get href() {
+		const formatted = this._formatPathname();
+		if (formatted === this._url.pathname) return this._url.href;
+		const { href, pathname, search, hash } = this._url;
+		const baseEnd = href.length - pathname.length - search.length - hash.length;
+		return href.slice(0, baseEnd) + formatted + search + hash;
+	}
+	set href(value) {
+		this._url.href = value;
+		this._stripBasePath();
+		if (this._locales) this._analyzeLocale(this._locales);
+	}
+	get origin() {
+		return this._url.origin;
+	}
+	get protocol() {
+		return this._url.protocol;
+	}
+	set protocol(value) {
+		this._url.protocol = value;
+	}
+	get username() {
+		return this._url.username;
+	}
+	set username(value) {
+		this._url.username = value;
+	}
+	get password() {
+		return this._url.password;
+	}
+	set password(value) {
+		this._url.password = value;
+	}
+	get host() {
+		return this._url.host;
+	}
+	set host(value) {
+		this._url.host = value;
+	}
+	get hostname() {
+		return this._url.hostname;
+	}
+	set hostname(value) {
+		this._url.hostname = value;
+	}
+	get port() {
+		return this._url.port;
+	}
+	set port(value) {
+		this._url.port = value;
+	}
+	/** Returns the pathname WITHOUT basePath or locale prefix. */
+	get pathname() {
+		return this._url.pathname;
+	}
+	set pathname(value) {
+		this._url.pathname = value;
+	}
+	get search() {
+		return this._url.search;
+	}
+	set search(value) {
+		this._url.search = value;
+	}
+	get searchParams() {
+		return this._url.searchParams;
+	}
+	get hash() {
+		return this._url.hash;
+	}
+	set hash(value) {
+		this._url.hash = value;
+	}
+	get basePath() {
+		return this._basePath;
+	}
+	set basePath(value) {
+		this._basePath = value === "" ? "" : value.startsWith("/") ? value : "/" + value;
+	}
+	get locale() {
+		return this._locale ?? "";
+	}
+	set locale(value) {
+		if (this._locales) {
+			if (!value) {
+				this._locale = this._defaultLocale;
+				return;
+			}
+			if (!this._locales.includes(value)) throw new TypeError(`The locale "${value}" is not in the configured locales: ${this._locales.join(", ")}`);
+		}
+		this._locale = this._locales ? value : this._locale;
+	}
+	get defaultLocale() {
+		return this._defaultLocale;
+	}
+	get locales() {
+		return this._locales ? [...this._locales] : void 0;
+	}
+	clone() {
+		const config = {
+			basePath: this._basePath,
+			nextConfig: this._locales ? { i18n: {
+				locales: [...this._locales],
+				defaultLocale: this._defaultLocale
+			} } : void 0
+		};
+		return new NextURL(this.href, void 0, config);
+	}
+	toString() {
+		return this.href;
+	}
+	/**
+	* The build ID of the Next.js application.
+	* Set from `generateBuildId` in next.config.js, or a random UUID if not configured.
+	* Can be used in middleware to detect deployment skew between client and server.
+	* Matches the Next.js API: `request.nextUrl.buildId`.
+	*/
+	get buildId() {
+		return "b979dcaa-93d9-4fd9-be07-f12fa2d285dc";
+	}
+};
+var RequestCookies = class {
+	_headers;
+	_parsed;
+	constructor(headers) {
+		this._headers = headers;
+		this._parsed = parseCookieHeader(headers.get("cookie") ?? "");
+	}
+	get(name) {
+		const value = this._parsed.get(name);
+		return value !== void 0 ? {
+			name,
+			value
+		} : void 0;
+	}
+	getAll(nameOrOptions) {
+		const name = typeof nameOrOptions === "string" ? nameOrOptions : nameOrOptions?.name;
+		return [...this._parsed.entries()].filter(([cookieName]) => name === void 0 || cookieName === name).map(([cookieName, value]) => ({
+			name: cookieName,
+			value
+		}));
+	}
+	has(name) {
+		return this._parsed.has(name);
+	}
+	set(nameOrOptions, value) {
+		let cookieName;
+		let cookieValue;
+		if (typeof nameOrOptions === "string") {
+			cookieName = nameOrOptions;
+			cookieValue = value ?? "";
+		} else {
+			cookieName = nameOrOptions.name;
+			cookieValue = nameOrOptions.value;
+		}
+		validateCookieName(cookieName);
+		this._parsed.set(cookieName, cookieValue);
+		this._syncHeader();
+		return this;
+	}
+	delete(names) {
+		if (Array.isArray(names)) {
+			const results = names.map((name) => {
+				validateCookieName(name);
+				return this._parsed.delete(name);
+			});
+			this._syncHeader();
+			return results;
+		}
+		validateCookieName(names);
+		const result = this._parsed.delete(names);
+		this._syncHeader();
+		return result;
+	}
+	clear() {
+		this._parsed.clear();
+		this._syncHeader();
+		return this;
+	}
+	get size() {
+		return this._parsed.size;
+	}
+	toString() {
+		return this._serialize();
+	}
+	_serialize() {
+		return [...this._parsed.entries()].map(([n, v]) => `${n}=${encodeURIComponent(v)}`).join("; ");
+	}
+	_syncHeader() {
+		if (this._parsed.size === 0) this._headers.delete("cookie");
+		else this._headers.set("cookie", this._serialize());
+	}
+	[Symbol.iterator]() {
+		return this.getAll().map((c) => [c.name, c])[Symbol.iterator]();
+	}
+};
+var ReadonlyRequestCookiesError = class ReadonlyRequestCookiesError extends Error {
+	constructor() {
+		super("Cookies can only be modified in a Server Action or Route Handler. Read more: https://nextjs.org/docs/app/api-reference/functions/cookies#options");
+	}
+	static callable() {
+		throw new ReadonlyRequestCookiesError();
+	}
+};
+var REQUEST_HEADERS_MUTATING_METHODS = new Set([
+	"set",
+	"delete",
+	"append"
+]);
+var ReadonlyRequestHeadersError = class ReadonlyRequestHeadersError extends Error {
+	constructor() {
+		super("Headers cannot be modified. Read more: https://nextjs.org/docs/app/api-reference/functions/headers");
+	}
+	static callable() {
+		throw new ReadonlyRequestHeadersError();
+	}
+};
+function sealRequestHeaders(headers) {
+	return new Proxy(headers, { get(target, prop) {
+		if (typeof prop === "string" && REQUEST_HEADERS_MUTATING_METHODS.has(prop)) return ReadonlyRequestHeadersError.callable;
+		const value = Reflect.get(target, prop, target);
+		return typeof value === "function" ? value.bind(target) : value;
+	} });
+}
+function sealRequestCookies(cookies) {
+	return new Proxy(cookies, { get(target, prop) {
+		if (prop === "set" || prop === "delete" || prop === "clear") return ReadonlyRequestCookiesError.callable;
+		const value = Reflect.get(target, prop, target);
+		return typeof value === "function" ? value.bind(target) : value;
+	} });
+}
+/**
+* Minimal NextFetchEvent — extends FetchEvent where available,
+* otherwise provides the waitUntil pattern standalone.
+*/
+var NextFetchEvent = class {
+	sourcePage;
+	_waitUntilPromises = [];
+	constructor(params) {
+		this.sourcePage = params.page;
+	}
+	waitUntil(promise) {
+		this._waitUntilPromises.push(promise);
+	}
+	get waitUntilPromises() {
+		return this._waitUntilPromises;
+	}
+	/** Drain all waitUntil promises. Returns a single promise that settles when all are done. */
+	drainWaitUntil() {
+		return Promise.allSettled(this._waitUntilPromises);
+	}
+};
+globalThis.URLPattern;
+//#endregion
+//#region node_modules/vinext/dist/server/normalize-path.js
+/**
+* Path normalization utility for request handling.
+*
+* Normalizes URL pathnames to a canonical form BEFORE any matching occurs
+* (middleware, routing, redirects, rewrites). This ensures middleware and
+* the router always see the same path, preventing path-confusion issues like
+* double-slash mismatches.
+*
+* Normalization rules:
+*  1. Collapse consecutive slashes: //foo///bar → /foo/bar
+*  2. Resolve single-dot segments:  /foo/./bar  → /foo/bar
+*  3. Resolve double-dot segments:  /foo/../bar → /bar
+*  4. Ensure leading slash:         foo/bar     → /foo/bar
+*  5. Preserve root:                /           → /
+*
+* This function does NOT:
+*  - Strip or add trailing slashes (handled separately by trailingSlash config)
+*  - Decode percent-encoded characters (callers should decode before calling this)
+*  - Lowercase the path (route matching is case-sensitive)
+*/
+function normalizePath(pathname) {
+	if (pathname === "/" || pathname.length > 1 && pathname[0] === "/" && !pathname.includes("//") && !pathname.includes("/./") && !pathname.includes("/../") && !pathname.endsWith("/.") && !pathname.endsWith("/..")) return pathname;
+	const segments = pathname.split("/");
+	const resolved = [];
+	for (const segment of segments) {
+		if (segment === "" || segment === ".") continue;
+		if (segment === "..") resolved.pop();
+		else resolved.push(segment);
+	}
+	return "/" + resolved.join("/");
+}
+//#endregion
+//#region node_modules/vinext/dist/server/middleware-matcher.js
+var EMPTY_MIDDLEWARE_REQUEST_CONTEXT = {
+	headers: new Headers(),
+	cookies: {},
+	query: new URLSearchParams(),
+	host: ""
+};
+var _mwPatternCache = /* @__PURE__ */ new Map();
+function matchesMiddleware(pathname, matcher, request, i18nConfig) {
+	if (!matcher) return true;
+	if (typeof matcher === "string") return matchMatcherPattern(pathname, matcher, i18nConfig);
+	if (!Array.isArray(matcher)) return false;
+	const requestContext = request ? requestContextFromRequest(request) : EMPTY_MIDDLEWARE_REQUEST_CONTEXT;
+	for (const m of matcher) {
+		if (typeof m === "string") {
+			if (matchMatcherPattern(pathname, m, i18nConfig)) return true;
+			continue;
+		}
+		if (isValidMiddlewareMatcherObject(m)) {
+			if (!matchObjectMatcher(pathname, m, i18nConfig)) continue;
+			if (!checkHasConditions(m.has, m.missing, requestContext)) continue;
+			return true;
+		}
+	}
+	return false;
+}
+function isValidMiddlewareMatcherObject(value) {
+	if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+	if (!("source" in value) || typeof value.source !== "string") return false;
+	for (const key of Object.keys(value)) if (key !== "source" && key !== "locale" && key !== "has" && key !== "missing") return false;
+	if ("locale" in value && value.locale !== void 0 && value.locale !== false) return false;
+	if ("has" in value && value.has !== void 0 && !Array.isArray(value.has)) return false;
+	if ("missing" in value && value.missing !== void 0 && !Array.isArray(value.missing)) return false;
+	return true;
+}
+function matchMatcherPattern(pathname, pattern, i18nConfig) {
+	if (!i18nConfig) return matchPattern(pathname, pattern);
+	return matchPattern(stripLocalePrefix(pathname, i18nConfig) ?? pathname, pattern);
+}
+function matchObjectMatcher(pathname, matcher, i18nConfig) {
+	return matcher.locale === false ? matchPattern(pathname, matcher.source) : matchMatcherPattern(pathname, matcher.source, i18nConfig);
+}
+function stripLocalePrefix(pathname, i18nConfig) {
+	if (pathname === "/") return null;
+	const segments = pathname.split("/");
+	const firstSegment = segments[1];
+	if (!firstSegment || !i18nConfig.locales.includes(firstSegment)) return null;
+	return removeTrailingSlash("/" + segments.slice(2).join("/"));
+}
+function matchPattern(pathname, pattern) {
+	let cached = _mwPatternCache.get(pattern);
+	if (cached === void 0) {
+		cached = compileMatcherPattern(pattern);
+		_mwPatternCache.set(pattern, cached);
+	}
+	if (cached === null) return pathname === pattern;
+	return cached.test(pathname);
+}
+function extractConstraint(str, re) {
+	if (str[re.lastIndex] !== "(") return null;
+	const start = re.lastIndex + 1;
+	let depth = 1;
+	let i = start;
+	while (i < str.length && depth > 0) {
+		if (str[i] === "(") depth++;
+		else if (str[i] === ")") depth--;
+		i++;
+	}
+	if (depth !== 0) return null;
+	re.lastIndex = i;
+	return str.slice(start, i - 1);
+}
+function compileMatcherPattern(pattern) {
+	const hasConstraints = /:[\w-]+[*+]?\(/.test(pattern);
+	if (!hasConstraints && (pattern.includes("(") || pattern.includes("\\"))) return safeRegExp("^" + pattern + "$");
+	let regexStr = "";
+	const tokenRe = /\/:([\w-]+)\*|\/:([\w-]+)\+|:([\w-]+)|[.]|[^/:.]+|./g;
+	let tok;
+	while ((tok = tokenRe.exec(pattern)) !== null) if (tok[1] !== void 0) {
+		const constraint = hasConstraints ? extractConstraint(pattern, tokenRe) : null;
+		regexStr += constraint !== null ? `(?:/(${constraint}))?` : "(?:/.*)?";
+	} else if (tok[2] !== void 0) {
+		const constraint = hasConstraints ? extractConstraint(pattern, tokenRe) : null;
+		regexStr += constraint !== null ? `(?:/(${constraint}))` : "(?:/.+)";
+	} else if (tok[3] !== void 0) {
+		const constraint = hasConstraints ? extractConstraint(pattern, tokenRe) : null;
+		const isOptional = pattern[tokenRe.lastIndex] === "?";
+		if (isOptional) tokenRe.lastIndex += 1;
+		const group = constraint !== null ? `(${constraint})` : "([^/]+)";
+		if (isOptional && regexStr.endsWith("/")) regexStr = regexStr.slice(0, -1) + `(?:/${group})?`;
+		else if (isOptional) regexStr += `${group}?`;
+		else regexStr += group;
+	} else if (tok[0] === ".") regexStr += "\\.";
+	else regexStr += tok[0];
+	return safeRegExp("^" + regexStr + "$");
+}
+//#endregion
+//#region node_modules/vinext/dist/server/middleware-runtime.js
+function isMiddlewareHandler(value) {
+	return typeof value === "function";
+}
+function isMiddlewareConfigExport(value) {
+	return !!value && typeof value === "object";
+}
+function middlewareFileLabel(isProxy) {
+	return isProxy ? "Proxy" : "Middleware";
+}
+function middlewareExpectedExport(isProxy) {
+	return isProxy ? "proxy" : "middleware";
+}
+function resolveMiddlewareModuleHandler(mod, options) {
+	const handler = options.isProxy ? mod.proxy ?? mod.default : mod.middleware ?? mod.default;
+	if (isMiddlewareHandler(handler)) return handler;
+	const fileLabel = middlewareFileLabel(options.isProxy);
+	const expectedExport = middlewareExpectedExport(options.isProxy);
+	const fileSuffix = options.filePath ? ` "${options.filePath}"` : "";
+	throw new Error(`The ${fileLabel} file${fileSuffix} must export a function named \`${expectedExport}\` or a \`default\` function.`);
+}
+function middlewareMatcher(mod) {
+	const config = mod.config;
+	if (!isMiddlewareConfigExport(config)) return void 0;
+	return config.matcher;
+}
+function stripMiddlewareHeadersFromResponse(response) {
+	const headers = new Headers(response.headers);
+	processMiddlewareHeaders(headers);
+	return new Response(response.body, {
+		status: response.status,
+		statusText: response.statusText,
+		headers
+	});
+}
+function collectMiddlewareHeaders(response) {
+	const responseHeaders = new Headers();
+	for (const [key, value] of response.headers) if (!key.startsWith("x-middleware-") || shouldKeepMiddlewareHeader(key)) responseHeaders.append(key, value);
+	return responseHeaders;
+}
+function drainFetchEvent(fetchEvent) {
+	const waitUntilPromises = fetchEvent.waitUntilPromises;
+	const drained = fetchEvent.drainWaitUntil();
+	const executionContext = getRequestExecutionContext();
+	if (executionContext) executionContext.waitUntil(drained);
+	return waitUntilPromises;
+}
+function resolveMiddlewarePathname(request) {
+	const url = new URL(request.url);
+	try {
+		return normalizePath(normalizePathnameForRouteMatchStrict(url.pathname));
+	} catch {
+		return badRequestResponse();
+	}
+}
+function createNextRequest(request, normalizedPathname, i18nConfig, basePath) {
+	const url = new URL(request.url);
+	let mwRequest = request.body && !request.bodyUsed ? request.clone() : request;
+	if (normalizedPathname !== url.pathname) {
+		const mwUrl = new URL(url);
+		mwUrl.pathname = normalizedPathname;
+		mwRequest = new Request(mwUrl, mwRequest);
+	}
+	const nextConfig = basePath || i18nConfig ? {
+		basePath: basePath ?? "",
+		i18n: i18nConfig ?? void 0
+	} : void 0;
+	return mwRequest instanceof NextRequest ? mwRequest : new NextRequest(mwRequest, nextConfig ? { nextConfig } : void 0);
+}
+async function executeMiddleware(options) {
+	const middlewareFn = resolveMiddlewareModuleHandler(options.module, {
+		filePath: options.filePath,
+		isProxy: options.isProxy
+	});
+	const normalizedPathname = options.normalizedPathname ?? resolveMiddlewarePathname(options.request);
+	if (normalizedPathname instanceof Response) return {
+		continue: false,
+		response: normalizedPathname
+	};
+	if (!matchesMiddleware(normalizedPathname, middlewareMatcher(options.module), options.request, options.i18nConfig)) return { continue: true };
+	const nextRequest = createNextRequest(options.request, normalizedPathname, options.i18nConfig, options.basePath);
+	const fetchEvent = new NextFetchEvent({ page: normalizedPathname });
+	let response;
+	try {
+		response = await middlewareFn(nextRequest, fetchEvent);
+	} catch (e) {
+		console.error("[vinext] Middleware error:", e);
+		const waitUntilPromises = drainFetchEvent(fetchEvent);
+		return {
+			continue: false,
+			response: internalServerErrorResponse(options.includeErrorDetails ? "Middleware Error: " + (e instanceof Error ? e.message : String(e)) : "Internal Server Error"),
+			waitUntilPromises
+		};
+	}
+	const waitUntilPromises = drainFetchEvent(fetchEvent);
+	if (!response) return {
+		continue: true,
+		waitUntilPromises
+	};
+	if (response.headers.get("x-middleware-next") === "1") return {
+		continue: true,
+		responseHeaders: collectMiddlewareHeaders(response),
+		status: response.status !== 200 ? response.status : void 0,
+		waitUntilPromises
+	};
+	if (response.status >= 300 && response.status < 400) {
+		const location = response.headers.get("Location") ?? response.headers.get("location");
+		if (location) {
+			const responseHeaders = new Headers();
+			for (const [key, value] of response.headers) if (!key.startsWith("x-middleware-") && key.toLowerCase() !== "location") responseHeaders.append(key, value);
+			return {
+				continue: false,
+				redirectUrl: location,
+				redirectStatus: response.status,
+				response: stripMiddlewareHeadersFromResponse(response),
+				responseHeaders,
+				waitUntilPromises
+			};
+		}
+	}
+	const rewriteUrl = response.headers.get(MIDDLEWARE_REWRITE_HEADER);
+	if (rewriteUrl) {
+		let rewritePath;
+		try {
+			const rewriteParsed = new URL(rewriteUrl, options.request.url);
+			const requestOrigin = new URL(options.request.url).origin;
+			rewritePath = rewriteParsed.origin === requestOrigin ? rewriteParsed.pathname + rewriteParsed.search : rewriteParsed.href;
+		} catch {
+			rewritePath = rewriteUrl;
+		}
+		return {
+			continue: true,
+			rewriteUrl: rewritePath,
+			rewriteStatus: response.status !== 200 ? response.status : void 0,
+			responseHeaders: collectMiddlewareHeaders(response),
+			status: response.status !== 200 ? response.status : void 0,
+			waitUntilPromises
+		};
+	}
+	return {
+		continue: false,
+		response: stripMiddlewareHeadersFromResponse(response),
+		waitUntilPromises
+	};
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-middleware.js
+var FLIGHT_HEADER_SET = new Set(FLIGHT_HEADERS);
+function requestWithoutFlightHeaders(request) {
+	let hasFlightHeader = false;
+	const headers = new Headers();
+	for (const [key, value] of request.headers) if (FLIGHT_HEADER_SET.has(key.toLowerCase())) hasFlightHeader = true;
+	else headers.append(key, value);
+	if (!hasFlightHeader) return request;
+	return cloneRequestWithHeaders(request.body ? request.clone() : request, headers);
+}
+function responseFromMiddlewareRedirect(result) {
+	if (result.response) return result.response;
+	const headers = new Headers(result.responseHeaders);
+	if (result.redirectUrl) headers.set("Location", result.redirectUrl);
+	return new Response(null, {
+		status: result.redirectStatus ?? 307,
+		headers
+	});
+}
+function isExternalMiddlewareRewrite(rewriteUrl, request) {
+	return new URL(rewriteUrl, request.url).origin !== new URL(request.url).origin;
+}
+function requestWithMiddlewareRequestHeaders(request, middlewareHeaders) {
+	const nextHeaders = middlewareHeaders ? buildRequestHeadersFromMiddlewareResponse(request.headers, middlewareHeaders, { preserveCredentialHeaders: true }) : null;
+	if (!nextHeaders) return request;
+	const init = {
+		method: request.method,
+		headers: nextHeaders,
+		body: request.body
+	};
+	if (request.body) Object.defineProperty(init, "duplex", {
+		value: "half",
+		enumerable: true
+	});
+	return new Request(request.url, init);
+}
+async function proxyExternalMiddlewareRewrite(request, rewriteUrl, context) {
+	const proxyRequest = requestWithMiddlewareRequestHeaders(request, context.requestHeaders ?? context.headers);
+	setHeadersContext(null);
+	setNavigationContext(null);
+	const proxyResponse = await proxyExternalRequest(proxyRequest, rewriteUrl);
+	const headers = new Headers(proxyResponse.headers);
+	processMiddlewareHeaders(headers);
+	if (!context.headers) return new Response(proxyResponse.body, {
+		status: proxyResponse.status,
+		statusText: proxyResponse.statusText,
+		headers
+	});
+	const middlewareHeaders = new Headers(context.headers);
+	processMiddlewareHeaders(middlewareHeaders);
+	mergeMiddlewareResponseHeaders(headers, middlewareHeaders);
+	return new Response(proxyResponse.body, {
+		status: proxyResponse.status,
+		statusText: proxyResponse.statusText,
+		headers
+	});
+}
+function applyForwardedMiddlewareContext(request, context) {
+	return { applied: false };
+}
+async function applyAppMiddleware(options) {
+	const forwarded = applyForwardedMiddlewareContext(options.request, options.context);
+	const middlewareRequest = requestWithoutFlightHeaders(options.request);
+	let cleanPathname = options.cleanPathname;
+	let search = null;
+	if (forwarded.rewriteUrl) try {
+		if (isExternalMiddlewareRewrite(forwarded.rewriteUrl, middlewareRequest)) return {
+			kind: "response",
+			response: await proxyExternalMiddlewareRewrite(middlewareRequest, forwarded.rewriteUrl, options.context)
+		};
+		const rewriteParsed = new URL(forwarded.rewriteUrl, middlewareRequest.url);
+		cleanPathname = rewriteParsed.pathname;
+		search = rewriteParsed.search;
+	} catch (e) {
+		console.error("[vinext] Failed to apply forwarded middleware rewrite:", e);
+		forwarded.applied = false;
+	}
+	if (!forwarded.applied) {
+		const result = await executeMiddleware({
+			basePath: options.basePath,
+			i18nConfig: options.i18nConfig,
+			isProxy: options.isProxy,
+			module: options.module,
+			normalizedPathname: cleanPathname,
+			request: middlewareRequest
+		});
+		if (!result.continue) {
+			if (result.redirectUrl) return {
+				kind: "response",
+				response: responseFromMiddlewareRedirect(result)
+			};
+			if (result.response) return {
+				kind: "response",
+				response: result.response
+			};
+			return {
+				kind: "response",
+				response: internalServerErrorResponse()
+			};
+		}
+		if (result.responseHeaders) options.context.headers = new Headers(result.responseHeaders);
+		if (result.status !== void 0) options.context.status = result.status;
+		if (result.rewriteUrl) {
+			if (result.rewriteStatus !== void 0) options.context.status = result.rewriteStatus;
+			if (isExternalUrl(result.rewriteUrl)) return {
+				kind: "response",
+				response: await proxyExternalMiddlewareRewrite(middlewareRequest, result.rewriteUrl, options.context)
+			};
+			const rewriteParsed = new URL(result.rewriteUrl, middlewareRequest.url);
+			cleanPathname = rewriteParsed.pathname;
+			search = rewriteParsed.search;
+		}
+	}
+	if (options.context.headers) {
+		options.context.requestHeaders = new Headers(options.context.headers);
+		applyMiddlewareRequestHeaders(options.context.headers);
+		processMiddlewareHeaders(options.context.headers);
+	}
+	return {
+		kind: "continue",
+		cleanPathname,
+		search
+	};
+}
+//#endregion
+//#region node_modules/vinext/dist/server/cache-control.js
+var NEVER_CACHE_CONTROL = "private, no-cache, no-store, max-age=0, must-revalidate";
+var STATIC_CACHE_CONTROL = "s-maxage=31536000, stale-while-revalidate";
+var STALE_REVALIDATE_CACHE_CONTROL = "s-maxage=0, stale-while-revalidate";
+var NO_STORE_CACHE_CONTROL$1 = "no-store, must-revalidate";
+/**
+* Matches Next.js's `getCacheControlHeader` stale window semantics while
+* preserving vinext's legacy unbounded SWR header when no expire ceiling is
+* available yet.
+*
+* Next.js source:
+* https://github.com/vercel/next.js/blob/canary/packages/next/src/server/lib/cache-control.ts
+*/
+function buildRevalidateCacheControl(revalidateSeconds, expireSeconds) {
+	if (expireSeconds === void 0) return `s-maxage=${revalidateSeconds}, stale-while-revalidate`;
+	if (revalidateSeconds >= expireSeconds) return `s-maxage=${revalidateSeconds}`;
+	return `s-maxage=${revalidateSeconds}, stale-while-revalidate=${expireSeconds - revalidateSeconds}`;
+}
+/**
+* Builds Cache-Control for ISR cache reads. HIT responses and STALE responses
+* with stored expire metadata use the same route policy because Next.js derives
+* this header from cache-control metadata, not from the cache hit/stale state.
+* STALE entries without expire metadata keep vinext's legacy `s-maxage=0`
+* fallback so older cache entries are not treated as newly fresh downstream.
+*/
+function buildCachedRevalidateCacheControl(cacheState, revalidateSeconds, expireSeconds) {
+	if (revalidateSeconds === Infinity) return STATIC_CACHE_CONTROL;
+	if (cacheState === "STALE" && expireSeconds === void 0) return STALE_REVALIDATE_CACHE_CONTROL;
+	return buildRevalidateCacheControl(revalidateSeconds, expireSeconds);
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-page-response.js
+function applyTimingHeader(headers, timing) {
+	if (!timing) return;
+	const handlerStart = Math.round(timing.handlerStart);
+	const compileMs = timing.compileEnd !== void 0 ? Math.round(timing.compileEnd - timing.handlerStart) : -1;
+	const renderMs = timing.responseKind === "html" && timing.renderEnd !== void 0 && timing.compileEnd !== void 0 ? Math.round(timing.renderEnd - timing.compileEnd) : -1;
+	headers.set(VINEXT_TIMING_HEADER, `${handlerStart},${compileMs},${renderMs}`);
+}
+function resolveAppPageRscResponsePolicy(options) {
+	if (options.isDraftMode) return { cacheControl: NO_STORE_CACHE_CONTROL$1 };
+	if (options.isForceDynamic || options.dynamicUsedDuringBuild) return { cacheControl: NO_STORE_CACHE_CONTROL$1 };
+	if (options.revalidateSeconds === 0) return { cacheControl: NO_STORE_CACHE_CONTROL$1 };
+	if ((options.isForceStatic || options.isDynamicError) && !options.revalidateSeconds || options.revalidateSeconds === Infinity) return {
+		cacheControl: STATIC_CACHE_CONTROL,
+		cacheState: "STATIC"
+	};
+	if (options.revalidateSeconds) return {
+		cacheControl: buildRevalidateCacheControl(options.revalidateSeconds, options.expireSeconds),
+		cacheState: options.isProduction ? "MISS" : void 0
+	};
+	return {};
+}
+function resolveAppPageHtmlResponsePolicy(options) {
+	if (options.isDraftMode) return {
+		cacheControl: NO_STORE_CACHE_CONTROL$1,
+		shouldWriteToCache: false
+	};
+	if (options.isForceDynamic) return {
+		cacheControl: NO_STORE_CACHE_CONTROL$1,
+		shouldWriteToCache: false
+	};
+	if (options.hasScriptNonce) return {
+		cacheControl: NO_STORE_CACHE_CONTROL$1,
+		shouldWriteToCache: false
+	};
+	if (options.isProgressiveActionRender) return {
+		cacheControl: NO_STORE_CACHE_CONTROL$1,
+		shouldWriteToCache: false
+	};
+	if (options.revalidateSeconds === 0) return {
+		cacheControl: NO_STORE_CACHE_CONTROL$1,
+		shouldWriteToCache: false
+	};
+	if ((options.isForceStatic || options.isDynamicError) && options.revalidateSeconds === null) return {
+		cacheControl: STATIC_CACHE_CONTROL,
+		cacheState: "STATIC",
+		shouldWriteToCache: false
+	};
+	if (options.dynamicUsedDuringRender) return {
+		cacheControl: NO_STORE_CACHE_CONTROL$1,
+		shouldWriteToCache: false
+	};
+	if (options.revalidateSeconds !== null && options.revalidateSeconds > 0 && options.revalidateSeconds !== Infinity) return {
+		cacheControl: buildRevalidateCacheControl(options.revalidateSeconds, options.expireSeconds),
+		cacheState: options.isProduction ? "MISS" : void 0,
+		shouldWriteToCache: options.isProduction
+	};
+	if (options.revalidateSeconds === Infinity) return {
+		cacheControl: STATIC_CACHE_CONTROL,
+		cacheState: "STATIC",
+		shouldWriteToCache: false
+	};
+	return { shouldWriteToCache: false };
+}
+function buildAppPageRscResponse(body, options) {
+	const headers = new Headers({
+		"Content-Type": "text/x-component; charset=utf-8",
+		Vary: VINEXT_RSC_VARY_HEADER
+	});
+	if (options.params && Object.keys(options.params).length > 0) headers.set(VINEXT_PARAMS_HEADER, encodeURIComponent(JSON.stringify(options.params)));
+	if (options.mountedSlotsHeader) headers.set(VINEXT_MOUNTED_SLOTS_HEADER, options.mountedSlotsHeader);
+	if (options.policy.cacheControl) headers.set("Cache-Control", options.policy.cacheControl);
+	if (options.policy.cacheState) headers.set(VINEXT_CACHE_HEADER, options.policy.cacheState);
+	mergeMiddlewareResponseHeaders(headers, options.middlewareContext.headers);
+	applyTimingHeader(headers, options.timing);
+	return new Response(body, {
+		status: options.middlewareContext.status ?? 200,
+		headers
+	});
+}
+function buildAppPageHtmlResponse(body, options) {
+	const headers = new Headers({
+		"Content-Type": "text/html; charset=utf-8",
+		Vary: VINEXT_RSC_VARY_HEADER
+	});
+	if (options.policy.cacheControl) headers.set("Cache-Control", options.policy.cacheControl);
+	if (options.policy.cacheState) headers.set(VINEXT_CACHE_HEADER, options.policy.cacheState);
+	if (options.draftCookie) headers.append("Set-Cookie", options.draftCookie);
+	if (options.fontLinkHeader) headers.set("Link", options.fontLinkHeader);
+	mergeMiddlewareResponseHeaders(headers, options.middlewareContext.headers);
+	applyTimingHeader(headers, options.timing);
+	return new Response(body, {
+		status: options.middlewareContext.status ?? 200,
+		headers
+	});
+}
+//#endregion
+//#region node_modules/vinext/dist/server/implicit-tags.js
+var NEXT_CACHE_IMPLICIT_TAG_ID = "_N_T_";
+function appendUnique(tags, tag) {
+	if (!tags.includes(tag)) tags.push(tag);
+}
+function normalizeRouteSegment(segment) {
+	if (!segment || segment === "." || segment.startsWith("@")) return null;
+	return segment;
+}
+function buildRouteCachePath(routeSegments, leafKind) {
+	const parts = [];
+	for (const segment of routeSegments) {
+		const normalized = normalizeRouteSegment(segment);
+		if (normalized) parts.push(normalized);
+	}
+	parts.push(leafKind);
+	return `/${parts.join("/")}`;
+}
+function appendDerivedTags(tags, routePath) {
+	appendUnique(tags, `${NEXT_CACHE_IMPLICIT_TAG_ID}/layout`);
+	if (!routePath.startsWith("/")) return;
+	const routeParts = routePath.split("/");
+	const leafIndex = routeParts.length - 1;
+	for (let i = 1; i <= routeParts.length; i++) {
+		let currentPathname = routeParts.slice(0, i).join("/");
+		if (!currentPathname) continue;
+		if (!(i - 1 === leafIndex)) currentPathname = `${currentPathname}/layout`;
+		appendUnique(tags, `${NEXT_CACHE_IMPLICIT_TAG_ID}${currentPathname}`);
+	}
+}
+function buildPageCacheTags(pathname, extraTags, routeSegments, leafKind) {
+	const tags = [pathname, `${NEXT_CACHE_IMPLICIT_TAG_ID}${pathname}`];
+	if (pathname === "/") appendUnique(tags, `${NEXT_CACHE_IMPLICIT_TAG_ID}/index`);
+	if (pathname === "/index") appendUnique(tags, `${NEXT_CACHE_IMPLICIT_TAG_ID}/`);
+	appendDerivedTags(tags, buildRouteCachePath(routeSegments, leafKind));
+	for (const tag of extraTags) appendUnique(tags, tag);
+	return tags.map(encodeCacheTag);
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-post-middleware-context.js
+/**
+* Build a request context from the live ALS HeadersContext, which reflects
+* any x-middleware-request-* header mutations applied by middleware.
+* Used for afterFiles and fallback rewrite has/missing evaluation — these
+* run after middleware in the App Router execution order.
+*
+* Falls back to `requestContextFromRequest(request)` when no HeadersContext
+* is set (no middleware ran, or middleware didn't set request headers).
+*/
+function buildPostMwRequestContext(request) {
+	const url = new URL(request.url);
+	const ctx = getHeadersContext();
+	if (!ctx) return requestContextFromRequest(request);
+	const cookiesRecord = Object.fromEntries(ctx.cookies);
+	return {
+		headers: ctx.headers,
+		cookies: cookiesRecord,
+		query: url.searchParams,
+		host: normalizeHost(ctx.headers.get("host"), url.hostname)
+	};
+}
+//#endregion
+//#region node_modules/vinext/dist/shims/root-params.js
+var _FALLBACK_KEY$1 = Symbol.for("vinext.rootParams.fallback");
+var _g$3 = globalThis;
+var _fallbackState$1 = _g$3[_FALLBACK_KEY$1] ??= { rootParams: null };
+function getState() {
+	if (isInsideUnifiedScope()) return getRequestContext();
+	return _fallbackState$1;
+}
+function pickRootParams(params, rootParamNames) {
+	const picked = {};
+	for (const name of rootParamNames ?? []) picked[name] = params[name];
+	return picked;
+}
+function setRootParams(params) {
+	getState().rootParams = params;
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-prerender-static-params.js
+async function callAppPrerenderStaticParams(options) {
+	setRootParams(pickRootParams(options.params, options.rootParamNamesByPattern[options.pattern]));
+	try {
+		return await options.fn({ params: options.params });
+	} finally {
+		setRootParams(null);
+	}
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-prerender-endpoints.js
+var STATIC_PARAMS_ENDPOINT = "/__vinext/prerender/static-params";
+var PAGES_STATIC_PATHS_ENDPOINT = "/__vinext/prerender/pages-static-paths";
+var JSON_HEADERS = { "content-type": "application/json" };
+async function handleAppPrerenderEndpoint(request, options) {
+	if (options.pathname === STATIC_PARAMS_ENDPOINT) return handleStaticParamsEndpoint(request, options);
+	if (options.pathname === PAGES_STATIC_PATHS_ENDPOINT) {
+		if (!options.loadPagesRoutes) return null;
+		return handlePagesStaticPathsEndpoint(request, options);
+	}
+	return null;
+}
+async function handleStaticParamsEndpoint(request, options) {
+	if (!isEnabled(options)) return notFoundResponse();
+	const url = new URL(request.url);
+	const pattern = url.searchParams.get("pattern");
+	if (!pattern) return new Response("missing pattern", { status: 400 });
+	const generateStaticParams = options.staticParamsMap[pattern];
+	if (typeof generateStaticParams !== "function") return jsonNullResponse();
+	try {
+		return jsonResponse(await callAppPrerenderStaticParams({
+			fn: generateStaticParams,
+			params: parseParentParams(url.searchParams.get("parentParams")),
+			pattern,
+			rootParamNamesByPattern: options.rootParamNamesByPattern ?? {}
+		}));
+	} catch (error) {
+		return jsonResponse({ error: String(error) }, 500);
+	}
+}
+async function handlePagesStaticPathsEndpoint(request, options) {
+	if (!isEnabled(options)) return notFoundResponse();
+	const url = new URL(request.url);
+	const pattern = url.searchParams.get("pattern");
+	if (!pattern) return new Response("missing pattern", { status: 400 });
+	try {
+		const getStaticPaths = findPageRoute(await options.loadPagesRoutes?.(), pattern)?.module?.getStaticPaths;
+		if (typeof getStaticPaths !== "function") return jsonNullResponse();
+		return jsonResponse(await getStaticPaths({
+			locales: parseLocales(url.searchParams.get("locales")),
+			defaultLocale: url.searchParams.get("defaultLocale") ?? ""
+		}));
+	} catch (error) {
+		return jsonResponse({ error: String(error) }, 500);
+	}
+}
+function isEnabled(options) {
+	return options.isPrerenderEnabled?.() ?? false;
+}
+function jsonResponse(body, status = 200) {
+	return new Response(JSON.stringify(body), {
+		headers: JSON_HEADERS,
+		status
+	});
+}
+function jsonNullResponse() {
+	return new Response("null", {
+		headers: JSON_HEADERS,
+		status: 200
+	});
+}
+function parseParentParams(raw) {
+	if (!raw) return {};
+	const value = JSON.parse(raw);
+	if (!isPlainObject(value)) return {};
+	const params = {};
+	for (const [key, paramValue] of Object.entries(value)) if (typeof paramValue === "string" || paramValue === void 0 || isStringArray(paramValue)) params[key] = paramValue;
+	return params;
+}
+function parseLocales(raw) {
+	if (!raw) return [];
+	const value = JSON.parse(raw);
+	if (!Array.isArray(value)) return [];
+	return value.filter((locale) => typeof locale === "string");
+}
+function findPageRoute(value, pattern) {
+	if (!Array.isArray(value)) return void 0;
+	for (const route of value) if (isPageRoute(route) && route.pattern === pattern) return route;
+}
+function isPageRoute(value) {
+	if (!isPlainObject(value) || typeof value.pattern !== "string") return false;
+	if (value.module === void 0) return true;
+	if (!isPlainObject(value.module)) return false;
+	return value.module.getStaticPaths === void 0 || typeof value.module.getStaticPaths === "function";
+}
+function isPlainObject(value) {
+	return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+function isStringArray(value) {
+	return Array.isArray(value) && value.every((item) => typeof item === "string");
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-rsc-response-finalizer.js
+/**
+* Apply App Router response finalization that must happen outside individual
+* route dispatchers.
+*
+* Called once per request in the outer handler() wrapper, after all route
+* handling, so that every response path (page, route handler, server action,
+* metadata, not-found) gets headers applied consistently.
+*
+* Skips 3xx redirect responses. Response.redirect() creates immutable
+* headers that throw on mutation, and Next.js does not apply config headers
+* to redirects regardless.
+*/
+function finalizeAppRscResponse(response, request, options) {
+	if (response.status >= 300 && response.status < 400) return response;
+	if (!response.headers.has("x-vinext-static-file")) mergeVaryHeader(response.headers, VINEXT_RSC_VARY_HEADER);
+	if (!options.configHeaders.length) return response;
+	const url = new URL(request.url);
+	let pathname;
+	try {
+		pathname = normalizePath(normalizePathnameForRouteMatch(url.pathname));
+	} catch {
+		pathname = url.pathname;
+	}
+	pathname = stripBasePath(pathname, options.basePath);
+	applyConfigHeadersToResponse(response.headers, {
+		configHeaders: options.configHeaders,
+		pathname,
+		requestContext: options.requestContext
+	});
+	return response;
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-rsc-request-normalization.js
+/**
+* Normalize an App Router RSC request.
+*
+* Performs all security-sensitive and compatibility-sensitive preprocessing before
+* route matching. The ordering of steps is security-critical — changing it introduces
+* vulnerabilities:
+*
+*   1. Parse URL
+*   2. Protocol-relative URL guard — on the raw pathname, BEFORE normalizePath collapses
+*      `//` to `/`. If the guard ran after normalization, `//evil.com` → `/evil.com`
+*      would bypass the check and reach the trailing-slash redirector, which echoes the
+*      path into a `Location` header that browsers interpret as protocol-relative.
+*   3. Strict percent-decode each segment — throws on malformed sequences (→ 400). Must
+*      run before basePath check so %2F-encoded slashes cannot create fake basePath prefixes.
+*   4. Collapse double-slashes, resolve `.` and `..` segments (normalizePath)
+*   5. basePath check + strip — 404 when pathname lacks the basePath prefix.
+*      `/__vinext/` bypasses this for internal prerender endpoints.
+*   6. RSC detection: `.rsc` suffix only. RSC headers do not select payload
+*      rendering at the canonical HTML URL, so caches that ignore Vary cannot
+*      store Flight responses under HTML URLs.
+*   7. cleanPathname — pathname with `.rsc` suffix stripped
+*   8. Sanitize X-Vinext-Interception-Context — strip null bytes (header injection)
+*   9. Normalize x-vinext-mounted-slots — dedup and sort for canonical cache keys
+*   10. Read semantic render mode for refresh/action payload rendering
+*
+* @returns A 400 or 404 Response for invalid or out-of-scope inputs,
+*          or a NormalizedRscRequest for valid requests.
+*/
+function normalizeRscRequest(request, basePath) {
+	const url = new URL(request.url);
+	const protoGuard = guardProtocolRelativeUrl(url.pathname);
+	if (protoGuard) return protoGuard;
+	let decoded;
+	try {
+		decoded = normalizePathnameForRouteMatchStrict(url.pathname);
+	} catch {
+		return badRequestResponse();
+	}
+	let pathname = normalizePath(decoded);
+	if (basePath) {
+		if (!hasBasePath(pathname, basePath) && !pathname.startsWith("/__vinext/")) return notFoundResponse();
+		pathname = stripBasePath(pathname, basePath);
+	}
+	const isRscRequest = pathname.endsWith(".rsc");
+	const cleanPathname = stripRscSuffix(pathname);
+	const interceptionContextHeader = request.headers.get("X-Vinext-Interception-Context")?.replaceAll("\0", "") || null;
+	const mountedSlotsHeader = normalizeMountedSlotsHeader(request.headers.get(VINEXT_MOUNTED_SLOTS_HEADER));
+	const renderMode = isRscRequest ? parseAppRscRenderMode(request.headers.get(VINEXT_RSC_RENDER_MODE_HEADER)) : APP_RSC_RENDER_MODE_NAVIGATION;
+	return {
+		url,
+		pathname,
+		cleanPathname,
+		isRscRequest,
+		interceptionContextHeader,
+		mountedSlotsHeader,
+		renderMode
+	};
+}
+//#endregion
+//#region node_modules/vinext/dist/routing/route-pattern.js
+function routePatternPart(segment) {
+	if (segment.startsWith("[[...") && segment.endsWith("]]")) return `:${segment.slice(5, -2)}*`;
+	if (segment.startsWith("[...") && segment.endsWith("]")) return `:${segment.slice(4, -1)}+`;
+	if (segment.startsWith("[") && segment.endsWith("]")) return `:${segment.slice(1, -1)}`;
+	return segment;
+}
+function routePatternParts(pathname) {
+	return pathname.split("/").filter(Boolean).map(routePatternPart);
+}
+function routePattern(pathname) {
+	const parts = routePatternParts(pathname);
+	return parts.length > 0 ? `/${parts.join("/")}` : "";
+}
+function appendParamValue(target, value) {
+	if (Array.isArray(value)) {
+		for (const entry of value) target.push(entry);
+		return;
+	}
+	target.push(value);
+}
+function fillRoutePatternSegments(pathname, params) {
+	const segments = pathname.split("/").filter(Boolean);
+	const resolvedSegments = [];
+	for (const segment of segments) {
+		if (segment.startsWith("[[...") && segment.endsWith("]]")) {
+			const value = params[segment.slice(5, -2)];
+			if (value !== void 0 && value !== "") {
+				if (Array.isArray(value) && value.length === 0) continue;
+				appendParamValue(resolvedSegments, value);
+			}
+			continue;
+		}
+		if (segment.startsWith("[...") && segment.endsWith("]")) {
+			const value = params[segment.slice(4, -1)];
+			if (value === void 0 || (Array.isArray(value) ? value.length === 0 : value === "")) return null;
+			appendParamValue(resolvedSegments, value);
+			continue;
+		}
+		if (segment.startsWith("[") && segment.endsWith("]")) {
+			const value = params[segment.slice(1, -1)];
+			if (typeof value === "string") {
+				resolvedSegments.push(value);
+				continue;
+			}
+			if (Array.isArray(value) && value.length > 0) {
+				if (value.length > 1) return null;
+				resolvedSegments.push(value[0]);
+				continue;
+			}
+			return null;
+		}
+		resolvedSegments.push(segment);
+	}
+	return resolvedSegments.length > 0 ? `/${resolvedSegments.join("/")}` : "/";
+}
+function matchRoutePattern(urlParts, patternParts) {
+	const params = Object.create(null);
+	function matchFrom(urlIndex, patternIndex) {
+		if (patternIndex === patternParts.length) return urlIndex === urlParts.length;
+		const patternPart = patternParts[patternIndex];
+		if (patternPart.startsWith(":") && (patternPart.endsWith("+") || patternPart.endsWith("*"))) {
+			const paramName = patternPart.slice(1, -1);
+			const minLength = patternPart.endsWith("+") ? 1 : 0;
+			for (let endIndex = urlIndex + minLength; endIndex <= urlParts.length; endIndex++) {
+				const value = urlParts.slice(urlIndex, endIndex);
+				if (value.length > 0) params[paramName] = value;
+				else delete params[paramName];
+				if (matchFrom(endIndex, patternIndex + 1)) return true;
+			}
+			delete params[paramName];
+			return false;
+		}
+		if (patternPart.startsWith(":")) {
+			if (urlIndex >= urlParts.length) return false;
+			const paramName = patternPart.slice(1);
+			params[paramName] = urlParts[urlIndex];
+			if (matchFrom(urlIndex + 1, patternIndex + 1)) return true;
+			delete params[paramName];
+			return false;
+		}
+		if (urlIndex >= urlParts.length || urlParts[urlIndex] !== patternPart) return false;
+		return matchFrom(urlIndex + 1, patternIndex + 1);
+	}
+	if (!matchFrom(0, 0)) return null;
+	decodeMatchedParams(params);
+	return params;
+}
+//#endregion
+//#region node_modules/vinext/dist/server/metadata-routes.js
+/** Escape the five XML special characters in text content and attribute values. */
+function escapeXml(s) {
+	return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
+}
+/**
+* Convert a sitemap array to XML string.
+*/
+function sitemapToXml(entries) {
+	const hasAlternates = entries.some((entry) => Object.keys(entry.alternates ?? {}).length > 0);
+	const hasImages = entries.some((entry) => Boolean(entry.images?.length));
+	const hasVideos = entries.some((entry) => Boolean(entry.videos?.length));
+	let content = "";
+	content += "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+	content += "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"";
+	if (hasImages) content += " xmlns:image=\"http://www.google.com/schemas/sitemap-image/1.1\"";
+	if (hasVideos) content += " xmlns:video=\"http://www.google.com/schemas/sitemap-video/1.1\"";
+	if (hasAlternates) content += " xmlns:xhtml=\"http://www.w3.org/1999/xhtml\">\n";
+	else content += ">\n";
+	for (const entry of entries) {
+		content += "<url>\n";
+		content += `<loc>${escapeXml(entry.url)}</loc>\n`;
+		const languages = entry.alternates?.languages;
+		if (languages && Object.keys(languages).length) for (const language in languages) content += `<xhtml:link rel="alternate" hreflang="${escapeXml(language)}" href="${escapeXml(languages[language])}" />\n`;
+		if (entry.images?.length) for (const image of entry.images) content += `<image:image>\n<image:loc>${escapeXml(image)}</image:loc>\n</image:image>\n`;
+		if (entry.videos?.length) for (const video of entry.videos) {
+			const videoFields = [
+				"<video:video>",
+				`<video:title>${escapeXml(String(video.title))}</video:title>`,
+				`<video:thumbnail_loc>${escapeXml(String(video.thumbnail_loc))}</video:thumbnail_loc>`,
+				`<video:description>${escapeXml(String(video.description))}</video:description>`,
+				video.content_loc && `<video:content_loc>${escapeXml(String(video.content_loc))}</video:content_loc>`,
+				video.player_loc && `<video:player_loc>${escapeXml(String(video.player_loc))}</video:player_loc>`,
+				video.duration && `<video:duration>${video.duration}</video:duration>`,
+				video.view_count && `<video:view_count>${video.view_count}</video:view_count>`,
+				video.tag && `<video:tag>${escapeXml(String(video.tag))}</video:tag>`,
+				video.rating && `<video:rating>${video.rating}</video:rating>`,
+				video.expiration_date && `<video:expiration_date>${escapeXml(String(video.expiration_date))}</video:expiration_date>`,
+				video.publication_date && `<video:publication_date>${escapeXml(String(video.publication_date))}</video:publication_date>`,
+				video.family_friendly && `<video:family_friendly>${video.family_friendly}</video:family_friendly>`,
+				video.requires_subscription && `<video:requires_subscription>${video.requires_subscription}</video:requires_subscription>`,
+				video.live && `<video:live>${video.live}</video:live>`,
+				video.restriction && `<video:restriction relationship="${escapeXml(String(video.restriction.relationship))}">${escapeXml(String(video.restriction.content))}</video:restriction>`,
+				video.platform && `<video:platform relationship="${escapeXml(String(video.platform.relationship))}">${escapeXml(String(video.platform.content))}</video:platform>`,
+				video.uploader && `<video:uploader${video.uploader.info ? ` info="${escapeXml(String(video.uploader.info))}"` : ""}>${escapeXml(String(video.uploader.content))}</video:uploader>`,
+				"</video:video>\n"
+			].filter(Boolean);
+			content += videoFields.join("\n");
+		}
+		if (entry.lastModified) content += `<lastmod>${serializeDate(entry.lastModified)}</lastmod>\n`;
+		if (entry.changeFrequency) content += `<changefreq>${entry.changeFrequency}</changefreq>\n`;
+		if (typeof entry.priority === "number") content += `<priority>${entry.priority}</priority>\n`;
+		content += "</url>\n";
+	}
+	content += "</urlset>\n";
+	return content;
+}
+/**
+* Convert a robots config to text format.
+*/
+function robotsToText(config) {
+	const lines = [];
+	const rules = Array.isArray(config.rules) ? config.rules : [config.rules];
+	for (const rule of rules) {
+		const agents = Array.isArray(rule.userAgent) ? rule.userAgent : [rule.userAgent ?? "*"];
+		for (const agent of agents) lines.push(`User-Agent: ${agent}`);
+		if (rule.allow) {
+			const allows = Array.isArray(rule.allow) ? rule.allow : [rule.allow];
+			for (const allow of allows) lines.push(`Allow: ${allow}`);
+		}
+		if (rule.disallow) {
+			const disallows = Array.isArray(rule.disallow) ? rule.disallow : [rule.disallow];
+			for (const disallow of disallows) lines.push(`Disallow: ${disallow}`);
+		}
+		if (rule.crawlDelay !== void 0) lines.push(`Crawl-delay: ${rule.crawlDelay}`);
+		if (rule.other) for (const key of Object.keys(rule.other)) {
+			const value = rule.other[key];
+			if (value == null) continue;
+			const values = Array.isArray(value) ? value : [value];
+			for (const v of values) lines.push(`${key}: ${v}`);
+		}
+		lines.push("");
+	}
+	if (config.sitemap) {
+		const sitemaps = Array.isArray(config.sitemap) ? config.sitemap : [config.sitemap];
+		for (const sitemap of sitemaps) lines.push(`Sitemap: ${sitemap}`);
+	}
+	if (config.host) lines.push(`Host: ${config.host}`);
+	return lines.join("\n").trim() + "\n";
+}
+/**
+* Convert a manifest config to JSON string.
+*/
+function manifestToJson(config) {
+	return JSON.stringify(config, null, 2);
+}
+function serializeDate(value) {
+	return value instanceof Date ? value.toISOString() : value;
+}
+function getMetadataRouteKind(route) {
+	if (route.type === "favicon") return "favicon";
+	if (route.type === "icon") return "icon";
+	if (route.type === "apple-icon") return "apple";
+	if (route.type === "opengraph-image") return "openGraph";
+	if (route.type === "twitter-image") return "twitter";
+	if (route.type === "manifest") return "manifest";
+	return null;
+}
+function getMetadataImageRouteKind(route) {
+	const kind = getMetadataRouteKind(route);
+	if (kind === "icon" || kind === "apple" || kind === "openGraph" || kind === "twitter") return kind;
+	return null;
+}
+var metadataImageIdPattern = /^[a-zA-Z0-9-_.]+$/;
+function isValidMetadataImageId(id) {
+	return metadataImageIdPattern.test(id);
+}
+function matchMetadataRoutePattern(urlParts, patternParts) {
+	return matchRoutePattern(urlParts, patternParts);
+}
+//#endregion
+//#region node_modules/vinext/dist/server/metadata-route-response.js
+var routeFunctionCache = /* @__PURE__ */ new WeakMap();
+function isObject(value) {
+	return typeof value === "object" && value !== null;
+}
+function readFunction(module, key) {
+	if (!module) return null;
+	const value = Reflect.get(module, key);
+	if (typeof value !== "function") return null;
+	return (props) => Reflect.apply(value, module, [props]);
+}
+function isSitemapEntries(value) {
+	return Array.isArray(value);
+}
+function isRobotsConfig(value) {
+	return isObject(value) && !Array.isArray(value);
+}
+function isManifestConfig(value) {
+	return isObject(value) && !Array.isArray(value);
+}
+function isImageMetadataRoute(route) {
+	return route.type === "icon" || route.type === "apple-icon" || route.type === "opengraph-image" || route.type === "twitter-image";
+}
+function getMetadataRouteFunctions(route) {
+	const cached = routeFunctionCache.get(route);
+	if (cached) return cached;
+	const generateImageMetadata = route.isDynamic && isImageMetadataRoute(route) ? readFunction(route.module, "generateImageMetadata") : null;
+	const functions = {
+		defaultExport: route.isDynamic ? readFunction(route.module, "default") : null,
+		generateImageMetadata,
+		generateSitemaps: route.type === "sitemap" && route.isDynamic ? readFunction(route.module, "generateSitemaps") : null,
+		hasGeneratedImageMetadata: route.isDynamic && isImageMetadataRoute(route) && Boolean(generateImageMetadata)
+	};
+	routeFunctionCache.set(route, functions);
+	return functions;
+}
+function matchMetadataRoute(route, cleanPathname, functions) {
+	if (route.patternParts) {
+		const urlParts = cleanPathname.split("/").filter(Boolean);
+		if (functions.hasGeneratedImageMetadata && urlParts.length > 0) {
+			const params = matchMetadataRoutePattern(urlParts.slice(0, -1), route.patternParts);
+			if (params) return {
+				params,
+				imageId: urlParts[urlParts.length - 1]
+			};
+		}
+		const params = matchMetadataRoutePattern(urlParts, route.patternParts);
+		return params ? {
+			params,
+			imageId: null
+		} : null;
+	}
+	if (functions.hasGeneratedImageMetadata && cleanPathname.startsWith(`${route.servedUrl}/`)) {
+		const imageSuffix = cleanPathname.slice(route.servedUrl.length + 1);
+		if (!imageSuffix || imageSuffix.includes("/")) return null;
+		return {
+			params: Object.create(null),
+			imageId: imageSuffix
+		};
+	}
+	return cleanPathname === route.servedUrl ? {
+		params: null,
+		imageId: null
+	} : null;
+}
+function findGeneratedSitemapId(entries, rawId) {
+	if (!Array.isArray(entries)) return null;
+	for (const entry of entries) {
+		if (!isObject(entry) || Reflect.get(entry, "id") == null) throw new Error("id property is required for every item returned from generateSitemaps");
+		const id = Reflect.get(entry, "id");
+		if (String(id) === rawId) return rawId;
+	}
+	return null;
+}
+function makeThenableMetadataRouteId(id) {
+	return Object.assign(Promise.resolve(id), {
+		toString() {
+			return id;
+		},
+		valueOf() {
+			return id;
+		},
+		[Symbol.toPrimitive]() {
+			return id;
+		}
+	});
+}
+async function handleGeneratedSitemap(route, cleanPathname, functions) {
+	if (!functions.generateSitemaps || !functions.defaultExport) return null;
+	const sitemapPrefix = route.servedUrl.slice(0, -4);
+	if (!cleanPathname.startsWith(`${sitemapPrefix}/`) || !cleanPathname.endsWith(".xml")) return null;
+	const rawId = cleanPathname.slice(sitemapPrefix.length + 1, -4);
+	if (rawId.includes("/")) return null;
+	const matchedId = findGeneratedSitemapId(await functions.generateSitemaps({}), rawId);
+	if (!matchedId) return notFoundResponse();
+	const result = await functions.defaultExport({ id: makeThenableMetadataRouteId(matchedId) });
+	if (result instanceof Response) return result;
+	if (!isSitemapEntries(result)) throw new TypeError("Metadata sitemap routes must return an array.");
+	return new Response(sitemapToXml(result), { headers: {
+		"Content-Type": route.contentType,
+		"Cache-Control": "public, max-age=0, must-revalidate"
+	} });
+}
+function findGeneratedImageId(imageMetadata, imageId, servedUrl) {
+	if (!Array.isArray(imageMetadata)) return null;
+	for (const item of imageMetadata) {
+		if (!isObject(item) || Reflect.get(item, "id") == null) throw new Error("id property is required for every item returned from generateImageMetadata");
+		const itemId = String(Reflect.get(item, "id"));
+		if (!isValidMetadataImageId(itemId)) {
+			console.warn(`[vinext] Skipping metadata route ${servedUrl} image id "${itemId}" because metadata image ids must match /^[a-zA-Z0-9-_.]+$/.`);
+			continue;
+		}
+		if (itemId === imageId) return itemId;
+	}
+	return null;
+}
+async function callDynamicMetadataRoute(route, match, makeThenableParams, functions) {
+	if (!functions.defaultExport) {
+		console.warn(`[vinext] Dynamic metadata route ${route.servedUrl} has no default export.`);
+		return notFoundResponse();
+	}
+	const paramsThenable = makeThenableParams(match.params ?? {});
+	let result;
+	if (functions.hasGeneratedImageMetadata) {
+		if (match.imageId === null || !isValidMetadataImageId(match.imageId)) return notFoundResponse();
+		if (!functions.generateImageMetadata) return notFoundResponse();
+		const matchedImageId = findGeneratedImageId(await functions.generateImageMetadata({ params: paramsThenable }), match.imageId, route.servedUrl);
+		if (!matchedImageId) return notFoundResponse();
+		result = await functions.defaultExport({
+			params: paramsThenable,
+			id: makeThenableMetadataRouteId(matchedImageId)
+		});
+	} else result = await functions.defaultExport({ params: paramsThenable });
+	if (result instanceof Response) return result;
+	let body;
+	if (route.type === "sitemap") {
+		if (!isSitemapEntries(result)) throw new TypeError("Metadata sitemap routes must return an array.");
+		body = sitemapToXml(result);
+	} else if (route.type === "robots") {
+		if (!isRobotsConfig(result)) throw new TypeError("Metadata robots routes must return an object.");
+		body = robotsToText(result);
+	} else if (route.type === "manifest") {
+		if (!isManifestConfig(result)) throw new TypeError("Metadata manifest routes must return an object.");
+		body = manifestToJson(result);
+	} else if (isImageMetadataRoute(route)) throw new TypeError(`Dynamic metadata ${route.type} route ${route.servedUrl} must return a Response.`);
+	else body = JSON.stringify(result);
+	return new Response(body, { headers: {
+		"Content-Type": route.contentType,
+		"Cache-Control": "public, max-age=0, must-revalidate"
+	} });
+}
+function serveStaticMetadataRoute(route) {
+	if (typeof route.fileDataBase64 !== "string") throw new Error(`[vinext] Static metadata route ${route.servedUrl} is missing embedded file data.`);
+	try {
+		const binary = atob(route.fileDataBase64);
+		const bytes = new Uint8Array(binary.length);
+		for (let index = 0; index < binary.length; index++) bytes[index] = binary.charCodeAt(index);
+		return new Response(bytes, { headers: {
+			"Content-Type": route.contentType,
+			"Cache-Control": "public, max-age=0, must-revalidate"
+		} });
+	} catch (error) {
+		const reason = error instanceof Error && error.message ? `: ${error.message}` : "";
+		throw new Error(`[vinext] Failed to decode embedded metadata route file data for ${route.servedUrl}${reason}`, { cause: error });
+	}
+}
+async function handleMetadataRouteRequest(options) {
+	for (const route of options.metadataRoutes) {
+		const functions = getMetadataRouteFunctions(route);
+		if (route.type === "sitemap" && route.isDynamic) {
+			if (functions.generateSitemaps) {
+				const generatedSitemapResponse = await handleGeneratedSitemap(route, options.cleanPathname, functions);
+				if (generatedSitemapResponse) return generatedSitemapResponse;
+				continue;
+			}
+		}
+		const match = matchMetadataRoute(route, options.cleanPathname, functions);
+		if (!match) continue;
+		return route.isDynamic ? callDynamicMetadataRoute(route, match, options.makeThenableParams, functions) : serveStaticMetadataRoute(route);
+	}
+	return null;
+}
+//#endregion
+//#region node_modules/vinext/dist/server/prerender-work-unit-setup.js
+/**
+* Sets up the work unit async storage for prerendering.
+*
+* When VINEXT_PRERENDER=1, wraps execution in a workUnitAsyncStorage.run()
+* with a PrerenderStore so that dynamic APIs (e.g., io()) can
+* detect the prerender context and return hanging promises.
+*
+* Used by: app-rsc-entry.ts handler template.
+*
+* TODO: If future dynamic APIs need request-scoped stores for normal (non-prerender)
+* requests, add a `{ type: "request" }` store during normal request handling.
+*/
+function runWithPrerenderWorkUnit(fn, options) {
+	if (process.env.VINEXT_PRERENDER === "1") {
+		const controller = new AbortController();
+		const route = typeof options?.route === "function" ? options.route() : options?.route;
+		return workUnitAsyncStorage.run({
+			type: "prerender",
+			renderSignal: controller.signal,
+			route
+		}, fn).finally(() => controller.abort());
+	}
+	return fn();
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-rsc-handler.js
+function hasProperty(value, key) {
+	return key in value;
+}
+function isExecutionContextLike(value) {
+	if (!value || typeof value !== "object") return false;
+	return hasProperty(value, "waitUntil") && typeof value.waitUntil === "function";
+}
+function redirectDestinationWithBasePath(destination, basePath) {
+	if (!basePath || isExternalUrl(destination) || hasBasePath(destination, basePath)) return destination;
+	return basePath + destination;
+}
+async function applyRewrite(options, cleanPathname) {
+	if (!options.rewrites.length) return null;
+	const rewritten = matchRewrite(cleanPathname, options.rewrites, options.requestContext);
+	if (!rewritten) return null;
+	if (isExternalUrl(rewritten)) {
+		options.clearRequestContext();
+		return proxyExternalRequest(options.request, rewritten);
+	}
+	return rewritten;
+}
+function applyConfigHeadersToMiddlewareRedirect(response, options) {
+	if (response.status < 300 || response.status >= 400) return response;
+	if (!options.configHeaders.length) return response;
+	const headers = new Headers();
+	applyConfigHeadersToResponse(headers, {
+		configHeaders: options.configHeaders,
+		pathname: options.pathname,
+		requestContext: options.requestContext
+	});
+	if (!headers.entries().next().done) {
+		mergeMiddlewareResponseHeaders(headers, response.headers);
+		return new Response(response.body, {
+			status: response.status,
+			statusText: response.statusText,
+			headers
+		});
+	}
+	return response;
+}
+async function handleAppRscRequest(options, request, preMiddlewareRequestContext) {
+	const handlerStart = 0;
+	const normalized = normalizeRscRequest(request, options.basePath);
+	if (normalized instanceof Response) return normalized;
+	const { url, isRscRequest, interceptionContextHeader, mountedSlotsHeader, renderMode } = normalized;
+	let { pathname, cleanPathname } = normalized;
+	const prerenderEndpointResponse = await handleAppPrerenderEndpoint(request, {
+		isPrerenderEnabled() {
+			return process.env.VINEXT_PRERENDER === "1";
+		},
+		loadPagesRoutes: options.loadPrerenderPagesRoutes,
+		pathname,
+		rootParamNamesByPattern: options.rootParamNamesByPattern,
+		staticParamsMap: options.staticParamsMap
+	});
+	if (prerenderEndpointResponse) return prerenderEndpointResponse;
+	const trailingSlashRedirect = normalizeTrailingSlash(pathname, options.basePath, options.trailingSlash, url.search);
+	if (trailingSlashRedirect) return trailingSlashRedirect;
+	const redirect = matchRedirect(stripRscSuffix(pathname), options.configRedirects, preMiddlewareRequestContext);
+	if (redirect) {
+		const destination = sanitizeDestination(redirectDestinationWithBasePath(redirect.destination, options.basePath));
+		const location = isRscRequest && request.headers.get("RSC") === "1" ? await createRscRedirectLocation(destination, request) : destination;
+		return new Response(null, {
+			status: redirect.permanent ? 308 : 307,
+			headers: { Location: location }
+		});
+	}
+	const rscCacheBustingRedirect = await resolveInvalidRscCacheBustingRequest({
+		isRscRequest,
+		request
+	});
+	if (rscCacheBustingRedirect) return rscCacheBustingRedirect;
+	const middlewareContext = {
+		headers: null,
+		requestHeaders: null,
+		status: null
+	};
+	if (options.middlewareModule) {
+		const middlewareResult = await applyAppMiddleware({
+			basePath: options.basePath,
+			cleanPathname,
+			context: middlewareContext,
+			i18nConfig: options.i18nConfig,
+			isProxy: options.isMiddlewareProxy,
+			module: options.middlewareModule,
+			request
+		});
+		if (middlewareResult.kind === "response") return applyConfigHeadersToMiddlewareRedirect(middlewareResult.response, {
+			configHeaders: options.configHeaders,
+			pathname: cleanPathname,
+			requestContext: preMiddlewareRequestContext
+		});
+		cleanPathname = middlewareResult.cleanPathname;
+		if (middlewareResult.search !== null) url.search = middlewareResult.search;
+	}
+	const scriptNonce = getScriptNonceFromHeaderSources(request.headers, middlewareContext.headers);
+	const postMiddlewareRequestContext = buildPostMwRequestContext(request);
+	const beforeFilesRewrite = await applyRewrite({
+		clearRequestContext: options.clearRequestContext,
+		request,
+		requestContext: postMiddlewareRequestContext,
+		rewrites: options.configRewrites.beforeFiles
+	}, cleanPathname);
+	if (beforeFilesRewrite instanceof Response) return beforeFilesRewrite;
+	if (beforeFilesRewrite) cleanPathname = beforeFilesRewrite;
+	if (cleanPathname === "/_vinext/image") {
+		const imageUrlResult = validateImageUrl(url.searchParams.get("url"), request.url);
+		if (imageUrlResult instanceof Response) return imageUrlResult;
+		return Response.redirect(new URL(imageUrlResult, url.origin).href, 302);
+	}
+	const metadataRouteResponse = await handleMetadataRouteRequest({
+		metadataRoutes: options.metadataRoutes,
+		cleanPathname,
+		makeThenableParams: options.makeThenableParams
+	});
+	if (metadataRouteResponse) return metadataRouteResponse;
+	const publicFileResponse = resolvePublicFileRoute({
+		cleanPathname,
+		middlewareContext,
+		pathname,
+		publicFiles: options.publicFiles,
+		request
+	});
+	if (publicFileResponse) {
+		options.clearRequestContext();
+		return publicFileResponse;
+	}
+	if (isRscRequest) stripRscCacheBustingSearchParam(url);
+	options.setNavigationContext({
+		pathname: cleanPathname,
+		searchParams: url.searchParams,
+		params: {}
+	});
+	const actionId = request.headers.get("x-rsc-action") ?? request.headers.get("next-action");
+	const contentType = request.headers.get("content-type") || "";
+	const progressiveActionResult = await options.handleProgressiveActionRequest({
+		actionId,
+		cleanPathname,
+		contentType,
+		middlewareContext,
+		request
+	});
+	if (progressiveActionResult instanceof Response) return progressiveActionResult;
+	const isProgressiveActionRender = progressiveActionResult?.kind === "form-state";
+	const formState = isProgressiveActionRender ? progressiveActionResult.formState : null;
+	const serverActionResponse = await options.handleServerActionRequest({
+		actionId,
+		cleanPathname,
+		contentType,
+		interceptionContext: interceptionContextHeader,
+		isRscRequest,
+		middlewareContext,
+		mountedSlotsHeader,
+		request,
+		searchParams: url.searchParams
+	});
+	if (serverActionResponse) return serverActionResponse;
+	let match = options.matchRoute(cleanPathname);
+	if (!match || match.route.isDynamic) {
+		const afterFilesRewrite = await applyRewrite({
+			clearRequestContext: options.clearRequestContext,
+			request,
+			requestContext: postMiddlewareRequestContext,
+			rewrites: options.configRewrites.afterFiles
+		}, cleanPathname);
+		if (afterFilesRewrite instanceof Response) return afterFilesRewrite;
+		if (afterFilesRewrite) {
+			cleanPathname = afterFilesRewrite;
+			match = options.matchRoute(cleanPathname);
+		}
+	}
+	if (!match) {
+		const fallbackRewrite = await applyRewrite({
+			clearRequestContext: options.clearRequestContext,
+			request,
+			requestContext: postMiddlewareRequestContext,
+			rewrites: options.configRewrites.fallback
+		}, cleanPathname);
+		if (fallbackRewrite instanceof Response) return fallbackRewrite;
+		if (fallbackRewrite) {
+			cleanPathname = fallbackRewrite;
+			match = options.matchRoute(cleanPathname);
+		}
+	}
+	if (!match) {
+		const pagesFallbackResponse = await options.renderPagesFallback?.({
+			isRscRequest,
+			middlewareContext,
+			request,
+			url
+		});
+		if (pagesFallbackResponse) {
+			options.clearRequestContext();
+			return pagesFallbackResponse;
+		}
+		const renderedNotFoundResponse = await options.renderNotFound({
+			isRscRequest,
+			middlewareContext,
+			request,
+			route: null,
+			scriptNonce
+		});
+		if (renderedNotFoundResponse) return renderedNotFoundResponse;
+		options.clearRequestContext();
+		const headers = new Headers();
+		mergeMiddlewareResponseHeaders(headers, middlewareContext.headers);
+		return notFoundResponse({ headers });
+	}
+	const { route, params } = match;
+	options.setNavigationContext({
+		pathname: cleanPathname,
+		searchParams: url.searchParams,
+		params
+	});
+	setRootParams(pickRootParams(params, route.rootParamNames));
+	if (route.routeHandler) {
+		setCurrentFetchSoftTags(buildPageCacheTags(cleanPathname, [], [...route.routeSegments], "route"));
+		return options.dispatchMatchedRouteHandler({
+			cleanPathname,
+			middlewareContext,
+			params,
+			request,
+			route,
+			searchParams: url.searchParams
+		});
+	}
+	return options.dispatchMatchedPage({
+		cleanPathname,
+		formState,
+		handlerStart,
+		interceptionContext: interceptionContextHeader,
+		isProgressiveActionRender,
+		isRscRequest,
+		middlewareContext,
+		mountedSlotsHeader,
+		params,
+		request,
+		route,
+		scriptNonce,
+		searchParams: url.searchParams,
+		renderMode
+	});
+}
+function createAppRscHandler(options) {
+	return async function appRscHandler(rawRequest, ctx) {
+		await options.ensureInstrumentation?.();
+		const mwCtx = rawRequest.headers.get(VINEXT_MW_CTX_HEADER);
+		const filteredHeaders = filterInternalHeaders(rawRequest.headers);
+		if (mwCtx !== null) filteredHeaders.set(VINEXT_MW_CTX_HEADER, mwCtx);
+		const request = cloneRequestWithHeaders(rawRequest, filteredHeaders);
+		const executionContext = isExecutionContextLike(ctx) ? ctx : getRequestExecutionContext() ?? null;
+		return runWithRequestContext(createRequestContext({
+			headersContext: headersContextFromRequest(request),
+			executionContext,
+			unstableCacheRevalidation: "background"
+		}), () => runWithPrerenderWorkUnit(async () => {
+			ensureFetchPatch();
+			const preMiddlewareRequestContext = requestContextFromRequest(request);
+			let response;
+			try {
+				response = await handleAppRscRequest(options, request, preMiddlewareRequestContext);
+			} catch (error) {
+				throw error;
+			}
+			return finalizeAppRscResponse(response, request, {
+				basePath: options.basePath,
+				configHeaders: options.configHeaders,
+				requestContext: preMiddlewareRequestContext
+			});
+		}, { route: () => new URL(request.url).pathname }));
+	};
+}
+//#endregion
+//#region node_modules/vinext/dist/server/instrumentation.js
+/**
+* Get the registered onRequestError handler (if any).
+*
+* Reads from globalThis so it works across Vite environment boundaries.
+*/
+function getOnRequestErrorHandler() {
+	return globalThis.__VINEXT_onRequestErrorHandler__ ?? null;
+}
+/**
+* Report a request error via the instrumentation handler.
+*
+* No-op if no onRequestError handler is registered.
+*
+* Reads the handler from globalThis so this function works correctly regardless
+* of which environment it is called from.
+*/
+function reportRequestError(error, request, context) {
+	const handler = getOnRequestErrorHandler();
+	if (!handler) return Promise.resolve();
+	const promise = (async () => {
+		try {
+			await handler(error, request, context);
+		} catch (reportErr) {
+			console.error("[vinext] onRequestError handler threw:", reportErr instanceof Error ? reportErr.message : String(reportErr));
+		}
+	})();
+	getRequestExecutionContext()?.waitUntil(promise);
+	return promise;
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-route-handler-runtime.js
+var ROUTE_HANDLER_HTTP_METHODS = [
+	"GET",
+	"HEAD",
+	"POST",
+	"PUT",
+	"DELETE",
+	"PATCH",
+	"OPTIONS"
+];
+/**
+* Checks whether a string is a recognized HTTP method for App Router route
+* handlers. Invalid methods must be rejected with 400 before any auto-OPTIONS
+* or 405 logic runs.
+*
+* @see https://github.com/vercel/next.js/blob/canary/packages/next/src/server/web/http.ts
+*/
+function isValidHTTPMethod(maybeMethod) {
+	return ROUTE_HANDLER_HTTP_METHODS.includes(maybeMethod);
+}
+function collectRouteHandlerMethods(handler) {
+	const methods = ROUTE_HANDLER_HTTP_METHODS.filter((method) => typeof handler[method] === "function");
+	if (methods.includes("GET") && !methods.includes("HEAD")) methods.push("HEAD");
+	return methods;
+}
+function buildRouteHandlerAllowHeader(exportedMethods) {
+	const allow = new Set(exportedMethods);
+	allow.add("OPTIONS");
+	return Array.from(allow).sort().join(", ");
+}
+var _KNOWN_DYNAMIC_APP_ROUTE_HANDLERS_KEY = Symbol.for("vinext.appRouteHandlerRuntime.knownDynamicHandlers");
+var _g$2 = globalThis;
+var knownDynamicAppRouteHandlers = _g$2[_KNOWN_DYNAMIC_APP_ROUTE_HANDLERS_KEY] ??= /* @__PURE__ */ new Set();
+function isKnownDynamicAppRoute(pattern) {
+	return knownDynamicAppRouteHandlers.has(pattern);
+}
+function markKnownDynamicAppRoute(pattern) {
+	knownDynamicAppRouteHandlers.add(pattern);
+}
+function bindMethodIfNeeded(value, target) {
+	return typeof value === "function" ? value.bind(target) : value;
+}
+function buildNextConfig(options) {
+	if (!options.basePath && !options.i18n) return null;
+	return {
+		basePath: options.basePath,
+		i18n: options.i18n ?? void 0
+	};
+}
+function rebuildRequestWithHeaders(input, headers) {
+	const method = input.method;
+	const hasBody = method !== "GET" && method !== "HEAD";
+	const init = {
+		method,
+		headers,
+		cache: input.cache,
+		credentials: input.credentials,
+		integrity: input.integrity,
+		keepalive: input.keepalive,
+		mode: input.mode,
+		redirect: input.redirect,
+		referrer: input.referrer,
+		referrerPolicy: input.referrerPolicy,
+		signal: input.signal
+	};
+	if (hasBody && input.body) {
+		init.body = input.body;
+		init.duplex = "half";
+	}
+	return new Request(input.url, init);
+}
+function cleanStaticUrl(url) {
+	const cleanUrl = new URL(url);
+	cleanUrl.protocol = "http:";
+	cleanUrl.host = "localhost:3000";
+	cleanUrl.username = "";
+	cleanUrl.password = "";
+	cleanUrl.search = "";
+	cleanUrl.hash = "";
+	return cleanUrl.href;
+}
+function readEmptyBodyAsArrayBuffer() {
+	return new Response(null).arrayBuffer();
+}
+function readEmptyBodyAsBlob() {
+	return new Response(null).blob();
+}
+function readEmptyBodyAsFormData() {
+	return new Response(null).formData();
+}
+function readEmptyBodyAsJson() {
+	return new Response(null).json();
+}
+function readEmptyBodyAsText() {
+	return new Response(null).text();
+}
+function createTrackedAppRouteRequest(request, options = {}) {
+	let didAccessDynamicRequest = false;
+	const requestMode = options.requestMode ?? "auto";
+	const nextConfig = buildNextConfig(options);
+	const markDynamicAccess = (access) => {
+		didAccessDynamicRequest = true;
+		options.onDynamicAccess?.(access);
+	};
+	const wrapNextUrl = (nextUrl) => {
+		return new Proxy(nextUrl, { get(target, prop) {
+			switch (prop) {
+				case "search":
+				case "searchParams":
+				case "url":
+				case "href":
+				case "toJSON":
+				case "toString":
+				case "origin":
+					markDynamicAccess(`nextUrl.${String(prop)}`);
+					return bindMethodIfNeeded(Reflect.get(target, prop, target), target);
+				case "clone": return () => wrapNextUrl(target.clone());
+				default: return bindMethodIfNeeded(Reflect.get(target, prop, target), target);
+			}
+		} });
+	};
+	const wrapForceStaticNextUrl = (nextUrl) => {
+		const emptySearchParams = new URLSearchParams();
+		const staticHref = cleanStaticUrl(nextUrl.href);
+		return new Proxy(nextUrl, { get(target, prop) {
+			switch (prop) {
+				case "search": return "";
+				case "searchParams": return emptySearchParams;
+				case "href": return staticHref;
+				case "url": return;
+				case "toJSON":
+				case "toString": return () => staticHref;
+				case "clone": return () => wrapForceStaticNextUrl(target.clone());
+				default: return bindMethodIfNeeded(Reflect.get(target, prop, target), target);
+			}
+		} });
+	};
+	const throwStaticGenerationError = (expression) => {
+		throw new Error(options.staticGenerationErrorMessage?.(expression) ?? `Route handler with \`dynamic = "error"\` used ${expression}.`);
+	};
+	const wrapRequireStaticNextUrl = (nextUrl) => {
+		return new Proxy(nextUrl, { get(target, prop) {
+			switch (prop) {
+				case "search":
+				case "searchParams":
+				case "url":
+				case "href":
+				case "toJSON":
+				case "toString":
+				case "origin": return throwStaticGenerationError(`nextUrl.${String(prop)}`);
+				case "clone": return () => wrapRequireStaticNextUrl(target.clone());
+				default: return bindMethodIfNeeded(Reflect.get(target, prop, target), target);
+			}
+		} });
+	};
+	const wrapRequest = (input) => {
+		const requestHeaders = options.middlewareHeaders ? buildRequestHeadersFromMiddlewareResponse(input.headers, options.middlewareHeaders) : null;
+		const requestWithOverrides = requestHeaders ? rebuildRequestWithHeaders(input, requestHeaders) : input;
+		const nextRequest = requestWithOverrides instanceof NextRequest ? requestWithOverrides : new NextRequest(requestWithOverrides, { nextConfig: nextConfig ?? void 0 });
+		let proxiedNextUrl = null;
+		let forceStaticNextUrl = null;
+		let requireStaticNextUrl = null;
+		let forceStaticHeaders = null;
+		let forceStaticCookies = null;
+		return new Proxy(nextRequest, { get(target, prop) {
+			if (requestMode === "force-static") switch (prop) {
+				case "nextUrl":
+					forceStaticNextUrl ??= wrapForceStaticNextUrl(target.nextUrl);
+					return forceStaticNextUrl;
+				case "headers":
+					forceStaticHeaders ??= sealRequestHeaders(new Headers());
+					return forceStaticHeaders;
+				case "cookies":
+					forceStaticCookies ??= sealRequestCookies(new RequestCookies(new Headers()));
+					return forceStaticCookies;
+				case "url": return cleanStaticUrl(target.nextUrl.href);
+				case "ip":
+				case "geo": return;
+				case "body": return null;
+				case "arrayBuffer": return readEmptyBodyAsArrayBuffer;
+				case "blob": return readEmptyBodyAsBlob;
+				case "formData": return readEmptyBodyAsFormData;
+				case "json": return readEmptyBodyAsJson;
+				case "text": return readEmptyBodyAsText;
+				case "clone": return () => wrapRequest(target.clone());
+				default: return bindMethodIfNeeded(Reflect.get(target, prop, target), target);
+			}
+			if (requestMode === "error") switch (prop) {
+				case "nextUrl":
+					requireStaticNextUrl ??= wrapRequireStaticNextUrl(target.nextUrl);
+					return requireStaticNextUrl;
+				case "headers":
+				case "cookies":
+				case "url":
+				case "ip":
+				case "geo":
+				case "body":
+				case "blob":
+				case "json":
+				case "text":
+				case "arrayBuffer":
+				case "formData": return throwStaticGenerationError(`request.${String(prop)}`);
+				case "clone": return () => wrapRequest(target.clone());
+				default: return bindMethodIfNeeded(Reflect.get(target, prop, target), target);
+			}
+			switch (prop) {
+				case "nextUrl":
+					proxiedNextUrl ??= wrapNextUrl(target.nextUrl);
+					return proxiedNextUrl;
+				case "headers":
+				case "cookies":
+				case "ip":
+				case "geo":
+				case "url":
+				case "body":
+				case "blob":
+				case "json":
+				case "text":
+				case "arrayBuffer":
+				case "formData":
+					markDynamicAccess(`request.${String(prop)}`);
+					return bindMethodIfNeeded(Reflect.get(target, prop, target), target);
+				case "clone": return () => wrapRequest(target.clone());
+				default: return bindMethodIfNeeded(Reflect.get(target, prop, target), target);
+			}
+		} });
+	};
+	return {
+		request: wrapRequest(request),
+		didAccessDynamicRequest() {
+			return didAccessDynamicRequest;
+		}
+	};
+}
+//#endregion
+//#region node_modules/vinext/dist/server/next-error-digest.js
+/**
+* Pulls a stringified `digest` off an unknown thrown value, or returns null
+* when the value is not a digest-bearing error.
+*/
+function getNextErrorDigest(error) {
+	if (!error || typeof error !== "object" || !("digest" in error)) return null;
+	return String(error.digest);
+}
+/**
+* Parses a `NEXT_REDIRECT;<type>;<encodedUrl>;<status>` digest. Returns null
+* when the digest is not a redirect digest or the encoded URL segment is
+* missing. The `url` is decoded with `decodeURIComponent`; the `status`
+* defaults to 307 when omitted; an omitted `type` is left as null so the
+* caller can apply the correct context-sensitive default.
+*/
+function parseNextRedirectDigest(digest) {
+	if (!digest.startsWith("NEXT_REDIRECT;")) return null;
+	const parts = digest.split(";");
+	const encodedUrl = parts[2];
+	if (!encodedUrl) return null;
+	const type = parts[1];
+	return {
+		status: parts[3] ? parseInt(parts[3], 10) : 307,
+		type: type || null,
+		url: decodeURIComponent(encodedUrl)
+	};
+}
+/**
+* Parses a `NEXT_NOT_FOUND` or `NEXT_HTTP_ERROR_FALLBACK;<status>` digest.
+* Returns `{ status: 404 }` for `NEXT_NOT_FOUND` and the parsed status code
+* for the fallback form. Returns null otherwise.
+*/
+function parseNextHttpErrorDigest(digest) {
+	if (digest === "NEXT_NOT_FOUND") return { status: 404 };
+	if (digest.startsWith("NEXT_HTTP_ERROR_FALLBACK;")) return { status: parseInt(digest.split(";")[1], 10) };
+	return null;
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-route-handler-policy.js
+function isPossibleAppRouteActionRequest(request) {
+	if (request.method.toUpperCase() !== "POST") return false;
+	const contentType = request.headers.get("content-type");
+	return request.headers.has("x-rsc-action") || request.headers.has("next-action") || contentType === "application/x-www-form-urlencoded" || contentType?.startsWith("multipart/form-data") === true;
+}
+function getAppRouteHandlerRevalidateSeconds(handler) {
+	const { revalidate } = handler;
+	if (revalidate === false) return Infinity;
+	if (typeof revalidate !== "number" || !Number.isFinite(revalidate) || revalidate < 0) return null;
+	return revalidate;
+}
+function hasAppRouteHandlerDefaultExport(handler) {
+	return typeof handler.default === "function";
+}
+function resolveAppRouteHandlerMethod(handler, method) {
+	const exportedMethods = collectRouteHandlerMethods(handler);
+	const allowHeaderForOptions = buildRouteHandlerAllowHeader(exportedMethods);
+	const shouldAutoRespondToOptions = method === "OPTIONS" && typeof handler.OPTIONS !== "function";
+	let handlerFn = typeof handler[method] === "function" ? handler[method] : void 0;
+	let isAutoHead = false;
+	if (method === "HEAD" && typeof handler.HEAD !== "function" && typeof handler.GET === "function") {
+		handlerFn = handler.GET;
+		isAutoHead = true;
+	}
+	return {
+		allowHeaderForOptions,
+		exportedMethods,
+		handlerFn,
+		isAutoHead,
+		shouldAutoRespondToOptions
+	};
+}
+function shouldReadAppRouteHandlerCache(options) {
+	return options.isProduction && options.revalidateSeconds !== null && options.revalidateSeconds > 0 && options.revalidateSeconds !== Infinity && options.dynamicConfig !== "force-dynamic" && !options.isKnownDynamic && (options.method === "GET" || options.isAutoHead) && typeof options.handlerFn === "function";
+}
+function shouldApplyAppRouteHandlerRevalidateHeader(options) {
+	return options.revalidateSeconds !== null && !options.dynamicUsedInHandler && (options.method === "GET" || options.isAutoHead) && !options.handlerSetCacheControl;
+}
+function shouldWriteAppRouteHandlerCache(options) {
+	return options.isProduction && options.revalidateSeconds !== null && options.revalidateSeconds > 0 && options.revalidateSeconds !== Infinity && options.dynamicConfig !== "force-dynamic" && shouldApplyAppRouteHandlerRevalidateHeader(options);
+}
+function resolveAppRouteHandlerSpecialError(error, requestUrl, options) {
+	if (!(error && typeof error === "object" && "digest" in error)) return null;
+	const digest = String(error.digest);
+	const redirect = parseNextRedirectDigest(digest);
+	if (redirect) return {
+		kind: "redirect",
+		location: new URL(redirect.url, requestUrl).toString(),
+		statusCode: options?.isAction ? 303 : redirect.status
+	};
+	const httpError = parseNextHttpErrorDigest(digest);
+	if (httpError) return {
+		kind: "status",
+		statusCode: httpError.status
+	};
+	return null;
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-static-generation.js
+function getAppPageStaticGenerationErrorMessage() {
+	return "Page with `dynamic = \"error\"` used a dynamic API. This page was expected to be fully static, but headers(), cookies(), or searchParams was accessed. Remove the dynamic API usage or change the dynamic config to \"auto\" or \"force-dynamic\".";
+}
+function getAppRouteStaticGenerationErrorMessage(routePattern, expression) {
+	return `Route ${routePattern ?? "unknown route"} with \`dynamic = "error"\` couldn't be rendered statically because it used ${expression ?? "a dynamic request API"}. See more info here: https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic#dynamic-rendering`;
+}
+function createStaticGenerationHeadersContext(options) {
+	const context = {
+		headers: new Headers(),
+		cookies: /* @__PURE__ */ new Map()
+	};
+	if (options.dynamicConfig === "force-static") context.forceStatic = true;
+	if (options.dynamicConfig === "error") context.accessError = new Error(options.routeKind === "route" ? getAppRouteStaticGenerationErrorMessage(options.routePattern) : getAppPageStaticGenerationErrorMessage());
+	return context;
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-route-handler-response.js
+var APP_ROUTE_REWRITE_ERROR = "NextResponse.rewrite() was used in a app route handler, this is not currently supported. Please remove the invocation to continue.";
+var APP_ROUTE_NEXT_ERROR = "NextResponse.next() was used in a app route handler, this is not supported. See here for more info: https://nextjs.org/docs/messages/next-response-next-in-app-route-handler";
+function hasMiddlewareHeader(headers) {
+	for (const key of headers.keys()) if (key.startsWith("x-middleware-")) return true;
+	return false;
+}
+function buildRouteHandlerCacheControl(cacheState, revalidateSeconds, expireSeconds) {
+	if (revalidateSeconds === 0) return NEVER_CACHE_CONTROL;
+	if (revalidateSeconds === Infinity) return STATIC_CACHE_CONTROL;
+	return buildCachedRevalidateCacheControl(cacheState, revalidateSeconds, expireSeconds);
+}
+function applyRouteHandlerMiddlewareContext(response, middlewareContext) {
+	if (!middlewareContext.headers && middlewareContext.status == null) return response;
+	const responseHeaders = new Headers(response.headers);
+	mergeMiddlewareResponseHeaders(responseHeaders, middlewareContext.headers);
+	return new Response(response.body, {
+		status: middlewareContext.status ?? response.status,
+		statusText: response.statusText,
+		headers: responseHeaders
+	});
+}
+function assertSupportedAppRouteHandlerResponse(response) {
+	if (response.headers.has("x-middleware-rewrite")) throw new Error(APP_ROUTE_REWRITE_ERROR);
+	if (response.headers.get("x-middleware-next") === "1") throw new Error(APP_ROUTE_NEXT_ERROR);
+}
+function buildRouteHandlerCachedResponse(cachedValue, options) {
+	const headers = new Headers();
+	for (const [key, value] of Object.entries(cachedValue.headers)) if (Array.isArray(value)) for (const entry of value) headers.append(key, entry);
+	else headers.set(key, value);
+	headers.set(VINEXT_CACHE_HEADER, options.cacheState);
+	const revalidateSeconds = options.cacheControl?.revalidate ?? options.revalidateSeconds;
+	const expireSeconds = options.cacheControl === void 0 ? void 0 : options.cacheControl.expire ?? options.expireSeconds;
+	headers.set("Cache-Control", buildRouteHandlerCacheControl(options.cacheState, revalidateSeconds, expireSeconds));
+	return new Response(options.isHead ? null : cachedValue.body, {
+		status: cachedValue.status,
+		headers
+	});
+}
+function applyRouteHandlerRevalidateHeader(response, revalidateSeconds, expireSeconds) {
+	response.headers.set("cache-control", buildRouteHandlerCacheControl("HIT", revalidateSeconds, expireSeconds));
+}
+function markRouteHandlerCacheMiss(response) {
+	response.headers.set(VINEXT_CACHE_HEADER, "MISS");
+}
+function getSetCookieName(cookie) {
+	const equalsIndex = cookie.indexOf("=");
+	if (equalsIndex <= 0) return null;
+	return cookie.slice(0, equalsIndex);
+}
+function applyMutableCookieFallbacks(headers, pendingCookies) {
+	if (pendingCookies.length === 0) return;
+	const returnedCookies = headers.getSetCookie();
+	const returnedCookieNames = /* @__PURE__ */ new Set();
+	for (const cookie of returnedCookies) {
+		const name = getSetCookieName(cookie);
+		if (name) returnedCookieNames.add(name);
+	}
+	const fallbackCookies = /* @__PURE__ */ new Map();
+	const unkeyedFallbackCookies = [];
+	for (const cookie of pendingCookies) {
+		const name = getSetCookieName(cookie);
+		if (!name) {
+			unkeyedFallbackCookies.push(cookie);
+			continue;
+		}
+		if (!returnedCookieNames.has(name)) fallbackCookies.set(name, cookie);
+	}
+	headers.delete("Set-Cookie");
+	for (const cookie of unkeyedFallbackCookies) headers.append("Set-Cookie", cookie);
+	for (const cookie of fallbackCookies.values()) headers.append("Set-Cookie", cookie);
+	for (const cookie of returnedCookies) headers.append("Set-Cookie", cookie);
+}
+async function buildAppRouteCacheValue(response) {
+	const body = await response.arrayBuffer();
+	const headers = {};
+	response.headers.forEach((value, key) => {
+		if (key === "set-cookie" || key === "X-Vinext-Cache".toLowerCase() || key === "cache-control" || key.startsWith("x-middleware-")) return;
+		headers[key] = value;
+	});
+	const setCookies = response.headers.getSetCookie?.() ?? [];
+	if (setCookies.length > 0) headers["set-cookie"] = setCookies;
+	return {
+		kind: "APP_ROUTE",
+		body,
+		status: response.status,
+		headers
+	};
+}
+function finalizeRouteHandlerResponse(response, options) {
+	const { pendingCookies, draftCookie, isHead } = options;
+	if (pendingCookies.length === 0 && !draftCookie && !isHead && !hasMiddlewareHeader(response.headers)) return response;
+	const headers = new Headers(response.headers);
+	processMiddlewareHeaders(headers);
+	applyMutableCookieFallbacks(headers, pendingCookies);
+	if (draftCookie) headers.append("Set-Cookie", draftCookie);
+	return new Response(isHead ? null : response.body, {
+		status: response.status,
+		statusText: response.statusText,
+		headers
+	});
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-route-handler-execution.js
+function configureAppRouteStaticGenerationContext(options) {
+	if (options.dynamicConfig === "force-static" || options.dynamicConfig === "error") {
+		setHeadersContext(createStaticGenerationHeadersContext({
+			dynamicConfig: options.dynamicConfig,
+			routeKind: "route",
+			routePattern: options.routePattern
+		}));
+		options.setHeadersAccessPhase?.("route-handler");
+	}
+}
+async function runAppRouteHandler(options) {
+	options.consumeDynamicUsage();
+	configureAppRouteStaticGenerationContext(options);
+	const trackedRequest = createTrackedAppRouteRequest(options.request, {
+		basePath: options.basePath,
+		i18n: options.i18n,
+		middlewareHeaders: options.middlewareRequestHeaders,
+		onDynamicAccess() {
+			options.markDynamicUsage();
+		},
+		requestMode: options.dynamicConfig === "force-static" || options.dynamicConfig === "error" ? options.dynamicConfig : "auto",
+		staticGenerationErrorMessage(expression) {
+			return getAppRouteStaticGenerationErrorMessage(options.routePattern, expression);
+		}
+	});
+	const response = await options.handlerFn(trackedRequest.request, { params: options.params });
+	return {
+		dynamicUsedInHandler: options.consumeDynamicUsage(),
+		response
+	};
+}
+async function executeAppRouteHandler(options) {
+	const previousHeadersPhase = options.setHeadersAccessPhase("route-handler");
+	try {
+		const { dynamicUsedInHandler, response } = await runAppRouteHandler({
+			...options,
+			dynamicConfig: options.handler.dynamic
+		});
+		assertSupportedAppRouteHandlerResponse(response);
+		const handlerSetCacheControl = response.headers.has("cache-control");
+		if (dynamicUsedInHandler) markKnownDynamicAppRoute(options.routePattern);
+		if (shouldApplyAppRouteHandlerRevalidateHeader({
+			dynamicUsedInHandler,
+			handlerSetCacheControl,
+			isAutoHead: options.isAutoHead,
+			method: options.method,
+			revalidateSeconds: options.revalidateSeconds
+		})) {
+			const revalidateSeconds = options.revalidateSeconds;
+			if (revalidateSeconds == null) throw new Error("Expected route handler revalidate seconds");
+			applyRouteHandlerRevalidateHeader(response, revalidateSeconds, options.expireSeconds);
+		}
+		if (shouldWriteAppRouteHandlerCache({
+			dynamicConfig: options.handler.dynamic,
+			dynamicUsedInHandler,
+			handlerSetCacheControl,
+			isAutoHead: options.isAutoHead,
+			isProduction: options.isProduction,
+			method: options.method,
+			revalidateSeconds: options.revalidateSeconds
+		})) {
+			markRouteHandlerCacheMiss(response);
+			const routeClone = response.clone();
+			const routeKey = options.isrRouteKey(options.cleanPathname);
+			const revalidateSeconds = options.revalidateSeconds;
+			if (revalidateSeconds == null) throw new Error("Expected route handler cache revalidate seconds");
+			const routeTags = options.buildPageCacheTags(options.cleanPathname, options.getCollectedFetchTags());
+			const routeWritePromise = (async () => {
+				try {
+					const routeCacheValue = await buildAppRouteCacheValue(routeClone);
+					await options.isrSet(routeKey, routeCacheValue, revalidateSeconds, routeTags, options.expireSeconds);
+					options.isrDebug?.("route cache written", routeKey);
+				} catch (cacheErr) {
+					console.error("[vinext] ISR route cache write error:", cacheErr);
+				}
+			})();
+			options.executionContext?.waitUntil(routeWritePromise);
+		}
+		const pendingCookies = options.getAndClearPendingCookies();
+		const draftCookie = options.getDraftModeCookieHeader();
+		options.clearRequestContext();
+		return applyRouteHandlerMiddlewareContext(finalizeRouteHandlerResponse(response, {
+			pendingCookies,
+			draftCookie,
+			isHead: options.isAutoHead
+		}), options.middlewareContext);
+	} catch (error) {
+		const pendingCookies = options.getAndClearPendingCookies();
+		const draftCookie = options.getDraftModeCookieHeader();
+		const specialError = resolveAppRouteHandlerSpecialError(error, options.request.url, { isAction: isPossibleAppRouteActionRequest(options.request) });
+		options.clearRequestContext();
+		if (specialError) {
+			if (specialError.kind === "redirect") return applyRouteHandlerMiddlewareContext(finalizeRouteHandlerResponse(new Response(null, {
+				status: specialError.statusCode,
+				headers: { Location: specialError.location }
+			}), {
+				pendingCookies,
+				draftCookie,
+				isHead: options.isAutoHead
+			}), options.middlewareContext);
+			return applyRouteHandlerMiddlewareContext(new Response(null, { status: specialError.statusCode }), options.middlewareContext);
+		}
+		console.error("[vinext] Route handler error:", error);
+		options.reportRequestError(error instanceof Error ? error : new Error(String(error)), {
+			path: options.cleanPathname,
+			method: options.request.method,
+			headers: Object.fromEntries(options.request.headers.entries())
+		}, {
+			routerKind: "App Router",
+			routePath: options.routePattern,
+			routeType: "route"
+		});
+		return applyRouteHandlerMiddlewareContext(new Response(null, { status: 500 }), options.middlewareContext);
+	} finally {
+		options.setHeadersAccessPhase(previousHeadersPhase);
+	}
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-route-handler-cache.js
+function getCachedAppRouteValue(entry) {
+	return entry?.value.value && entry.value.value.kind === "APP_ROUTE" ? entry.value.value : null;
+}
+async function readAppRouteHandlerCacheResponse(options) {
+	const routeKey = options.isrRouteKey(options.cleanPathname);
+	try {
+		const cached = await options.isrGet(routeKey);
+		const cachedValue = getCachedAppRouteValue(cached);
+		if (cachedValue && !cached?.isStale) {
+			options.isrDebug?.("HIT (route)", options.cleanPathname);
+			options.clearRequestContext();
+			return applyRouteHandlerMiddlewareContext(buildRouteHandlerCachedResponse(cachedValue, {
+				cacheState: "HIT",
+				cacheControl: cached?.value.cacheControl,
+				expireSeconds: options.expireSeconds,
+				isHead: options.isAutoHead,
+				revalidateSeconds: options.revalidateSeconds
+			}), options.middlewareContext);
+		}
+		if (cached?.isStale && cachedValue) {
+			const staleValue = cachedValue;
+			const revalidateSearchParams = new URLSearchParams(options.revalidateSearchParams);
+			options.scheduleBackgroundRegeneration(routeKey, async () => {
+				await options.runInRevalidationContext(async () => {
+					options.setNavigationContext({
+						pathname: options.cleanPathname,
+						searchParams: revalidateSearchParams,
+						params: options.params
+					});
+					const { dynamicUsedInHandler, response } = await runAppRouteHandler({
+						basePath: options.basePath,
+						consumeDynamicUsage: options.consumeDynamicUsage,
+						dynamicConfig: options.dynamicConfig,
+						handlerFn: options.handlerFn,
+						i18n: options.i18n,
+						markDynamicUsage: options.markDynamicUsage,
+						params: makeThenableParams(options.params),
+						request: new Request(options.requestUrl, { method: "GET" }),
+						routePattern: options.routePattern,
+						setHeadersAccessPhase: options.setHeadersAccessPhase
+					});
+					options.setNavigationContext(null);
+					assertSupportedAppRouteHandlerResponse(response);
+					if (dynamicUsedInHandler) {
+						markKnownDynamicAppRoute(options.routePattern);
+						options.isrDebug?.("route regen skipped (dynamic usage)", options.cleanPathname);
+						return;
+					}
+					const routeTags = options.buildPageCacheTags(options.cleanPathname, options.getCollectedFetchTags());
+					const routeCacheValue = await buildAppRouteCacheValue(response);
+					await options.isrSet(routeKey, routeCacheValue, options.revalidateSeconds, routeTags, options.expireSeconds);
+					options.isrDebug?.("route regen complete", routeKey);
+				});
+			});
+			options.isrDebug?.("STALE (route)", options.cleanPathname);
+			options.clearRequestContext();
+			return applyRouteHandlerMiddlewareContext(buildRouteHandlerCachedResponse(staleValue, {
+				cacheState: "STALE",
+				cacheControl: cached.value.cacheControl,
+				expireSeconds: options.expireSeconds,
+				isHead: options.isAutoHead,
+				revalidateSeconds: options.revalidateSeconds
+			}), options.middlewareContext);
+		}
+	} catch (routeCacheError) {
+		console.error("[vinext] ISR route cache read error:", routeCacheError);
+	}
+	return null;
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-route-handler-dispatch.js
+function isAppRouteHandlerFunction(value) {
+	return typeof value === "function";
+}
+function buildRouteHandlerPageCacheTags(pathname, extraTags, routeSegments) {
+	return buildPageCacheTags(pathname, extraTags, routeSegments, "route");
+}
+async function runInRouteHandlerRevalidationContext(options, renderFn) {
+	await runWithRequestContext(createRequestContext({
+		headersContext: createStaticGenerationHeadersContext({
+			dynamicConfig: options.dynamicConfig,
+			routeKind: "route",
+			routePattern: options.routePattern
+		}),
+		executionContext: getRequestExecutionContext(),
+		unstableCacheRevalidation: "foreground"
+	}), async () => {
+		ensureFetchPatch();
+		setCurrentFetchSoftTags(buildRouteHandlerPageCacheTags(options.cleanPathname, [], options.routeSegments));
+		await renderFn();
+	});
+}
+async function dispatchAppRouteHandler(options) {
+	const { route } = options;
+	const handler = route.routeHandler;
+	const method = options.request.method.toUpperCase();
+	const revalidateSeconds = getAppRouteHandlerRevalidateSeconds(handler);
+	const isDevelopment = options.isDevelopment ?? false;
+	const isProduction = options.isProduction ?? true;
+	if (hasAppRouteHandlerDefaultExport(handler) && isDevelopment) console.error("[vinext] Detected default export in route handler " + route.pattern + ". Export a named export for each HTTP method instead.");
+	if (!isValidHTTPMethod(method)) {
+		options.clearRequestContext();
+		return applyRouteHandlerMiddlewareContext(new Response(null, { status: 400 }), options.middlewareContext);
+	}
+	const { allowHeaderForOptions, handlerFn, isAutoHead, shouldAutoRespondToOptions } = resolveAppRouteHandlerMethod(handler, method);
+	if (shouldAutoRespondToOptions) {
+		options.clearRequestContext();
+		return applyRouteHandlerMiddlewareContext(new Response(null, {
+			status: 204,
+			headers: { Allow: allowHeaderForOptions }
+		}), options.middlewareContext);
+	}
+	const resolvedHandlerFn = isAppRouteHandlerFunction(handlerFn) ? handlerFn : void 0;
+	if (revalidateSeconds !== null && shouldReadAppRouteHandlerCache({
+		dynamicConfig: handler.dynamic,
+		handlerFn: resolvedHandlerFn,
+		isAutoHead,
+		isKnownDynamic: isKnownDynamicAppRoute(route.pattern),
+		isProduction,
+		method,
+		revalidateSeconds
+	}) && resolvedHandlerFn) {
+		const cachedRouteResponse = await readAppRouteHandlerCacheResponse({
+			basePath: options.basePath,
+			buildPageCacheTags(pathname, extraTags) {
+				return buildRouteHandlerPageCacheTags(pathname, extraTags, route.routeSegments);
+			},
+			cleanPathname: options.cleanPathname,
+			clearRequestContext: options.clearRequestContext,
+			consumeDynamicUsage,
+			dynamicConfig: handler.dynamic,
+			getCollectedFetchTags,
+			handlerFn: resolvedHandlerFn,
+			i18n: options.i18n,
+			isAutoHead,
+			isrDebug: options.isrDebug,
+			isrGet: options.isrGet,
+			isrRouteKey: options.isrRouteKey,
+			isrSet: options.isrSet,
+			markDynamicUsage,
+			middlewareContext: options.middlewareContext,
+			params: options.params,
+			requestUrl: options.request.url,
+			revalidateSearchParams: options.searchParams,
+			expireSeconds: options.expireSeconds,
+			revalidateSeconds,
+			routePattern: route.pattern,
+			runInRevalidationContext(renderFn) {
+				return runInRouteHandlerRevalidationContext({
+					cleanPathname: options.cleanPathname,
+					dynamicConfig: handler.dynamic,
+					routePattern: route.pattern,
+					routeSegments: route.routeSegments
+				}, renderFn);
+			},
+			scheduleBackgroundRegeneration(key, renderFn) {
+				options.scheduleBackgroundRegeneration(key, renderFn, {
+					routerKind: "App Router",
+					routePath: route.pattern,
+					routeType: "route"
+				});
+			},
+			setHeadersAccessPhase,
+			setNavigationContext
+		});
+		if (cachedRouteResponse) return cachedRouteResponse;
+	}
+	if (resolvedHandlerFn) return executeAppRouteHandler({
+		basePath: options.basePath,
+		buildPageCacheTags(pathname, extraTags) {
+			return buildRouteHandlerPageCacheTags(pathname, extraTags, route.routeSegments);
+		},
+		cleanPathname: options.cleanPathname,
+		clearRequestContext: options.clearRequestContext,
+		consumeDynamicUsage,
+		executionContext: getRequestExecutionContext(),
+		getAndClearPendingCookies,
+		getCollectedFetchTags,
+		getDraftModeCookieHeader,
+		handler,
+		handlerFn: resolvedHandlerFn,
+		i18n: options.i18n,
+		isAutoHead,
+		isProduction,
+		isrDebug: options.isrDebug,
+		isrRouteKey: options.isrRouteKey,
+		isrSet: options.isrSet,
+		markDynamicUsage,
+		method,
+		middlewareContext: options.middlewareContext,
+		middlewareRequestHeaders: options.middlewareRequestHeaders,
+		params: makeThenableParams(options.params),
+		reportRequestError(error, request, context) {
+			reportRequestError(error, request, context);
+		},
+		request: options.request,
+		expireSeconds: options.expireSeconds,
+		revalidateSeconds,
+		routePattern: route.pattern,
+		setHeadersAccessPhase
+	});
+	options.clearRequestContext();
+	return applyRouteHandlerMiddlewareContext(new Response(null, { status: 405 }), options.middlewareContext);
+}
+//#endregion
+//#region node_modules/vinext/dist/utils/text-stream.js
+/**
+* Helpers for the repeated `new TextDecoder()` + `ReadableStream` chunk-loop
+* pattern used across the server. Each helper handles the streaming-decode
+* boundary correctly (final empty `decoder.decode()` flush so any incomplete
+* trailing UTF-8 sequence is reported).
+*
+* Sites with additional load-bearing behaviour (line-buffered transforms,
+* raw-byte accumulators, mixed string/Uint8Array streams, cache-key body
+* canonicalisation) intentionally still inline their own decoder.
+*/
+/**
+* Drain a UTF-8 byte stream and return the full decoded text. The stream
+* reader is released on both success and failure.
+*/
+async function readStreamAsText(stream) {
+	const reader = stream.getReader();
+	const decoder = new TextDecoder();
+	const chunks = [];
+	try {
+		for (;;) {
+			const { done, value } = await reader.read();
+			if (done) break;
+			chunks.push(decoder.decode(value, { stream: true }));
+		}
+		chunks.push(decoder.decode());
+		return chunks.join("");
+	} finally {
+		reader.releaseLock();
+	}
+}
+/**
+* Drain a UTF-8 byte stream up to `maxBytes` of *raw* input, returning the
+* decoded text. If the raw size limit is exceeded, the reader is cancelled
+* and `onLimitExceeded` is invoked; it MUST throw — its return type is
+* `never` to enforce that. Each caller passes its own error type.
+*
+* The size check is on raw bytes (pre-decode) to bound memory before
+* paying the decoder cost.
+*/
+async function readStreamAsTextWithLimit(stream, maxBytes, onLimitExceeded) {
+	const reader = stream.getReader();
+	const decoder = new TextDecoder();
+	const chunks = [];
+	let totalSize = 0;
+	try {
+		for (;;) {
+			const result = await reader.read();
+			if (result.done) break;
+			totalSize += result.value.byteLength;
+			if (totalSize > maxBytes) {
+				await reader.cancel();
+				onLimitExceeded();
+			}
+			chunks.push(decoder.decode(result.value, { stream: true }));
+		}
+		chunks.push(decoder.decode());
+		return chunks.join("");
+	} finally {
+		reader.releaseLock();
+	}
+}
+//#endregion
+//#region node_modules/vinext/dist/server/server-action-not-found.js
+var SERVER_ACTION_NOT_FOUND_DOCS = "https://nextjs.org/docs/messages/failed-to-find-server-action";
+var SERVER_ACTION_NOT_FOUND_BODY = "Server action not found.";
+function getServerActionNotFoundPrefix(actionId) {
+	return `Failed to find Server Action${actionId ? ` "${actionId}"` : ""}.`;
+}
+function getServerActionNotFoundMessage(actionId) {
+	return `${getServerActionNotFoundPrefix(actionId)} This request might be from an older or newer deployment.\nRead more: ${SERVER_ACTION_NOT_FOUND_DOCS}`;
+}
+function getUnknownMessage(error) {
+	if (error instanceof Error) return error.message;
+	return typeof error === "string" ? error : "";
+}
+function isServerActionNotFoundError(error, actionId) {
+	const message = getUnknownMessage(error);
+	if (!message) return false;
+	if (!actionId) return message.startsWith("Failed to find Server Action");
+	if (message.startsWith(getServerActionNotFoundPrefix(actionId))) return true;
+	return Boolean(actionId && message.includes(`[vite-rsc] invalid server reference '${actionId}'`));
+}
+function createServerActionNotFoundResponse() {
+	return new Response(SERVER_ACTION_NOT_FOUND_BODY, {
+		status: 404,
+		headers: {
+			[NEXTJS_ACTION_NOT_FOUND_HEADER]: "1",
+			"content-type": "text/plain"
+		}
+	});
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-page-params.js
+function getAppPageSegmentParamName(segment) {
+	if (segment.startsWith("[[...") && segment.endsWith("]]") && segment.length > 7) return segment.slice(5, -2);
+	if (segment.startsWith("[...") && segment.endsWith("]") && segment.length > 5) return segment.slice(4, -1);
+	if (segment.startsWith("[") && segment.endsWith("]") && !segment.includes(".") && segment.length > 2) return segment.slice(1, -1);
+	return null;
+}
+function isEmptyOptionalCatchAll(segment, paramValue) {
+	return segment.startsWith("[[...") && Array.isArray(paramValue) && paramValue.length === 0;
+}
+function resolveAppPageSegmentParams(routeSegments, treePosition, matchedParams) {
+	const segmentParams = {};
+	const segments = routeSegments ?? [];
+	const end = Math.min(Math.max(treePosition, 0), segments.length);
+	for (let index = 0; index < end; index++) {
+		const segment = segments[index];
+		const paramName = getAppPageSegmentParamName(segment);
+		if (!paramName) continue;
+		const paramValue = matchedParams[paramName];
+		if (paramValue === void 0 || isEmptyOptionalCatchAll(segment, paramValue)) continue;
+		segmentParams[paramName] = paramValue;
+	}
+	return segmentParams;
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-page-request.js
+function pickRouteParams(matchedParams, routeParamNames) {
+	const params = {};
+	for (const paramName of routeParamNames) {
+		const value = matchedParams[paramName];
+		if (value !== void 0) params[paramName] = value;
+	}
+	return params;
+}
+function collectParentParamNames(routeSegments, boundaryPosition) {
+	const limit = Math.max(0, Math.min(boundaryPosition, routeSegments.length));
+	const names = [];
+	for (const segment of routeSegments.slice(0, limit)) {
+		const name = getAppPageSegmentParamName(segment);
+		if (name && !names.includes(name)) names.push(name);
+	}
+	return names;
+}
+function getLayoutGenerateStaticParamsBoundary(layoutTreePosition) {
+	return (layoutTreePosition ?? 0) - 1;
+}
+function resolveAppPageGenerateStaticParamsSources(options) {
+	const sources = [];
+	options.layouts?.forEach((layout, index) => {
+		if (typeof layout?.generateStaticParams !== "function") return;
+		sources.push({
+			generateStaticParams: layout.generateStaticParams,
+			parentParamNames: collectParentParamNames(options.routeSegments, getLayoutGenerateStaticParamsBoundary(options.layoutTreePositions?.[index]))
+		});
+	});
+	if (typeof options.page?.generateStaticParams === "function") sources.push({
+		generateStaticParams: options.page.generateStaticParams,
+		parentParamNames: collectParentParamNames(options.routeSegments, Math.max(0, options.routeSegments.length - 1))
+	});
+	return sources;
+}
+function areStaticParamsAllowed(params, staticParams) {
+	const paramKeys = Object.keys(params);
+	return staticParams.some((staticParamSet) => paramKeys.every((key) => {
+		const value = params[key];
+		const staticValue = staticParamSet[key];
+		if (staticValue === void 0) return true;
+		if (Array.isArray(value)) return JSON.stringify(value) === JSON.stringify(staticValue);
+		if (typeof staticValue === "string" || typeof staticValue === "number" || typeof staticValue === "boolean") return String(value) === String(staticValue);
+		return JSON.stringify(value) === JSON.stringify(staticValue);
+	}));
+}
+function normalizeGenerateStaticParams(generateStaticParams) {
+	return (Array.isArray(generateStaticParams) ? generateStaticParams : [generateStaticParams]).flatMap((source) => {
+		if (typeof source === "function") return [{
+			generateStaticParams: source,
+			parentParamNames: []
+		}];
+		if (typeof source?.generateStaticParams === "function") return [source];
+		return [];
+	});
+}
+async function validateAppPageDynamicParams(options) {
+	if (!options.enforceStaticParamsOnly || !options.isDynamicRoute) return null;
+	const generateStaticParamsSources = normalizeGenerateStaticParams(options.generateStaticParams);
+	if (generateStaticParamsSources.length === 0) {
+		options.clearRequestContext();
+		return notFoundResponse();
+	}
+	for (const source of generateStaticParamsSources) {
+		const staticParams = await runWithFetchDedupe(() => source.generateStaticParams({ params: pickRouteParams(options.params, source.parentParamNames) }));
+		if (Array.isArray(staticParams) && !areStaticParamsAllowed(options.params, staticParams)) {
+			options.clearRequestContext();
+			return notFoundResponse();
+		}
+	}
+	return null;
+}
+function resolveAppPageInterceptState(options) {
+	if (!options.isRscRequest) return { kind: "none" };
+	const intercept = options.findIntercept(options.cleanPathname);
+	if (!intercept) return { kind: "none" };
+	const sourceRoute = options.getSourceRoute(intercept.sourceRouteIndex);
+	if (!sourceRoute) return { kind: "none" };
+	if (sourceRoute === options.currentRoute) return {
+		kind: "current-route",
+		intercept
+	};
+	return {
+		kind: "source-route",
+		intercept,
+		sourceRoute
+	};
+}
+function resolveAppPageActionRerenderTarget(options) {
+	const interceptState = resolveAppPageInterceptState({
+		cleanPathname: options.cleanPathname,
+		currentRoute: options.currentRoute,
+		findIntercept: options.findIntercept,
+		getRouteParamNames: options.getRouteParamNames,
+		getSourceRoute: options.getSourceRoute,
+		isRscRequest: options.isRscRequest,
+		toInterceptOpts: options.toInterceptOpts
+	});
+	if (interceptState.kind === "source-route") return {
+		interceptOpts: options.toInterceptOpts(interceptState.intercept),
+		navigationParams: interceptState.intercept.matchedParams,
+		params: pickRouteParams(interceptState.intercept.matchedParams, options.getRouteParamNames(interceptState.sourceRoute)),
+		route: interceptState.sourceRoute
+	};
+	return {
+		interceptOpts: interceptState.kind === "current-route" ? options.toInterceptOpts(interceptState.intercept) : void 0,
+		navigationParams: options.currentParams,
+		params: options.currentParams,
+		route: options.currentRoute
+	};
+}
+async function resolveAppPageIntercept(options) {
+	const interceptState = resolveAppPageInterceptState({
+		cleanPathname: options.cleanPathname,
+		currentRoute: options.currentRoute,
+		findIntercept: options.findIntercept,
+		getRouteParamNames: options.getRouteParamNames,
+		getSourceRoute: options.getSourceRoute,
+		isRscRequest: options.isRscRequest,
+		toInterceptOpts: options.toInterceptOpts
+	});
+	if (interceptState.kind === "source-route") {
+		options.setNavigationContext({
+			params: interceptState.intercept.matchedParams,
+			pathname: options.cleanPathname,
+			searchParams: options.searchParams
+		});
+		const interceptElement = await options.buildPageElement(interceptState.sourceRoute, pickRouteParams(interceptState.intercept.matchedParams, options.getRouteParamNames(interceptState.sourceRoute)), options.toInterceptOpts(interceptState.intercept), options.searchParams);
+		return {
+			interceptOpts: void 0,
+			response: await options.renderInterceptResponse(interceptState.sourceRoute, interceptElement)
+		};
+	}
+	return {
+		interceptOpts: interceptState.kind === "current-route" ? options.toInterceptOpts(interceptState.intercept) : void 0,
+		response: null
+	};
+}
+async function buildAppPageElement(options) {
+	try {
+		return {
+			element: await options.buildPageElement(),
+			response: null
+		};
+	} catch (error) {
+		const specialError = options.resolveSpecialError(error);
+		if (specialError) return {
+			element: null,
+			response: await options.renderSpecialError(specialError)
+		};
+		const errorBoundaryResponse = await options.renderErrorBoundaryPage(error);
+		if (errorBoundaryResponse) return {
+			element: null,
+			response: errorBoundaryResponse
+		};
+		throw error;
+	}
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-server-action-execution.js
+/**
+* Matches Next.js' server action argument cap to prevent stack overflow in
+* Function.prototype.apply when decoding hostile action payloads.
+*/
+var SERVER_ACTION_ARGS_LIMIT = 1e3;
+var ACTION_DID_NOT_REVALIDATE = 0;
+var ACTION_DID_REVALIDATE_STATIC_AND_DYNAMIC = 1;
+function setActionRevalidatedHeader(headers, kind) {
+	if (kind === ACTION_DID_NOT_REVALIDATE) return;
+	headers.set(ACTION_REVALIDATED_HEADER, JSON.stringify(kind));
+}
+function resolveActionRevalidationKind(hasModifiedCookies) {
+	const revalidationKind = getAndClearActionRevalidationKind();
+	if (hasModifiedCookies) return ACTION_DID_REVALIDATE_STATIC_AND_DYNAMIC;
+	return revalidationKind;
+}
+function isRequestBodyTooLarge(error) {
+	return error instanceof Error && error.message === "Request body too large";
+}
+function isAppServerActionFunction(action) {
+	return typeof action === "function";
+}
+function normalizeError(error) {
+	return error instanceof Error ? error : new Error(String(error));
+}
+function validateServerActionArgs(args) {
+	if (args.length > SERVER_ACTION_ARGS_LIMIT) throw new Error(`Server Action arguments list is too long (${args.length}). Maximum allowed is ${SERVER_ACTION_ARGS_LIMIT}.`);
+}
+async function readActionBodyWithLimit(request, maxBytes) {
+	if (!request.body) return "";
+	return readStreamAsTextWithLimit(request.body, maxBytes, () => {
+		throw new Error("Request body too large");
+	});
+}
+async function readActionFormDataWithLimit(request, maxBytes) {
+	if (!request.body) return new FormData();
+	const reader = request.body.getReader();
+	const chunks = [];
+	let totalSize = 0;
+	for (;;) {
+		const result = await reader.read();
+		if (result.done) break;
+		totalSize += result.value.byteLength;
+		if (totalSize > maxBytes) {
+			await reader.cancel();
+			throw new Error("Request body too large");
+		}
+		chunks.push(result.value);
+	}
+	const combined = new Uint8Array(totalSize);
+	let offset = 0;
+	for (const chunk of chunks) {
+		combined.set(chunk, offset);
+		offset += chunk.byteLength;
+	}
+	return new Response(combined, { headers: { "Content-Type": request.headers.get("content-type") || "" } }).formData();
+}
+function getActionControlResponse(error) {
+	const digest = getNextErrorDigest(error);
+	if (!digest) return null;
+	const redirect = parseNextRedirectDigest(digest);
+	if (redirect) return {
+		kind: "redirect",
+		url: redirect.url
+	};
+	const httpError = parseNextHttpErrorDigest(digest);
+	if (httpError) {
+		if (!Number.isInteger(httpError.status)) return null;
+		return {
+			kind: "status",
+			statusCode: httpError.status
+		};
+	}
+	return null;
+}
+function getActionRedirect(error) {
+	const digest = getNextErrorDigest(error);
+	if (!digest) return null;
+	const redirect = parseNextRedirectDigest(digest);
+	if (!redirect) return null;
+	return {
+		status: redirect.status,
+		type: redirect.type ?? "push",
+		url: redirect.url
+	};
+}
+function getActionHttpFallbackStatus(error) {
+	const digest = getNextErrorDigest(error);
+	if (!digest) return null;
+	const httpError = parseNextHttpErrorDigest(digest);
+	if (!httpError || !Number.isInteger(httpError.status)) return null;
+	return httpError.status;
+}
+function createServerActionErrorResponse(error, options) {
+	options.getAndClearPendingCookies();
+	console.error("[vinext] Server action error:", error);
+	options.reportRequestError(normalizeError(error), {
+		path: options.cleanPathname,
+		method: options.request.method,
+		headers: Object.fromEntries(options.request.headers.entries())
+	}, {
+		routerKind: "App Router",
+		routePath: options.cleanPathname,
+		routeType: "action"
+	});
+	options.clearRequestContext();
+	return internalServerErrorResponse(void 0);
+}
+function createActionNotFoundResponse(actionId, options) {
+	options.getAndClearPendingCookies();
+	console.warn(getServerActionNotFoundMessage(actionId));
+	options.clearRequestContext();
+	return createServerActionNotFoundResponse();
+}
+function isProgressiveServerActionRequest(request, contentType, actionId) {
+	return request.method.toUpperCase() === "POST" && contentType.startsWith("multipart/form-data") && !actionId;
+}
+async function handleProgressiveServerActionRequest(options) {
+	if (!isProgressiveServerActionRequest(options.request, options.contentType, options.actionId)) return null;
+	const csrfResponse = validateCsrfOrigin(options.request, options.allowedOrigins);
+	if (csrfResponse) return csrfResponse;
+	if (parseInt(options.request.headers.get("content-length") || "0", 10) > options.maxActionBodySize) {
+		options.clearRequestContext();
+		return payloadTooLargeResponse();
+	}
+	try {
+		let body;
+		try {
+			body = await options.readFormDataWithLimit(options.request.clone(), options.maxActionBodySize);
+		} catch (error) {
+			if (isRequestBodyTooLarge(error)) {
+				options.clearRequestContext();
+				return payloadTooLargeResponse();
+			}
+			throw error;
+		}
+		const payloadResponse = await validateServerActionPayload(body);
+		if (payloadResponse) {
+			options.clearRequestContext();
+			return payloadResponse;
+		}
+		const action = await options.decodeAction(body);
+		if (!isAppServerActionFunction(action)) return null;
+		let actionControlResponse = null;
+		let actionResult;
+		const previousHeadersPhase = options.setHeadersAccessPhase("action");
+		try {
+			actionResult = await action();
+		} catch (error) {
+			actionControlResponse = getActionControlResponse(error);
+			if (!actionControlResponse) throw error;
+		} finally {
+			options.setHeadersAccessPhase(previousHeadersPhase);
+		}
+		if (!actionControlResponse) {
+			getAndClearActionRevalidationKind();
+			return {
+				kind: "form-state",
+				formState: await options.decodeFormState(actionResult, body) ?? null
+			};
+		}
+		const actionPendingCookies = options.getAndClearPendingCookies();
+		const actionDraftCookie = options.getDraftModeCookieHeader();
+		const actionRevalidationKind = resolveActionRevalidationKind(actionPendingCookies.length > 0 || Boolean(actionDraftCookie));
+		options.clearRequestContext();
+		const headers = new Headers();
+		if (actionControlResponse.kind === "redirect") headers.set("Location", new URL(actionControlResponse.url, options.request.url).toString());
+		mergeMiddlewareResponseHeaders(headers, options.middlewareHeaders);
+		for (const cookie of actionPendingCookies) headers.append("Set-Cookie", cookie);
+		if (actionDraftCookie) headers.append("Set-Cookie", actionDraftCookie);
+		setActionRevalidatedHeader(headers, actionRevalidationKind);
+		return new Response(null, {
+			status: actionControlResponse.kind === "redirect" ? 303 : actionControlResponse.statusCode,
+			headers
+		});
+	} catch (error) {
+		if (isServerActionNotFoundError(error, null)) return createActionNotFoundResponse(null, {
+			clearRequestContext: options.clearRequestContext,
+			getAndClearPendingCookies: options.getAndClearPendingCookies
+		});
+		getAndClearActionRevalidationKind();
+		options.getAndClearPendingCookies();
+		console.error("[vinext] Server action error:", error);
+		options.reportRequestError(normalizeError(error), {
+			path: options.cleanPathname,
+			method: options.request.method,
+			headers: Object.fromEntries(options.request.headers.entries())
+		}, {
+			routerKind: "App Router",
+			routePath: options.cleanPathname,
+			routeType: "action"
+		});
+		options.clearRequestContext();
+		return internalServerErrorResponse(void 0);
+	}
+}
+async function handleServerActionRscRequest(options) {
+	if (options.request.method.toUpperCase() !== "POST" || !options.actionId) return null;
+	const csrfResponse = validateCsrfOrigin(options.request, options.allowedOrigins);
+	if (csrfResponse) return csrfResponse;
+	if (parseInt(options.request.headers.get("content-length") || "0", 10) > options.maxActionBodySize) {
+		options.clearRequestContext();
+		return payloadTooLargeResponse();
+	}
+	try {
+		let body;
+		try {
+			body = options.contentType.startsWith("multipart/form-data") ? await options.readFormDataWithLimit(options.request, options.maxActionBodySize) : await options.readBodyWithLimit(options.request, options.maxActionBodySize);
+		} catch (error) {
+			if (isRequestBodyTooLarge(error)) {
+				options.clearRequestContext();
+				return payloadTooLargeResponse();
+			}
+			throw error;
+		}
+		const payloadResponse = await validateServerActionPayload(body);
+		if (payloadResponse) {
+			options.clearRequestContext();
+			return payloadResponse;
+		}
+		let action;
+		try {
+			action = await options.loadServerAction(options.actionId);
+		} catch (error) {
+			if (isServerActionNotFoundError(error, options.actionId)) return createActionNotFoundResponse(options.actionId, {
+				clearRequestContext: options.clearRequestContext,
+				getAndClearPendingCookies: options.getAndClearPendingCookies
+			});
+			throw error;
+		}
+		if (!isAppServerActionFunction(action)) return createActionNotFoundResponse(options.actionId, {
+			clearRequestContext: options.clearRequestContext,
+			getAndClearPendingCookies: options.getAndClearPendingCookies
+		});
+		const temporaryReferences = options.createTemporaryReferenceSet();
+		const args = await options.decodeReply(body, { temporaryReferences });
+		let returnValue;
+		let actionRedirect = null;
+		let actionStatus = 200;
+		const previousHeadersPhase = options.setHeadersAccessPhase("action");
+		try {
+			try {
+				validateServerActionArgs(args);
+				returnValue = {
+					ok: true,
+					data: await action.apply(null, args)
+				};
+			} catch (error) {
+				actionRedirect = getActionRedirect(error);
+				if (actionRedirect) returnValue = {
+					ok: true,
+					data: void 0
+				};
+				else {
+					const httpFallbackStatus = getActionHttpFallbackStatus(error);
+					if (httpFallbackStatus !== null) {
+						actionStatus = httpFallbackStatus;
+						returnValue = {
+							ok: false,
+							data: error
+						};
+					} else {
+						console.error("[vinext] Server action error:", error);
+						returnValue = {
+							ok: false,
+							data: options.sanitizeErrorForClient(error)
+						};
+					}
+				}
+			}
+		} finally {
+			options.setHeadersAccessPhase(previousHeadersPhase);
+		}
+		if (actionRedirect) {
+			const actionPendingCookies = options.getAndClearPendingCookies();
+			const actionDraftCookie = options.getDraftModeCookieHeader();
+			const actionRevalidationKind = resolveActionRevalidationKind(actionPendingCookies.length > 0 || Boolean(actionDraftCookie));
+			options.clearRequestContext();
+			const redirectHeaders = new Headers({
+				"Content-Type": "text/x-component; charset=utf-8",
+				Vary: VINEXT_RSC_VARY_HEADER
+			});
+			mergeMiddlewareResponseHeaders(redirectHeaders, options.middlewareHeaders);
+			redirectHeaders.set(ACTION_REDIRECT_HEADER, actionRedirect.url);
+			redirectHeaders.set(ACTION_REDIRECT_TYPE_HEADER, actionRedirect.type);
+			redirectHeaders.set(ACTION_REDIRECT_STATUS_HEADER, String(actionRedirect.status));
+			for (const cookie of actionPendingCookies) redirectHeaders.append("Set-Cookie", cookie);
+			if (actionDraftCookie) redirectHeaders.append("Set-Cookie", actionDraftCookie);
+			setActionRevalidatedHeader(redirectHeaders, actionRevalidationKind);
+			return new Response("", {
+				status: 200,
+				headers: redirectHeaders
+			});
+		}
+		const actionPendingCookies = options.getAndClearPendingCookies();
+		const actionDraftCookie = options.getDraftModeCookieHeader();
+		const actionRevalidationKind = resolveActionRevalidationKind(actionPendingCookies.length > 0 || Boolean(actionDraftCookie));
+		if (actionRevalidationKind === ACTION_DID_NOT_REVALIDATE) {
+			const onRenderError = options.createRscOnErrorHandler(options.request, options.cleanPathname, options.cleanPathname);
+			const rscStream = await options.renderToReadableStream({ returnValue }, {
+				temporaryReferences,
+				onError: onRenderError
+			});
+			options.clearRequestContext();
+			const actionHeaders = new Headers({
+				"Content-Type": "text/x-component; charset=utf-8",
+				Vary: VINEXT_RSC_VARY_HEADER
+			});
+			mergeMiddlewareResponseHeaders(actionHeaders, options.middlewareHeaders);
+			return new Response(rscStream, {
+				status: options.middlewareStatus ?? actionStatus,
+				headers: actionHeaders
+			});
+		}
+		const match = options.matchRoute(options.cleanPathname);
+		let element;
+		let errorPattern = match ? match.route.pattern : options.cleanPathname;
+		if (match) {
+			const { route: actionRoute, params: actionParams } = match;
+			const actionRerenderTarget = resolveAppPageActionRerenderTarget({
+				cleanPathname: options.cleanPathname,
+				currentParams: actionParams,
+				currentRoute: actionRoute,
+				findIntercept: options.findIntercept,
+				getRouteParamNames: options.getRouteParamNames,
+				getSourceRoute: options.getSourceRoute,
+				isRscRequest: options.isRscRequest,
+				toInterceptOpts: options.toInterceptOpts
+			});
+			options.setNavigationContext({
+				pathname: options.cleanPathname,
+				searchParams: options.searchParams,
+				params: actionRerenderTarget.navigationParams
+			});
+			setCurrentFetchCacheMode(options.resolveRouteFetchCacheMode?.(actionRerenderTarget.route) ?? null);
+			element = options.buildPageElement({
+				cleanPathname: options.cleanPathname,
+				interceptOpts: actionRerenderTarget.interceptOpts,
+				isRscRequest: options.isRscRequest,
+				mountedSlotsHeader: options.mountedSlotsHeader,
+				params: actionRerenderTarget.params,
+				request: options.request,
+				route: actionRerenderTarget.route,
+				searchParams: options.searchParams,
+				renderMode: APP_RSC_RENDER_MODE_ACTION_RERENDER_PRESERVE_UI
+			});
+			errorPattern = actionRerenderTarget.route.pattern;
+		} else {
+			const actionRouteId = options.createPayloadRouteId(options.cleanPathname, null);
+			element = options.createNotFoundElement(actionRouteId);
+		}
+		const onRenderError = options.createRscOnErrorHandler(options.request, options.cleanPathname, errorPattern);
+		const rscStream = await options.renderToReadableStream({
+			root: element,
+			returnValue
+		}, {
+			temporaryReferences,
+			onError: onRenderError
+		});
+		const actionHeaders = new Headers({
+			"Content-Type": "text/x-component; charset=utf-8",
+			Vary: VINEXT_RSC_VARY_HEADER
+		});
+		mergeMiddlewareResponseHeaders(actionHeaders, options.middlewareHeaders);
+		setActionRevalidatedHeader(actionHeaders, actionRevalidationKind);
+		const actionResponse = new Response(rscStream, {
+			status: options.middlewareStatus ?? actionStatus,
+			headers: actionHeaders
+		});
+		if (actionPendingCookies.length > 0 || actionDraftCookie) {
+			for (const cookie of actionPendingCookies) actionResponse.headers.append("Set-Cookie", cookie);
+			if (actionDraftCookie) actionResponse.headers.append("Set-Cookie", actionDraftCookie);
+		}
+		return actionResponse;
+	} catch (error) {
+		getAndClearActionRevalidationKind();
+		return createServerActionErrorResponse(error, {
+			cleanPathname: options.cleanPathname,
+			clearRequestContext: options.clearRequestContext,
+			getAndClearPendingCookies: options.getAndClearPendingCookies,
+			reportRequestError: options.reportRequestError,
+			request: options.request
+		});
+	}
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-page-execution.js
+function isPromiseLike(value) {
+	return Boolean(value && (typeof value === "object" || typeof value === "function") && "then" in value && typeof value.then === "function");
+}
+function getAppPageStatusText(statusCode) {
+	return statusCode === 403 ? "Forbidden" : statusCode === 401 ? "Unauthorized" : "Not Found";
+}
+function mergeAppPageSpecialErrorHeaders(response, middlewareContext) {
+	const headers = new Headers(response.headers);
+	mergeMiddlewareResponseHeaders(headers, middlewareContext?.headers ?? null);
+	return new Response(response.body, {
+		headers,
+		status: response.status,
+		statusText: response.statusText
+	});
+}
+function resolveAppPageSpecialError(error) {
+	if (!(error && typeof error === "object" && "digest" in error)) return null;
+	const digest = String(error.digest);
+	const redirect = parseNextRedirectDigest(digest);
+	if (redirect) return {
+		kind: "redirect",
+		location: redirect.url,
+		statusCode: redirect.status
+	};
+	const httpError = parseNextHttpErrorDigest(digest);
+	if (httpError) return {
+		kind: "http-access-fallback",
+		statusCode: httpError.status
+	};
+	return null;
+}
+/**
+* Resolves a redirect() target against the request URL and prepends the
+* configured basePath when the target is an app-internal absolute path.
+*
+* Mirrors Next.js's `addPathPrefix(getURLFromRedirectError(err), basePath)`
+* in `app-render.tsx`: a `redirect("/about")` call from a page mounted at
+* `/blog` (basePath) produces `Location: /blog/about`.
+*
+* Skips prefixing when:
+*  - basePath is unset / empty
+*  - the target is a full URL pointing at a different origin (external redirect)
+*  - the target already starts with the basePath (caller did the work themselves)
+*/
+function applyAppPageRedirectBasePath(location, requestUrl, basePath) {
+	const resolved = new URL(location, requestUrl);
+	const requestOrigin = new URL(requestUrl).origin;
+	if (!basePath || resolved.origin !== requestOrigin) return resolved.toString();
+	if (hasBasePath(resolved.pathname, basePath)) return resolved.toString();
+	resolved.pathname = resolved.pathname === "/" ? basePath : `${basePath}${resolved.pathname}`;
+	return resolved.toString();
+}
+async function buildAppPageSpecialErrorResponse(options) {
+	if (options.specialError.kind === "redirect") {
+		options.clearRequestContext();
+		const prefixedLocation = applyAppPageRedirectBasePath(options.specialError.location, options.request.url, options.basePath);
+		const location = options.isRscRequest ? await createRscRedirectLocation(prefixedLocation, options.request) : prefixedLocation;
+		const headers = new Headers({ Location: location });
+		mergeMiddlewareResponseHeaders(headers, options.middlewareContext?.headers ?? null);
+		const pendingCookies = options.getAndClearPendingCookies?.() ?? [];
+		for (const cookie of pendingCookies) headers.append("Set-Cookie", cookie);
+		return new Response(null, {
+			headers,
+			status: options.specialError.statusCode
+		});
+	}
+	if (options.renderFallbackPage) {
+		const fallbackResponse = await options.renderFallbackPage(options.specialError.statusCode);
+		if (fallbackResponse) return mergeAppPageSpecialErrorHeaders(fallbackResponse, options.middlewareContext);
+	}
+	options.clearRequestContext();
+	return mergeAppPageSpecialErrorHeaders(new Response(getAppPageStatusText(options.specialError.statusCode), { status: options.specialError.statusCode }), options.middlewareContext);
+}
+/** See `LayoutFlags` type docblock in app-elements.ts for lifecycle. */
+async function probeAppPageLayouts(options) {
+	const layoutFlags = {};
+	const cls = options.classification ?? null;
+	return {
+		response: await options.runWithSuppressedHookWarning(async () => {
+			for (let layoutIndex = options.layoutCount - 1; layoutIndex >= 0; layoutIndex--) {
+				const buildTimeResult = cls?.buildTimeClassifications?.get(layoutIndex);
+				if (cls && buildTimeResult) {
+					layoutFlags[cls.getLayoutId(layoutIndex)] = buildTimeResult === "static" ? "s" : "d";
+					if (cls.debugClassification) cls.debugClassification(cls.getLayoutId(layoutIndex), cls.buildTimeReasons?.get(layoutIndex) ?? { layer: "no-classifier" });
+					const errorResponse = await probeLayoutForErrors(options, layoutIndex);
+					if (errorResponse) return errorResponse;
+					continue;
+				}
+				if (cls) {
+					try {
+						const { dynamicDetected } = await cls.runWithIsolatedDynamicScope(() => options.probeLayoutAt(layoutIndex));
+						layoutFlags[cls.getLayoutId(layoutIndex)] = dynamicDetected ? "d" : "s";
+						if (cls.debugClassification) cls.debugClassification(cls.getLayoutId(layoutIndex), {
+							layer: "runtime-probe",
+							outcome: dynamicDetected ? "dynamic" : "static"
+						});
+					} catch (error) {
+						layoutFlags[cls.getLayoutId(layoutIndex)] = "d";
+						if (cls.debugClassification) cls.debugClassification(cls.getLayoutId(layoutIndex), {
+							layer: "runtime-probe",
+							outcome: "dynamic",
+							error: error instanceof Error ? error.message : String(error)
+						});
+						const errorResponse = await options.onLayoutError(error, layoutIndex);
+						if (errorResponse) return errorResponse;
+					}
+					continue;
+				}
+				const errorResponse = await probeLayoutForErrors(options, layoutIndex);
+				if (errorResponse) return errorResponse;
+			}
+			return null;
+		}),
+		layoutFlags
+	};
+}
+async function probeLayoutForErrors(options, layoutIndex) {
+	try {
+		const layoutResult = options.probeLayoutAt(layoutIndex);
+		if (isPromiseLike(layoutResult)) await layoutResult;
+	} catch (error) {
+		return options.onLayoutError(error, layoutIndex);
+	}
+	return null;
+}
+async function probeAppPageComponent(options) {
+	return options.runWithSuppressedHookWarning(async () => {
+		try {
+			const pageResult = options.probePage();
+			if (isPromiseLike(pageResult)) if (options.awaitAsyncResult) await pageResult;
+			else Promise.resolve(pageResult).catch(() => {});
+		} catch (error) {
+			return options.onError(error);
+		}
+		return null;
+	});
+}
+async function readAppPageBinaryStream(stream) {
+	const reader = stream.getReader();
+	const chunks = [];
+	let totalLength = 0;
+	for (;;) {
+		const { done, value } = await reader.read();
+		if (done) break;
+		chunks.push(value);
+		totalLength += value.byteLength;
+	}
+	const buffer = new Uint8Array(totalLength);
+	let offset = 0;
+	for (const chunk of chunks) {
+		buffer.set(chunk, offset);
+		offset += chunk.byteLength;
+	}
+	return buffer.buffer;
+}
+function teeAppPageRscStreamForCapture(stream, shouldCapture) {
+	if (!shouldCapture) return { ssrStream: stream };
+	const [ssrStream, sideStream] = stream.tee();
+	return {
+		ssrStream,
+		sideStream
+	};
+}
+function buildAppPageFontLinkHeader(preloads) {
+	if (!preloads || preloads.length === 0) return "";
+	return preloads.map((preload) => `<${preload.href}>; rel=preload; as=font; type=${preload.type}; crossorigin`).join(", ");
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-rsc-errors.js
+function hasDigest(error) {
+	return Boolean(error && typeof error === "object" && "digest" in error);
+}
+function getThrownValueMessage(error) {
+	return error instanceof Error ? error.message : String(error);
+}
+function getThrownValueStack(error) {
+	return error instanceof Error ? error.stack || "" : "";
+}
+/**
+* djb2 hash matching Next.js's string-hash package for RSC error digests.
+*/
+function errorDigest(input) {
+	let hash = 5381;
+	for (let i = input.length - 1; i >= 0; i--) hash = hash * 33 ^ input.charCodeAt(i);
+	return (hash >>> 0).toString();
+}
+function sanitizeErrorForClient(error, nodeEnv = "production") {
+	if (resolveAppPageSpecialError(error)) return error;
+	if (nodeEnv !== "production") return error;
+	const sanitized = /* @__PURE__ */ new Error("An error occurred in the Server Components render. The specific message is omitted in production builds to avoid leaking sensitive details. A digest property is included on this error instance which may provide additional details about the nature of the error.");
+	sanitized.digest = errorDigest(getThrownValueMessage(error) + getThrownValueStack(error));
+	return sanitized;
+}
+function createRscOnErrorHandler$1(options) {
+	return (error) => {
+		const nodeEnv = options.nodeEnv ?? "production";
+		if (hasDigest(error)) return String(error.digest);
+		if (nodeEnv !== "production" && error instanceof Error && error.message.includes("Only plain objects, and a few built-ins, can be passed to Client Components")) {
+			console.error("[vinext] RSC serialization error: a non-plain object was passed from a Server Component to a Client Component.\n\nCommon causes:\n  * Passing a module namespace (import * as X) directly as a prop.\n    Unlike Next.js (webpack), Vite produces real ESM module namespace objects\n    which are not serializable. Fix: pass individual values instead,\n    e.g. <Comp value={module.value} />\n  * Passing a class instance (new Foo()) as a prop.\n    Fix: convert to a plain object, e.g. { id: foo.id, name: foo.name }\n  * Passing a Date, Map, or Set. Use .toISOString(), [...map.entries()], etc.\n  * Passing Object.create(null). Use { ...obj } to restore a prototype.\n\nOriginal error:", error.message);
+			return;
+		}
+		if (options.requestInfo && options.errorContext && error) options.reportRequestError(error instanceof Error ? error : new Error(getThrownValueMessage(error)), options.requestInfo, options.errorContext);
+		if (nodeEnv === "production" && error) return errorDigest(getThrownValueMessage(error) + getThrownValueStack(error));
+	};
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-rsc-error-handler.js
+/**
+* Build a per-request RSC error handler that extracts request metadata from
+* the incoming Web `Request`, wires it into a `createRscOnErrorHandler` call,
+* and binds the configured `reportRequestError` reporter.
+*
+* Pure factory: takes all deps explicitly — no closure over module-level state.
+*/
+function createAppRscOnErrorHandler(reportRequestError, request, pathname, routePath) {
+	const requestHeaders = Object.fromEntries(request.headers.entries());
+	const requestInfo = {
+		path: pathname,
+		method: request.method,
+		headers: requestHeaders
+	};
+	return createRscOnErrorHandler$1({
+		errorContext: {
+			routerKind: "App Router",
+			routePath: routePath || pathname,
+			routeType: "render"
+		},
+		reportRequestError,
+		requestInfo
+	});
+}
+//#endregion
+//#region node_modules/vinext/dist/shims/error-boundary.js
+var ErrorBoundary = /* @__PURE__ */ registerClientReference(() => {
+	throw new Error("Unexpectedly client reference export 'ErrorBoundary' is called on server");
+}, "593f344dc510", "ErrorBoundary");
+var ForbiddenBoundary = /* @__PURE__ */ registerClientReference(() => {
+	throw new Error("Unexpectedly client reference export 'ForbiddenBoundary' is called on server");
+}, "593f344dc510", "ForbiddenBoundary");
+var NotFoundBoundary = /* @__PURE__ */ registerClientReference(() => {
+	throw new Error("Unexpectedly client reference export 'NotFoundBoundary' is called on server");
+}, "593f344dc510", "NotFoundBoundary");
+var RedirectBoundary = /* @__PURE__ */ registerClientReference(() => {
+	throw new Error("Unexpectedly client reference export 'RedirectBoundary' is called on server");
+}, "593f344dc510", "RedirectBoundary");
+var UnauthorizedBoundary = /* @__PURE__ */ registerClientReference(() => {
+	throw new Error("Unexpectedly client reference export 'UnauthorizedBoundary' is called on server");
+}, "593f344dc510", "UnauthorizedBoundary");
+//#endregion
+//#region node_modules/vinext/dist/shims/layout-segment-context.js
+/**
+* Layout segment context provider.
+*
+* Must be "use client" so that Vite's RSC bundler renders this component in
+* the SSR/browser environment where React.createContext is available. The RSC
+* entry imports and renders LayoutSegmentProvider directly, but because of the
+* "use client" boundary the actual execution happens on the SSR/client side
+* where the context can be created and consumed by useSelectedLayoutSegment(s).
+*
+* Without "use client", this runs in the RSC environment where
+* React.createContext is undefined, getLayoutSegmentContext() returns null,
+* the provider becomes a no-op, and useSelectedLayoutSegments always returns [].
+*
+* The context is shared with navigation.ts via getLayoutSegmentContext()
+* to avoid creating separate contexts in different modules.
+*/
+/**
+* Wraps children with the layout segment context.
+*
+* Each layout in the App Router tree wraps its children with this provider,
+* passing a map of parallel route key to segment path. The "children" key is
+* always present (the default parallel route). Named parallel slots at this
+* layout level add their own keys.
+*
+* Components inside the provider call useSelectedLayoutSegments(parallelRoutesKey)
+* to read the segments for a specific parallel route.
+*/
+var LayoutSegmentProvider = /* @__PURE__ */ registerClientReference(() => {
+	throw new Error("Unexpectedly client reference export 'LayoutSegmentProvider' is called on server");
+}, "15c18cfaeeff", "LayoutSegmentProvider");
+//#endregion
+//#region node_modules/vinext/dist/shims/slot.js
+/**
+* Holds resolved AppElements (not a Promise). React 19's use(Promise) during
+* hydration triggers "async Client Component" for native Promises that lack
+* React's internal .status property. Storing resolved values sidesteps this.
+*/
+var Children = /* @__PURE__ */ registerClientReference(() => {
+	throw new Error("Unexpectedly client reference export 'Children' is called on server");
+}, "8c0f216c4604", "Children");
+var ParallelSlot = /* @__PURE__ */ registerClientReference(() => {
+	throw new Error("Unexpectedly client reference export 'ParallelSlot' is called on server");
+}, "8c0f216c4604", "ParallelSlot");
+var Slot = /* @__PURE__ */ registerClientReference(() => {
+	throw new Error("Unexpectedly client reference export 'Slot' is called on server");
+}, "8c0f216c4604", "Slot");
+//#endregion
+//#region node_modules/vinext/dist/server/app-render-dependency.js
+function createAppRenderDependency() {
+	let released = false;
+	let resolve;
+	return {
+		promise: new Promise((promiseResolve) => {
+			resolve = promiseResolve;
+		}),
+		release() {
+			if (released) return;
+			released = true;
+			resolve();
+		}
+	};
+}
+function renderAfterAppDependencies(children, dependencies) {
+	if (dependencies.length === 0) return children;
+	async function AwaitAppRenderDependencies() {
+		await Promise.all(dependencies.map((dependency) => dependency.promise));
+		return children;
+	}
+	return /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(AwaitAppRenderDependencies, {});
+}
+function renderWithAppDependencyBarrier(children, dependency) {
+	function ReleaseAppRenderDependency() {
+		dependency.release();
+		return null;
+	}
+	return /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsxs)(import_jsx_runtime_react_server.Fragment, { children: [children, /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(ReleaseAppRenderDependency, {})] });
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-page-segment-state.js
+function isOptionalCatchAllSegment(segment) {
+	return segment.startsWith("[[...") && segment.endsWith("]]") && segment.length > 7;
+}
+function isCatchAllSegment(segment) {
+	return segment.startsWith("[...") && segment.endsWith("]") && segment.length > 5;
+}
+function isDynamicSegment(segment) {
+	return segment.startsWith("[") && segment.endsWith("]") && !segment.includes(".");
+}
+function isRouteGroupSegment(segment) {
+	return segment.startsWith("(") && segment.endsWith(")");
+}
+function formatParamSegmentValue(value) {
+	if (Array.isArray(value)) return value.join("/");
+	return value;
+}
+function readSegmentParam(segment) {
+	if (isOptionalCatchAllSegment(segment)) return {
+		name: segment.slice(5, -2),
+		type: "oc"
+	};
+	if (isCatchAllSegment(segment)) return {
+		name: segment.slice(4, -1),
+		type: "c"
+	};
+	if (isDynamicSegment(segment)) return {
+		name: segment.slice(1, -1),
+		type: "d"
+	};
+	return null;
+}
+function formatSegmentStateParamValue(param, params, fallbackSegment) {
+	const value = params[param.name];
+	if (param.type === "oc" && (value === void 0 || Array.isArray(value) && value.length === 0)) return "";
+	return formatParamSegmentValue(value) ?? fallbackSegment;
+}
+function resolveSingleSegmentStateKey(segment, params) {
+	const param = readSegmentParam(segment);
+	if (!param) return segment;
+	return `${param.name}|${formatSegmentStateParamValue(param, params, segment)}|${param.type}`;
+}
+function resolveAppPageChildSegments(routeSegments, treePosition, params) {
+	const rawSegments = routeSegments.slice(treePosition);
+	const resolvedSegments = [];
+	for (const segment of rawSegments) {
+		if (isOptionalCatchAllSegment(segment)) {
+			const paramValue = params[segment.slice(5, -2)];
+			if (Array.isArray(paramValue) && paramValue.length === 0) continue;
+			const resolvedValue = formatParamSegmentValue(paramValue);
+			if (resolvedValue !== void 0) resolvedSegments.push(resolvedValue);
+			continue;
+		}
+		if (isCatchAllSegment(segment)) {
+			const paramName = segment.slice(4, -1);
+			resolvedSegments.push(formatParamSegmentValue(params[paramName]) ?? segment);
+			continue;
+		}
+		if (isDynamicSegment(segment)) {
+			const paramName = segment.slice(1, -1);
+			resolvedSegments.push(formatParamSegmentValue(params[paramName]) ?? segment);
+			continue;
+		}
+		resolvedSegments.push(segment);
+	}
+	return resolvedSegments;
+}
+function resolveAppPageSegmentStateKey(routeSegments, treePosition, params) {
+	for (const segment of routeSegments.slice(treePosition)) if (!isRouteGroupSegment(segment)) return resolveSingleSegmentStateKey(segment, params);
+	return "";
+}
+function resolveAppPageRouteStateKey(routeSegments, params) {
+	const statePath = [];
+	for (const segment of routeSegments) if (!isRouteGroupSegment(segment)) statePath.push(resolveSingleSegmentStateKey(segment, params));
+	return statePath.length > 0 ? JSON.stringify(statePath) : "";
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-page-route-wiring.js
+function getDefaultExport$1(module) {
+	return module?.default ?? null;
+}
+function getErrorBoundaryExport(module) {
+	return module?.default ?? null;
+}
+function createAppPageTreePath(routeSegments, treePosition) {
+	const treePathSegments = routeSegments?.slice(0, treePosition) ?? [];
+	if (treePathSegments.length === 0) return "/";
+	return `/${treePathSegments.join("/")}`;
+}
+function createAppPageLayoutEntries(route) {
+	return route.layouts.map((layoutModule, index) => {
+		const treePosition = route.layoutTreePositions?.[index] ?? 0;
+		const treePath = createAppPageTreePath(route.routeSegments, treePosition);
+		return {
+			errorModule: route.errorTreePositions ? null : route.errors?.[index] ?? null,
+			forbiddenModule: route.forbiddens?.[index] ?? null,
+			id: AppElementsWire.encodeLayoutId(treePath),
+			layoutModule,
+			notFoundModule: route.notFounds?.[index] ?? null,
+			unauthorizedModule: route.unauthorizeds?.[index] ?? null,
+			treePath,
+			treePosition
+		};
+	});
+}
+function createAppPageTemplateEntries(route) {
+	return (route.templates ?? []).map((templateModule, index) => {
+		const treePosition = route.templateTreePositions?.[index] ?? 0;
+		const treePath = createAppPageTreePath(route.routeSegments, treePosition);
+		return {
+			id: AppElementsWire.encodeTemplateId(treePath),
+			templateModule,
+			treePath,
+			treePosition
+		};
+	});
+}
+function createAppPageErrorEntries(route) {
+	return (route.errorPaths ?? route.errors ?? []).flatMap((errorModule, index) => {
+		if (!errorModule) return [];
+		const treePosition = route.errorTreePositions?.[index];
+		if (treePosition === void 0) return [];
+		return [{
+			errorModule,
+			treePosition
+		}];
+	});
+}
+function createAppPageParallelSlotEntries(layoutIndex, layoutEntries, route, getEffectiveSlotParams) {
+	const parallelSlots = {};
+	for (const [slotKey, slot] of Object.entries(route.slots ?? {})) {
+		const slotName = slot.name;
+		const targetIndex = slot.layoutIndex >= 0 ? slot.layoutIndex : layoutEntries.length - 1;
+		if (targetIndex !== layoutIndex) continue;
+		const treePath = layoutEntries[targetIndex]?.treePath ?? "/";
+		const slotParams = getEffectiveSlotParams(slotKey, slotName);
+		parallelSlots[slotName] = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(LayoutSegmentProvider, {
+			segmentMap: { children: slot.routeSegments ? resolveAppPageChildSegments(slot.routeSegments, 0, slotParams) : [] },
+			children: /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(Slot, { id: AppElementsWire.encodeSlotId(slotName, treePath) })
+		});
+	}
+	return Object.keys(parallelSlots).length > 0 ? parallelSlots : void 0;
+}
+function createAppPageRouteHead(metadata, viewport) {
+	return /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsxs)(import_jsx_runtime_react_server.Fragment, { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("meta", { charSet: "utf-8" }),
+		metadata ? /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(MetadataHead, { metadata }) : null,
+		/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(ViewportHead, { viewport })
+	] });
+}
+function buildAppPageElements(options) {
+	const interceptionContext = options.interceptionContext ?? null;
+	const routeSegments = options.route.routeSegments ?? [];
+	const routeResetKey = resolveAppPageRouteStateKey(routeSegments, options.matchedParams);
+	const routeId = AppElementsWire.encodeRouteId(options.routePath, interceptionContext);
+	const pageId = AppElementsWire.encodePageId(options.routePath, interceptionContext);
+	const layoutEntries = createAppPageLayoutEntries(options.route);
+	const templateEntries = createAppPageTemplateEntries(options.route);
+	const errorEntries = createAppPageErrorEntries(options.route);
+	const layoutEntriesByTreePosition = /* @__PURE__ */ new Map();
+	const templateEntriesByTreePosition = /* @__PURE__ */ new Map();
+	const errorEntriesByTreePosition = /* @__PURE__ */ new Map();
+	for (const layoutEntry of layoutEntries) layoutEntriesByTreePosition.set(layoutEntry.treePosition, layoutEntry);
+	for (const templateEntry of templateEntries) templateEntriesByTreePosition.set(templateEntry.treePosition, templateEntry);
+	for (const errorEntry of errorEntries) errorEntriesByTreePosition.set(errorEntry.treePosition, errorEntry);
+	const layoutIndicesByTreePosition = /* @__PURE__ */ new Map();
+	for (let index = 0; index < layoutEntries.length; index++) layoutIndicesByTreePosition.set(layoutEntries[index].treePosition, index);
+	const layoutDependenciesByIndex = /* @__PURE__ */ new Map();
+	const layoutDependenciesBefore = [];
+	const slotDependenciesByLayoutIndex = [];
+	const templateDependenciesById = /* @__PURE__ */ new Map();
+	const templateDependenciesBeforeById = /* @__PURE__ */ new Map();
+	const pageDependencies = [];
+	const rootLayoutTreePath = layoutEntries[0]?.treePath ?? null;
+	const elements = { ...AppElementsWire.createMetadataEntries({
+		interceptionContext,
+		layoutIds: options.route.ids?.layouts ?? layoutEntries.map((entry) => entry.id),
+		rootLayoutTreePath,
+		routeId
+	}) };
+	const slotNameCounts = /* @__PURE__ */ new Map();
+	for (const slot of Object.values(options.route.slots ?? {})) {
+		const slotName = slot.name;
+		slotNameCounts.set(slotName, (slotNameCounts.get(slotName) ?? 0) + 1);
+	}
+	const orderedTreePositions = Array.from(new Set([
+		...layoutEntries.map((entry) => entry.treePosition),
+		...templateEntries.map((entry) => entry.treePosition),
+		...errorEntries.map((entry) => entry.treePosition)
+	])).sort((left, right) => left - right);
+	const resolveSlotOverride = (slotKey, slotName) => {
+		const overrideByKey = options.slotOverrides?.[slotKey];
+		if (overrideByKey) return overrideByKey;
+		if (slotKey === slotName || (slotNameCounts.get(slotName) ?? 0) === 1) return options.slotOverrides?.[slotName];
+	};
+	const getEffectiveSlotParams = (slotKey, slotName) => resolveSlotOverride(slotKey, slotName)?.params ?? options.matchedParams;
+	for (const treePosition of orderedTreePositions) {
+		const layoutIndex = layoutIndicesByTreePosition.get(treePosition);
+		if (layoutIndex !== void 0) {
+			const layoutEntry = layoutEntries[layoutIndex];
+			layoutDependenciesBefore[layoutIndex] = [...pageDependencies];
+			if (getDefaultExport$1(layoutEntry.layoutModule)) {
+				const layoutDependency = createAppRenderDependency();
+				layoutDependenciesByIndex.set(layoutIndex, layoutDependency);
+				pageDependencies.push(layoutDependency);
+			}
+			slotDependenciesByLayoutIndex[layoutIndex] = [...pageDependencies];
+		}
+		const templateEntry = templateEntriesByTreePosition.get(treePosition);
+		if (!templateEntry || !getDefaultExport$1(templateEntry.templateModule)) continue;
+		const templateDependency = createAppRenderDependency();
+		templateDependenciesById.set(templateEntry.id, templateDependency);
+		templateDependenciesBeforeById.set(templateEntry.id, [...pageDependencies]);
+		pageDependencies.push(templateDependency);
+	}
+	elements[pageId] = renderAfterAppDependencies(options.element, pageDependencies);
+	for (const templateEntry of templateEntries) {
+		const templateComponent = getDefaultExport$1(templateEntry.templateModule);
+		if (!templateComponent) continue;
+		const TemplateComponent = templateComponent;
+		const templateDependency = templateDependenciesById.get(templateEntry.id);
+		const templateElement = templateDependency ? renderWithAppDependencyBarrier(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(TemplateComponent, {
+			params: options.matchedParams,
+			children: /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(Children, {})
+		}), templateDependency) : /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(TemplateComponent, {
+			params: options.matchedParams,
+			children: /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(Children, {})
+		});
+		elements[templateEntry.id] = renderAfterAppDependencies(templateElement, templateDependenciesBeforeById.get(templateEntry.id) ?? []);
+	}
+	for (let index = 0; index < layoutEntries.length; index++) {
+		const layoutEntry = layoutEntries[index];
+		const layoutComponent = getDefaultExport$1(layoutEntry.layoutModule);
+		if (!layoutComponent) continue;
+		const layoutProps = { params: options.makeThenableParams(resolveAppPageSegmentParams(options.route.routeSegments, layoutEntry.treePosition, options.matchedParams)) };
+		for (const slot of Object.values(options.route.slots ?? {})) {
+			const slotName = slot.name;
+			if ((slot.layoutIndex >= 0 ? slot.layoutIndex : layoutEntries.length - 1) !== index) continue;
+			layoutProps[slotName] = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(ParallelSlot, { name: slotName });
+		}
+		const LayoutComponent = layoutComponent;
+		const layoutDependency = layoutDependenciesByIndex.get(index);
+		const layoutElement = layoutDependency ? renderWithAppDependencyBarrier(/* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(LayoutComponent, {
+			...layoutProps,
+			children: /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(Children, {})
+		}), layoutDependency) : /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(LayoutComponent, {
+			...layoutProps,
+			children: /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(Children, {})
+		});
+		elements[layoutEntry.id] = renderAfterAppDependencies(layoutElement, layoutDependenciesBefore[index] ?? []);
+	}
+	for (const [slotKey, slot] of Object.entries(options.route.slots ?? {})) {
+		const slotName = slot.name;
+		const targetIndex = slot.layoutIndex >= 0 ? slot.layoutIndex : layoutEntries.length - 1;
+		const treePath = layoutEntries[targetIndex]?.treePath ?? "/";
+		const slotId = AppElementsWire.encodeSlotId(slotName, treePath);
+		const slotOverride = resolveSlotOverride(slotKey, slotName);
+		const slotParams = getEffectiveSlotParams(slotKey, slotName);
+		const slotResetKey = resolveAppPageRouteStateKey(slot.routeSegments ?? [], slotParams);
+		const overrideOrPageComponent = getDefaultExport$1(slotOverride?.pageModule) ?? getDefaultExport$1(slot.page);
+		const defaultComponent = getDefaultExport$1(slot.default);
+		if (!overrideOrPageComponent && defaultComponent && options.isRscRequest && options.mountedSlotIds?.has(slotId)) continue;
+		const slotComponent = overrideOrPageComponent ?? defaultComponent;
+		if (!slotComponent) {
+			elements[slotId] = AppElementsWire.unmatchedSlotValue;
+			continue;
+		}
+		const slotThenableParams = options.makeThenableParams(slotParams);
+		const slotProps = { params: slotThenableParams };
+		if (slotOverride?.props) Object.assign(slotProps, slotOverride.props);
+		let slotElement = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(slotComponent, { ...slotProps });
+		const interceptLayouts = slotOverride?.layoutModules ?? [];
+		for (let layoutIndex = interceptLayouts.length - 1; layoutIndex >= 0; layoutIndex--) {
+			const interceptLayoutComponent = getDefaultExport$1(interceptLayouts[layoutIndex]);
+			if (!interceptLayoutComponent) continue;
+			slotElement = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(interceptLayoutComponent, {
+				params: slotThenableParams,
+				children: slotElement
+			});
+		}
+		const slotLayoutComponent = getDefaultExport$1(slot.layout);
+		if (slotLayoutComponent) slotElement = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(slotLayoutComponent, {
+			params: slotThenableParams,
+			children: slotElement
+		});
+		const slotLoadingComponent = getDefaultExport$1(slot.loading);
+		if (slotLoadingComponent && !shouldSuppressLoadingBoundaries(options.renderMode ?? "navigation")) slotElement = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(import_react_react_server.Suspense, {
+			fallback: /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(slotLoadingComponent, {}),
+			children: slotElement
+		}, slotResetKey);
+		const slotErrorComponent = getErrorBoundaryExport(slot.error);
+		if (slotErrorComponent) slotElement = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(ErrorBoundary, {
+			resetKey: slotResetKey,
+			fallback: slotErrorComponent,
+			children: slotElement
+		});
+		elements[slotId] = renderAfterAppDependencies(slotElement, targetIndex >= 0 ? slotDependenciesByLayoutIndex[targetIndex] ?? [] : []);
+	}
+	let routeChildren = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(LayoutSegmentProvider, {
+		segmentMap: { children: [] },
+		children: /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(Slot, { id: pageId })
+	});
+	routeChildren = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(RedirectBoundary, { children: routeChildren });
+	const routeLoadingComponent = getDefaultExport$1(options.route.loading);
+	if (routeLoadingComponent && !shouldSuppressLoadingBoundaries(options.renderMode ?? "navigation")) routeChildren = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(import_react_react_server.Suspense, {
+		fallback: /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(routeLoadingComponent, {}),
+		children: routeChildren
+	}, routeResetKey);
+	const lastLayoutErrorModule = errorEntries.length > 0 ? errorEntries[errorEntries.length - 1].errorModule : null;
+	const notFoundComponent = getDefaultExport$1(options.route.notFound) ?? getDefaultExport$1(options.rootNotFoundModule);
+	if (notFoundComponent) routeChildren = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(NotFoundBoundary, {
+		resetKey: routeResetKey,
+		fallback: /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(notFoundComponent, {}),
+		children: routeChildren
+	});
+	const forbiddenComponent = getDefaultExport$1(options.route.forbidden) ?? getDefaultExport$1(options.rootForbiddenModule);
+	if (forbiddenComponent) routeChildren = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(ForbiddenBoundary, {
+		resetKey: routeResetKey,
+		fallback: /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(forbiddenComponent, {}),
+		children: routeChildren
+	});
+	const unauthorizedComponent = getDefaultExport$1(options.route.unauthorized) ?? getDefaultExport$1(options.rootUnauthorizedModule);
+	if (unauthorizedComponent) routeChildren = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(UnauthorizedBoundary, {
+		resetKey: routeResetKey,
+		fallback: /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(unauthorizedComponent, {}),
+		children: routeChildren
+	});
+	const pageErrorComponent = getErrorBoundaryExport(options.route.error);
+	if (pageErrorComponent && options.route.error !== lastLayoutErrorModule) routeChildren = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(ErrorBoundary, {
+		resetKey: routeResetKey,
+		fallback: pageErrorComponent,
+		children: routeChildren
+	});
+	for (let index = orderedTreePositions.length - 1; index >= 0; index--) {
+		const treePosition = orderedTreePositions[index];
+		const segmentResetKey = resolveAppPageSegmentStateKey(routeSegments, treePosition, options.matchedParams);
+		let segmentChildren = routeChildren;
+		const layoutEntry = layoutEntriesByTreePosition.get(treePosition);
+		const templateEntry = templateEntriesByTreePosition.get(treePosition);
+		const errorEntry = errorEntriesByTreePosition.get(treePosition);
+		if (layoutEntry) {
+			const layoutNotFoundComponent = getDefaultExport$1(layoutEntry.notFoundModule);
+			if (layoutNotFoundComponent) segmentChildren = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(NotFoundBoundary, {
+				resetKey: segmentResetKey,
+				fallback: /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(layoutNotFoundComponent, {}),
+				children: segmentChildren
+			});
+			const layoutForbiddenComponent = getDefaultExport$1(layoutEntry.forbiddenModule);
+			if (layoutForbiddenComponent) segmentChildren = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(ForbiddenBoundary, {
+				resetKey: segmentResetKey,
+				fallback: /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(layoutForbiddenComponent, {}),
+				children: segmentChildren
+			});
+			const layoutUnauthorizedComponent = getDefaultExport$1(layoutEntry.unauthorizedModule);
+			if (layoutUnauthorizedComponent) segmentChildren = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(UnauthorizedBoundary, {
+				resetKey: segmentResetKey,
+				fallback: /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(layoutUnauthorizedComponent, {}),
+				children: segmentChildren
+			});
+		}
+		const segmentErrorComponent = getErrorBoundaryExport(errorEntry?.errorModule ?? layoutEntry?.errorModule);
+		if (segmentErrorComponent) segmentChildren = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(ErrorBoundary, {
+			resetKey: segmentResetKey,
+			fallback: segmentErrorComponent,
+			children: segmentChildren
+		});
+		if (templateEntry && getDefaultExport$1(templateEntry.templateModule)) segmentChildren = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(Slot, {
+			id: templateEntry.id,
+			children: segmentChildren
+		}, segmentResetKey);
+		if (!layoutEntry) {
+			routeChildren = segmentChildren;
+			continue;
+		}
+		const layoutHasElement = getDefaultExport$1(layoutEntry.layoutModule) !== null;
+		const layoutIndex = layoutIndicesByTreePosition.get(treePosition) ?? -1;
+		const segmentMap = { children: resolveAppPageChildSegments(routeSegments, layoutEntry.treePosition, options.matchedParams) };
+		for (const [slotKey, slot] of Object.entries(options.route.slots ?? {})) {
+			const slotName = slot.name;
+			if ((slot.layoutIndex >= 0 ? slot.layoutIndex : layoutEntries.length - 1) !== layoutIndex) continue;
+			const slotParams = getEffectiveSlotParams(slotKey, slotName);
+			segmentMap[slotName] = slot.routeSegments ? resolveAppPageChildSegments(slot.routeSegments, 0, slotParams) : [];
+		}
+		routeChildren = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(LayoutSegmentProvider, {
+			segmentMap,
+			children: layoutHasElement ? /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(Slot, {
+				id: layoutEntry.id,
+				parallelSlots: createAppPageParallelSlotEntries(layoutIndex, layoutEntries, options.route, getEffectiveSlotParams),
+				children: segmentChildren
+			}) : segmentChildren
+		});
+	}
+	const globalErrorComponent = getErrorBoundaryExport(options.globalErrorModule);
+	if (globalErrorComponent) routeChildren = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(ErrorBoundary, {
+		fallback: globalErrorComponent,
+		children: routeChildren
+	});
+	elements[routeId] = /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsxs)(import_jsx_runtime_react_server.Fragment, { children: [createAppPageRouteHead(options.resolvedMetadata, options.resolvedViewport), routeChildren] });
+	return elements;
+}
+//#endregion
+//#region node_modules/vinext/dist/server/file-based-metadata.js
+function routeApplies(routePath, routePrefix) {
+	if (!routePrefix) return true;
+	return routePath === routePrefix || routePath.startsWith(`${routePrefix}/`);
+}
+function routeScore(routePrefix) {
+	return routePrefix.split("/").filter(Boolean).length;
+}
+function routeSegmentsApply(routeSegments, routePrefixSegments) {
+	if (routePrefixSegments.length > routeSegments.length) return false;
+	for (let index = 0; index < routePrefixSegments.length; index++) if (routeSegments[index] !== routePrefixSegments[index]) return false;
+	return true;
+}
+function removeParallelRouteSegments(routeSegments) {
+	return routeSegments.filter((segment) => !segment.startsWith("@"));
+}
+function routeSegmentsApplyWithParallelSlots(routeSegments, routePrefixSegments) {
+	if (routeSegmentsApply(routeSegments, routePrefixSegments)) return true;
+	const visiblePrefixSegments = removeParallelRouteSegments(routePrefixSegments);
+	return visiblePrefixSegments.length !== routePrefixSegments.length && routeSegmentsApply(routeSegments, visiblePrefixSegments);
+}
+function routeSpecificity(route) {
+	return route.routeSegments?.length ?? routeScore(route.routePrefix);
+}
+function selectDeepestRoutes(metadataRoutes, kind, routePath, params, routeSegments) {
+	if (!metadataRoutes || metadataRoutes.length === 0) return [];
+	let selectedScore = -1;
+	const selectedRoutes = [];
+	for (const route of metadataRoutes) {
+		if ((route.headData?.kind ?? getMetadataRouteKind(route)) !== kind) continue;
+		if (routeSegments && route.routeSegments) {
+			if (!routeSegmentsApplyWithParallelSlots(routeSegments, route.routeSegments)) continue;
+			const currentScore = routeSpecificity(route);
+			if (currentScore > selectedScore) {
+				selectedScore = currentScore;
+				selectedRoutes.length = 0;
+				selectedRoutes.push(route);
+				continue;
+			}
+			if (currentScore === selectedScore) selectedRoutes.push(route);
+			continue;
+		}
+		const routePrefix = route.routePrefix;
+		const resolvedRoutePrefix = fillRoutePatternSegments(routePrefix, params);
+		const normalizedRoutePrefix = routePattern(routePrefix);
+		if (!routeApplies(routePath, routePrefix) && !routeApplies(routePath, normalizedRoutePrefix) && (!resolvedRoutePrefix || !routeApplies(routePath, resolvedRoutePrefix))) continue;
+		const currentScore = routeSpecificity(route);
+		if (currentScore > selectedScore) {
+			selectedScore = currentScore;
+			selectedRoutes.length = 0;
+			selectedRoutes.push(route);
+			continue;
+		}
+		if (currentScore === selectedScore) selectedRoutes.push(route);
+	}
+	return selectedRoutes;
+}
+function isStringOrUrl(value) {
+	return typeof value === "string" || typeof value === "object" && value instanceof URL;
+}
+function normalizeIconDescriptor(value) {
+	if (typeof value !== "object" || value === null || Array.isArray(value)) return null;
+	const urlValue = Reflect.get(value, "url");
+	if (!isStringOrUrl(urlValue)) return null;
+	const entry = { url: urlValue };
+	const sizesValue = Reflect.get(value, "sizes");
+	if (typeof sizesValue === "string") entry.sizes = sizesValue;
+	const typeValue = Reflect.get(value, "type");
+	if (typeof typeValue === "string") entry.type = typeValue;
+	const mediaValue = Reflect.get(value, "media");
+	if (typeof mediaValue === "string") entry.media = mediaValue;
+	return entry;
+}
+function normalizeIconValue(value) {
+	if (isStringOrUrl(value)) return { url: value };
+	return normalizeIconDescriptor(value);
+}
+function normalizeIconValueList(values) {
+	const normalizedEntries = [];
+	for (const value of values) {
+		const normalizedValue = normalizeIconValue(value);
+		if (normalizedValue) normalizedEntries.push(normalizedValue);
+	}
+	return normalizedEntries;
+}
+function normalizeIconEntries(icon) {
+	const normalizedTopLevelValue = normalizeIconValue(icon);
+	if (normalizedTopLevelValue) return [normalizedTopLevelValue];
+	if (Array.isArray(icon)) return normalizeIconValueList(icon);
+	if (!isIconMap(icon)) return [];
+	const iconValue = icon.icon;
+	if (!iconValue) return [];
+	if (Array.isArray(iconValue)) return normalizeIconValueList(iconValue);
+	const normalizedValue = normalizeIconValue(iconValue);
+	return normalizedValue ? [normalizedValue] : [];
+}
+function isIconMap(value) {
+	if (!value || typeof value !== "object" || value instanceof URL || Array.isArray(value)) return false;
+	return normalizeIconValue(value) === null;
+}
+function cloneIconMap(value) {
+	if (!value) return {};
+	if (isIconMap(value)) return { ...value };
+	const iconEntries = normalizeIconEntries(value);
+	return iconEntries.length > 0 ? { icon: iconEntries } : {};
+}
+function buildIconEntry(headData) {
+	if (headData.kind !== "favicon" && headData.kind !== "icon") return null;
+	const iconEntry = { url: headData.href };
+	if (headData.sizes) iconEntry.sizes = headData.sizes;
+	if (headData.type) iconEntry.type = headData.type;
+	return iconEntry;
+}
+function buildAppleEntry(headData) {
+	if (headData.kind !== "apple") return null;
+	const appleEntry = { url: headData.href };
+	if (headData.sizes) appleEntry.sizes = headData.sizes;
+	if (headData.type) appleEntry.type = headData.type;
+	return appleEntry;
+}
+function normalizeAppleEntry(value) {
+	if (isStringOrUrl(value)) return { url: value };
+	return { ...value };
+}
+function buildSocialEntry(headData) {
+	if (headData.kind !== "openGraph" && headData.kind !== "twitter") return null;
+	const socialEntry = { url: headData.href };
+	if (headData.width !== void 0) socialEntry.width = headData.width;
+	if (headData.height !== void 0) socialEntry.height = headData.height;
+	if (headData.alt) socialEntry.alt = headData.alt;
+	if (headData.type) socialEntry.type = headData.type;
+	return socialEntry;
+}
+function normalizeMetadataImageId(route, id) {
+	const normalizedId = String(id);
+	if (!isValidMetadataImageId(normalizedId)) {
+		console.warn(`[vinext] Skipping metadata route ${route.servedUrl} image id "${normalizedId}" because metadata image ids must match /^[a-zA-Z0-9-_.]+$/.`);
+		return null;
+	}
+	return normalizedId;
+}
+function withContentHash(href, contentHash) {
+	if (!contentHash) return href;
+	return `${href}?${contentHash}`;
+}
+function hasOwnProperty(source, key) {
+	return Boolean(source && Object.prototype.hasOwnProperty.call(source, key));
+}
+function hasOpenGraphImages(metadata) {
+	return hasOwnProperty(metadata?.openGraph, "images");
+}
+function hasTwitterImages(metadata) {
+	return hasOwnProperty(metadata?.twitter, "images");
+}
+function hasIcons(metadata) {
+	return Boolean(metadata?.icons);
+}
+function getMetadataSourceForRoute(route, options, fallbackMetadata) {
+	if (!options?.metadataSources) return fallbackMetadata;
+	if (!route.routeSegments) return null;
+	for (let index = options.metadataSources.length - 1; index >= 0; index--) {
+		const source = options.metadataSources[index];
+		if (routeSegmentsApplyWithParallelSlots(source.routeSegments, route.routeSegments)) return source.metadata;
+	}
+	return null;
+}
+function socialRouteHasExplicitImagesAtSource(route, kind, options, fallbackMetadata) {
+	const sourceMetadata = getMetadataSourceForRoute(route, options, fallbackMetadata);
+	return kind === "openGraph" ? hasOpenGraphImages(sourceMetadata) : hasTwitterImages(sourceMetadata);
+}
+function iconRouteHasExplicitIconsAtSource(route, options, fallbackMetadata) {
+	return hasIcons(fallbackMetadata) || hasIcons(getMetadataSourceForRoute(route, options, null));
+}
+function readStringProperty(source, key) {
+	const value = Reflect.get(source, key);
+	return typeof value === "string" ? value : void 0;
+}
+function readNumberProperty(source, key) {
+	const value = Reflect.get(source, key);
+	return typeof value === "number" ? value : void 0;
+}
+function readStringOrNumberProperty(source, key) {
+	const value = Reflect.get(source, key);
+	if (typeof value === "string" || typeof value === "number") return value;
+}
+function readSizeProperty(source) {
+	const sizeValue = Reflect.get(source, "size");
+	if (typeof sizeValue !== "object" || sizeValue === null) return;
+	const width = readNumberProperty(sizeValue, "width");
+	const height = readNumberProperty(sizeValue, "height");
+	if (width === void 0 && height === void 0) return;
+	return {
+		width,
+		height
+	};
+}
+function readDynamicImageMetadataSource(source) {
+	return {
+		id: readStringOrNumberProperty(source, "id"),
+		alt: readStringProperty(source, "alt"),
+		contentType: readStringProperty(source, "contentType"),
+		size: readSizeProperty(source)
+	};
+}
+async function resolveDynamicImageMetadataSources(route, params) {
+	if (!route.module || typeof route.module !== "object") return [];
+	const generateImageMetadata = Reflect.get(route.module, "generateImageMetadata");
+	if (typeof generateImageMetadata !== "function") return [readDynamicImageMetadataSource(route.module)];
+	const result = await generateImageMetadata({ params: makeThenableParams(params) });
+	if (!Array.isArray(result)) return [];
+	const sources = [];
+	for (const entry of result) if (typeof entry === "object" && entry !== null) {
+		const source = readDynamicImageMetadataSource(entry);
+		if (source.id === void 0) {
+			console.warn(`[vinext] Skipping metadata route ${route.servedUrl} image metadata entry because generateImageMetadata entries must include an id.`);
+			continue;
+		}
+		sources.push(source);
+	}
+	return sources;
+}
+async function resolveRouteHeadData(route, params) {
+	if (!route.isDynamic || !route.module || typeof route.module !== "object") return route.headData ? [route.headData] : [];
+	const routeKind = getMetadataImageRouteKind(route);
+	if (!routeKind) return route.headData ? [route.headData] : [];
+	const resolvedUrl = fillRoutePatternSegments(route.servedUrl, params);
+	if (!resolvedUrl) {
+		console.warn(`[vinext] Skipping metadata route ${route.servedUrl} because params did not fill all dynamic segments.`);
+		return [];
+	}
+	const metadataSources = await resolveDynamicImageMetadataSources(route, params);
+	const resolvedHeadData = [];
+	for (const metadataSource of metadataSources) {
+		let hrefBase = resolvedUrl;
+		if (metadataSource.id !== void 0) {
+			const normalizedId = normalizeMetadataImageId(route, metadataSource.id);
+			if (!normalizedId) continue;
+			hrefBase = `${resolvedUrl}/${normalizedId}`;
+		}
+		const href = withContentHash(hrefBase, route.contentHash);
+		const contentType = metadataSource.contentType ?? route.contentType;
+		const size = metadataSource.size;
+		if (routeKind === "icon" || routeKind === "apple") {
+			let sizes;
+			if (size?.width !== void 0 && size.height !== void 0) sizes = `${size.width}x${size.height}`;
+			resolvedHeadData.push({
+				kind: routeKind,
+				href,
+				sizes,
+				type: contentType
+			});
+			continue;
+		}
+		resolvedHeadData.push({
+			kind: routeKind,
+			href,
+			alt: metadataSource.alt,
+			height: size?.height,
+			type: contentType,
+			width: size?.width
+		});
+	}
+	return resolvedHeadData;
+}
+async function resolveHeadDataList(routes, params) {
+	return (await Promise.all(routes.map((route) => resolveRouteHeadData(route, params)))).flat();
+}
+async function applyFileBasedMetadata(metadata, routePath, params, metadataRoutes, options) {
+	if (!metadataRoutes || metadataRoutes.length === 0) return metadata;
+	const routeSegments = options?.routeSegments ?? null;
+	const faviconRoutes = selectDeepestRoutes(metadataRoutes, "favicon", routePath, params, routeSegments);
+	const iconRoutes = selectDeepestRoutes(metadataRoutes, "icon", routePath, params, routeSegments).filter((route) => !iconRouteHasExplicitIconsAtSource(route, options, metadata));
+	const appleRoutes = selectDeepestRoutes(metadataRoutes, "apple", routePath, params, routeSegments).filter((route) => !iconRouteHasExplicitIconsAtSource(route, options, metadata));
+	const openGraphRoutes = selectDeepestRoutes(metadataRoutes, "openGraph", routePath, params, routeSegments).filter((route) => !socialRouteHasExplicitImagesAtSource(route, "openGraph", options, metadata));
+	const twitterRoutes = selectDeepestRoutes(metadataRoutes, "twitter", routePath, params, routeSegments).filter((route) => !socialRouteHasExplicitImagesAtSource(route, "twitter", options, metadata));
+	const manifestRoutes = selectDeepestRoutes(metadataRoutes, "manifest", routePath, params, routeSegments);
+	const [faviconHeadData, iconHeadData, appleHeadData, openGraphHeadData, twitterHeadData, manifestHeadData] = await Promise.all([
+		resolveHeadDataList(faviconRoutes, params),
+		resolveHeadDataList(iconRoutes, params),
+		resolveHeadDataList(appleRoutes, params),
+		resolveHeadDataList(openGraphRoutes, params),
+		resolveHeadDataList(twitterRoutes, params),
+		resolveHeadDataList(manifestRoutes, params)
+	]);
+	if (!metadata && faviconHeadData.length === 0 && iconHeadData.length === 0 && appleHeadData.length === 0 && openGraphHeadData.length === 0 && twitterHeadData.length === 0 && manifestHeadData.length === 0) return null;
+	const nextMetadata = metadata ? { ...metadata } : {};
+	const faviconEntries = [];
+	for (const headData of faviconHeadData) {
+		const iconEntry = buildIconEntry(headData);
+		if (iconEntry) faviconEntries.push(iconEntry);
+	}
+	if (faviconEntries.length > 0) {
+		const nextIcons = cloneIconMap(nextMetadata.icons);
+		const normalizedIcons = normalizeIconEntries(nextIcons);
+		nextIcons.icon = [...faviconEntries, ...normalizedIcons];
+		nextMetadata.icons = nextIcons;
+	}
+	{
+		const nextIcons = cloneIconMap(nextMetadata.icons);
+		const iconEntries = [];
+		for (const headData of iconHeadData) {
+			const iconEntry = buildIconEntry(headData);
+			if (iconEntry) iconEntries.push(iconEntry);
+		}
+		if (iconEntries.length > 0) {
+			const normalizedIcons = normalizeIconEntries(nextIcons);
+			nextIcons.icon = [...iconEntries, ...normalizedIcons];
+		}
+		const appleEntries = [];
+		for (const headData of appleHeadData) {
+			const appleEntry = buildAppleEntry(headData);
+			if (appleEntry) appleEntries.push(appleEntry);
+		}
+		if (appleEntries.length > 0) {
+			const existingApple = nextIcons.apple;
+			const normalizedAppleEntries = [];
+			if (Array.isArray(existingApple)) for (const entry of existingApple) normalizedAppleEntries.push(normalizeAppleEntry(entry));
+			else if (existingApple) normalizedAppleEntries.push(normalizeAppleEntry(existingApple));
+			nextIcons.apple = [...appleEntries, ...normalizedAppleEntries];
+		}
+		if (iconEntries.length > 0 || appleEntries.length > 0) nextMetadata.icons = nextIcons;
+	}
+	if (openGraphHeadData.length > 0) {
+		const socialEntries = [];
+		for (const headData of openGraphHeadData) {
+			const socialEntry = buildSocialEntry(headData);
+			if (socialEntry) socialEntries.push(socialEntry);
+		}
+		if (socialEntries.length > 0) {
+			const nextOpenGraph = nextMetadata.openGraph ? { ...nextMetadata.openGraph } : {};
+			nextOpenGraph.images = socialEntries;
+			nextMetadata.openGraph = nextOpenGraph;
+		}
+	}
+	if (twitterHeadData.length > 0) {
+		const socialEntries = [];
+		for (const headData of twitterHeadData) {
+			const socialEntry = buildSocialEntry(headData);
+			if (socialEntry) socialEntries.push(socialEntry);
+		}
+		if (socialEntries.length > 0) {
+			const nextTwitter = nextMetadata.twitter ? { ...nextMetadata.twitter } : {};
+			nextTwitter.images = socialEntries;
+			nextMetadata.twitter = nextTwitter;
+		}
+	}
+	if (manifestHeadData.length > 0 && manifestHeadData[0].kind === "manifest") nextMetadata.manifest = manifestHeadData[0].href;
+	return nextMetadata;
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-page-head.js
+function resolveActiveParallelRouteHeadInputs(options) {
+	return Object.entries(options.slots ?? {}).map(([slotKey, slot]) => {
+		if (options.interceptSlotKey === slotKey && options.interceptPage) return {
+			layoutModules: options.interceptLayouts ?? [],
+			pageModule: options.interceptPage,
+			params: options.interceptParams ?? options.params,
+			routeSegments: options.routeSegments
+		};
+		return {
+			layoutModules: slot.layout ? [slot.layout] : [],
+			pageModule: slot.page,
+			params: options.params,
+			routeSegments: options.routeSegments
+		};
+	});
+}
+function isPresent(value) {
+	return value !== null && value !== void 0;
+}
+function collectAppPageSearchParams(searchParams) {
+	const pageSearchParams = Object.create(null);
+	let hasSearchParams = false;
+	searchParams?.forEach((value, key) => {
+		hasSearchParams = true;
+		const currentValue = pageSearchParams[key];
+		if (Array.isArray(currentValue)) {
+			pageSearchParams[key] = [...currentValue, value];
+			return;
+		}
+		if (currentValue !== void 0) {
+			pageSearchParams[key] = [currentValue, value];
+			return;
+		}
+		pageSearchParams[key] = value;
+	});
+	return {
+		hasSearchParams,
+		pageSearchParams
+	};
+}
+function createMetadataSources(metadataResults, routeSegments, layoutTreePositions, pageMetadata, includePageSource) {
+	const metadataSources = metadataResults.map((metadata, index) => ({
+		routeSegments: routeSegments.slice(0, layoutTreePositions[index] ?? 0),
+		metadata
+	}));
+	if (includePageSource) metadataSources.push({
+		routeSegments,
+		metadata: pageMetadata
+	});
+	return metadataSources;
+}
+function createLayoutInputs(layoutModules, layoutTreePositions) {
+	const layoutInputs = [];
+	for (let index = 0; index < layoutModules.length; index++) {
+		const layoutModule = layoutModules[index];
+		if (!isPresent(layoutModule)) continue;
+		layoutInputs.push({
+			module: layoutModule,
+			treePosition: layoutTreePositions[index] ?? 0
+		});
+	}
+	return layoutInputs;
+}
+async function resolveLayoutMetadata(layoutInputs, params, routeSegments) {
+	const layoutMetadataPromises = [];
+	let accumulatedMetadata = Promise.resolve({});
+	for (const layoutInput of layoutInputs) {
+		const parentForLayout = accumulatedMetadata;
+		const layoutParams = resolveAppPageSegmentParams(routeSegments, layoutInput.treePosition, params);
+		const metadataPromise = resolveModuleMetadata(layoutInput.module, layoutParams, void 0, parentForLayout);
+		layoutMetadataPromises.push(metadataPromise);
+		metadataPromise.catch(() => null);
+		accumulatedMetadata = metadataPromise.then(async (metadataResult) => {
+			if (metadataResult) return mergeMetadataEntries([{ metadata: await parentForLayout }, { metadata: metadataResult }]);
+			return parentForLayout;
+		});
+		accumulatedMetadata.catch(() => null);
+	}
+	return Promise.all(layoutMetadataPromises);
+}
+async function resolveLayoutViewport(layoutInputs, params, routeSegments) {
+	return Promise.all(layoutInputs.map((layoutInput) => {
+		const layoutParams = resolveAppPageSegmentParams(routeSegments, layoutInput.treePosition, params);
+		return resolveModuleViewport(layoutInput.module, layoutParams);
+	}));
+}
+async function resolveParallelRouteHead(parallelRoute, fallbackParams, fallbackRouteSegments, pageSearchParams, parent) {
+	const params = parallelRoute.params ?? fallbackParams;
+	const routeSegments = parallelRoute.routeSegments ?? fallbackRouteSegments;
+	const metadataResults = [];
+	const viewportResults = [];
+	const metadataSources = [];
+	let accumulatedMetadata = parent;
+	const layoutModules = [...parallelRoute.layoutModules ?? [], parallelRoute.layoutModule].filter(isPresent);
+	const layoutViewportPromises = layoutModules.map((layoutModule) => resolveModuleViewport(layoutModule, params));
+	const pageViewportPromise = parallelRoute.pageModule ? resolveModuleViewport(parallelRoute.pageModule, params) : Promise.resolve(null);
+	for (const layoutViewportPromise of layoutViewportPromises) layoutViewportPromise.catch(() => null);
+	pageViewportPromise.catch(() => null);
+	for (const layoutModule of layoutModules) {
+		const layoutMetadata = await resolveModuleMetadata(layoutModule, params, void 0, accumulatedMetadata);
+		metadataResults.push(layoutMetadata);
+		metadataSources.push({
+			metadata: layoutMetadata,
+			routeSegments
+		});
+		if (layoutMetadata) {
+			accumulatedMetadata = accumulatedMetadata.then(async (parentMetadata) => mergeMetadataEntries([{ metadata: parentMetadata }, { metadata: layoutMetadata }]));
+			accumulatedMetadata.catch(() => null);
+		}
+	}
+	if (parallelRoute.pageModule) {
+		const pageMetadata = await resolveModuleMetadata(parallelRoute.pageModule, params, pageSearchParams, accumulatedMetadata);
+		metadataResults.push(pageMetadata);
+		metadataSources.push({
+			metadata: pageMetadata,
+			routeSegments
+		});
+	}
+	viewportResults.push(...await Promise.all(layoutViewportPromises));
+	const pageViewport = await pageViewportPromise;
+	if (parallelRoute.pageModule) viewportResults.push(pageViewport);
+	return {
+		metadataResults,
+		metadataSources,
+		viewportResults
+	};
+}
+async function resolveAppPageHead(options) {
+	return await runWithFetchDedupe(() => resolveAppPageHeadInner(options));
+}
+async function resolveAppPageHeadInner(options) {
+	const routeSegments = options.routeSegments ?? [];
+	const layoutTreePositions = options.layoutTreePositions ?? [];
+	const layoutInputs = createLayoutInputs(options.layoutModules, layoutTreePositions);
+	const layoutSourcePositions = layoutInputs.map((input) => input.treePosition);
+	const { hasSearchParams, pageSearchParams } = collectAppPageSearchParams(options.searchParams);
+	const layoutMetadataPromise = resolveLayoutMetadata(layoutInputs, options.params, routeSegments);
+	const layoutViewportPromise = resolveLayoutViewport(layoutInputs, options.params, routeSegments);
+	const layoutMetadataResultsForParent = layoutMetadataPromise.then((metadataResults) => metadataResults.filter(isPresent));
+	layoutMetadataResultsForParent.catch(() => null);
+	const pageParentPromise = layoutMetadataResultsForParent.then((metadataResults) => metadataResults.length > 0 ? mergeMetadataEntries(metadataResults.map((metadata) => ({ metadata }))) : {});
+	pageParentPromise.catch(() => null);
+	const pageMetadataPromise = options.pageModule ? resolveModuleMetadata(options.pageModule, options.params, pageSearchParams, pageParentPromise) : Promise.resolve(null);
+	const pageViewportPromise = options.pageModule ? resolveModuleViewport(options.pageModule, options.params) : Promise.resolve(null);
+	const parallelRouteHeadPromise = Promise.all((options.parallelRoutes ?? []).map((parallelRoute) => resolveParallelRouteHead(parallelRoute, options.params, routeSegments, pageSearchParams, pageParentPromise)));
+	const [layoutMetadataResults, layoutViewportResults, pageMetadata, pageViewport, parallelRouteHeads] = await Promise.all([
+		layoutMetadataPromise,
+		layoutViewportPromise,
+		pageMetadataPromise,
+		pageViewportPromise,
+		parallelRouteHeadPromise
+	]);
+	const parallelMetadataResults = parallelRouteHeads.flatMap((head) => head.metadataResults);
+	const parallelViewportResults = parallelRouteHeads.flatMap((head) => head.viewportResults);
+	const parallelMetadataSources = parallelRouteHeads.flatMap((head) => head.metadataSources);
+	const metadataEntries = [
+		...layoutMetadataResults.filter(isPresent).map((metadata) => ({ metadata })),
+		...pageMetadata ? [{
+			isPage: true,
+			metadata: pageMetadata
+		}] : [],
+		...parallelMetadataResults.filter(isPresent).map((metadata) => ({
+			contributesTitle: false,
+			metadata
+		}))
+	];
+	const viewportList = [
+		...layoutViewportResults.filter(isPresent),
+		...pageViewport ? [pageViewport] : [],
+		...parallelViewportResults.filter(isPresent)
+	];
+	const resolvedMetadataBase = metadataEntries.length > 0 ? mergeMetadataEntries(metadataEntries) : null;
+	const metadataSources = createMetadataSources(layoutMetadataResults, routeSegments, layoutSourcePositions, pageMetadata, Boolean(options.pageModule));
+	metadataSources.push(...parallelMetadataSources);
+	let metadata = resolvedMetadataBase;
+	try {
+		metadata = await applyFileBasedMetadata(resolvedMetadataBase, options.routePath, options.params, options.metadataRoutes, {
+			routeSegments,
+			metadataSources
+		});
+	} catch (error) {
+		if (!options.fallbackOnFileMetadataError) throw error;
+		console.error(`[vinext] File-based metadata resolution failed while rendering error boundary for ${options.routePath}:`, error);
+	}
+	if (metadata) metadata = postProcessMetadata(metadata);
+	return {
+		hasSearchParams,
+		metadata,
+		pageSearchParams,
+		viewport: mergeViewport(viewportList)
+	};
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-page-boundary.js
+function resolveAppPageHttpAccessBoundaryComponent(options) {
+	let boundaryModule;
+	if (options.statusCode === 403) boundaryModule = options.routeForbiddenModule ?? options.rootForbiddenModule;
+	else if (options.statusCode === 401) boundaryModule = options.routeUnauthorizedModule ?? options.rootUnauthorizedModule;
+	else boundaryModule = options.routeNotFoundModule ?? options.rootNotFoundModule;
+	return options.getDefaultExport(boundaryModule) ?? null;
+}
+function resolveAppPageParentHttpAccessBoundaryModule(options) {
+	let routeModules = options.routeNotFoundModules;
+	let rootModule = options.rootNotFoundModule;
+	if (options.statusCode === 403) {
+		routeModules = options.routeForbiddenModules;
+		rootModule = options.rootForbiddenModule;
+	} else if (options.statusCode === 401) {
+		routeModules = options.routeUnauthorizedModules;
+		rootModule = options.rootUnauthorizedModule;
+	}
+	if (routeModules) for (let index = options.layoutIndex - 1; index >= 0; index--) {
+		const module = routeModules[index];
+		if (module) return module;
+	}
+	return rootModule ?? null;
+}
+function resolveAppPageErrorBoundary(options) {
+	const pageErrorComponent = options.getDefaultExport(options.pageErrorModule);
+	if (pageErrorComponent) return {
+		component: pageErrorComponent,
+		isGlobalError: false
+	};
+	const segmentErrorModules = options.errorModules ?? options.layoutErrorModules;
+	if (segmentErrorModules) for (let index = segmentErrorModules.length - 1; index >= 0; index--) {
+		const segmentErrorComponent = options.getDefaultExport(segmentErrorModules[index]);
+		if (segmentErrorComponent) return {
+			component: segmentErrorComponent,
+			isGlobalError: false
+		};
+	}
+	const globalErrorComponent = options.getDefaultExport(options.globalErrorModule);
+	return {
+		component: globalErrorComponent ?? null,
+		isGlobalError: Boolean(globalErrorComponent)
+	};
+}
+function wrapAppPageBoundaryElement(options) {
+	let element = options.element;
+	if (!options.skipLayoutWrapping) for (let index = options.layoutModules.length - 1; index >= 0; index--) {
+		const layoutComponent = options.getDefaultExport(options.layoutModules[index]);
+		if (!layoutComponent) continue;
+		const treePosition = options.layoutTreePositions ? options.layoutTreePositions[index] : 0;
+		const asyncParams = options.makeThenableParams(resolveAppPageSegmentParams(options.routeSegments, treePosition, options.matchedParams));
+		element = options.renderLayout(layoutComponent, element, asyncParams);
+		if (options.isRscRequest && options.renderLayoutSegmentProvider && options.resolveChildSegments) {
+			const childSegments = options.resolveChildSegments(options.routeSegments ?? [], treePosition, options.matchedParams);
+			element = options.renderLayoutSegmentProvider({ children: childSegments }, element);
+		}
+	}
+	if (options.isRscRequest && options.includeGlobalErrorBoundary && options.globalErrorComponent) element = options.renderErrorBoundary(options.globalErrorComponent, element);
+	return element;
+}
+async function renderAppPageBoundaryResponse(options) {
+	const rscStream = runWithFetchDedupe(() => options.renderToReadableStream(options.element, { onError: options.createRscOnErrorHandler() }));
+	if (options.isRscRequest) {
+		const headers = new Headers({
+			"Content-Type": "text/x-component; charset=utf-8",
+			Vary: VINEXT_RSC_VARY_HEADER
+		});
+		mergeMiddlewareResponseHeaders(headers, options.middlewareHeaders ?? null);
+		return new Response(rscStream, {
+			status: options.status,
+			headers
+		});
+	}
+	return options.createHtmlResponse(rscStream, options.status);
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-page-stream.js
+function createAppPageFontData(options) {
+	return {
+		links: options.getLinks(),
+		preloads: options.getPreloads(),
+		styles: options.getStyles()
+	};
+}
+async function renderAppPageHtmlStream(options) {
+	const ssrOptions = {
+		formState: options.formState ?? null,
+		scriptNonce: options.scriptNonce,
+		sideStream: options.sideStream,
+		capturedRscDataRef: options.capturedRscDataRef,
+		waitForAllReady: options.waitForAllReady
+	};
+	return options.ssrHandler.handleSsr(options.rscStream, options.navigationContext, options.fontData, ssrOptions);
+}
+/**
+* Wraps a stream so that `onFlush` is called when the last byte has been read
+* by the downstream consumer (i.e. when the HTTP layer finishes draining the
+* response body). This is the correct place to clear per-request context,
+* because the RSC/SSR pipeline is lazy — components execute while the stream
+* is being consumed, not when the stream handle is first obtained.
+*/
+function deferUntilStreamConsumed(stream, onFlush) {
+	let called = false;
+	const once = () => {
+		if (!called) {
+			called = true;
+			onFlush();
+		}
+	};
+	const cleanup = new TransformStream({ flush() {
+		once();
+	} });
+	const reader = stream.pipeThrough(cleanup).getReader();
+	return new ReadableStream({
+		pull(controller) {
+			return reader.read().then(({ done, value }) => {
+				if (done) controller.close();
+				else controller.enqueue(value);
+			}, (error) => {
+				once();
+				controller.error(error);
+			});
+		},
+		cancel(reason) {
+			once();
+			return reader.cancel(reason);
+		}
+	});
+}
+async function renderAppPageHtmlResponse(options) {
+	const safeStream = deferUntilStreamConsumed(await renderAppPageHtmlStream(options), () => {
+		options.clearRequestContext();
+	});
+	const headers = new Headers({
+		"Content-Type": "text/html; charset=utf-8",
+		Vary: VINEXT_RSC_VARY_HEADER
+	});
+	if (options.fontLinkHeader) headers.set("Link", options.fontLinkHeader);
+	mergeMiddlewareResponseHeaders(headers, options.middlewareHeaders ?? null);
+	return new Response(safeStream, {
+		status: options.status,
+		headers
+	});
+}
+async function renderAppPageHtmlStreamWithRecovery(options) {
+	try {
+		const htmlStream = await options.renderHtmlStream();
+		options.onShellRendered?.();
+		return {
+			htmlStream,
+			response: null
+		};
+	} catch (error) {
+		const specialError = options.resolveSpecialError(error);
+		if (specialError) return {
+			htmlStream: null,
+			response: await options.renderSpecialErrorResponse(specialError)
+		};
+		const boundaryResponse = await options.renderErrorBoundaryResponse(error);
+		if (boundaryResponse) return {
+			htmlStream: null,
+			response: boundaryResponse
+		};
+		throw error;
+	}
+}
+function createAppPageRscErrorTracker(baseOnError) {
+	let capturedError = null;
+	let capturedSpecialError = null;
+	return {
+		getCapturedError() {
+			return capturedError;
+		},
+		getCapturedSpecialError() {
+			return capturedSpecialError;
+		},
+		onRenderError(error, requestInfo, errorContext) {
+			if (error && typeof error === "object" && "digest" in error) {
+				if (capturedSpecialError === null) capturedSpecialError = error;
+			} else capturedError = error;
+			return baseOnError(error, requestInfo, errorContext);
+		}
+	};
+}
+function shouldRerenderAppPageWithGlobalError(options) {
+	return Boolean(options.capturedError) && !options.hasLocalBoundary;
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-page-boundary-render.js
+function getDefaultExport(module) {
+	return module?.default ?? null;
+}
+function wrapRenderedBoundaryElement(options) {
+	return wrapAppPageBoundaryElement({
+		element: options.element,
+		getDefaultExport,
+		globalErrorComponent: getDefaultExport(options.globalErrorModule),
+		includeGlobalErrorBoundary: options.includeGlobalErrorBoundary,
+		isRscRequest: options.isRscRequest,
+		layoutModules: options.layoutModules,
+		layoutTreePositions: options.layoutTreePositions,
+		makeThenableParams: options.makeThenableParams,
+		matchedParams: options.matchedParams,
+		renderErrorBoundary(GlobalErrorComponent, children) {
+			return (0, import_react_react_server.createElement)(ErrorBoundary, {
+				fallback: GlobalErrorComponent,
+				children
+			});
+		},
+		renderLayout(LayoutComponent, children, asyncParams) {
+			return (0, import_react_react_server.createElement)(LayoutComponent, {
+				children,
+				params: asyncParams
+			});
+		},
+		renderLayoutSegmentProvider(segmentMap, children) {
+			return (0, import_react_react_server.createElement)(LayoutSegmentProvider, { segmentMap }, children);
+		},
+		resolveChildSegments: options.resolveChildSegments,
+		routeSegments: options.routeSegments ?? [],
+		skipLayoutWrapping: options.skipLayoutWrapping
+	});
+}
+function createAppPageBoundaryLayoutEntries(route, layoutModules) {
+	if (!route || layoutModules.length === 0) return [];
+	return createAppPageLayoutEntries({
+		errors: route.errors,
+		layoutTreePositions: route.layoutTreePositions,
+		layouts: layoutModules,
+		notFounds: null,
+		routeSegments: route.routeSegments
+	});
+}
+function resolveHttpAccessFallbackHeadRouteSegments(route, layoutModules) {
+	if (!route?.routeSegments) return;
+	if (!route.layouts || layoutModules.length >= route.layouts.length) return route.routeSegments;
+	const lastIncludedLayoutIndex = layoutModules.length - 1;
+	if (lastIncludedLayoutIndex < 0) return [];
+	const segmentCount = route.layoutTreePositions?.[lastIncludedLayoutIndex] ?? 0;
+	return route.routeSegments.slice(0, segmentCount);
+}
+function resolveHttpAccessFallbackHeadLayoutTreePositions(route, layoutModules) {
+	if (!route?.layouts || layoutModules.length >= route.layouts.length) return route?.layoutTreePositions;
+	return route.layoutTreePositions?.slice(0, layoutModules.length);
+}
+function createAppPageBoundaryRscPayload(options) {
+	const routeId = AppElementsWire.encodeRouteId(options.pathname, null);
+	const layoutEntries = createAppPageBoundaryLayoutEntries(options.route, options.layoutModules);
+	return {
+		...AppElementsWire.createMetadataEntries({
+			interceptionContext: null,
+			layoutIds: layoutEntries.map((entry) => entry.id),
+			rootLayoutTreePath: layoutEntries[0]?.treePath ?? null,
+			routeId
+		}),
+		[routeId]: options.element
+	};
+}
+async function renderAppPageBoundaryElementResponse(options) {
+	const pathname = new URL(options.requestUrl).pathname;
+	return renderAppPageBoundaryResponse({
+		async createHtmlResponse(rscStream, responseStatus) {
+			const fontData = createAppPageFontData({
+				getLinks: options.getFontLinks,
+				getPreloads: options.getFontPreloads,
+				getStyles: options.getFontStyles
+			});
+			const ssrHandler = await options.loadSsrHandler();
+			return renderAppPageHtmlResponse({
+				clearRequestContext: options.clearRequestContext,
+				fontData,
+				fontLinkHeader: options.buildFontLinkHeader(fontData.preloads),
+				middlewareHeaders: options.middlewareContext.headers,
+				navigationContext: options.getNavigationContext(),
+				rscStream,
+				scriptNonce: options.scriptNonce,
+				ssrHandler,
+				status: responseStatus
+			});
+		},
+		createRscOnErrorHandler() {
+			return options.createRscOnErrorHandler(pathname, options.routePattern ?? pathname);
+		},
+		element: createAppPageBoundaryRscPayload({
+			element: options.element,
+			layoutModules: options.layoutModules,
+			pathname,
+			route: options.route
+		}),
+		isRscRequest: options.isRscRequest,
+		middlewareHeaders: options.middlewareContext.headers,
+		renderToReadableStream: options.renderToReadableStream,
+		status: options.status
+	});
+}
+async function renderAppPageHttpAccessFallback(options) {
+	const boundaryComponent = options.boundaryComponent ?? resolveAppPageHttpAccessBoundaryComponent({
+		getDefaultExport,
+		rootForbiddenModule: options.rootForbiddenModule,
+		rootNotFoundModule: options.rootNotFoundModule,
+		rootUnauthorizedModule: options.rootUnauthorizedModule,
+		routeForbiddenModule: options.route?.forbidden,
+		routeNotFoundModule: options.route?.notFound,
+		routeUnauthorizedModule: options.route?.unauthorized,
+		statusCode: options.statusCode
+	});
+	if (!boundaryComponent) return null;
+	const layoutModules = options.layoutModules ?? options.route?.layouts ?? options.rootLayouts;
+	const routeSegments = resolveHttpAccessFallbackHeadRouteSegments(options.route, layoutModules);
+	const { metadata, viewport } = await resolveAppPageHead({
+		layoutModules,
+		layoutTreePositions: resolveHttpAccessFallbackHeadLayoutTreePositions(options.route, layoutModules),
+		metadataRoutes: options.metadataRoutes,
+		params: options.matchedParams,
+		routePath: options.route?.pattern ?? new URL(options.requestUrl).pathname,
+		routeSegments
+	});
+	const headElements = [(0, import_react_react_server.createElement)("meta", {
+		charSet: "utf-8",
+		key: "charset"
+	}), (0, import_react_react_server.createElement)("meta", {
+		content: "noindex",
+		key: "robots",
+		name: "robots"
+	})];
+	if (metadata) headElements.push((0, import_react_react_server.createElement)(MetadataHead, {
+		key: "metadata",
+		metadata
+	}));
+	headElements.push((0, import_react_react_server.createElement)(ViewportHead, {
+		key: "viewport",
+		viewport
+	}));
+	const element = wrapRenderedBoundaryElement({
+		element: (0, import_react_react_server.createElement)(import_react_react_server.Fragment, null, ...headElements, (0, import_react_react_server.createElement)(boundaryComponent)),
+		globalErrorModule: options.globalErrorModule,
+		includeGlobalErrorBoundary: true,
+		isRscRequest: options.isRscRequest,
+		layoutModules,
+		layoutTreePositions: options.route?.layoutTreePositions,
+		makeThenableParams: options.makeThenableParams,
+		matchedParams: options.matchedParams,
+		resolveChildSegments: options.resolveChildSegments,
+		routeSegments: options.route?.routeSegments
+	});
+	return renderAppPageBoundaryElementResponse({
+		...options,
+		element,
+		layoutModules,
+		route: options.route,
+		routePattern: options.route?.pattern,
+		status: options.statusCode
+	});
+}
+async function renderAppPageErrorBoundary(options) {
+	const errorBoundary = resolveAppPageErrorBoundary({
+		getDefaultExport,
+		errorModules: options.route?.errorPaths,
+		globalErrorModule: options.globalErrorModule,
+		layoutErrorModules: options.route?.errors,
+		pageErrorModule: options.route?.error
+	});
+	if (!errorBoundary.component) return null;
+	const rawError = options.error instanceof Error ? options.error : new Error(String(options.error));
+	rewriteClientHookError(rawError);
+	const errorObject = options.sanitizeErrorForClient(rawError);
+	const matchedParams = options.matchedParams ?? options.route?.params ?? {};
+	const layoutModules = options.route?.layouts ?? options.rootLayouts;
+	const pathname = new URL(options.requestUrl).pathname;
+	const headElements = [(0, import_react_react_server.createElement)("meta", {
+		charSet: "utf-8",
+		key: "charset"
+	})];
+	if (!errorBoundary.isGlobalError) try {
+		const { metadata, viewport } = await resolveAppPageHead({
+			fallbackOnFileMetadataError: true,
+			layoutModules,
+			layoutTreePositions: options.route?.layoutTreePositions,
+			metadataRoutes: options.metadataRoutes,
+			params: matchedParams,
+			routePath: options.route?.pattern ?? pathname,
+			routeSegments: options.route?.routeSegments
+		});
+		if (metadata) headElements.push((0, import_react_react_server.createElement)(MetadataHead, {
+			key: "metadata",
+			metadata
+		}));
+		headElements.push((0, import_react_react_server.createElement)(ViewportHead, {
+			key: "viewport",
+			viewport
+		}));
+	} catch (error) {
+		console.error(`[vinext] App page error boundary head resolution failed for ${options.route?.pattern ?? pathname}:`, error);
+	}
+	const element = wrapRenderedBoundaryElement({
+		element: (0, import_react_react_server.createElement)(import_react_react_server.Fragment, null, ...headElements, (0, import_react_react_server.createElement)(errorBoundary.component, { error: errorObject })),
+		globalErrorModule: options.globalErrorModule,
+		includeGlobalErrorBoundary: !errorBoundary.isGlobalError,
+		isRscRequest: options.isRscRequest,
+		layoutModules,
+		layoutTreePositions: options.route?.layoutTreePositions,
+		makeThenableParams: options.makeThenableParams,
+		matchedParams,
+		resolveChildSegments: options.resolveChildSegments,
+		routeSegments: options.route?.routeSegments,
+		skipLayoutWrapping: errorBoundary.isGlobalError
+	});
+	return renderAppPageBoundaryElementResponse({
+		...options,
+		element,
+		layoutModules,
+		route: options.route,
+		routePattern: options.route?.pattern,
+		status: 200
+	});
+}
+var _clientHookPattern = /\b(useState|useEffect|useReducer|useRef|useContext|useLayoutEffect|useInsertionEffect|useSyncExternalStore|useTransition|useImperativeHandle|useDeferredValue|useActionState|useOptimistic|useEffectEvent)\b.*is not a function/;
+function rewriteClientHookError(error) {
+	const match = error.message.match(_clientHookPattern);
+	if (match) error.message = buildClientHookErrorMessage(`${match[1]}()`);
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-fallback-renderer.js
+var EMPTY_MW_CTX = {
+	headers: null,
+	status: null
+};
+function createAppFallbackRenderer(options) {
+	const { clearRequestContext, createRscOnErrorHandler: buildRscOnErrorHandler, fontProviders, getNavigationContext, globalErrorModule, makeThenableParams, metadataRoutes, resolveChildSegments, rootBoundaries, rscRenderer, sanitizer, ssrLoader } = options;
+	const { rootForbiddenModule, rootLayouts, rootNotFoundModule, rootUnauthorizedModule } = rootBoundaries;
+	return {
+		renderHttpAccessFallback(route, statusCode, isRscRequest, request, opts, scriptNonce, middlewareContext) {
+			return renderAppPageHttpAccessFallback({
+				boundaryComponent: opts?.boundaryComponent ?? null,
+				buildFontLinkHeader: fontProviders.buildFontLinkHeader,
+				clearRequestContext,
+				createRscOnErrorHandler(pathname, routePath) {
+					return buildRscOnErrorHandler(request, pathname, routePath);
+				},
+				getFontLinks: fontProviders.getFontLinks,
+				getFontPreloads: fontProviders.getFontPreloads,
+				getFontStyles: fontProviders.getFontStyles,
+				getNavigationContext,
+				globalErrorModule,
+				isRscRequest,
+				layoutModules: opts?.layouts ?? null,
+				loadSsrHandler: ssrLoader,
+				makeThenableParams,
+				matchedParams: opts?.matchedParams ?? route?.params ?? {},
+				middlewareContext: middlewareContext ?? EMPTY_MW_CTX,
+				metadataRoutes,
+				requestUrl: request.url,
+				resolveChildSegments,
+				rootForbiddenModule,
+				rootLayouts,
+				rootNotFoundModule,
+				rootUnauthorizedModule,
+				route,
+				renderToReadableStream: rscRenderer,
+				scriptNonce,
+				statusCode
+			});
+		},
+		renderNotFound(route, isRscRequest, request, matchedParams, scriptNonce, middlewareContext) {
+			return this.renderHttpAccessFallback(route, 404, isRscRequest, request, { matchedParams }, scriptNonce, middlewareContext);
+		},
+		renderErrorBoundary(route, error, isRscRequest, request, matchedParams, scriptNonce, middlewareContext) {
+			return renderAppPageErrorBoundary({
+				buildFontLinkHeader: fontProviders.buildFontLinkHeader,
+				clearRequestContext,
+				createRscOnErrorHandler(pathname, routePath) {
+					return buildRscOnErrorHandler(request, pathname, routePath);
+				},
+				error,
+				getFontLinks: fontProviders.getFontLinks,
+				getFontPreloads: fontProviders.getFontPreloads,
+				getFontStyles: fontProviders.getFontStyles,
+				getNavigationContext,
+				globalErrorModule,
+				isRscRequest,
+				loadSsrHandler: ssrLoader,
+				makeThenableParams,
+				matchedParams: matchedParams ?? route?.params ?? {},
+				middlewareContext: middlewareContext ?? EMPTY_MW_CTX,
+				metadataRoutes,
+				requestUrl: request.url,
+				resolveChildSegments,
+				rootLayouts,
+				route,
+				renderToReadableStream: rscRenderer,
+				sanitizeErrorForClient: sanitizer,
+				scriptNonce
+			});
+		}
+	};
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-page-element-builder.js
+/**
+* Build the App Router element tree for a matched route.
+*
+* This is the central element-construction path for the App Router RSC
+* handler. It resolves page head metadata (including parallel route metadata),
+* creates the page React element, and wires it into the nested layout +
+* boundary tree via {@link buildAppPageElements}.
+*
+* The function is extracted from the generated RSC entry template so it can
+* be unit-tested independently of the code-generation machinery.
+*
+* Next.js equivalent: the component tree construction in
+* {@link https://github.com/vercel/next.js/blob/canary/packages/next/src/server/app-render/create-component-tree.tsx|create-component-tree.tsx}
+* and the page head resolution in
+* {@link https://github.com/vercel/next.js/blob/canary/packages/next/src/server/app-render/create-metadata.tsx|create-metadata.tsx}.
+*/
+async function buildPageElements$1(options) {
+	const { route, params, routePath, pageRequest, globalErrorModule, rootNotFoundModule, rootForbiddenModule, rootUnauthorizedModule, metadataRoutes } = options;
+	const { opts, searchParams, isRscRequest, mountedSlotsHeader, renderMode = APP_RSC_RENDER_MODE_NAVIGATION } = pageRequest;
+	const pageModule = route.page;
+	const PageComponent = pageModule?.default;
+	if (!!pageModule && !PageComponent) {
+		const interceptionContext = opts?.interceptionContext ?? null;
+		const noExportRouteId = AppElementsWire.encodeRouteId(routePath, interceptionContext);
+		let noExportRootLayout = null;
+		const noExportLayoutIds = route.ids?.layouts ?? route.layouts.map((_, index) => AppElementsWire.encodeLayoutId(createAppPageTreePath(route.routeSegments, route.layoutTreePositions?.[index] ?? 0)));
+		if (route.layouts?.length > 0) {
+			const treePosition = route.layoutTreePositions?.[0] ?? 0;
+			noExportRootLayout = createAppPageTreePath(route.routeSegments, treePosition);
+		}
+		return {
+			...AppElementsWire.createMetadataEntries({
+				interceptionContext,
+				layoutIds: noExportLayoutIds,
+				rootLayoutTreePath: noExportRootLayout,
+				routeId: noExportRouteId
+			}),
+			[noExportRouteId]: (0, import_react_react_server.createElement)("div", null, "Page has no default export")
+		};
+	}
+	const { hasSearchParams, metadata: resolvedMetadata, pageSearchParams, viewport: resolvedViewport } = await resolveAppPageHead({
+		layoutModules: route.layouts,
+		layoutTreePositions: route.layoutTreePositions,
+		metadataRoutes,
+		pageModule: route.page ?? null,
+		parallelRoutes: resolveActiveParallelRouteHeadInputs({
+			interceptLayouts: opts?.interceptLayouts ?? null,
+			interceptPage: opts?.interceptPage ?? null,
+			interceptParams: opts?.interceptParams ?? null,
+			interceptSlotKey: opts?.interceptSlotKey ?? null,
+			params,
+			routeSegments: route.routeSegments ?? [],
+			slots: route.slots ?? null
+		}),
+		params,
+		routePath: route.pattern,
+		routeSegments: route.routeSegments ?? null,
+		searchParams
+	});
+	const pageProps = { params: makeThenableParams(params) };
+	if (searchParams) {
+		pageProps.searchParams = makeThenableParams(pageSearchParams);
+		if (hasSearchParams) markDynamicUsage();
+	}
+	const mountedSlotIds = mountedSlotsHeader ? new Set(mountedSlotsHeader.split(" ")) : null;
+	const slotOverrides = buildSlotOverrides(route, params, routePath, opts);
+	return buildAppPageElements({
+		element: PageComponent ? (0, import_react_react_server.createElement)(PageComponent, pageProps) : null,
+		globalErrorModule: globalErrorModule ?? null,
+		isRscRequest,
+		mountedSlotIds,
+		makeThenableParams,
+		matchedParams: params,
+		resolvedMetadata,
+		resolvedViewport,
+		interceptionContext: opts?.interceptionContext ?? null,
+		routePath,
+		rootNotFoundModule: rootNotFoundModule ?? null,
+		rootForbiddenModule: rootForbiddenModule ?? null,
+		rootUnauthorizedModule: rootUnauthorizedModule ?? null,
+		route,
+		slotOverrides,
+		renderMode
+	});
+}
+/**
+* Build the per-request `slotOverrides` map. Combines:
+*  - Interception overrides (existing behavior — swap in the intercepting page
+*    and its layouts when the request is intercepted into this slot).
+*  - Slot-specific param extraction for inherited slots whose URL pattern
+*    has different param names than the route's. The runtime matches the
+*    cleaned request path against `slot.slotPatternParts` to produce
+*    slot-scoped params, which `app-page-route-wiring` then hands to the
+*    slot page instead of the route's matched params.
+*
+* `routePath` is the already-normalized request pathname (basePath stripped,
+* RSC suffix removed). Re-parsing `request.url` here would re-introduce the
+* basePath and silently break the match for any app that configures one.
+*/
+function buildSlotOverrides(route, routeParams, routePath, opts) {
+	const overrides = {};
+	if (opts && opts.interceptSlotKey && opts.interceptPage) overrides[opts.interceptSlotKey] = {
+		layoutModules: opts.interceptLayouts || null,
+		pageModule: opts.interceptPage,
+		params: opts.interceptParams || routeParams
+	};
+	const slots = route.slots;
+	if (slots) {
+		let urlParts = null;
+		const routeParamSet = collectParamNameSet(route.params);
+		for (const [slotKey, slot] of Object.entries(slots)) {
+			const patternParts = slot.slotPatternParts;
+			const paramNames = slot.slotParamNames;
+			if (!patternParts || patternParts.length === 0) continue;
+			if (paramNames && paramNames.every((name) => routeParamSet.has(name))) continue;
+			if (urlParts === null) urlParts = routePath.split("/").filter(Boolean);
+			const matched = matchRoutePattern(urlParts, patternParts);
+			if (!matched) continue;
+			const existing = overrides[slotKey];
+			overrides[slotKey] = existing ? {
+				...existing,
+				params: matched
+			} : { params: matched };
+		}
+	}
+	return Object.keys(overrides).length > 0 ? overrides : null;
+}
+function collectParamNameSet(params) {
+	const set = /* @__PURE__ */ new Set();
+	if (params) for (const name of params) set.add(name);
+	return set;
+}
+//#endregion
+//#region node_modules/vinext/dist/server/isr-cache.js
+/**
+* ISR (Incremental Static Regeneration) cache layer.
+*
+* Wraps the pluggable CacheHandler with stale-while-revalidate semantics:
+* - Fresh hit: serve immediately
+* - Stale hit: serve immediately + trigger background regeneration
+* - Miss: render synchronously, cache, serve
+*
+* Background regeneration is deduped — only one regeneration per cache key
+* runs at a time, preventing thundering herd on popular pages.
+*
+* This layer works with any CacheHandler backend (memory, Redis, KV, etc.)
+* because it only uses the standard get/set interface.
+*/
+/**
+* Get a cache entry with staleness information.
+*
+* Returns { value, isStale: false } for fresh entries,
+* { value, isStale: true } for expired-but-usable entries,
+* or null for cache misses.
+*/
+async function isrGet(key) {
+	const result = await getCacheHandler().get(key);
+	if (!result || !result.value) return null;
+	if (result.cacheState === "expired") return null;
+	return {
+		value: result,
+		isStale: result.cacheState === "stale"
+	};
+}
+/**
+* Store a value in the ISR cache with a revalidation period.
+*/
+async function isrSet(key, data, revalidateSeconds, tags, expireSeconds) {
+	await getCacheHandler().set(key, data, {
+		cacheControl: expireSeconds === void 0 ? { revalidate: revalidateSeconds } : {
+			revalidate: revalidateSeconds,
+			expire: expireSeconds
+		},
+		revalidate: revalidateSeconds,
+		tags: tags ?? []
+	});
+}
+var _PENDING_REGEN_KEY = Symbol.for("vinext.isrCache.pendingRegenerations");
+var _g$1 = globalThis;
+var pendingRegenerations = _g$1[_PENDING_REGEN_KEY] ??= /* @__PURE__ */ new Map();
+/**
+* Trigger a background regeneration for a cache key.
+*
+* If a regeneration for this key is already in progress, this is a no-op.
+* The renderFn should produce the new cache value and call isrSet internally.
+*
+* On Cloudflare Workers the regeneration promise is registered with
+* `ctx.waitUntil()` via the ALS-backed ExecutionContext, keeping the isolate
+* alive until the regeneration completes even after the Response is returned.
+*
+* When `errorContext` is provided and the render function fails, the error
+* is reported via `reportRequestError` (instrumentation hook) with
+* `revalidateReason: "stale"`.
+*/
+function triggerBackgroundRegeneration(key, renderFn, errorContext) {
+	if (pendingRegenerations.has(key)) return;
+	const promise = renderFn().catch((err) => {
+		console.error(`[vinext] ISR background regeneration failed for ${key}:`, err);
+		if (errorContext) reportRequestError(err instanceof Error ? err : new Error(String(err)), {
+			path: key,
+			method: "GET",
+			headers: {}
+		}, {
+			routerKind: errorContext.routerKind,
+			routePath: errorContext.routePath,
+			routeType: errorContext.routeType,
+			revalidateReason: "stale"
+		});
+	}).finally(() => {
+		pendingRegenerations.delete(key);
+	});
+	pendingRegenerations.set(key, promise);
+	getRequestExecutionContext()?.waitUntil(promise);
+}
+/**
+* Build a CachedAppPageValue for the App Router ISR cache.
+*/
+function buildAppPageCacheValue(html, rscData, status) {
+	return {
+		kind: "APP_PAGE",
+		html,
+		rscData,
+		headers: void 0,
+		postponed: void 0,
+		status
+	};
+}
+function normalizeCachePathname(pathname) {
+	return pathname === "/" ? "/" : pathname.replace(/\/$/, "");
+}
+function buildCacheKey(prefix, pathname, suffix) {
+	const normalized = normalizeCachePathname(pathname);
+	const suffixPart = suffix ? `:${suffix}` : "";
+	const key = `${prefix}:${normalized}${suffixPart}`;
+	if (key.length <= 200) return key;
+	return `${prefix}:__hash:${fnv1a64(normalized)}${suffixPart}`;
+}
+/**
+* Compute an App Router ISR key for one cache artifact.
+*
+* App pages store HTML, RSC payloads, and route-handler responses separately.
+* The suffix mirrors Next.js's separate on-disk app artifacts while keeping the
+* Cloudflare KV key under its 512-byte limit for long pathnames.
+*/
+function appIsrCacheKey(pathname, suffix, buildId = "b979dcaa-93d9-4fd9-be07-f12fa2d285dc") {
+	return buildCacheKey(buildId ? `app:${buildId}` : "app", pathname, suffix);
+}
+function appIsrHtmlKey(pathname) {
+	return appIsrCacheKey(pathname, "html");
+}
+/**
+* Build the ISR cache key for an RSC payload.
+*
+* Note: the key format changed from `rsc:<hash>` to `rsc:slots:<hash>` (and
+* optionally `rsc:slots:<hash>:preserve-ui`). Existing cached entries under
+* the old format will become unreachable after deployment. This is acceptable
+* because ISR entries have TTLs and will be regenerated on the next request.
+*/
+function appIsrRscKey(pathname, mountedSlotsHeader, renderMode = APP_RSC_RENDER_MODE_NAVIGATION) {
+	const normalizedMountedSlotsHeader = normalizeMountedSlotsHeader(mountedSlotsHeader);
+	const variant = [normalizedMountedSlotsHeader ? `slots:${fnv1a64(normalizedMountedSlotsHeader)}` : null, shouldUsePreserveUiCacheVariant(renderMode) ? "preserve-ui" : null].filter((part) => part !== null).join(":");
+	return appIsrCacheKey(pathname, variant ? `rsc:${variant}` : "rsc");
+}
+function appIsrRouteKey(pathname) {
+	return appIsrCacheKey(pathname, "route");
+}
+var _REVALIDATE_KEY = Symbol.for("vinext.isrCache.revalidateDurations");
+_g$1[_REVALIDATE_KEY] ??= /* @__PURE__ */ new Map();
+//#endregion
+//#region node_modules/vinext/dist/server/app-page-cache.js
+var NO_STORE_CACHE_CONTROL = "no-store, must-revalidate";
+function buildAppPageCacheControl(cacheState, revalidateSeconds, expireSeconds) {
+	return buildCachedRevalidateCacheControl(cacheState, revalidateSeconds, expireSeconds);
+}
+function buildAppPageCachedHeaders(options) {
+	const headers = new Headers({
+		"Cache-Control": options.cacheControl,
+		"Content-Type": options.contentType,
+		Vary: VINEXT_RSC_VARY_HEADER,
+		[VINEXT_CACHE_HEADER]: options.cacheState
+	});
+	if (options.mountedSlotsHeader) headers.set(VINEXT_MOUNTED_SLOTS_HEADER, options.mountedSlotsHeader);
+	mergeMiddlewareResponseHeaders(headers, options.middlewareHeaders ?? null);
+	return headers;
+}
+function getCachedAppPageValue(entry) {
+	return entry?.value.value && entry.value.value.kind === "APP_PAGE" ? entry.value.value : null;
+}
+function resolveAppPageCacheWritePolicy(options) {
+	let revalidateSeconds = options.revalidateSeconds;
+	let expireSeconds = options.expireSeconds;
+	const requestCacheLife = options.requestCacheLife;
+	if (requestCacheLife?.revalidate !== void 0) revalidateSeconds = revalidateSeconds === null ? requestCacheLife.revalidate : Math.min(revalidateSeconds, requestCacheLife.revalidate);
+	if (requestCacheLife?.expire !== void 0) expireSeconds = requestCacheLife.expire;
+	if (revalidateSeconds === null || revalidateSeconds <= 0 || !Number.isFinite(revalidateSeconds)) return null;
+	return {
+		expireSeconds,
+		revalidateSeconds
+	};
+}
+function buildAppPageCachedResponse(cachedValue, options) {
+	const status = options.middlewareStatus ?? (cachedValue.status || 200);
+	const revalidateSeconds = options.cacheControl?.revalidate ?? options.revalidateSeconds;
+	const expireSeconds = options.cacheControl === void 0 ? void 0 : options.cacheControl.expire ?? options.expireSeconds;
+	const cacheControl = buildAppPageCacheControl(options.cacheState, revalidateSeconds, expireSeconds);
+	if (options.isRscRequest) {
+		if (!cachedValue.rscData) return null;
+		const rscHeaders = buildAppPageCachedHeaders({
+			cacheControl,
+			cacheState: options.cacheState,
+			contentType: "text/x-component; charset=utf-8",
+			middlewareHeaders: options.middlewareHeaders,
+			mountedSlotsHeader: options.mountedSlotsHeader
+		});
+		return new Response(cachedValue.rscData, {
+			status,
+			headers: rscHeaders
+		});
+	}
+	if (typeof cachedValue.html !== "string" || cachedValue.html.length === 0) return null;
+	const htmlHeaders = buildAppPageCachedHeaders({
+		cacheControl,
+		cacheState: options.cacheState,
+		contentType: "text/html; charset=utf-8",
+		middlewareHeaders: options.middlewareHeaders
+	});
+	return new Response(cachedValue.html, {
+		status,
+		headers: htmlHeaders
+	});
+}
+async function readAppPageCacheResponse(options) {
+	const isrKey = options.isRscRequest ? options.isrRscKey(options.cleanPathname, options.mountedSlotsHeader, options.renderMode) : options.isrHtmlKey(options.cleanPathname);
+	try {
+		const cached = await options.isrGet(isrKey);
+		const cachedValue = getCachedAppPageValue(cached);
+		if (cachedValue && !cached?.isStale) {
+			const hitResponse = buildAppPageCachedResponse(cachedValue, {
+				cacheState: "HIT",
+				cacheControl: cached?.value.cacheControl,
+				expireSeconds: options.expireSeconds,
+				isRscRequest: options.isRscRequest,
+				middlewareHeaders: options.middlewareHeaders,
+				middlewareStatus: options.middlewareStatus,
+				mountedSlotsHeader: options.mountedSlotsHeader,
+				revalidateSeconds: options.revalidateSeconds
+			});
+			if (hitResponse) {
+				options.isrDebug?.(options.isRscRequest ? "HIT (RSC)" : "HIT (HTML)", options.cleanPathname);
+				options.clearRequestContext();
+				return hitResponse;
+			}
+			options.isrDebug?.("MISS (empty cached entry)", options.cleanPathname);
+		}
+		if (cached?.isStale && cachedValue) {
+			const regenerationKey = options.isRscRequest ? options.isrRscKey(options.cleanPathname, options.mountedSlotsHeader, options.renderMode) : options.isrHtmlKey(options.cleanPathname);
+			options.scheduleBackgroundRegeneration(regenerationKey, async () => {
+				const revalidatedPage = await options.renderFreshPageForCache();
+				const revalidateSeconds = revalidatedPage.cacheControl?.revalidate ?? options.revalidateSeconds;
+				const expireSeconds = revalidatedPage.cacheControl?.expire ?? options.expireSeconds;
+				const writes = [options.isrSet(options.isrRscKey(options.cleanPathname, options.mountedSlotsHeader, options.renderMode), buildAppPageCacheValue("", revalidatedPage.rscData, 200), revalidateSeconds, revalidatedPage.tags, expireSeconds)];
+				if (!options.isRscRequest) writes.push(options.isrSet(options.isrHtmlKey(options.cleanPathname), buildAppPageCacheValue(revalidatedPage.html, void 0, 200), revalidateSeconds, revalidatedPage.tags, expireSeconds));
+				await Promise.all(writes);
+				options.isrDebug?.("regen complete", options.cleanPathname);
+			});
+			const staleResponse = buildAppPageCachedResponse(cachedValue, {
+				cacheState: "STALE",
+				cacheControl: cached.value.cacheControl,
+				expireSeconds: options.expireSeconds,
+				isRscRequest: options.isRscRequest,
+				middlewareHeaders: options.middlewareHeaders,
+				middlewareStatus: options.middlewareStatus,
+				mountedSlotsHeader: options.mountedSlotsHeader,
+				revalidateSeconds: options.revalidateSeconds
+			});
+			if (staleResponse) {
+				options.isrDebug?.(options.isRscRequest ? "STALE (RSC)" : "STALE (HTML)", options.cleanPathname);
+				options.clearRequestContext();
+				return staleResponse;
+			}
+			options.isrDebug?.("STALE MISS (empty stale entry)", options.cleanPathname);
+		}
+		if (!cached) options.isrDebug?.("MISS (no cache entry)", options.cleanPathname);
+	} catch (isrReadError) {
+		console.error("[vinext] ISR cache read error:", isrReadError);
+	}
+	return null;
+}
+function finalizeAppPageHtmlCacheResponse(response, options) {
+	if (!response.body) return response;
+	const [streamForClient, streamForCache] = response.body.tee();
+	const htmlKey = options.isrHtmlKey(options.cleanPathname);
+	const rscKey = options.isrRscKey(options.cleanPathname, null);
+	const clientHeaders = new Headers(response.headers);
+	if (options.preserveClientResponseHeaders !== true) {
+		clientHeaders.set("Cache-Control", NO_STORE_CACHE_CONTROL);
+		clientHeaders.set(VINEXT_CACHE_HEADER, "MISS");
+	}
+	const cachePromise = (async () => {
+		try {
+			const cachedHtml = await readStreamAsText(streamForCache);
+			if (options.capturedDynamicUsageBeforeContextCleanup?.() === true || options.consumeDynamicUsage()) {
+				options.isrDebug?.("HTML cache write skipped (dynamic usage during render)", htmlKey);
+				return;
+			}
+			const cachePolicy = resolveAppPageCacheWritePolicy({
+				expireSeconds: options.expireSeconds,
+				requestCacheLife: options.getRequestCacheLife?.(),
+				revalidateSeconds: options.revalidateSeconds
+			});
+			if (!cachePolicy) {
+				options.isrDebug?.("HTML cache write skipped (no cache policy)", htmlKey);
+				return;
+			}
+			const pageTags = options.getPageTags();
+			const writes = [options.isrSet(htmlKey, buildAppPageCacheValue(cachedHtml, void 0, 200), cachePolicy.revalidateSeconds, pageTags, cachePolicy.expireSeconds)];
+			if (options.capturedRscDataPromise) writes.push(options.capturedRscDataPromise.then((rscData) => options.isrSet(rscKey, buildAppPageCacheValue("", rscData, 200), cachePolicy.revalidateSeconds, pageTags, cachePolicy.expireSeconds)));
+			await Promise.all(writes);
+			options.isrDebug?.("HTML cache written", htmlKey);
+		} catch (cacheError) {
+			console.error("[vinext] ISR cache write error:", cacheError);
+		}
+	})();
+	options.waitUntil?.(cachePromise);
+	return new Response(streamForClient, {
+		status: response.status,
+		statusText: response.statusText,
+		headers: clientHeaders
+	});
+}
+function finalizeAppPageRscCacheResponse(response, options) {
+	if (!scheduleAppPageRscCacheWrite(options)) return response;
+	if (options.preserveClientResponseHeaders === true) return response;
+	const clientHeaders = new Headers(response.headers);
+	clientHeaders.set("Cache-Control", NO_STORE_CACHE_CONTROL);
+	clientHeaders.set(VINEXT_CACHE_HEADER, "MISS");
+	return new Response(response.body, {
+		status: response.status,
+		statusText: response.statusText,
+		headers: clientHeaders
+	});
+}
+function scheduleAppPageRscCacheWrite(options) {
+	const capturedRscDataPromise = options.capturedRscDataPromise;
+	if (!capturedRscDataPromise || options.dynamicUsedDuringBuild) return false;
+	const rscKey = options.isrRscKey(options.cleanPathname, options.mountedSlotsHeader, options.renderMode);
+	const cachePromise = (async () => {
+		try {
+			const rscData = await capturedRscDataPromise;
+			if (options.consumeDynamicUsage()) {
+				options.isrDebug?.("RSC cache write skipped (dynamic usage during render)", rscKey);
+				return;
+			}
+			const cachePolicy = resolveAppPageCacheWritePolicy({
+				expireSeconds: options.expireSeconds,
+				requestCacheLife: options.getRequestCacheLife?.(),
+				revalidateSeconds: options.revalidateSeconds
+			});
+			if (!cachePolicy) {
+				options.isrDebug?.("RSC cache write skipped (no cache policy)", rscKey);
+				return;
+			}
+			await options.isrSet(rscKey, buildAppPageCacheValue("", rscData, 200), cachePolicy.revalidateSeconds, options.getPageTags(), cachePolicy.expireSeconds);
+			options.isrDebug?.("RSC cache written", rscKey);
+		} catch (cacheError) {
+			console.error("[vinext] ISR RSC cache write error:", cacheError);
+		}
+	})();
+	options.waitUntil?.(cachePromise);
+	return true;
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-page-method.js
+function isNonGetOrHead(method) {
+	const normalizedMethod = method.toUpperCase();
+	return normalizedMethod !== "GET" && normalizedMethod !== "HEAD";
+}
+function isStaticOrSsgAppPageCandidate(options) {
+	if (options.dynamicConfig === "force-dynamic" || options.revalidateSeconds === 0) return false;
+	if (options.dynamicConfig === "force-static" || options.dynamicConfig === "error") return true;
+	if (options.revalidateSeconds !== null && options.revalidateSeconds > 0) return true;
+	if (options.hasGenerateStaticParams) return true;
+	return !options.isDynamicRoute;
+}
+function resolveAppPageMethodResponse(options) {
+	if (!isNonGetOrHead(options.request.method)) return null;
+	if (isPossibleAppRouteActionRequest(options.request)) return null;
+	if (!isStaticOrSsgAppPageCandidate(options)) return null;
+	const headers = new Headers();
+	mergeMiddlewareResponseHeaders(headers, options.middlewareHeaders ?? null);
+	return methodNotAllowedResponse("GET, HEAD", { headers });
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-page-probe.js
+async function probeAppPageBeforeRender(options) {
+	let layoutFlags = {};
+	if (options.layoutCount > 0) {
+		const layoutProbeResult = await probeAppPageLayouts({
+			layoutCount: options.layoutCount,
+			async onLayoutError(layoutError, layoutIndex) {
+				const specialError = options.resolveSpecialError(layoutError);
+				if (!specialError) return null;
+				return options.renderLayoutSpecialError(specialError, layoutIndex);
+			},
+			probeLayoutAt: options.probeLayoutAt,
+			runWithSuppressedHookWarning(probe) {
+				return options.runWithSuppressedHookWarning(probe);
+			},
+			classification: options.classification
+		});
+		layoutFlags = layoutProbeResult.layoutFlags;
+		if (layoutProbeResult.response) return {
+			response: layoutProbeResult.response,
+			layoutFlags
+		};
+	}
+	if (options.hasLoadingBoundary) return {
+		response: null,
+		layoutFlags
+	};
+	return {
+		response: await probeAppPageComponent({
+			awaitAsyncResult: true,
+			async onError(pageError) {
+				const specialError = options.resolveSpecialError(pageError);
+				if (specialError) return options.renderPageSpecialError(specialError);
+				return null;
+			},
+			probePage: options.probePage,
+			runWithSuppressedHookWarning(probe) {
+				return options.runWithSuppressedHookWarning(probe);
+			}
+		}),
+		layoutFlags
+	};
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-page-render.js
+function buildResponseTiming(options) {
+	if (options.isProduction) return;
+	return {
+		compileEnd: options.compileEnd,
+		handlerStart: options.handlerStart,
+		renderEnd: options.renderEnd,
+		responseKind: options.responseKind
+	};
+}
+function readRequestCacheLifeForPrerender(options) {
+	return options.peekRequestCacheLife?.() ?? options.getRequestCacheLife();
+}
+function applyRequestCacheLife(options) {
+	let revalidateSeconds = options.revalidateSeconds;
+	let expireSeconds = options.expireSeconds;
+	const requestCacheLife = options.requestCacheLife;
+	if (requestCacheLife?.revalidate !== void 0) revalidateSeconds = revalidateSeconds === null ? requestCacheLife.revalidate : Math.min(revalidateSeconds, requestCacheLife.revalidate);
+	if (requestCacheLife?.expire !== void 0) expireSeconds = requestCacheLife.expire;
+	return {
+		expireSeconds,
+		revalidateSeconds
+	};
+}
+function readRootBoundaryId(element) {
+	const rootLayoutTreePath = element[AppElementsWire.keys.rootLayout];
+	return typeof rootLayoutTreePath === "string" ? rootLayoutTreePath : null;
+}
+function createAppPageArtifactCompatibility(element, routePattern) {
+	if (!isAppElementsRecord(element)) return;
+	const rootBoundaryId = readRootBoundaryId(element);
+	return createArtifactCompatibilityEnvelope({
+		graphVersion: createArtifactCompatibilityGraphVersion({
+			routePattern,
+			rootBoundaryId
+		}),
+		deploymentVersion: "b979dcaa-93d9-4fd9-be07-f12fa2d285dc",
+		rootBoundaryId
+	});
+}
+/**
+* Wraps an RSC response body to report invalid dynamic usage errors after the
+* stream is fully consumed. In dev mode, errors from cookies()/headers() inside
+* "use cache" may be caught by user try/catch and silently swallowed — this
+* wrapper waits for the stream to drain and surfaces any recorded error to the
+* terminal (and, via HMR, the browser dev overlay).
+* Ported from Next.js: https://github.com/vercel/next.js/commit/f5e54c06726b571a042fce67417e40a29f6b8689
+*/
+function wrapRscResponseForDevErrorReporting(response, consumeInvalidDynamicUsageError) {
+	const originalBody = response.body;
+	if (!originalBody) return response;
+	let consumed = false;
+	const onConsumed = () => {
+		if (consumed) return;
+		consumed = true;
+		const error = consumeInvalidDynamicUsageError();
+		if (error) console.error("[vinext] Invalid dynamic usage:", error);
+	};
+	const cleanup = new TransformStream({ flush() {
+		onConsumed();
+	} });
+	const reader = originalBody.pipeThrough(cleanup).getReader();
+	const wrappedStream = new ReadableStream({
+		pull(controller) {
+			return reader.read().then(({ done, value }) => {
+				if (done) controller.close();
+				else controller.enqueue(value);
+			}, (streamError) => {
+				onConsumed();
+				controller.error(streamError);
+			});
+		},
+		cancel(reason) {
+			onConsumed();
+			return reader.cancel(reason);
+		}
+	});
+	return new Response(wrappedStream, {
+		status: response.status,
+		statusText: response.statusText,
+		headers: response.headers
+	});
+}
+async function renderAppPageLifecycle(options) {
+	const preRenderResult = await probeAppPageBeforeRender({
+		hasLoadingBoundary: options.hasLoadingBoundary,
+		layoutCount: options.layoutCount,
+		probeLayoutAt(layoutIndex) {
+			return options.probeLayoutAt(layoutIndex);
+		},
+		probePage() {
+			return options.probePage();
+		},
+		renderLayoutSpecialError(specialError, layoutIndex) {
+			return options.renderLayoutSpecialError(specialError, layoutIndex);
+		},
+		renderPageSpecialError(specialError) {
+			return options.renderPageSpecialError(specialError);
+		},
+		resolveSpecialError: resolveAppPageSpecialError,
+		runWithSuppressedHookWarning(probe) {
+			return options.runWithSuppressedHookWarning(probe);
+		},
+		classification: options.classification
+	});
+	if (preRenderResult.response) return preRenderResult.response;
+	const layoutFlags = preRenderResult.layoutFlags;
+	const artifactCompatibility = createAppPageArtifactCompatibility(options.element, options.routePattern);
+	const outgoingElement = AppElementsWire.encodeOutgoingPayload({
+		element: options.element,
+		layoutFlags,
+		...artifactCompatibility ? { artifactCompatibility } : {}
+	});
+	const compileEnd = options.isProduction ? void 0 : performance.now();
+	const rscErrorTracker = createAppPageRscErrorTracker(options.createRscOnErrorHandler(options.cleanPathname, options.routePattern));
+	const rscStream = runWithFetchDedupe(() => options.renderToReadableStream(outgoingElement, { onError: rscErrorTracker.onRenderError }));
+	let revalidateSeconds = options.revalidateSeconds;
+	let expireSeconds = options.expireSeconds;
+	const shouldCaptureRscForCacheMetadata = options.isProgressiveActionRender !== true && (options.isProduction || options.isPrerender === true) && (revalidateSeconds === null || revalidateSeconds > 0 && revalidateSeconds !== Infinity) && !options.isDraftMode && !options.isForceDynamic;
+	const rscCapture = teeAppPageRscStreamForCapture(rscStream, shouldCaptureRscForCacheMetadata);
+	const rscForResponse = rscCapture.ssrStream;
+	const capturedRscDataRef = { value: null };
+	if (rscCapture.sideStream && options.isRscRequest) capturedRscDataRef.value = readAppPageBinaryStream(rscCapture.sideStream);
+	if (options.isRscRequest) {
+		if (options.isPrerender === true) {
+			await settleCapturedRscRenderForCacheMetadata(capturedRscDataRef.value);
+			({expireSeconds, revalidateSeconds} = applyRequestCacheLife({
+				expireSeconds,
+				requestCacheLife: readRequestCacheLifeForPrerender(options),
+				revalidateSeconds
+			}));
+		}
+		const dynamicUsedDuringBuild = options.consumeDynamicUsage();
+		const rscResponsePolicy = resolveAppPageRscResponsePolicy({
+			dynamicUsedDuringBuild,
+			isDraftMode: options.isDraftMode,
+			isDynamicError: options.isDynamicError,
+			isForceDynamic: options.isForceDynamic,
+			isForceStatic: options.isForceStatic,
+			isProduction: options.isProduction,
+			expireSeconds,
+			revalidateSeconds
+		});
+		const rscResponse = buildAppPageRscResponse(rscForResponse, {
+			middlewareContext: options.middlewareContext,
+			mountedSlotsHeader: options.mountedSlotsHeader,
+			params: options.params,
+			policy: rscResponsePolicy,
+			timing: buildResponseTiming({
+				compileEnd,
+				handlerStart: options.handlerStart,
+				isProduction: options.isProduction,
+				responseKind: "rsc"
+			})
+		});
+		return finalizeAppPageRscCacheResponse(!options.isProduction && rscResponse.body && options.consumeInvalidDynamicUsageError ? wrapRscResponseForDevErrorReporting(rscResponse, options.consumeInvalidDynamicUsageError) : rscResponse, {
+			capturedRscDataPromise: options.isProduction && shouldCaptureRscForCacheMetadata ? capturedRscDataRef.value : null,
+			cleanPathname: options.cleanPathname,
+			consumeDynamicUsage: options.consumeDynamicUsage,
+			dynamicUsedDuringBuild,
+			getPageTags() {
+				return options.getPageTags();
+			},
+			getRequestCacheLife() {
+				return options.getRequestCacheLife();
+			},
+			isrDebug: options.isrDebug,
+			isrRscKey: options.isrRscKey,
+			isrSet: options.isrSet,
+			mountedSlotsHeader: options.mountedSlotsHeader,
+			renderMode: options.renderMode,
+			preserveClientResponseHeaders: rscResponsePolicy.cacheState !== "MISS",
+			expireSeconds,
+			revalidateSeconds,
+			waitUntil(promise) {
+				options.waitUntil?.(promise);
+			}
+		});
+	}
+	const fontData = createAppPageFontData({
+		getLinks: options.getFontLinks,
+		getPreloads: options.getFontPreloads,
+		getStyles: options.getFontStyles
+	});
+	const fontLinkHeader = buildAppPageFontLinkHeader(fontData.preloads);
+	let renderEnd;
+	const htmlRender = await renderAppPageHtmlStreamWithRecovery({
+		onShellRendered() {
+			if (!options.isProduction) renderEnd = performance.now();
+		},
+		renderErrorBoundaryResponse(error) {
+			return options.renderErrorBoundaryResponse(error);
+		},
+		async renderHtmlStream() {
+			const ssrHandler = await options.loadSsrHandler();
+			return renderAppPageHtmlStream({
+				capturedRscDataRef,
+				fontData,
+				navigationContext: options.getNavigationContext(),
+				formState: options.formState ?? null,
+				rscStream: rscForResponse,
+				scriptNonce: options.scriptNonce,
+				sideStream: rscCapture.sideStream,
+				ssrHandler,
+				waitForAllReady: options.isPrerender
+			});
+		},
+		renderSpecialErrorResponse(specialError) {
+			return options.renderPageSpecialError(specialError);
+		},
+		resolveSpecialError: resolveAppPageSpecialError
+	});
+	if (htmlRender.response) return htmlRender.response;
+	const htmlStream = htmlRender.htmlStream;
+	if (!htmlStream) throw new Error("[vinext] Expected an HTML stream when no fallback response was returned");
+	if (options.hasLoadingBoundary) {
+		const captured = rscErrorTracker.getCapturedSpecialError();
+		if (captured) {
+			const specialError = resolveAppPageSpecialError(captured);
+			if (specialError) {
+				htmlStream.cancel().catch(() => {});
+				return options.renderPageSpecialError(specialError);
+			}
+		}
+	}
+	if (shouldRerenderAppPageWithGlobalError({
+		capturedError: rscErrorTracker.getCapturedError(),
+		hasLocalBoundary: options.routeHasLocalBoundary
+	})) {
+		const cleanResponse = await options.renderErrorBoundaryResponse(rscErrorTracker.getCapturedError());
+		if (cleanResponse) return cleanResponse;
+	}
+	if (options.isPrerender === true) {
+		await settleCapturedRscRenderForCacheMetadata(capturedRscDataRef.value);
+		({expireSeconds, revalidateSeconds} = applyRequestCacheLife({
+			expireSeconds,
+			requestCacheLife: readRequestCacheLifeForPrerender(options),
+			revalidateSeconds
+		}));
+	}
+	const draftCookie = options.getDraftModeCookieHeader();
+	const dynamicUsedDuringRender = options.consumeDynamicUsage();
+	let dynamicUsedBeforeContextCleanup = dynamicUsedDuringRender;
+	const safeHtmlStream = deferUntilStreamConsumed(htmlStream, () => {
+		dynamicUsedBeforeContextCleanup = dynamicUsedBeforeContextCleanup || options.consumeDynamicUsage();
+		options.clearRequestContext();
+	});
+	const htmlResponsePolicy = resolveAppPageHtmlResponsePolicy({
+		dynamicUsedDuringRender,
+		isProgressiveActionRender: options.isProgressiveActionRender === true,
+		hasScriptNonce: Boolean(options.scriptNonce),
+		isDraftMode: options.isDraftMode,
+		isDynamicError: options.isDynamicError,
+		isForceDynamic: options.isForceDynamic,
+		isForceStatic: options.isForceStatic,
+		isProduction: options.isProduction,
+		expireSeconds,
+		revalidateSeconds
+	});
+	const htmlResponseTiming = buildResponseTiming({
+		compileEnd,
+		handlerStart: options.handlerStart,
+		isProduction: options.isProduction,
+		renderEnd,
+		responseKind: "html"
+	});
+	const shouldSpeculativelyWriteCache = options.isProduction && shouldCaptureRscForCacheMetadata && revalidateSeconds === null && !options.isDynamicError && !options.isForceStatic && !options.scriptNonce && options.isProgressiveActionRender !== true && !dynamicUsedDuringRender;
+	if (htmlResponsePolicy.shouldWriteToCache || shouldSpeculativelyWriteCache) {
+		const isrResponse = buildAppPageHtmlResponse(safeHtmlStream, {
+			draftCookie,
+			fontLinkHeader,
+			middlewareContext: options.middlewareContext,
+			policy: htmlResponsePolicy,
+			timing: htmlResponseTiming
+		});
+		if (options.isPrerender === true) return isrResponse;
+		return finalizeAppPageHtmlCacheResponse(isrResponse, {
+			capturedDynamicUsageBeforeContextCleanup() {
+				return dynamicUsedBeforeContextCleanup;
+			},
+			capturedRscDataPromise: capturedRscDataRef.value,
+			cleanPathname: options.cleanPathname,
+			consumeDynamicUsage: options.consumeDynamicUsage,
+			getPageTags() {
+				return options.getPageTags();
+			},
+			getRequestCacheLife() {
+				return options.getRequestCacheLife();
+			},
+			isrDebug: options.isrDebug,
+			isrHtmlKey: options.isrHtmlKey,
+			isrRscKey: options.isrRscKey,
+			isrSet: options.isrSet,
+			preserveClientResponseHeaders: !htmlResponsePolicy.shouldWriteToCache,
+			expireSeconds,
+			revalidateSeconds,
+			waitUntil(cachePromise) {
+				options.waitUntil?.(cachePromise);
+			}
+		});
+	}
+	return buildAppPageHtmlResponse(safeHtmlStream, {
+		draftCookie,
+		fontLinkHeader,
+		middlewareContext: options.middlewareContext,
+		policy: htmlResponsePolicy,
+		timing: htmlResponseTiming
+	});
+}
+async function settleCapturedRscRenderForCacheMetadata(capturedRscDataPromise) {
+	if (!capturedRscDataPromise) return;
+	try {
+		await capturedRscDataPromise;
+	} catch {}
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-page-dispatch.js
+function shouldReadAppPageCache(options) {
+	return options.isProduction && !options.isProgressiveActionRender && !options.isDraftMode && !options.isForceDynamic && (options.isRscRequest || !options.scriptNonce) && (options.revalidateSeconds === null || options.revalidateSeconds > 0);
+}
+function buildAppPageTags(cleanPathname, extraTags, routeSegments) {
+	return buildPageCacheTags(cleanPathname, extraTags, [...routeSegments], "page");
+}
+async function runAppPageRevalidationContext(options, renderFn) {
+	return runWithRequestContext(createRequestContext({
+		headersContext: createStaticGenerationHeadersContext({
+			dynamicConfig: options.dynamicConfig,
+			routeKind: "page",
+			routePattern: options.routePattern
+		}),
+		currentFetchCacheMode: options.currentFetchCacheMode ?? null,
+		executionContext: getRequestExecutionContext(),
+		unstableCacheRevalidation: "foreground"
+	}), async () => {
+		ensureFetchPatch();
+		setCurrentFetchSoftTags(buildAppPageTags(options.cleanPathname, [], options.routeSegments));
+		options.setNavigationContext({
+			pathname: options.cleanPathname,
+			searchParams: new URLSearchParams(),
+			params: options.params
+		});
+		return await runWithFetchDedupe(renderFn);
+	});
+}
+function getCapturedRscDataPromise(capturedRscDataPromise) {
+	if (!capturedRscDataPromise) throw new Error("[vinext] Expected captured RSC data while regenerating an app page cache entry");
+	return capturedRscDataPromise;
+}
+function toInterceptOptions(interceptionContext, intercept) {
+	return {
+		interceptionContext,
+		interceptLayouts: intercept.interceptLayouts,
+		interceptPage: intercept.page,
+		interceptParams: intercept.matchedParams,
+		interceptSlotKey: intercept.slotKey
+	};
+}
+async function dispatchAppPage(options) {
+	return await runWithFetchDedupe(() => dispatchAppPageInner(options));
+}
+async function dispatchAppPageInner(options) {
+	const route = options.route;
+	const dynamicConfig = options.dynamicConfig;
+	const currentRevalidateSeconds = options.revalidateSeconds;
+	const isForceStatic = dynamicConfig === "force-static";
+	const isDynamicError = dynamicConfig === "error";
+	const isForceDynamic = dynamicConfig === "force-dynamic";
+	const isDraftMode = isDraftModeRequest(options.request);
+	setCurrentFetchSoftTags(buildAppPageTags(options.cleanPathname, [], route.routeSegments));
+	setCurrentFetchCacheMode(options.fetchCache ?? null);
+	if (options.hasPageModule && !options.hasPageDefaultExport) {
+		options.clearRequestContext();
+		return new Response("Page has no default export", { status: 500 });
+	}
+	const methodResponse = resolveAppPageMethodResponse({
+		dynamicConfig,
+		hasGenerateStaticParams: options.hasGenerateStaticParams,
+		isDynamicRoute: route.isDynamic,
+		middlewareHeaders: options.middlewareContext.headers,
+		request: options.request,
+		revalidateSeconds: currentRevalidateSeconds
+	});
+	if (methodResponse) {
+		options.clearRequestContext();
+		return methodResponse;
+	}
+	if ((isForceStatic || isDynamicError) && !isDraftMode) {
+		setHeadersContext(createStaticGenerationHeadersContext({
+			dynamicConfig,
+			routeKind: "page",
+			routePattern: route.pattern
+		}));
+		options.setNavigationContext({
+			pathname: options.cleanPathname,
+			searchParams: new URLSearchParams(),
+			params: options.params
+		});
+	}
+	if (shouldReadAppPageCache({
+		isDraftMode,
+		isForceDynamic,
+		isProgressiveActionRender: options.isProgressiveActionRender === true,
+		isProduction: options.isProduction,
+		isRscRequest: options.isRscRequest,
+		revalidateSeconds: currentRevalidateSeconds,
+		scriptNonce: options.scriptNonce
+	})) {
+		const cachedPageResponse = await readAppPageCacheResponse({
+			cleanPathname: options.cleanPathname,
+			clearRequestContext: options.clearRequestContext,
+			isRscRequest: options.isRscRequest,
+			isrDebug: options.isrDebug,
+			isrGet: options.isrGet,
+			isrHtmlKey: options.isrHtmlKey,
+			isrRscKey: options.isrRscKey,
+			isrSet: options.isrSet,
+			middlewareHeaders: options.middlewareContext.headers,
+			middlewareStatus: options.middlewareContext.status,
+			mountedSlotsHeader: options.mountedSlotsHeader,
+			renderMode: options.renderMode,
+			expireSeconds: options.expireSeconds,
+			revalidateSeconds: currentRevalidateSeconds ?? 0,
+			renderFreshPageForCache: async () => runAppPageRevalidationContext({
+				cleanPathname: options.cleanPathname,
+				currentFetchCacheMode: options.fetchCache ?? null,
+				dynamicConfig,
+				params: options.params,
+				routePattern: route.pattern,
+				routeSegments: route.routeSegments,
+				setNavigationContext: options.setNavigationContext
+			}, async () => {
+				const revalidatedElement = await options.buildPageElement(route, options.params, void 0, new URLSearchParams());
+				const revalidatedOnError = options.createRscOnErrorHandler(options.cleanPathname, route.pattern);
+				const revalidatedRscCapture = teeAppPageRscStreamForCapture(options.renderToReadableStream(revalidatedElement, { onError: revalidatedOnError }), true);
+				const revalidatedSsrEntry = await options.loadSsrHandler();
+				const revalidatedCapturedRscRef = { value: null };
+				const html = await readStreamAsText(await revalidatedSsrEntry.handleSsr(revalidatedRscCapture.ssrStream, options.getNavigationContext(), {
+					links: options.getFontLinks(),
+					styles: options.getFontStyles(),
+					preloads: options.getFontPreloads()
+				}, revalidatedRscCapture.sideStream ? {
+					sideStream: revalidatedRscCapture.sideStream,
+					capturedRscDataRef: revalidatedCapturedRscRef
+				} : void 0));
+				const rscData = await getCapturedRscDataPromise(revalidatedCapturedRscRef.value);
+				const cacheLife = _consumeRequestScopedCacheLife();
+				options.clearRequestContext();
+				return {
+					html,
+					rscData,
+					tags: buildAppPageTags(options.cleanPathname, getCollectedFetchTags(), route.routeSegments),
+					cacheControl: typeof cacheLife?.revalidate === "number" ? {
+						revalidate: cacheLife.revalidate,
+						expire: cacheLife.expire
+					} : void 0
+				};
+			}),
+			scheduleBackgroundRegeneration(key, renderFn) {
+				options.scheduleBackgroundRegeneration(key, renderFn, {
+					routerKind: "App Router",
+					routePath: route.pattern,
+					routeType: "render"
+				});
+			}
+		});
+		if (cachedPageResponse) return cachedPageResponse;
+	}
+	const dynamicParamsResponse = await validateAppPageDynamicParams({
+		clearRequestContext: options.clearRequestContext,
+		enforceStaticParamsOnly: options.dynamicParamsConfig === false,
+		generateStaticParams: options.generateStaticParams,
+		isDynamicRoute: route.isDynamic,
+		params: options.params
+	});
+	if (dynamicParamsResponse) return dynamicParamsResponse;
+	const interceptResult = await resolveAppPageIntercept({
+		buildPageElement(interceptRoute, interceptParams, interceptOpts, interceptSearchParams) {
+			setCurrentFetchCacheMode(options.resolveRouteFetchCacheMode?.(interceptRoute) ?? null);
+			return options.buildPageElement(interceptRoute, interceptParams, interceptOpts, interceptSearchParams);
+		},
+		cleanPathname: options.cleanPathname,
+		currentRoute: route,
+		findIntercept(pathname) {
+			return options.findIntercept(pathname);
+		},
+		getRouteParamNames(sourceRoute) {
+			return sourceRoute.params;
+		},
+		getSourceRoute(sourceRouteIndex) {
+			return options.getSourceRoute(sourceRouteIndex);
+		},
+		isRscRequest: options.isRscRequest,
+		renderInterceptResponse(sourceRoute, interceptElement) {
+			const interceptOnError = options.createRscOnErrorHandler(options.cleanPathname, sourceRoute.pattern);
+			const interceptStream = options.renderToReadableStream(interceptElement, { onError: interceptOnError });
+			const interceptHeaders = new Headers({
+				"Content-Type": "text/x-component; charset=utf-8",
+				Vary: VINEXT_RSC_VARY_HEADER
+			});
+			mergeMiddlewareResponseHeaders(interceptHeaders, options.middlewareContext.headers);
+			return new Response(interceptStream, {
+				status: options.middlewareContext.status ?? 200,
+				headers: interceptHeaders
+			});
+		},
+		searchParams: options.searchParams,
+		setNavigationContext: options.setNavigationContext,
+		toInterceptOpts(intercept) {
+			return toInterceptOptions(options.interceptionContext, intercept);
+		}
+	});
+	if (interceptResult.response) return interceptResult.response;
+	const pageBuildResult = await buildAppPageElement({
+		buildPageElement() {
+			return options.buildPageElement(route, options.params, interceptResult.interceptOpts, options.searchParams);
+		},
+		renderErrorBoundaryPage(buildError) {
+			return options.renderErrorBoundaryPage(buildError);
+		},
+		renderSpecialError(specialError) {
+			return renderPageSpecialError(options, specialError);
+		},
+		resolveSpecialError: resolveAppPageSpecialError
+	});
+	if (pageBuildResult.response) return pageBuildResult.response;
+	return renderAppPageLifecycle({
+		cleanPathname: options.cleanPathname,
+		clearRequestContext: options.clearRequestContext,
+		consumeDynamicUsage,
+		consumeInvalidDynamicUsageError,
+		createRscOnErrorHandler(pathname, routePath) {
+			return options.createRscOnErrorHandler(pathname, routePath);
+		},
+		element: pageBuildResult.element,
+		getDraftModeCookieHeader,
+		getFontLinks: options.getFontLinks,
+		getFontPreloads: options.getFontPreloads,
+		getFontStyles: options.getFontStyles,
+		getNavigationContext: options.getNavigationContext,
+		getPageTags() {
+			return buildAppPageTags(options.cleanPathname, getCollectedFetchTags(), route.routeSegments);
+		},
+		getRequestCacheLife() {
+			return _consumeRequestScopedCacheLife();
+		},
+		peekRequestCacheLife() {
+			return _peekRequestScopedCacheLife();
+		},
+		handlerStart: options.handlerStart,
+		hasLoadingBoundary: shouldSuppressLoadingBoundaries(options.renderMode ?? "navigation") ? false : Boolean(route.loading?.default),
+		formState: options.formState ?? null,
+		isProgressiveActionRender: options.isProgressiveActionRender === true,
+		isDynamicError,
+		isDraftMode,
+		isForceDynamic,
+		isForceStatic,
+		isPrerender: process.env.VINEXT_PRERENDER === "1",
+		isProduction: options.isProduction,
+		isRscRequest: options.isRscRequest,
+		isrDebug: options.isrDebug,
+		isrHtmlKey: options.isrHtmlKey,
+		isrRscKey: options.isrRscKey,
+		isrSet: options.isrSet,
+		expireSeconds: options.expireSeconds,
+		layoutCount: route.layouts.length,
+		loadSsrHandler: options.loadSsrHandler,
+		middlewareContext: options.middlewareContext,
+		params: options.params,
+		probeLayoutAt(layoutIndex) {
+			return options.probeLayoutAt(layoutIndex);
+		},
+		probePage() {
+			return options.probePage();
+		},
+		classification: {
+			getLayoutId(index) {
+				const treePosition = route.layoutTreePositions?.[index] ?? 0;
+				return AppElementsWire.encodeLayoutId(createAppPageTreePath([...route.routeSegments], treePosition));
+			},
+			buildTimeClassifications: route.__buildTimeClassifications,
+			buildTimeReasons: route.__buildTimeReasons,
+			debugClassification: options.debugClassification,
+			async runWithIsolatedDynamicScope(fn) {
+				const priorDynamic = consumeDynamicUsage();
+				try {
+					return {
+						result: await fn(),
+						dynamicDetected: consumeDynamicUsage()
+					};
+				} finally {
+					consumeDynamicUsage();
+					if (priorDynamic) markDynamicUsage();
+				}
+			}
+		},
+		revalidateSeconds: currentRevalidateSeconds,
+		mountedSlotsHeader: options.mountedSlotsHeader,
+		renderMode: options.renderMode ?? "navigation",
+		renderErrorBoundaryResponse(renderError) {
+			return options.renderErrorBoundaryPage(renderError);
+		},
+		renderLayoutSpecialError(specialError, layoutIndex) {
+			return renderLayoutSpecialError(options, specialError, layoutIndex);
+		},
+		renderPageSpecialError(specialError) {
+			return renderPageSpecialError(options, specialError);
+		},
+		renderToReadableStream: options.renderToReadableStream,
+		routeHasLocalBoundary: Boolean(route.error?.default || route.errors?.some((errorModule) => errorModule?.default)),
+		routePattern: route.pattern,
+		runWithSuppressedHookWarning(probe) {
+			return options.runWithSuppressedHookWarning(probe);
+		},
+		scriptNonce: options.scriptNonce,
+		waitUntil(cachePromise) {
+			getRequestExecutionContext()?.waitUntil(cachePromise);
+		}
+	});
+}
+async function renderLayoutSpecialError(options, specialError, layoutIndex) {
+	return buildAppPageSpecialErrorResponse({
+		basePath: options.basePath,
+		clearRequestContext: options.clearRequestContext,
+		getAndClearPendingCookies,
+		isRscRequest: options.isRscRequest,
+		middlewareContext: options.middlewareContext,
+		renderFallbackPage(statusCode) {
+			const parentBoundary = resolveAppPageParentHttpAccessBoundaryModule({
+				layoutIndex,
+				rootForbiddenModule: options.rootForbiddenModule,
+				rootNotFoundModule: options.rootNotFoundModule,
+				rootUnauthorizedModule: options.rootUnauthorizedModule,
+				routeForbiddenModules: options.route.forbiddens,
+				routeNotFoundModules: options.route.notFounds,
+				routeUnauthorizedModules: options.route.unauthorizeds,
+				statusCode
+			})?.default;
+			return options.renderHttpAccessFallbackPage(statusCode, {
+				boundaryComponent: parentBoundary,
+				layouts: options.route.layouts.slice(0, layoutIndex),
+				matchedParams: options.params
+			}, null);
+		},
+		request: options.request,
+		specialError
+	});
+}
+async function renderPageSpecialError(options, specialError) {
+	return buildAppPageSpecialErrorResponse({
+		basePath: options.basePath,
+		clearRequestContext: options.clearRequestContext,
+		getAndClearPendingCookies,
+		isRscRequest: options.isRscRequest,
+		middlewareContext: options.middlewareContext,
+		renderFallbackPage(statusCode) {
+			return options.renderHttpAccessFallbackPage(statusCode, { matchedParams: options.params }, null);
+		},
+		request: options.request,
+		specialError
+	});
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-segment-config.js
+var DYNAMIC_VALUES = new Set([
+	"auto",
+	"error",
+	"force-dynamic",
+	"force-static"
+]);
+var FETCH_CACHE_VALUES = new Set([
+	"auto",
+	"default-cache",
+	"default-no-store",
+	"force-cache",
+	"force-no-store",
+	"only-cache",
+	"only-no-store"
+]);
+function isRouteSegmentDynamic(value) {
+	return DYNAMIC_VALUES.has(value);
+}
+function isRouteSegmentFetchCache(value) {
+	return FETCH_CACHE_VALUES.has(value);
+}
+function resolveRevalidateSeconds(current, value) {
+	if (value === false) {
+		if (current === null) return Infinity;
+		return current === Infinity ? Infinity : current;
+	}
+	if (typeof value !== "number") return current;
+	if (current === null) return value;
+	return value < current ? value : current;
+}
+function isCacheFetchCacheMode(value) {
+	return value === "default-cache" || value === "force-cache" || value === "only-cache";
+}
+function describeFetchCacheConflict(value) {
+	return `Route segment config has incompatible fetchCache values including "${value}".`;
+}
+/**
+* Resolve the route segment config that applies to an App page route.
+*
+* Next.js collects config from every segment in the loader tree and reduces it
+* into the effective route config. The generated vinext entry already knows
+* the concrete layout/page modules for a route, so it should only describe
+* those modules and delegate the behavior to this helper.
+*/
+function resolveAppPageSegmentConfig(options) {
+	const segments = [...options.layouts ?? [], options.page];
+	const config = { revalidateSeconds: null };
+	let hasForceCache = false;
+	let hasForceNoStore = false;
+	let hasOnlyCache = false;
+	let hasOnlyNoStore = false;
+	let hasParentDefaultNoStore = false;
+	for (const segment of segments) {
+		if (!segment) continue;
+		if (isRouteSegmentDynamic(segment.dynamic)) config.dynamicConfig = segment.dynamic;
+		if (segment.dynamicParams === false) config.dynamicParamsConfig = false;
+		else if (segment.dynamicParams === true && config.dynamicParamsConfig !== false) config.dynamicParamsConfig = true;
+		if (isRouteSegmentFetchCache(segment.fetchCache)) {
+			const fetchCache = segment.fetchCache;
+			if (hasParentDefaultNoStore && (fetchCache === "auto" || isCacheFetchCacheMode(fetchCache))) throw new Error(describeFetchCacheConflict(fetchCache));
+			if (fetchCache === "force-cache") hasForceCache = true;
+			if (fetchCache === "force-no-store") hasForceNoStore = true;
+			if (fetchCache === "only-cache") hasOnlyCache = true;
+			if (fetchCache === "only-no-store") hasOnlyNoStore = true;
+			if ((hasForceCache || hasOnlyCache) && (hasForceNoStore || hasOnlyNoStore)) throw new Error(describeFetchCacheConflict(fetchCache));
+			if (fetchCache === "default-no-store") hasParentDefaultNoStore = true;
+			if (hasForceCache) config.fetchCache = "force-cache";
+			else if (hasForceNoStore) config.fetchCache = "force-no-store";
+			else if (hasOnlyCache) config.fetchCache = "only-cache";
+			else if (hasOnlyNoStore) config.fetchCache = "only-no-store";
+			else config.fetchCache = fetchCache;
+		}
+		config.revalidateSeconds = resolveRevalidateSeconds(config.revalidateSeconds, segment.revalidate);
+	}
+	if (config.dynamicConfig === "force-dynamic") config.revalidateSeconds = 0;
+	if (config.fetchCache === void 0) {
+		if (config.dynamicConfig === "force-dynamic") config.fetchCache = "force-no-store";
+		else if (config.dynamicConfig === "error") config.fetchCache = "only-cache";
+	}
+	if (config.dynamicParamsConfig === void 0 && (config.dynamicConfig === "error" || config.dynamicConfig === "force-static")) config.dynamicParamsConfig = false;
+	return config;
+}
+function resolveAppPageFetchCacheMode(options) {
+	return resolveAppPageSegmentConfig(options).fetchCache ?? null;
+}
+//#endregion
+//#region node_modules/vinext/dist/routing/route-trie.js
+function createNode() {
+	return {
+		staticChildren: /* @__PURE__ */ new Map(),
+		dynamicChild: null,
+		catchAllChild: null,
+		optionalCatchAllChild: null,
+		route: null
+	};
+}
+/**
+* Build a trie from pre-sorted routes.
+*
+* Routes must have a `patternParts` property (string[] of URL segments).
+* Pattern segment conventions:
+*   - `:name`  — dynamic segment
+*   - `:name+` — catch-all (1+ segments)
+*   - `:name*` — optional catch-all (0+ segments)
+*   - anything else — static segment
+*
+* First route to claim a terminal position wins (routes are pre-sorted
+* by precedence, so insertion order preserves correct priority).
+*/
+function buildRouteTrie(routes) {
+	const root = createNode();
+	for (const route of routes) {
+		const parts = route.patternParts;
+		if (parts.length === 0) {
+			if (root.route === null) root.route = route;
+			continue;
+		}
+		let node = root;
+		for (let i = 0; i < parts.length; i++) {
+			const part = parts[i];
+			if (part.endsWith("+") && part.startsWith(":")) {
+				if (i !== parts.length - 1) break;
+				const paramName = part.slice(1, -1);
+				if (node.catchAllChild === null) node.catchAllChild = {
+					paramName,
+					route
+				};
+				break;
+			}
+			if (part.endsWith("*") && part.startsWith(":")) {
+				if (i !== parts.length - 1) break;
+				const paramName = part.slice(1, -1);
+				if (node.optionalCatchAllChild === null) node.optionalCatchAllChild = {
+					paramName,
+					route
+				};
+				break;
+			}
+			if (part.startsWith(":")) {
+				const paramName = part.slice(1);
+				if (node.dynamicChild === null) node.dynamicChild = {
+					paramName,
+					node: createNode()
+				};
+				node = node.dynamicChild.node;
+				if (i === parts.length - 1) {
+					if (node.route === null) node.route = route;
+				}
+				continue;
+			}
+			let child = node.staticChildren.get(part);
+			if (!child) {
+				child = createNode();
+				node.staticChildren.set(part, child);
+			}
+			node = child;
+			if (i === parts.length - 1) {
+				if (node.route === null) node.route = route;
+			}
+		}
+	}
+	return root;
+}
+/**
+* Match a URL against the trie.
+*
+* Returns decoded param values — `decodeURIComponent` is applied to
+* individual param entries so that `%2F` → `/`, `%23` → `#`, etc.
+* Segment boundaries (the original `/` splits) are preserved by the
+* upstream normalization layer; this step only decodes the captured
+* param strings the caller sees.
+*
+* Mirrors Next.js route-matcher.ts:25-27.
+*
+* @param root - Trie root built by `buildRouteTrie`
+* @param urlParts - Pre-split URL segments (no empty strings)
+* @returns Match result with route and extracted params, or null
+*/
+function trieMatch(root, urlParts) {
+	const result = match(root, urlParts, 0);
+	if (result) decodeMatchedParams(result.params);
+	return result;
+}
+function createParams() {
+	return Object.create(null);
+}
+function match(node, urlParts, index) {
+	if (index === urlParts.length) {
+		if (node.route !== null) return {
+			route: node.route,
+			params: createParams()
+		};
+		if (node.optionalCatchAllChild !== null) return {
+			route: node.optionalCatchAllChild.route,
+			params: createParams()
+		};
+		return null;
+	}
+	const segment = urlParts[index];
+	const staticChild = node.staticChildren.get(segment);
+	if (staticChild) {
+		const result = match(staticChild, urlParts, index + 1);
+		if (result !== null) return result;
+	}
+	if (node.dynamicChild !== null) {
+		const result = match(node.dynamicChild.node, urlParts, index + 1);
+		if (result !== null) {
+			result.params[node.dynamicChild.paramName] = segment;
+			return result;
+		}
+	}
+	if (node.catchAllChild !== null) {
+		const remaining = urlParts.slice(index);
+		const params = createParams();
+		params[node.catchAllChild.paramName] = remaining;
+		return {
+			route: node.catchAllChild.route,
+			params
+		};
+	}
+	if (node.optionalCatchAllChild !== null) {
+		const remaining = urlParts.slice(index);
+		const params = createParams();
+		params[node.optionalCatchAllChild.paramName] = remaining;
+		return {
+			route: node.optionalCatchAllChild.route,
+			params
+		};
+	}
+	return null;
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-rsc-route-matching.js
+function createRouteParams() {
+	return Object.create(null);
+}
+function appRscPathnameParts(pathname) {
+	const pathOnly = pathname.split("?")[0];
+	return normalizePathnameForRouteMatch(pathOnly === "/" ? "/" : pathOnly.replace(/\/$/, "")).split("/").filter(Boolean);
+}
+function createAppRscRouteMatcher(routes) {
+	const routeTrie = buildRouteTrie(routes);
+	const interceptLookup = createInterceptLookup(routes);
+	return {
+		matchRoute(url) {
+			return trieMatch(routeTrie, appRscPathnameParts(url));
+		},
+		findIntercept(pathname, sourcePathname = null) {
+			const urlParts = appRscPathnameParts(pathname);
+			for (const entry of interceptLookup) {
+				const params = matchAppRscRoutePattern(urlParts, entry.targetPatternParts);
+				if (params !== null) {
+					let sourceParams = createRouteParams();
+					if (sourcePathname !== null) {
+						const sourceRoute = routes[entry.sourceRouteIndex];
+						const sourceParts = appRscPathnameParts(sourcePathname);
+						const matchedSourceParams = sourceRoute ? matchAppRscRoutePattern(sourceParts, sourceRoute.patternParts) : null;
+						if (matchedSourceParams !== null) sourceParams = matchedSourceParams;
+					}
+					return {
+						...entry,
+						matchedParams: mergeMatchedParams(sourceParams, params)
+					};
+				}
+			}
+			return null;
+		}
+	};
+}
+function createInterceptLookup(routes) {
+	const interceptLookup = [];
+	for (let routeIndex = 0; routeIndex < routes.length; routeIndex++) {
+		const route = routes[routeIndex];
+		if (!route.slots) continue;
+		for (const [slotKey, slotModule] of Object.entries(route.slots)) {
+			if (!slotModule.intercepts) continue;
+			for (const intercept of slotModule.intercepts) interceptLookup.push({
+				sourceRouteIndex: routeIndex,
+				slotKey,
+				targetPattern: intercept.targetPattern,
+				targetPatternParts: intercept.targetPattern.split("/").filter(Boolean),
+				interceptLayouts: intercept.interceptLayouts,
+				page: intercept.page,
+				params: intercept.params
+			});
+		}
+	}
+	return interceptLookup;
+}
+function matchAppRscRoutePattern(urlParts, patternParts) {
+	return matchRoutePattern(urlParts, patternParts);
+}
+function mergeMatchedParams(sourceParams, targetParams) {
+	return Object.assign(createRouteParams(), sourceParams, targetParams);
+}
+//#endregion
+//#region node_modules/vinext/dist/shims/navigation-state.js
+/**
+* Server-only navigation state backed by AsyncLocalStorage.
+*
+* This module provides request-scoped isolation for navigation context
+* and useServerInsertedHTML callbacks. Without ALS, concurrent requests
+* on Cloudflare Workers would share module-level state and leak data
+* (pathnames, params, CSS-in-JS styles) between requests.
+*
+* This module is server-only — it imports node:async_hooks and must NOT
+* be bundled for the browser. The dual-environment navigation.ts shim
+* uses a registration pattern so it works in both environments.
+*/
+var _FALLBACK_KEY = Symbol.for("vinext.navigation.fallback");
+var _g = globalThis;
+var _als = getOrCreateAls("vinext.navigation.als");
+var _fallbackState = _g[_FALLBACK_KEY] ??= {
+	serverContext: null,
+	serverInsertedHTMLCallbacks: []
+};
+function _getState() {
+	if (isInsideUnifiedScope()) return getRequestContext();
+	return _als.getStore() ?? _fallbackState;
+}
+var _accessors = {
+	getServerContext() {
+		return _getState().serverContext;
+	},
+	setServerContext(ctx) {
+		_getState().serverContext = ctx;
+	},
+	getInsertedHTMLCallbacks() {
+		return _getState().serverInsertedHTMLCallbacks;
+	},
+	clearInsertedHTMLCallbacks() {
+		_getState().serverInsertedHTMLCallbacks = [];
+	}
+};
+_registerStateAccessors(_accessors);
+globalThis[GLOBAL_ACCESSORS_KEY] = _accessors;
+//#endregion
+//#region node_modules/vinext/dist/build/google-fonts/sort-variants.js
+function sortFontsVariantValues(valA, valB) {
+	if (valA.includes(",") && valB.includes(",")) {
+		const [aPrefix, aSuffix] = valA.split(",", 2);
+		const [bPrefix, bSuffix] = valB.split(",", 2);
+		if (aPrefix === bPrefix) return parseInt(aSuffix) - parseInt(bSuffix);
+		return parseInt(aPrefix) - parseInt(bPrefix);
+	}
+	return parseInt(valA) - parseInt(valB);
+}
+//#endregion
+//#region node_modules/vinext/dist/build/google-fonts/build-url.js
+function buildGoogleFontsUrl$1(fontFamily, axes, display) {
+	const variants = [];
+	if (axes.wght) for (const wght of axes.wght) if (!axes.ital) variants.push([["wght", wght], ...axes.variableAxes ?? []]);
+	else for (const ital of axes.ital) variants.push([
+		["ital", ital],
+		["wght", wght],
+		...axes.variableAxes ?? []
+	]);
+	else if (axes.variableAxes) variants.push([...axes.variableAxes]);
+	if (axes.variableAxes) for (const variant of variants) variant.sort(([a], [b]) => {
+		const aIsLowercase = a.charCodeAt(0) > 96;
+		const bIsLowercase = b.charCodeAt(0) > 96;
+		if (aIsLowercase && !bIsLowercase) return -1;
+		if (bIsLowercase && !aIsLowercase) return 1;
+		return a > b ? 1 : -1;
+	});
+	let url = `https://fonts.googleapis.com/css2?family=${fontFamily.replace(/ /g, "+")}`;
+	if (variants.length > 0) {
+		const keyList = variants[0].map(([key]) => key).join(",");
+		const valueLists = variants.map((variant) => variant.map(([, val]) => val).join(",")).sort(sortFontsVariantValues).join(";");
+		url = `${url}:${keyList}@${valueLists}`;
+	}
+	return `${url}&display=${display}`;
+}
+//#endregion
+//#region node_modules/vinext/dist/shims/font-google-base.js
+/**
+* next/font/google shim
+*
+* Provides a compatible shim for Next.js Google Fonts.
+*
+* Two modes:
+* 1. **Dev / CDN mode** (default): Loads fonts from Google Fonts CDN via <link> tags.
+* 2. **Self-hosted mode** (production build): The vinext:google-fonts Vite plugin
+*    fetches font CSS + .woff2 files at build time, caches them locally, and injects
+*    @font-face CSS pointing at local assets. No requests to Google at runtime.
+*
+* Usage:
+*   import { Inter } from 'next/font/google';
+*   const inter = Inter({ subsets: ['latin'], weight: ['400', '700'] });
+*   // inter.className -> stable CSS class for this font/options pair
+*   // inter.style -> { fontFamily: "'Inter', sans-serif" }
+*   // inter.variable -> CSS class that sets the font CSS variable
+*/
+/**
+* Escape a string for safe interpolation inside a CSS single-quoted string.
+*
+* Prevents CSS injection by escaping characters that could break out of
+* a `'...'` CSS string context: backslashes, single quotes, and newlines.
+*/
+function escapeCSSString(value) {
+	return value.replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/\n/g, "\\a ").replace(/\r/g, "\\d ");
+}
+/**
+* Validate a CSS custom property name (e.g. `--font-inter`).
+*
+* Custom properties must start with `--` and only contain alphanumeric
+* characters, hyphens, and underscores. Anything else could be used to
+* break out of the CSS declaration and inject arbitrary rules.
+*
+* Returns the name if valid, undefined otherwise.
+*/
+function sanitizeCSSVarName(name) {
+	if (/^--[a-zA-Z0-9_-]+$/.test(name)) return name;
+}
+/**
+* Sanitize a CSS font-family fallback name.
+*
+* Generic family names (sans-serif, serif, monospace, etc.) are used as-is.
+* Named families are wrapped in escaped quotes. This prevents injection via
+* crafted fallback values like `); } body { color: red; } .x {`.
+*/
+function sanitizeFallback(name) {
+	const generics = new Set([
+		"serif",
+		"sans-serif",
+		"monospace",
+		"cursive",
+		"fantasy",
+		"system-ui",
+		"ui-serif",
+		"ui-sans-serif",
+		"ui-monospace",
+		"ui-rounded",
+		"emoji",
+		"math",
+		"fangsong"
+	]);
+	const trimmed = name.trim();
+	if (generics.has(trimmed)) return trimmed;
+	return `'${escapeCSSString(trimmed)}'`;
+}
+var injectedFonts = /* @__PURE__ */ new Set();
+/**
+* Convert a font family name to a CSS variable name.
+* e.g., "Inter" -> "--font-inter", "Roboto Mono" -> "--font-roboto-mono"
+*/
+function toVarName(family) {
+	return "--font-" + family.toLowerCase().replace(/\s+/g, "-");
+}
+function fontClassSegment(family) {
+	return family.toLowerCase().replace(/[^a-z0-9_-]+/g, "_").replace(/^_+|_+$/g, "") || "font";
+}
+function normalizeStringSetOption(value) {
+	if (!value) return "";
+	return [...new Set((Array.isArray(value) ? value : [value]).map((item) => item.trim()).filter(Boolean))].sort().join(",");
+}
+function normalizeWeightOption(value) {
+	const normalized = normalizeStringSetOption(value);
+	return normalized === "variable" ? "" : normalized;
+}
+function normalizeStyleOption(value) {
+	const values = new Set((Array.isArray(value) ? value : value ? [value] : []).map((item) => item.trim()).filter(Boolean));
+	const hasItalic = values.has("italic");
+	const hasNormal = values.has("normal");
+	if (!hasItalic) return "";
+	return hasNormal ? "italic,normal" : "italic";
+}
+function normalizeFallbackOption(value) {
+	if (!value) return "";
+	return value.map((item) => item.trim()).join(",");
+}
+function normalizeBooleanOption(value) {
+	if (value === void 0) return "";
+	return value ? "1" : "0";
+}
+function normalizeStringOrBooleanOption(value) {
+	if (value === void 0) return "";
+	return typeof value === "boolean" ? normalizeBooleanOption(value) : value;
+}
+function hashString(value) {
+	let hash = 2166136261;
+	for (let i = 0; i < value.length; i++) {
+		hash ^= value.charCodeAt(i);
+		hash = Math.imul(hash, 16777619) >>> 0;
+	}
+	return hash.toString(36).padStart(7, "0");
+}
+function createFontIdentity(family, options, cssVarName, fallback) {
+	return hashString([
+		family,
+		cssVarName,
+		normalizeWeightOption(options.weight),
+		normalizeStyleOption(options.style),
+		normalizeStringSetOption(options.subsets),
+		options.display ?? "swap",
+		normalizeBooleanOption(options.preload),
+		normalizeFallbackOption(fallback),
+		normalizeStringOrBooleanOption(options.adjustFontFallback),
+		normalizeStringSetOption(options.axes),
+		options._selfHostedCSS ?? ""
+	].join("\0"));
+}
+/**
+* Build a Google Fonts CSS URL.
+*
+* In production this code path is dead. The build plugin
+* (`vinext:google-fonts` in `src/plugins/fonts.ts`) statically resolves
+* each font call's axis values against the bundled metadata, fetches the
+* Google Fonts CSS, and injects the resulting CSS as `_selfHostedCSS` so
+* the runtime never queries Google. The shim only reaches this builder
+* when the plugin's static parser bails (dynamic options, eval-only
+* shapes), which is dev-only.
+*
+* The dev fallback intentionally has no metadata: shipping the 388 KB
+* `font-data.json` to the Worker bundle would dwarf the rest of the shim,
+* and the production path already has the metadata-aware variant. The
+* tradeoff is that the dev fallback cannot resolve a variable font's
+* actual `wght` axis range. It emits no axis segment when no `weight` is
+* given, which makes Google return the default static face (200) instead
+* of the broken `:wght@100..900` URL that issue #885 reports.
+*/
+function buildGoogleFontsUrl(family, options) {
+	const weights = options.weight ? Array.isArray(options.weight) ? options.weight : [options.weight] : [];
+	const styles = options.style ? Array.isArray(options.style) ? options.style : [options.style] : [];
+	const hasItalic = styles.includes("italic");
+	const hasNormal = styles.includes("normal");
+	const ital = hasItalic ? [...hasNormal ? ["0"] : [], "1"] : void 0;
+	const normalizedWeights = weights.length === 1 && weights[0] === "variable" ? [] : weights;
+	return buildGoogleFontsUrl$1(family, {
+		wght: normalizedWeights.length > 0 ? normalizedWeights : ital ? ["400"] : void 0,
+		ital
+	}, options.display ?? "swap");
+}
+/**
+* Inject a <link> tag for the font (client-side only).
+* On the server, we track font URLs for SSR head injection.
+*/
+function injectFontStylesheet(url) {
+	if (injectedFonts.has(url)) return;
+	injectedFonts.add(url);
+	if (typeof document !== "undefined") {
+		const link = document.createElement("link");
+		link.rel = "stylesheet";
+		link.href = url;
+		document.head.appendChild(link);
+	}
+}
+/** Track which className CSS rules have been injected. */
+var injectedClassRules = /* @__PURE__ */ new Set();
+/**
+* Inject a CSS rule that maps a className to a font-family.
+*
+* This is what makes `<div className={inter.className}>` apply the font.
+* Next.js generates equivalent rules at build time.
+*
+* In Next.js, the .className class ONLY sets font-family — it does NOT
+* set CSS variables. CSS variables are handled separately by the .variable class.
+*/
+function injectClassNameRule(className, fontFamily) {
+	if (injectedClassRules.has(className)) return;
+	injectedClassRules.add(className);
+	const css = `.${className} { font-family: ${fontFamily}; }\n`;
+	if (typeof document === "undefined") {
+		ssrFontStyles$1.push(css);
+		return;
+	}
+	const style = document.createElement("style");
+	style.textContent = css;
+	style.setAttribute("data-vinext-font-class", className);
+	document.head.appendChild(style);
+}
+/** Track which variable class CSS rules have been injected. */
+var injectedVariableRules = /* @__PURE__ */ new Set();
+/**
+* Inject a CSS rule that sets a CSS variable on an element.
+* This is what makes `<html className={inter.variable}>` set the CSS variable
+* that can be referenced by other styles (e.g., Tailwind's font-sans).
+*
+* In Next.js, the .variable class ONLY sets the CSS variable — it does NOT
+* set font-family. This is critical because apps commonly apply multiple
+* .variable classes to <body> (e.g., geistSans.variable + geistMono.variable).
+* If we also set font-family here, the last class wins due to CSS cascade,
+* causing all text to use that font (e.g., everything becomes monospace).
+*/
+function injectVariableClassRule(variableClassName, cssVarName, fontFamily) {
+	if (injectedVariableRules.has(variableClassName)) return;
+	injectedVariableRules.add(variableClassName);
+	const css = `.${variableClassName} { ${cssVarName}: ${fontFamily}; }\n`;
+	if (typeof document === "undefined") {
+		ssrFontStyles$1.push(css);
+		return;
+	}
+	const style = document.createElement("style");
+	style.textContent = css;
+	style.setAttribute("data-vinext-font-variable", variableClassName);
+	document.head.appendChild(style);
+}
+var ssrFontStyles$1 = [];
+/**
+* Get collected SSR font class styles (used by the renderer).
+* Note: We don't clear the arrays because fonts are loaded at module import
+* time and need to persist across all requests in the Workers environment.
+*/
+function getSSRFontStyles$1() {
+	return [...ssrFontStyles$1];
+}
+var ssrFontUrls = [];
+/**
+* Get collected SSR font URLs (used by the renderer).
+* Note: We don't clear the arrays because fonts are loaded at module import
+* time and need to persist across all requests in the Workers environment.
+*/
+function getSSRFontLinks() {
+	return [...ssrFontUrls];
+}
+var ssrFontPreloads$1 = [];
+var ssrFontPreloadHrefs = /* @__PURE__ */ new Set();
+/**
+* Get collected SSR font preload data (used by the renderer).
+* Returns an array of { href, type } objects for emitting
+* <link rel="preload" as="font" ...> tags.
+*/
+function getSSRFontPreloads$1() {
+	return [...ssrFontPreloads$1];
+}
+/**
+* Determine the MIME type for a font file based on its extension.
+*/
+function getFontMimeType(pathOrUrl) {
+	if (pathOrUrl.endsWith(".woff2")) return "font/woff2";
+	if (pathOrUrl.endsWith(".woff")) return "font/woff";
+	if (pathOrUrl.endsWith(".ttf")) return "font/ttf";
+	if (pathOrUrl.endsWith(".otf")) return "font/opentype";
+	return "font/woff2";
+}
+/**
+* Extract font file URLs from @font-face CSS rules.
+* Parses url('...') references from the CSS text.
+*/
+function extractFontUrlsFromCSS(css) {
+	const urls = [];
+	const urlRegex = /url\(['"]?([^'")]+)['"]?\)/g;
+	let match;
+	while ((match = urlRegex.exec(css)) !== null) {
+		const url = match[1];
+		if (url && url.startsWith("/")) urls.push(url);
+	}
+	return urls;
+}
+/**
+* Collect font file URLs from self-hosted CSS for preload link generation.
+* Only collects on the server (SSR). Deduplicates by href using a Set for O(1) lookups.
+*/
+function collectFontPreloadsFromCSS(css) {
+	if (typeof document !== "undefined") return;
+	const urls = extractFontUrlsFromCSS(css);
+	for (const href of urls) if (!ssrFontPreloadHrefs.has(href)) {
+		ssrFontPreloadHrefs.add(href);
+		ssrFontPreloads$1.push({
+			href,
+			type: getFontMimeType(href)
+		});
+	}
+}
+/** Track injected self-hosted @font-face blocks (deduplicate) */
+var injectedSelfHosted = /* @__PURE__ */ new Set();
+/**
+* Inject self-hosted @font-face CSS (from the build plugin).
+* This replaces the CDN <link> tag with inline CSS.
+*/
+function injectSelfHostedCSS(css) {
+	if (injectedSelfHosted.has(css)) return;
+	injectedSelfHosted.add(css);
+	collectFontPreloadsFromCSS(css);
+	if (typeof document === "undefined") {
+		ssrFontStyles$1.push(css);
+		return;
+	}
+	const style = document.createElement("style");
+	style.textContent = css;
+	style.setAttribute("data-vinext-font-selfhosted", "true");
+	document.head.appendChild(style);
+}
+function createFontLoader(family) {
+	return function fontLoader(options = {}) {
+		const fallback = options.fallback ?? ["sans-serif"];
+		const fontFamily = `'${escapeCSSString(family)}', ${fallback.map(sanitizeFallback).join(", ")}`;
+		const defaultVarName = toVarName(family);
+		const cssVarName = options.variable ? sanitizeCSSVarName(options.variable) ?? defaultVarName : defaultVarName;
+		const id = createFontIdentity(family, options, cssVarName, fallback);
+		const classSegment = fontClassSegment(family);
+		const className = `__font_${classSegment}_${id}`;
+		const variableClassName = `__variable_${classSegment}_${id}`;
+		if (options._selfHostedCSS) injectSelfHostedCSS(options._selfHostedCSS);
+		else {
+			const url = buildGoogleFontsUrl(family, options);
+			injectFontStylesheet(url);
+			if (typeof document === "undefined") {
+				if (!ssrFontUrls.includes(url)) ssrFontUrls.push(url);
+			}
+		}
+		injectClassNameRule(className, fontFamily);
+		injectVariableClassRule(variableClassName, cssVarName, fontFamily);
+		return {
+			className,
+			style: { fontFamily },
+			variable: variableClassName
+		};
+	};
+}
+var googleFonts = new Proxy({}, { get(_target, prop) {
+	if (typeof prop !== "string") return void 0;
+	if (prop === "__esModule") return true;
+	if (prop === "default") return googleFonts;
+	return createFontLoader(prop.replace(/_/g, " ").replace(/([a-z])([A-Z])/g, "$1 $2"));
+} });
+//#endregion
+//#region node_modules/vinext/dist/shims/font-local.js
+var ssrFontStyles = [];
+var ssrFontPreloads = [];
+/**
+* Get collected SSR font styles (used by the renderer).
+* Note: We don't clear the arrays because fonts are loaded at module import
+* time and need to persist across all requests in the Workers environment.
+*/
+function getSSRFontStyles() {
+	return [...ssrFontStyles];
+}
+/**
+* Get collected SSR font preload data (used by the renderer).
+* Returns an array of { href, type } objects for emitting
+* <link rel="preload" as="font" ...> tags.
+*/
+function getSSRFontPreloads() {
+	return [...ssrFontPreloads];
+}
+//#endregion
+//#region node_modules/vinext/dist/server/app-hook-warning-suppression.js
+var suppressHookWarningAls = new AsyncLocalStorage$1();
+var _origConsoleError = console.error;
+console.error = (...args) => {
+	if (suppressHookWarningAls.getStore() === true && typeof args[0] === "string" && args[0].includes("Invalid hook call")) return;
+	_origConsoleError.apply(console, args);
+};
+//#endregion
+//#region node_modules/vinext/dist/server/app-request-context.js
+/**
+* Set navigation context in the ALS-backed store. "use client" components
+* rendered during SSR need the pathname/searchParams/params but the SSR
+* environment has a separate module instance of next/navigation.
+*
+* Clearing nav context (ctx === null) also clears root params.
+*/
+function setAppNavigationContext(ctx) {
+	setNavigationContext(ctx);
+	if (ctx === null) setRootParams(null);
+}
+/**
+* Clear all per-request ALS state owned by the App Router handler.
+* Must be called before returning a non-page response (redirect, public
+* file proxy, etc.) to prevent state leaking between requests on Workers.
+*
+* Clears: headers, navigation context, root params.
+*/
+function clearAppRequestContext() {
+	setHeadersContext(null);
+	setAppNavigationContext(null);
+}
+//#endregion
+//#region app/CalculatorPage.tsx
+var CalculatorPage = /* @__PURE__ */ registerClientReference(() => {
+	throw new Error("Unexpectedly client reference export 'CalculatorPage' is called on server");
+}, "723fc902a70b", "CalculatorPage");
+//#endregion
+//#region app/page.tsx
+var page_exports = /* @__PURE__ */ __exportAll({ default: () => Home });
+function Home() {
+	return /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)(CalculatorPage, {});
+}
+var Resources = ((React, deps, RemoveDuplicateServerCss, precedence) => {
+	return function Resources() {
+		return React.createElement(React.Fragment, null, [...deps.css.map((href) => React.createElement("link", {
+			key: "css:" + href,
+			rel: "stylesheet",
+			...precedence ? { precedence } : {},
+			href,
+			"data-rsc-css-href": href
+		})), RemoveDuplicateServerCss && React.createElement(RemoveDuplicateServerCss, { key: "remove-duplicate-css" })]);
+	};
+})(import_react_react_server.default, assetsManifest.serverResources["app/layout.tsx"], void 0, "vite-rsc/importer-resources");
+//#endregion
+//#region app/layout.tsx
+var layout_exports = /* @__PURE__ */ __exportAll({
+	default: () => $$wrap_RootLayout,
+	generateMetadata: () => generateMetadata
+});
+var title = "Patient Revenue Calculator | Multilevel Agency";
+var description = "Model the 90-day investment, the lifetime patient revenue, and Revenue Return for new paying patients using your clinic’s own patient economics.";
+async function generateMetadata() {
+	const requestHeaders = await headers();
+	const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost:3000";
+	const imageUrl = `${requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https")}://${host}/og.png`;
+	return {
+		title,
+		description,
+		openGraph: {
+			title,
+			description,
+			type: "website",
+			images: [{
+				url: imageUrl,
+				width: 1728,
+				height: 909
+			}]
+		},
+		twitter: {
+			card: "summary_large_image",
+			title,
+			description,
+			images: [imageUrl]
+		}
+	};
+}
+function RootLayout({ children }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("html", {
+		lang: "en",
+		children: /* @__PURE__ */ (0, import_jsx_runtime_react_server.jsx)("body", { children })
+	});
+}
+var $$wrap_RootLayout = /* @__PURE__ */ __vite_rsc_wrap_css__(RootLayout, "default");
+function __vite_rsc_wrap_css__(value, name) {
+	if (typeof value !== "function") return value;
+	function __wrapper(props) {
+		return import_react_react_server.createElement(import_react_react_server.Fragment, null, import_react_react_server.createElement(Resources), import_react_react_server.createElement(value, props));
+	}
+	Object.defineProperty(__wrapper, "name", { value: name });
+	return __wrapper;
+}
+//#endregion
+//#region \0virtual:vinext-rsc-entry
+var renderToReadableStream = createRscRenderer(renderToReadableStream$1);
+function _getSSRFontStyles() {
+	return [...getSSRFontStyles$1(), ...getSSRFontStyles()];
+}
+function _getSSRFontPreloads() {
+	return [...getSSRFontPreloads$1(), ...getSSRFontPreloads()];
+}
+var __isrDebug = process.env.NEXT_PRIVATE_DEBUG_CACHE ? console.debug.bind(console, "[vinext] ISR:") : void 0;
+var __classDebug = process.env.VINEXT_DEBUG_CLASSIFICATION ? function(layoutId, reason) {
+	console.debug("[vinext] CLS:", layoutId, reason);
+} : void 0;
+function __resolveRouteFetchCacheMode(route) {
+	return resolveAppPageFetchCacheMode({
+		layouts: route.layouts,
+		page: route.page
+	});
+}
+function __VINEXT_CLASS(routeIdx) { return ((routeIdx) => {
+    switch (routeIdx) {
+      default: return null;
+    }
+  })(routeIdx); }
+function __VINEXT_CLASS_REASONS(routeIdx) {
+	return null;
+}
+var routes = [{
+	__buildTimeClassifications: __VINEXT_CLASS(0),
+	__buildTimeReasons: __classDebug ? __VINEXT_CLASS_REASONS(0) : null,
+	ids: {
+		"route": "route:/",
+		"page": "page:/",
+		"routeHandler": null,
+		"rootBoundary": "root-boundary:/",
+		"layouts": ["layout:/"],
+		"templates": [],
+		"slots": {}
+	},
+	pattern: "/",
+	patternParts: [],
+	isDynamic: false,
+	params: [],
+	rootParamNames: [],
+	page: page_exports,
+	routeHandler: null,
+	layouts: [layout_exports],
+	routeSegments: [],
+	templateTreePositions: [],
+	layoutTreePositions: [0],
+	templates: [],
+	errors: [null],
+	errorPaths: [],
+	errorTreePositions: [],
+	slots: {},
+	loading: null,
+	error: null,
+	notFound: null,
+	notFounds: [null],
+	forbidden: null,
+	forbiddens: [null],
+	unauthorized: null,
+	unauthorizeds: [null]
+}];
+var __routeMatcher = createAppRscRouteMatcher(routes);
+var metadataRoutes = [];
+var rootNotFoundModule = null;
+var rootForbiddenModule = null;
+var rootUnauthorizedModule = null;
+var rootLayouts = [layout_exports];
+var createRscOnErrorHandler = (request, pathname, routePath) => createAppRscOnErrorHandler(reportRequestError, request, pathname, routePath);
+var __fallbackRenderer = createAppFallbackRenderer({
+	rootBoundaries: {
+		rootForbiddenModule,
+		rootLayouts,
+		rootNotFoundModule,
+		rootUnauthorizedModule
+	},
+	globalErrorModule: null,
+	metadataRoutes,
+	ssrLoader() {
+		return import("./ssr/index.js");
+	},
+	fontProviders: {
+		buildFontLinkHeader: buildAppPageFontLinkHeader,
+		getFontLinks: getSSRFontLinks,
+		getFontPreloads: _getSSRFontPreloads,
+		getFontStyles: _getSSRFontStyles
+	},
+	makeThenableParams,
+	sanitizer: sanitizeErrorForClient,
+	rscRenderer: renderToReadableStream,
+	getNavigationContext,
+	resolveChildSegments: resolveAppPageChildSegments,
+	clearRequestContext() {
+		clearAppRequestContext();
+	},
+	createRscOnErrorHandler(request, pathname, routePath) {
+		return createRscOnErrorHandler(request, pathname, routePath);
+	}
+});
+function matchRoute(url) {
+	return __routeMatcher.matchRoute(url);
+}
+/**
+* Check if a pathname matches any intercepting route.
+* Returns the match info or null.
+*/
+function findIntercept(pathname, sourcePathname = null) {
+	return __routeMatcher.findIntercept(pathname, sourcePathname);
+}
+async function buildPageElements(route, params, routePath, pageRequest) {
+	return buildPageElements$1({
+		route,
+		params,
+		routePath,
+		pageRequest,
+		globalErrorModule: null,
+		rootNotFoundModule: null,
+		rootForbiddenModule: null,
+		rootUnauthorizedModule: null,
+		metadataRoutes
+	});
+}
+var __basePath = "";
+var __trailingSlash = false;
+var __i18nConfig = null;
+var __configRedirects = [];
+var __configRewrites = {
+	"beforeFiles": [],
+	"afterFiles": [],
+	"fallback": []
+};
+var __configHeaders = [];
+var __publicFiles = new Set([
+	"/favicon.svg",
+	"/file.svg",
+	"/globe.svg",
+	"/og.png",
+	"/window.svg"
+]);
+var __allowedOrigins = [];
+var __expireTime = 31536e3;
+var __allowedDevOrigins = [];
+var __safeDevHosts = [
+	"localhost",
+	"127.0.0.1",
+	"[::1]"
+];
+function __forbidden() {
+	return new Response("Forbidden", {
+		status: 403,
+		headers: { "Content-Type": "text/plain" }
+	});
+}
+function __validateDevRequestOrigin(request) {
+	if (request.headers.get("sec-fetch-mode") === "no-cors" && request.headers.get("sec-fetch-site") === "cross-site") {
+		console.warn("[vinext] Blocked cross-site no-cors request to " + new URL(request.url).pathname);
+		return __forbidden();
+	}
+	const origin = request.headers.get("origin");
+	if (!origin) return null;
+	if (origin === "null") {
+		if (!__allowedDevOrigins.includes("null")) {
+			console.warn("[vinext] Blocked request with Origin: null. Add \"null\" to allowedDevOrigins to allow sandboxed contexts.");
+			return __forbidden();
+		}
+		return null;
+	}
+	let originHostname;
+	try {
+		originHostname = new URL(origin).hostname.toLowerCase();
+	} catch {
+		return __forbidden();
+	}
+	if (__safeDevHosts.includes(originHostname) || originHostname.endsWith(".localhost")) return null;
+	const hostHeader = (request.headers.get("x-forwarded-host") || request.headers.get("host") || "").split(",")[0].trim().split(":")[0].toLowerCase();
+	if (hostHeader && originHostname === hostHeader) return null;
+	for (const pattern of __allowedDevOrigins) if (pattern.startsWith("*.")) {
+		const suffix = pattern.slice(1);
+		if (originHostname === pattern.slice(2) || originHostname.endsWith(suffix)) return null;
+	} else if (originHostname === pattern) return null;
+	console.warn(`[vinext] Blocked cross-origin request from "${origin}" to ${new URL(request.url).pathname}. To allow this origin, add it to allowedDevOrigins in next.config.js.`);
+	return __forbidden();
+}
+/**
+* Maximum server-action request body size.
+* Configurable via experimental.serverActions.bodySizeLimit in next.config.
+* Defaults to 1MB, matching the Next.js default.
+* @see https://nextjs.org/docs/app/api-reference/config/next-config-js/serverActions#bodysizelimit
+* Prevents unbounded request body buffering.
+*/
+var __MAX_ACTION_BODY_SIZE = 1048576;
+var _virtual_vinext_rsc_entry_default = createAppRscHandler({
+	basePath: __basePath,
+	clearRequestContext() {
+		clearAppRequestContext();
+	},
+	configHeaders: __configHeaders,
+	configRedirects: __configRedirects,
+	configRewrites: __configRewrites,
+	dispatchMatchedPage({ cleanPathname, formState, handlerStart, interceptionContext, isProgressiveActionRender, isRscRequest, middlewareContext, mountedSlotsHeader, params, request, route, scriptNonce, searchParams, renderMode }) {
+		const PageComponent = route.page?.default;
+		const __segmentConfig = resolveAppPageSegmentConfig({
+			layouts: route.layouts,
+			page: route.page
+		});
+		const __generateStaticParams = resolveAppPageGenerateStaticParamsSources({
+			layouts: route.layouts,
+			layoutTreePositions: route.layoutTreePositions,
+			page: route.page,
+			routeSegments: route.routeSegments
+		});
+		const _asyncRouteParams = makeThenableParams(params);
+		return dispatchAppPage({
+			basePath: __basePath,
+			buildPageElement(targetRoute, targetParams, targetOpts, targetSearchParams) {
+				return buildPageElements(targetRoute, targetParams, cleanPathname, {
+					opts: targetOpts,
+					searchParams: targetSearchParams,
+					isRscRequest,
+					request,
+					mountedSlotsHeader,
+					renderMode
+				});
+			},
+			cleanPathname,
+			clearRequestContext() {
+				clearAppRequestContext();
+			},
+			createRscOnErrorHandler(pathname, routePath) {
+				return createRscOnErrorHandler(request, pathname, routePath);
+			},
+			debugClassification: __classDebug,
+			dynamicConfig: __segmentConfig.dynamicConfig,
+			dynamicParamsConfig: __segmentConfig.dynamicParamsConfig,
+			fetchCache: __segmentConfig.fetchCache ?? null,
+			findIntercept(pathname) {
+				return findIntercept(pathname, interceptionContext);
+			},
+			generateStaticParams: __generateStaticParams,
+			getFontLinks: getSSRFontLinks,
+			getFontPreloads: _getSSRFontPreloads,
+			getFontStyles: _getSSRFontStyles,
+			getNavigationContext,
+			getSourceRoute(sourceRouteIndex) {
+				return routes[sourceRouteIndex];
+			},
+			hasGenerateStaticParams: __generateStaticParams.length > 0,
+			hasPageDefaultExport: !!PageComponent,
+			hasPageModule: !!route.page,
+			handlerStart,
+			interceptionContext,
+			expireSeconds: __expireTime,
+			formState,
+			isProgressiveActionRender,
+			isProduction: true,
+			isRscRequest,
+			isrDebug: __isrDebug,
+			isrGet,
+			isrHtmlKey: appIsrHtmlKey,
+			isrRscKey: appIsrRscKey,
+			isrSet,
+			loadSsrHandler() {
+				return import("./ssr/index.js");
+			},
+			middlewareContext,
+			mountedSlotsHeader,
+			params,
+			probeLayoutAt(li) {
+				const LayoutComp = route.layouts[li]?.default;
+				if (!LayoutComp) return null;
+				return LayoutComp({
+					params: makeThenableParams(resolveAppPageSegmentParams(route.routeSegments, route.layoutTreePositions?.[li] ?? 0, params)),
+					children: null
+				});
+			},
+			probePage() {
+				if (!PageComponent) return null;
+				return PageComponent({
+					params: _asyncRouteParams,
+					searchParams: makeThenableParams(collectAppPageSearchParams(searchParams).searchParamsObject)
+				});
+			},
+			renderErrorBoundaryPage(renderErr) {
+				return __fallbackRenderer.renderErrorBoundary(route, renderErr, isRscRequest, request, params, scriptNonce, middlewareContext);
+			},
+			renderHttpAccessFallbackPage(statusCode, opts, currentMiddlewareContext) {
+				return __fallbackRenderer.renderHttpAccessFallback(route, statusCode, isRscRequest, request, opts, scriptNonce, currentMiddlewareContext);
+			},
+			renderToReadableStream,
+			request,
+			revalidateSeconds: __segmentConfig.revalidateSeconds,
+			resolveRouteFetchCacheMode(targetRoute) {
+				return __resolveRouteFetchCacheMode(targetRoute);
+			},
+			rootForbiddenModule,
+			rootNotFoundModule,
+			rootUnauthorizedModule,
+			route,
+			runWithSuppressedHookWarning(probe) {
+				return suppressHookWarningAls.run(true, probe);
+			},
+			scheduleBackgroundRegeneration(key, renderFn, errorContext) {
+				triggerBackgroundRegeneration(key, renderFn, errorContext);
+			},
+			scriptNonce,
+			searchParams,
+			setNavigationContext: setAppNavigationContext,
+			renderMode
+		});
+	},
+	dispatchMatchedRouteHandler({ cleanPathname, middlewareContext, params, request, route, searchParams }) {
+		return dispatchAppRouteHandler({
+			basePath: __basePath,
+			cleanPathname,
+			clearRequestContext() {
+				clearAppRequestContext();
+			},
+			i18n: __i18nConfig,
+			isrDebug: __isrDebug,
+			isrGet,
+			isrRouteKey: appIsrRouteKey,
+			isrSet,
+			middlewareContext,
+			middlewareRequestHeaders: middlewareContext.requestHeaders,
+			params,
+			request,
+			route: {
+				pattern: route.pattern,
+				routeHandler: route.routeHandler,
+				routeSegments: route.routeSegments
+			},
+			scheduleBackgroundRegeneration: triggerBackgroundRegeneration,
+			searchParams
+		});
+	},
+	handleProgressiveActionRequest({ actionId, cleanPathname, contentType, middlewareContext, request }) {
+		return handleProgressiveServerActionRequest({
+			actionId,
+			allowedOrigins: __allowedOrigins,
+			cleanPathname,
+			clearRequestContext() {
+				clearAppRequestContext();
+			},
+			contentType,
+			decodeAction,
+			decodeFormState,
+			getAndClearPendingCookies,
+			getDraftModeCookieHeader,
+			maxActionBodySize: __MAX_ACTION_BODY_SIZE,
+			middlewareHeaders: middlewareContext.headers,
+			readFormDataWithLimit: readActionFormDataWithLimit,
+			reportRequestError,
+			request,
+			setHeadersAccessPhase
+		});
+	},
+	handleServerActionRequest({ actionId, cleanPathname, contentType, interceptionContext, isRscRequest, middlewareContext, mountedSlotsHeader, request, searchParams }) {
+		return handleServerActionRscRequest({
+			actionId,
+			allowedOrigins: __allowedOrigins,
+			buildPageElement({ route: actionRoute, params: actionParams, cleanPathname: actionCleanPathname, interceptOpts, searchParams: actionSearchParams, isRscRequest: actionIsRscRequest, request: actionRequest, mountedSlotsHeader: actionMountedSlotsHeader, renderMode: actionRenderMode }) {
+				return buildPageElements(actionRoute, actionParams, actionCleanPathname, {
+					opts: interceptOpts,
+					searchParams: actionSearchParams,
+					isRscRequest: actionIsRscRequest,
+					request: actionRequest,
+					mountedSlotsHeader: actionMountedSlotsHeader,
+					renderMode: actionRenderMode
+				});
+			},
+			cleanPathname,
+			clearRequestContext() {
+				clearAppRequestContext();
+			},
+			contentType,
+			createNotFoundElement(actionRouteId) {
+				return {
+					...AppElementsWire.createMetadataEntries({
+						interceptionContext: null,
+						rootLayoutTreePath: null,
+						routeId: actionRouteId
+					}),
+					[actionRouteId]: (0, import_react_react_server.createElement)("div", null, "Page not found")
+				};
+			},
+			createPayloadRouteId(pathnameToRender, currentInterceptionContext) {
+				return AppElementsWire.encodeRouteId(pathnameToRender, currentInterceptionContext);
+			},
+			createRscOnErrorHandler(actionRequest, actionPathname, routePattern) {
+				return createRscOnErrorHandler(actionRequest, actionPathname, routePattern);
+			},
+			createTemporaryReferenceSet,
+			decodeReply,
+			findIntercept(pathnameToMatch) {
+				return findIntercept(pathnameToMatch, interceptionContext);
+			},
+			getAndClearPendingCookies,
+			getDraftModeCookieHeader,
+			getRouteParamNames(sourceRoute) {
+				return sourceRoute.params;
+			},
+			getSourceRoute(sourceRouteIndex) {
+				return routes[sourceRouteIndex];
+			},
+			isRscRequest,
+			loadServerAction,
+			matchRoute(pathnameToMatch) {
+				return matchRoute(pathnameToMatch);
+			},
+			maxActionBodySize: __MAX_ACTION_BODY_SIZE,
+			middlewareHeaders: middlewareContext.headers,
+			middlewareStatus: middlewareContext.status,
+			mountedSlotsHeader,
+			readBodyWithLimit: readActionBodyWithLimit,
+			readFormDataWithLimit: readActionFormDataWithLimit,
+			renderToReadableStream,
+			reportRequestError,
+			request,
+			sanitizeErrorForClient(error) {
+				return sanitizeErrorForClient(error);
+			},
+			searchParams,
+			setHeadersAccessPhase,
+			setNavigationContext: setAppNavigationContext,
+			toInterceptOpts(intercept) {
+				return {
+					interceptionContext,
+					interceptLayouts: intercept.interceptLayouts,
+					interceptSlotKey: intercept.slotKey,
+					interceptPage: intercept.page,
+					interceptParams: intercept.matchedParams
+				};
+			}
+		});
+	},
+	i18nConfig: __i18nConfig,
+	isMiddlewareProxy: false,
+	makeThenableParams,
+	matchRoute,
+	metadataRoutes,
+	middlewareModule: null,
+	publicFiles: __publicFiles,
+	renderNotFound({ isRscRequest, matchedParams, middlewareContext, request, route, scriptNonce }) {
+		return __fallbackRenderer.renderNotFound(route, isRscRequest, request, matchedParams, scriptNonce, middlewareContext);
+	},
+	rootParamNamesByPattern: {},
+	setNavigationContext: setAppNavigationContext,
+	staticParamsMap: {},
+	trailingSlash: __trailingSlash,
+	validateDevRequestOrigin: __validateDevRequestOrigin
+});
+//#endregion
+//#region node_modules/vinext/dist/server/app-router-entry.js
+/**
+* Default Cloudflare Worker entry point for vinext App Router.
+*
+* Use this directly in wrangler.jsonc:
+*   "main": "vinext/server/app-router-entry"
+*
+* Or import and delegate to it from a custom worker:
+*   import handler from "vinext/server/app-router-entry";
+*   return handler.fetch(request, env, ctx);
+*
+* This file runs in the RSC environment. Configure the Cloudflare plugin with:
+*   cloudflare({ viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] } })
+*/
+var app_router_entry_default = { async fetch(request, env, ctx) {
+	return handleRequest(request, env, ctx);
+} };
+async function handleRequest(request, env, ctx) {
+	const url = new URL(request.url);
+	if (isOpenRedirectShaped(url.pathname)) return notFoundResponse();
+	try {
+		decodeURIComponent(url.pathname);
+	} catch {
+		return badRequestResponse();
+	}
+	{
+		const filteredHeaders = filterInternalHeaders(request.headers);
+		request = cloneRequestWithHeaders(request, filteredHeaders);
+	}
+	const handleFn = () => _virtual_vinext_rsc_entry_default(request, ctx);
+	const result = await (ctx ? runWithExecutionContext(ctx, handleFn) : handleFn());
+	if (result instanceof Response) {
+		if (env?.ASSETS) {
+			const assetFetcher = env.ASSETS;
+			const assetResponse = await resolveStaticAssetSignal(result, { fetchAsset: (path) => Promise.resolve(assetFetcher.fetch(new Request(new URL(path, request.url)))) });
+			if (assetResponse) return assetResponse;
+		}
+		return result;
+	}
+	if (result === null || result === void 0) return notFoundResponse();
+	return new Response(String(result), { status: 200 });
+}
+//#endregion
+//#region \0virtual:cloudflare/worker-entry
+var worker_entry_default = { async fetch(request, env, ctx) {
+	if (new URL(request.url).pathname === "/_vinext/image") return handleImageOptimization(request, {
+		fetchAsset: (path) => env.ASSETS.fetch(new Request(new URL(path, request.url))),
+		transformImage: async (body, { width, format, quality }) => {
+			return (await env.IMAGES.input(body).transform(width > 0 ? { width } : {}).output({
+				format,
+				quality
+			})).response();
+		}
+	}, [...DEFAULT_DEVICE_SIZES, ...DEFAULT_IMAGE_SIZES]);
+	return app_router_entry_default.fetch(request, env, ctx);
+} };
+//#endregion
+export { worker_entry_default as default };
